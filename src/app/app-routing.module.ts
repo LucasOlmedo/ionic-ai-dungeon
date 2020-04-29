@@ -4,20 +4,20 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./main-page/main-page.module').then(m => m.MainPagePageModule)
   },
   {
-    path: 'start-game-tab',
-    loadChildren: () => import('./start-game-tab/start-game-tab.module').then( m => m.StartGameTabPageModule)
+    path: 'start-game',
+    loadChildren: () => import('./start-game/start-game.module').then( m => m.StartGamePageModule)
   },
   {
-    path: 'shop-tab',
-    loadChildren: () => import('./shop-tab/shop-tab.module').then( m => m.ShopTabPageModule)
+    path: 'shop-page',
+    loadChildren: () => import('./shop-page/shop-page.module').then( m => m.ShopPagePageModule)
   },
   {
-    path: 'config-tab',
-    loadChildren: () => import('./config-tab/config-tab.module').then( m => m.ConfigTabPageModule)
-  }
+    path: 'settings-page',
+    loadChildren: () => import('./settings-page/settings-page.module').then( m => m.SettingsPagePageModule)
+  },
 ];
 @NgModule({
   imports: [
@@ -25,4 +25,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

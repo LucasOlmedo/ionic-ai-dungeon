@@ -1,5 +1,7 @@
 {
   "name": "ionic-ai-dungeon",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

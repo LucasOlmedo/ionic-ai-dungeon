@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true">
+  <ion-grid class="fullheight center-element">
+    <ion-row>
+      <ion-col>
+        <ion-button class="mb-15" color="light" size="large" expand="full" [routerLink]="['/start-game']"
+          routerDirection="forward">
+          <ion-icon slot="start" name="game-controller-outline"></ion-icon>
+          Jogar
+        </ion-button>
+        <ion-button class="mb-15" color="light" size="large" expand="full" [routerLink]="['/shop-page']"
+          routerDirection="forward">
+          <ion-icon slot="start" name="cart-outline"></ion-icon>
+          Loja
+        </ion-button>
+        <ion-button class="mb-15" color="light" size="large" expand="full" [routerLink]="['/settings-page']"
+          routerDirection="forward">
+          <ion-icon slot="start" name="options-outline"></ion-icon>
+          Opções
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
