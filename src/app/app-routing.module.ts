@@ -8,15 +8,19 @@ const routes: Routes = [
   },
   {
     path: 'start-game',
-    loadChildren: () => import('./start-game/start-game.module').then( m => m.StartGamePageModule)
+    loadChildren: () => import('./start-game/start-game.module').then(m => m.StartGamePageModule)
   },
   {
     path: 'shop-page',
-    loadChildren: () => import('./shop-page/shop-page.module').then( m => m.ShopPagePageModule)
+    loadChildren: () => import('./shop-page/shop-page.module').then(m => m.ShopPagePageModule)
   },
   {
     path: 'settings-page',
-    loadChildren: () => import('./settings-page/settings-page.module').then( m => m.SettingsPagePageModule)
+    loadChildren: () => import('./settings-page/settings-page.module').then(m => m.SettingsPagePageModule)
+  },
+  {
+    path: 'create-character',
+    loadChildren: () => import('./create-character/create-character.module').then(m => m.CreateCharacterPageModule)
   },
 ];
 @NgModule({
