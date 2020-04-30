@@ -1,10 +1,30 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Start Game</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-center ion-margin-top">
+          <p id="lore-text-1">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Enim quas, explicabo accusamus in aut a molestias
+            ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
+            Possimus error minus quidem repudiandae.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          </p>
+          <p id="lore-text-2">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Enim quas, explicabo accusamus in aut a molestias
+            ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
+          </p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button id="btn-continue" class="ion-margin-top" color="dark" expand="full" fill="outline" routerLink="/"
+          routerDirection="root">
+          Continuar...
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
