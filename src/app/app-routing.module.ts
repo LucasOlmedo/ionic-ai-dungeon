@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'create-character',
     loadChildren: () => import('./create-character/create-character.module').then(m => m.CreateCharacterPageModule)
   },
+  {
+    path: 'first-room',
+    loadChildren: () => import('./first-room/first-room.module').then( m => m.FirstRoomPageModule)
+  },
 ];
 @NgModule({
   imports: [

@@ -10,6 +10,7 @@ export class StartGamePage implements OnInit {
 
   loreAnimation1: Animation;
   loreAnimation2: Animation;
+  loreAnimation3: Animation;
   continueAnimation: Animation;
 
   constructor(private animationCtrl: AnimationController) { }
@@ -17,6 +18,7 @@ export class StartGamePage implements OnInit {
   ngOnInit() {
     this.loreAnimation1 = this.createLoreAnimation1();
     this.loreAnimation2 = this.createLoreAnimation2();
+    this.loreAnimation3 = this.createLoreAnimation3();
     this.continueAnimation = this.createContinueAnimation();
     this.playAnimations();
   }
@@ -37,6 +39,14 @@ export class StartGamePage implements OnInit {
       .fromTo('opacity', '0', '1');
   }
 
+  createLoreAnimation3() {
+    return this.animationCtrl.create()
+      .addElement(document.querySelector('#lore-text-3'))
+      .duration(4000)
+      .iterations(1)
+      .fromTo('opacity', '0', '1');
+  }
+
   createContinueAnimation() {
     return this.animationCtrl.create()
       .addElement(document.querySelector('#btn-continue'))
@@ -48,6 +58,7 @@ export class StartGamePage implements OnInit {
   async playAnimations() {
     await this.loreAnimation1.play();
     await this.loreAnimation2.play();
+    await this.loreAnimation3.play();
     await this.continueAnimation.play();
   }
 
