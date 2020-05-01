@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-create-character',
@@ -27,7 +28,8 @@ export class CreateCharacterPage implements OnInit {
 
   constructor(
     public loadingCtrl: LoadingController,
-    public router: Router
+    public router: Router,
+    public navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -65,6 +67,6 @@ export class CreateCharacterPage implements OnInit {
     });
     await loading.present();
     loading.onDidDismiss()
-      .then(() => this.router.navigateByUrl('/first-room'));
+      .then(() => this.navCtrl.navigateRoot('/first-room'));
   }
 }
