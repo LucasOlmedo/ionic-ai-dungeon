@@ -12,6 +12,7 @@ export class StartGamePage implements OnInit {
   loreAnimation2: Animation;
   loreAnimation3: Animation;
   continueAnimation: Animation;
+  animationDuration: number = 4000;
 
   constructor(private animationCtrl: AnimationController) { }
 
@@ -26,7 +27,7 @@ export class StartGamePage implements OnInit {
   createLoreAnimation1() {
     return this.animationCtrl.create()
       .addElement(document.querySelector('#lore-text-1'))
-      .duration(4000)
+      .duration(this.animationDuration)
       .iterations(1)
       .fromTo('opacity', '0', '1');
   }
@@ -34,7 +35,7 @@ export class StartGamePage implements OnInit {
   createLoreAnimation2() {
     return this.animationCtrl.create()
       .addElement(document.querySelector('#lore-text-2'))
-      .duration(4000)
+      .duration(this.animationDuration)
       .iterations(1)
       .fromTo('opacity', '0', '1');
   }
@@ -42,7 +43,7 @@ export class StartGamePage implements OnInit {
   createLoreAnimation3() {
     return this.animationCtrl.create()
       .addElement(document.querySelector('#lore-text-3'))
-      .duration(4000)
+      .duration(this.animationDuration)
       .iterations(1)
       .fromTo('opacity', '0', '1');
   }
