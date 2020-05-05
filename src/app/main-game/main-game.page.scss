@@ -1,0 +1,21 @@
+ion-progress-bar {
+    height: 7px;
+    --buffer-background: #262626;
+}
+
+ion-title {
+    padding-inline-start: 15px;
+    padding-inline-end: 15px;
+}
+
+.ion-margin-top {
+    margin-top: 10px;
+}
+
+.small-text {
+    position: absolute;
+    top: -8px;
+    small {
+        font-size: 0.5em;
+    }
+}

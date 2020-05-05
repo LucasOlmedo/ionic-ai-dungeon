@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import {NavController} from '@ionic/angular';
 
 @Component({
@@ -28,7 +27,6 @@ export class CreateCharacterPage implements OnInit {
 
   constructor(
     public loadingCtrl: LoadingController,
-    public router: Router,
     public navCtrl: NavController
   ) { }
 

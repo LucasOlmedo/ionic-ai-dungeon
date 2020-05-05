@@ -26,6 +26,26 @@ const routes: Routes = [
     path: 'first-room',
     loadChildren: () => import('./first-room/first-room.module').then( m => m.FirstRoomPageModule)
   },
+  {
+    path: 'main-game',
+    loadChildren: () => import('./main-game/main-game.module').then( m => m.MainGamePageModule)
+  },
+  {
+    path: 'main-game-settings',
+    loadChildren: () => import('./main-game-settings/main-game-settings.module').then( m => m.MainGameSettingsPageModule)
+  },
+  {
+    path: 'main-game-loot',
+    loadChildren: () => import('./main-game-loot/main-game-loot.module').then( m => m.MainGameLootPageModule)
+  },
+  {
+    path: 'main-game-equip',
+    loadChildren: () => import('./main-game-equip/main-game-equip.module').then( m => m.MainGameEquipPageModule)
+  },
+  {
+    path: 'main-game-char',
+    loadChildren: () => import('./main-game-char/main-game-char.module').then( m => m.MainGameCharPageModule)
+  },
 ];
 @NgModule({
   imports: [
