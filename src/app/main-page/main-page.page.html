@@ -1,19 +1,31 @@
-<ion-content [fullscreen]="true">
+<ion-content fullscreen>
   <ion-grid class="fullheight center-element">
     <ion-row>
       <ion-col>
         <ion-button class="mb-15" color="dark" fill="outline" size="large" expand="full" routerLink="/start-game"
           routerDirection="root">
-          <ion-icon slot="start" name="game-controller-outline"></ion-icon>
-          Jogar
+          <ion-col size="3" offset="2" class="ion-float-right">
+            <ion-img src="../assets/images/buttons/main-start-game.png" style="height: 40px;"></ion-img>
+          </ion-col>
+          <ion-col size="7" class="ion-text-left">
+            Jogar
+          </ion-col>
         </ion-button>
         <ion-button class="mb-15" color="dark" fill="outline" size="large" expand="full" routerLink="/shop-page">
-          <ion-icon slot="start" name="cart-outline"></ion-icon>
-          Loja
+          <ion-col size="3" offset="2" class="ion-float-right">
+            <ion-img src="../assets/images/buttons/main-shop.png" style="height: 40px;"></ion-img>
+          </ion-col>
+          <ion-col size="7" class="ion-text-left">
+            Loja
+          </ion-col>
         </ion-button>
         <ion-button class="mb-15" color="dark" fill="outline" size="large" expand="full" routerLink="/settings-page">
-          <ion-icon slot="start" name="options-outline"></ion-icon>
-          Opções
+          <ion-col size="3" offset="2" class="ion-float-right">
+            <ion-img src="../assets/images/buttons/main-settings.png" style="height: 40px;"></ion-img>
+          </ion-col>
+          <ion-col size="7" class="ion-text-left">
+            Opções
+          </ion-col>
         </ion-button>
       </ion-col>
     </ion-row>
