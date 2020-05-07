@@ -23,7 +23,7 @@ export class CreateCharacterPage implements OnInit {
     'Aquila', 'Galexia', 'Cassio', 'Juliet', 'Perseus', 'Sagan',
     'Galileo', 'Leonis', 'Sirius', 'Pavonis', 'Arneb', 'Fenrir',
     'Phoebe', 'Casey', 'Joshua', 'Nguyen', 'Heather', 'Jamie',
-    'Helmund', 'Ewin', 'Eathelm', 'Nanarv', 'Marget', 'Argen',
+    'Helmund', 'Ewin', 'Eathelm', 'Nanarv', 'Marget', 'Argen', 'Mosbi',
   ];
 
   constructor(
@@ -76,7 +76,6 @@ export class CreateCharacterPage implements OnInit {
       spinner: 'circular',
       message: 'Carregando...',
       duration: 2000,
-      translucent: true,
     });
     await loading.present();
     loading.onDidDismiss()

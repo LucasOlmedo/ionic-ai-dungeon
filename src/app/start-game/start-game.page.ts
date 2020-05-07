@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Animation, AnimationController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-start-game',
@@ -12,9 +13,13 @@ export class StartGamePage implements OnInit {
   loreAnimation2: Animation;
   loreAnimation3: Animation;
   continueAnimation: Animation;
-  animationDuration: number = 4000;
+  animationDuration: number = 2500;
 
-  constructor(private animationCtrl: AnimationController) { }
+  private storage: Storage = new Storage({ name: '_ionicstorage' });
+
+  constructor(private animationCtrl: AnimationController) {
+    this.storage.set('dismiss-lore', true);
+  }
 
   ngOnInit() {
     this.loreAnimation1 = this.createLoreAnimation1();
@@ -51,7 +56,7 @@ export class StartGamePage implements OnInit {
   createContinueAnimation() {
     return this.animationCtrl.create()
       .addElement(document.querySelector('#btn-continue'))
-      .duration(1000)
+      .duration(500)
       .iterations(1)
       .fromTo('opacity', '0', '1');
   }

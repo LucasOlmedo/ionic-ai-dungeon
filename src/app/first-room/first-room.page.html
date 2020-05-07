@@ -1,17 +1,13 @@
 <ion-content fullscreen>
   <ion-card class="ion-margin-top ion-padding box-no-shadow">
-    <img src="../assets/images/room.jpg" />
+    <img src="{{ startRoom.img }}" />
     <ion-card-header class="adjust-padding">
-      <ion-card-subtitle>Quarto Desconhecido</ion-card-subtitle>
-      <ion-card-title>Madison, WI</ion-card-title>
+      <ion-card-subtitle>{{ startRoom.location }}</ion-card-subtitle>
+      <ion-card-title>{{ startRoom.title }}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="adjust-padding">
       <div class="ion-text-start">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Enim quas, explicabo accusamus in aut a molestias
-        ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
-        Possimus error minus quidem repudiandae.
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        {{ startRoom.description }}
       </div>  
     </ion-card-content>
     <ion-button color="dark" fill="outline" expand="full" (click)="goToMainRoom()">
