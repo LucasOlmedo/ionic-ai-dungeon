@@ -11,7 +11,7 @@
 <ion-content class="ion-padding" fullscreen>
   <ion-list class="ion-padding-top ion-margin-top">
     <ion-item>
-      <ion-input clearInput type="text" placeholder="Nome" [value]="charName"></ion-input>
+      <ion-input clearInput type="text" placeholder="Nome" [(ngModel)]="charName"></ion-input>
       <ion-button color="dark" fill="outline" expand="full" (click)="randomName()">
         <ion-icon slot="icon-only" name="shuffle-outline"></ion-icon>
       </ion-button>

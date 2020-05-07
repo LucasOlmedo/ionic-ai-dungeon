@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
-import {NavController} from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-character',
@@ -9,7 +10,7 @@ import {NavController} from '@ionic/angular';
 })
 export class CreateCharacterPage implements OnInit {
 
-  charName: string;
+  charName: string = '';
 
   points: number = 5;
 
@@ -27,7 +28,8 @@ export class CreateCharacterPage implements OnInit {
 
   constructor(
     public loadingCtrl: LoadingController,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
@@ -53,7 +55,20 @@ export class CreateCharacterPage implements OnInit {
   }
 
   saveCharStartGame() {
-    this.presentLoading();
+    if (this.charName == '' || this.points > 0) {
+      this.presentToast();
+    } else {
+      this.presentLoading();
+    }
+  }
+
+  async presentToast() {
+    let toast = await this.toastCtrl.create({
+      message: 'Crie seu personagem antes de começar a jornada!',
+      position: 'top',
+      duration: 1500,
+    });
+    await toast.present();
   }
 
   async presentLoading() {
