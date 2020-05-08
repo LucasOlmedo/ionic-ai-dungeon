@@ -12,7 +12,7 @@
   <ion-list class="ion-padding-top ion-margin-top">
     <ion-item>
       <ion-input clearInput type="text" placeholder="Nome" [(ngModel)]="charName"></ion-input>
-      <ion-button color="dark" fill="outline" expand="full" (click)="randomName()">
+      <ion-button color="dark" fill="outline" (click)="randomName()">
         <ion-icon slot="icon-only" name="shuffle-outline"></ion-icon>
       </ion-button>
     </ion-item>
@@ -24,31 +24,31 @@
     </ion-item>
     <ion-item>
       <ion-label color="danger">Vitalidade</ion-label>
-      <ion-button color="dark" fill="outline" expand="full" (click)="decrease('vitality')">
+      <ion-button color="dark" fill="outline" (click)="decrease('vitality')">
         <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
       </ion-button>
       <ion-text class="ion-margin-start ion-margin-end" color="danger">{{ vitality }}</ion-text>
-      <ion-button color="dark" fill="outline" expand="full" (click)="increase('vitality')">
+      <ion-button color="dark" fill="outline" (click)="increase('vitality')">
         <ion-icon slot="icon-only" name="add-outline"></ion-icon>
       </ion-button>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Inteligência</ion-label>
-      <ion-button color="dark" fill="outline" expand="full" (click)="decrease('intelligence')">
+      <ion-button color="dark" fill="outline" (click)="decrease('intelligence')">
         <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
       </ion-button>
       <ion-text class="ion-margin-start ion-margin-end" color="primary">{{ intelligence }}</ion-text>
-      <ion-button color="dark" fill="outline" expand="full" (click)="increase('intelligence')">
+      <ion-button color="dark" fill="outline" (click)="increase('intelligence')">
         <ion-icon slot="icon-only" name="add-outline"></ion-icon>
       </ion-button>
     </ion-item>
     <ion-item>
       <ion-label color="success">Agilidade</ion-label>
-      <ion-button color="dark" fill="outline" expand="full" (click)="decrease('agility')">
+      <ion-button color="dark" fill="outline" (click)="decrease('agility')">
         <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
       </ion-button>
       <ion-text class="ion-margin-start ion-margin-end" color="success">{{ agility }}</ion-text>
-      <ion-button color="dark" fill="outline" expand="full" (click)="increase('agility')">
+      <ion-button color="dark" fill="outline" (click)="increase('agility')">
         <ion-icon slot="icon-only" name="add-outline"></ion-icon>
       </ion-button>
     </ion-item>
@@ -56,7 +56,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button id="btn-continue" class="ion-margin-top" color="dark" expand="full" fill="outline"
+        <ion-button id="btn-continue" class="ion-margin-top" color="dark" expand="block" fill="outline"
           (click)="saveCharStartGame()">
           Começar!
         </ion-button>
