@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Player } from '../models/player';
+import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-create-character',
@@ -11,13 +13,10 @@ import { ToastController } from '@ionic/angular';
 export class CreateCharacterPage implements OnInit {
 
   charName: string = '';
-
-  points: number = 5;
-
-  vitality: number = 3;
-  intelligence: number = 3;
-  agility: number = 3;
-
+  points: number = 6;
+  vitality: number = 0;
+  intelligence: number = 0;
+  agility: number = 0;
   nameItems = [
     'Niamh', 'Jenkins', 'Nicholas', 'Theodore', 'Bailey', 'Leporis',
     'Aquila', 'Galexia', 'Cassio', 'Juliet', 'Perseus', 'Sagan',
@@ -29,7 +28,8 @@ export class CreateCharacterPage implements OnInit {
   constructor(
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private playerService: PlayerService
   ) { }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class CreateCharacterPage implements OnInit {
 
   decrease(attr) {
     let actual = this[`${attr}`];
-    if (this.points < 5 && actual > 3) {
+    if (this.points < 6 && actual > 0) {
       this[`${attr}`]--;
       this.points++;
     }
@@ -79,6 +79,18 @@ export class CreateCharacterPage implements OnInit {
     });
     await loading.present();
     loading.onDidDismiss()
-      .then(() => this.navCtrl.navigateRoot('/first-room'));
+      .then(() => {
+        this.createPlayer();
+        this.navCtrl.navigateRoot('/first-room')
+      });
+  }
+
+  private createPlayer() {
+    let player = new Player;
+    player.name = this.charName;
+    player.vitality = this.vitality;
+    player.intelligence = this.intelligence;
+    player.agility = this.agility;
+    this.playerService.setPlayer(player);
   }
 }

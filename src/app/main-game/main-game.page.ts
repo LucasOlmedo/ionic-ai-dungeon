@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Player } from '../models/player';
+import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-main-game',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainGamePage implements OnInit {
 
-  constructor() { }
+  player: Player;
+  life: number = 0;
+  baseLife: number = 0;
+  lPercent: number = 0.0;
+  mana: number = 0;
+  baseMana: number = 0;
+  mPercent: number = 0.0;
+
+  constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
+    this.playerService.getPlayer()
+      .subscribe((p: Player) => {
+        this.player = p;
+        this.life = this.baseLife = this.player.getLife();
+        this.mana = this.baseMana = this.player.getLife();
+        this.setPercentage();
+      });
+  }
+
+  setPercentage() {
+    this.lPercent = this.life / this.baseLife;
+    this.mPercent = this.mana / this.baseMana;
   }
 
 }

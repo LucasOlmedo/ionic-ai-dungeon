@@ -6,21 +6,21 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-progress-bar color="danger" value="1"></ion-progress-bar>
+            <ion-progress-bar color="danger" [value]="lPercent"></ion-progress-bar>
           </ion-col>
           <ion-col size="2">
             <ion-text class="small-text">
-              <small>100/100</small>
+              <small>{{ life }}/{{ baseLife }}</small>
             </ion-text>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-progress-bar color="primary" value="1"></ion-progress-bar>
+            <ion-progress-bar color="primary" [value]="mPercent"></ion-progress-bar>
           </ion-col>
           <ion-col size="2">
             <ion-text class="small-text">
-              <small>100/100</small>
+              <small>{{ mana }}/{{ baseMana }}</small>
             </ion-text>
           </ion-col>
         </ion-row>
