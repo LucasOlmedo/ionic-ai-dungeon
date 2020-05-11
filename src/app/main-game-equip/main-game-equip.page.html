@@ -6,7 +6,7 @@
     <ion-title>Equipamentos</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content fullscreen>
   <ion-grid class="ion-margin-top">
     <ion-row>
       <ion-col size="4" offset="4">
@@ -42,31 +42,31 @@
     <ion-row>
       <ion-col size="8" offset="2">
         <ion-text color="danger" class="ion-float-left">Vida</ion-text>
-        <ion-text color="danger" class="ion-float-right">100</ion-text>
+        <ion-text color="danger" class="ion-float-right">{{ life }}</ion-text>
         <br>
         <ion-text color="danger" class="ion-float-left">Ataque</ion-text>
-        <ion-text color="danger" class="ion-float-right">15</ion-text>
+        <ion-text color="danger" class="ion-float-right">{{ atk }}</ion-text>
         <br>
         <ion-text color="danger" class="ion-float-left">Defesa</ion-text>
-        <ion-text color="danger" class="ion-float-right">8</ion-text>
+        <ion-text color="danger" class="ion-float-right">{{ def }}</ion-text>
         <br>
         <ion-text color="primary" class="ion-float-left">Mágica</ion-text>
-        <ion-text color="primary" class="ion-float-right">5</ion-text>
+        <ion-text color="primary" class="ion-float-right">{{ magic }}</ion-text>
         <br>
         <ion-text color="primary" class="ion-float-left">Mana</ion-text>
-        <ion-text color="primary" class="ion-float-right">100</ion-text>
+        <ion-text color="primary" class="ion-float-right">{{ mana }}</ion-text>
         <br>
         <ion-text color="primary" class="ion-float-left">Proteção</ion-text>
-        <ion-text color="primary" class="ion-float-right">5</ion-text>
+        <ion-text color="primary" class="ion-float-right">{{ prot }}</ion-text>
         <br>
         <ion-text color="success" class="ion-float-left">Velocidade</ion-text>
-        <ion-text color="success" class="ion-float-right">10</ion-text>
+        <ion-text color="success" class="ion-float-right">{{ vel }}</ion-text>
         <br>
         <ion-text color="success" class="ion-float-left">Crítico</ion-text>
-        <ion-text color="success" class="ion-float-right">15 %</ion-text>
+        <ion-text color="success" class="ion-float-right">{{ crit }} %</ion-text>
         <br>
         <ion-text color="success" class="ion-float-left">Evasão</ion-text>
-        <ion-text color="success" class="ion-float-right">10 %</ion-text>
+        <ion-text color="success" class="ion-float-right">{{ eva }} %</ion-text>
         <br>
       </ion-col>
     </ion-row>

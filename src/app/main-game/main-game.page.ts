@@ -10,6 +10,9 @@ import { PlayerService } from '../player.service';
 export class MainGamePage implements OnInit {
 
   player: Player;
+  exp: number = 0;
+  nextLvl: number = 0;
+  expPercent: number = 0;
   life: number = 0;
   baseLife: number = 0;
   lPercent: number = 0.0;
@@ -24,7 +27,9 @@ export class MainGamePage implements OnInit {
       .subscribe((p: Player) => {
         this.player = p;
         this.life = this.baseLife = this.player.getLife();
-        this.mana = this.baseMana = this.player.getLife();
+        this.mana = this.baseMana = this.player.getMana();
+        this.exp = this.player.exp;
+        this.nextLvl = this.player.nextLvl;
         this.setPercentage();
       });
   }
@@ -32,6 +37,7 @@ export class MainGamePage implements OnInit {
   setPercentage() {
     this.lPercent = this.life / this.baseLife;
     this.mPercent = this.mana / this.baseMana;
+    this.expPercent = this.exp / this.nextLvl;
   }
 
 }

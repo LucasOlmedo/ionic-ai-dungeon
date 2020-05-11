@@ -19,3 +19,27 @@ ion-title {
         font-size: 0.5em;
     }
 }
+
+.small-text-bottom {
+    position: absolute;
+    bottom: 0;
+    top: initial;
+    small {
+        font-size: 0.5em;
+    }
+}
+
+.img-thumb {
+    height: 40px;
+}
+
+.text-char-name {
+    float: left;
+    margin-bottom: 5px;
+}
+
+.text-level {
+    color: var(--ion-color-warning);
+    float: right;
+    margin-bottom: 5px;
+}
