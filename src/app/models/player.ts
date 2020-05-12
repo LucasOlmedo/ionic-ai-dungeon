@@ -6,6 +6,10 @@ export class Player {
     vitality: number = 0;
     intelligence: number = 0;
     agility: number = 0;
+    inventory = [
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    ];
     attributes = {
         life: 100,
         atk: 10,

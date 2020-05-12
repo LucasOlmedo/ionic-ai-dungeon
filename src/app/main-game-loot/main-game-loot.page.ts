@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerService } from '../player.service';
+import { Player } from '../models/player';
 
 @Component({
   selector: 'app-main-game-loot',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainGameLootPage implements OnInit {
 
-  constructor() { }
+  player: Player;
+
+  constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
+    this.playerService.getPlayer()
+      .subscribe((p: Player) => {
+        this.player = p;
+      });
   }
 
 }
