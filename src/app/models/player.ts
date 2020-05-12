@@ -9,17 +9,18 @@ export class Player {
     inventory = [
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     ];
     attributes = {
         life: 100,
         atk: 10,
         def: 10,
-        magic: 10,
         mana: 100,
+        magic: 10,
         prot: 10,
         vel: 10,
-        crit: 5,
-        eva: 5,
+        crit: 1,
+        eva: 1,
     };
 
     getBonusLvl() {
@@ -31,47 +32,45 @@ export class Player {
     }
 
     getLife() {
-        return Math.floor((this.attributes.life + (this.vitality * 10))
-            * this.getBonusLvl());
+        return Math.floor((this.attributes.life + (this.vitality *
+            (50 + (this.level * 1.5)))));
     }
 
     getAtk() {
-        return Math.floor((this.attributes.atk + (this.vitality * 1.5))
-            * this.getBonusLvl());
+        return Math.floor((this.attributes.atk + (this.vitality *
+            (10 + (this.level * 0.5)))));
     }
 
     getDef() {
-        return Math.floor((this.attributes.def + (this.vitality * 1.5))
-            * this.getBonusLvl());
-    }
-
-    getMagic() {
-        return Math.floor((this.attributes.magic + (this.intelligence * 1.5))
-            * this.getBonusLvl());
+        return Math.floor((this.attributes.def + (this.vitality *
+            (10 + (this.level * 0.2)))));
     }
 
     getMana() {
-        return Math.floor((this.attributes.mana + (this.intelligence * 10))
-            * this.getBonusLvl());
+        return Math.floor((this.attributes.mana + (this.intelligence *
+            (50 + (this.level * 1.5)))));
+    }
+
+    getMagic() {
+        return Math.floor((this.attributes.magic + (this.intelligence *
+            (10 + (this.level * 0.5)))));
     }
 
     getProt() {
-        return Math.floor((this.attributes.prot + (this.intelligence * 1.5))
-            * this.getBonusLvl());
+        return Math.floor((this.attributes.prot + (this.intelligence *
+            (10 + (this.level * 0.2)))));
     }
 
     getVel() {
-        return Math.floor((this.attributes.vel + (this.agility * 2))
-            * this.getBonusLvl());
+        return Math.floor((this.attributes.vel + (this.agility *
+            (10 + (this.level * 0.5)))));
     }
 
     getCrit() {
-        return Math.floor((this.attributes.crit + (this.agility * 1.5))
-            * this.getBonusLvl());
+        return Math.floor(this.attributes.crit + (this.agility * 0.2));
     }
 
     getEva() {
-        return Math.floor((this.attributes.eva + (this.agility * 1.5))
-            * this.getBonusLvl());
+        return Math.floor(this.attributes.eva + (this.agility * 0.1));
     }
 }
