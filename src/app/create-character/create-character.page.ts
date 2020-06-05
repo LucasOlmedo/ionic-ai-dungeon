@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { Player } from '../models/player';
@@ -26,7 +25,6 @@ export class CreateCharacterPage implements OnInit {
   ];
 
   constructor(
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     private playerService: PlayerService
@@ -58,7 +56,8 @@ export class CreateCharacterPage implements OnInit {
     if (this.charName == '' || this.points > 0) {
       this.presentToast();
     } else {
-      this.presentLoading();
+      this.createPlayer();
+      this.navCtrl.navigateRoot('/main-game');
     }
   }
 
@@ -69,20 +68,6 @@ export class CreateCharacterPage implements OnInit {
       duration: 1500,
     });
     await toast.present();
-  }
-
-  async presentLoading() {
-    let loading = await this.loadingCtrl.create({
-      spinner: 'circular',
-      message: 'Carregando...',
-      duration: 2000,
-    });
-    await loading.present();
-    loading.onDidDismiss()
-      .then(() => {
-        this.createPlayer();
-        this.navCtrl.navigateRoot('/first-room')
-      });
   }
 
   private createPlayer() {

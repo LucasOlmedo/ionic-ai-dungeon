@@ -1,0 +1,43 @@
+<ion-card class="box-no-shadow" *ngIf="loaded">
+  <div *ngIf="currentRoom.type == 'root'">
+    <img src="{{ currentRoom.img }}" />
+    <ion-card-header class="adjust-padding">
+      <ion-card-subtitle>{{ currentRoom.location }}</ion-card-subtitle>
+      <ion-card-title>{{ currentRoom.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="adjust-padding">
+      <div class="ion-text-start">
+        {{ currentRoom.description }}
+      </div>
+    </ion-card-content>
+  </div>
+
+  <div *ngIf="currentRoom.type == 'node'">
+    <img src="{{ currentRoom.img }}" />
+    <ion-card-header class="adjust-padding">
+      <ion-card-subtitle>{{ currentRoom.location }}</ion-card-subtitle>
+      <ion-card-title>{{ currentRoom.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="adjust-padding">
+      <div class="ion-text-start">
+        {{ currentRoom.description }}
+      </div>
+    </ion-card-content>
+  </div>
+
+
+  <ion-grid *ngIf="eventDone" class="ion-padding-top">
+    <ion-row>
+      <ion-col *ngFor="let way of currentRoom.next; let i = index" [size]="12/currentRoom.next.length">
+        <ion-button color="dark" fill="outline" expand="block" (click)="enterRoom(way)">
+          Seguir
+          <ion-icon *ngIf="currentRoom.next.length < 2; else buttonsNext" slot="end" name="arrow-up-outline"></ion-icon>
+          <ng-template #buttonsNext>
+            <ion-icon *ngIf="i == 0" slot="end" name="arrow-back-outline"></ion-icon>
+            <ion-icon *ngIf="i == 1" slot="end" name="arrow-forward-outline"></ion-icon>
+          </ng-template>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
