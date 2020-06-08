@@ -1,5 +1,5 @@
 <ion-card class="box-no-shadow" *ngIf="loaded">
-  <div *ngIf="currentRoom.type == 'root'">
+  <div *ngIf="currentRoom.action == 'start'">
     <img src="{{ currentRoom.img }}" />
     <ion-card-header class="adjust-padding">
       <ion-card-subtitle>{{ currentRoom.location }}</ion-card-subtitle>
@@ -12,19 +12,33 @@
     </ion-card-content>
   </div>
 
-  <div *ngIf="currentRoom.type == 'node'">
-    <img src="{{ currentRoom.img }}" />
+  <div *ngIf="currentRoom.action == 'curse' || currentRoom.action == 'bless'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" offset="4">
+          <ion-img src="../assets/images/{{ currentRoom.action }}/{{ currentRoom.actionItem.icon }}.png"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <ion-card-header class="adjust-padding">
-      <ion-card-subtitle>{{ currentRoom.location }}</ion-card-subtitle>
-      <ion-card-title>{{ currentRoom.title }}</ion-card-title>
+      <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content class="adjust-padding">
       <div class="ion-text-start">
-        {{ currentRoom.description }}
+        {{ currentRoom.actionItem.description }}
+      </div>
+      <div class="ion-text-center ion-margin-top text-{{ currentRoom.action }}-{{ currentRoom.actionItem.icon }}">
+        {{ currentRoom.actionItem.title }}
+        <span class="ion-margin-start">
+          {{ currentRoom.actionItem.operator }} {{ currentRoom.actionItem.value }} %
+        </span>
+      </div>
+      <div class="ion-text-center"
+        *ngIf="currentRoom.actionItem.icon != 'heal' || currentRoom.actionItem.icon != 'mana'">
+        Por {{ currentRoom.actionItem.turns() }} turno(s)
       </div>
     </ion-card-content>
   </div>
-
 
   <ion-grid *ngIf="eventDone" class="ion-padding-top">
     <ion-row>

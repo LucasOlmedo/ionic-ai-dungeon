@@ -1,68 +1,17 @@
 import { Injectable } from '@angular/core';
+import { START_ROOM, CURSE_TYPES, BLESS_TYPES } from './dungeon-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DungeonService {
-  private act = ['battle', 'quest', 'trap', 'empty', 'treasure', 'boss', 'bless', 'curse'];
-  private startRoom = [
-    {
-      img: '../assets/images/room.jpg',
-      location: 'Quarto desconhecido',
-      title: 'Madison, WI',
-      description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Enim quas, explicabo accusamus in aut a molestias
-        ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
-        Possimus error minus quidem repudiandae.
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
-    },
-    {
-      img: '../assets/images/cave.jpg',
-      location: 'Caverna misteriosa',
-      title: 'Nibirus, WI',
-      description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Enim quas, explicabo accusamus in aut a molestias
-        ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
-        Possimus error minus quidem repudiandae.
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
-    },
-    {
-      img: '../assets/images/woods.jpg',
-      location: 'Clareira na floresta',
-      title: 'Valencia, WI',
-      description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Enim quas, explicabo accusamus in aut a molestias
-        ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
-        Possimus error minus quidem repudiandae.
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
-    },
-    {
-      img: '../assets/images/prision.jpg',
-      location: 'Prisão abandonada',
-      title: 'Krashina, WI',
-      description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Enim quas, explicabo accusamus in aut a molestias
-        ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
-        Possimus error minus quidem repudiandae.
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
-    },
-    {
-      img: '../assets/images/tavern.jpg',
-      location: 'Taverna de Swabiuz',
-      title: 'Swabiuz, WI',
-      description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Enim quas, explicabo accusamus in aut a molestias
-        ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
-        Possimus error minus quidem repudiandae.
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
-    },
-  ];
+  private act = ['battle', 'quest', 'trap', 'empty', 'chest', 'boss', 'bless', 'curse'];
 
   constructor() { }
 
   generateDungeon() {
     return new Promise(resolve => {
-      resolve(this.createDungeonRecursive(30, 2));
+      resolve(this.createDungeonRecursive(10, 2));
     });
   }
 
@@ -79,6 +28,7 @@ export class DungeonService {
           id: `${id + i.toString()}`,
           type: type,
           action: action,
+          actionItem: {},
           img: '../assets/images/prision.jpg',
           location: 'Unknown Location',
           title: 'Stage Room',
@@ -91,12 +41,24 @@ export class DungeonService {
   }
 
   private verifyRoom(room) {
-    if (room.action == 'start') {
-      let random = this.startRoom[Math.floor(Math.random() * this.startRoom.length)];
-      room.img = random.img;
-      room.title = random.title;
-      room.location = random.location;
-      room.description = random.description;
+    switch (room.action) {
+      case 'start':
+        let start = START_ROOM[Math.floor(Math.random() * START_ROOM.length)];
+        room.img = start.img;
+        room.title = start.title;
+        room.location = start.location;
+        room.description = start.description;
+        break;
+      case 'curse':
+        let curse = CURSE_TYPES[Math.floor(Math.random() * CURSE_TYPES.length)];
+        room.actionItem = curse;
+        break;
+      case 'bless':
+        let bless = BLESS_TYPES[Math.floor(Math.random() * BLESS_TYPES.length)];
+        room.actionItem = bless;
+        break;
+      default:
+        break;
     }
     return room;
   }
