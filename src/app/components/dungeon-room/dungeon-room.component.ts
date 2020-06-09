@@ -68,6 +68,9 @@ export class DungeonRoomComponent implements OnInit {
       case 'empty':
         this.eventDone = true;
         break;
+      case 'trap':
+        this.eventDone = true;
+        break;
       case 'curse':
       case 'bless':
         this.actionItemTurn = room.actionItem.turns();

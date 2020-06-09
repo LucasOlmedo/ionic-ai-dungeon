@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { START_ROOM, CURSE_TYPES, BLESS_TYPES } from './dungeon-constants';
+import { START_ROOM, CURSE_TYPES, BLESS_TYPES, TRAPS } from './dungeon-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -60,13 +60,17 @@ export class DungeonService {
         break;
       case 'chest':
         let chest = {
-          location: 'Tesouro da sorte',
+          location: 'Baú da sorte',
           description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
           loot: {
             name: 'Item X',
           },
         };
         room.actionItem = chest;
+        break;
+      case 'trap':
+        let trap = TRAPS[Math.floor(Math.random() * TRAPS.length)];
+        room.actionItem = trap;
         break;
       default:
         break;

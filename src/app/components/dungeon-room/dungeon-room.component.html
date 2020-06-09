@@ -68,6 +68,27 @@
     </ion-card-content>
   </div>
 
+  <div *ngIf="currentRoom.action == 'trap'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" offset="4">
+          <ion-img src="{{ currentRoom.actionItem.img }}"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card-header class="adjust-padding">
+      <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="adjust-padding">
+      <div class="ion-text-start">
+        {{ currentRoom.actionItem.description }}
+      </div>
+      <div class="ion-text-center ion-margin-top text-bless-atk">
+          Você perdeu {{ currentRoom.actionItem.value }} de HP!
+      </div>
+    </ion-card-content>
+  </div>
+
   <ion-grid *ngIf="eventDone" class="ion-padding-top">
     <ion-row>
       <ion-col *ngFor="let way of currentRoom.next; let i = index" [size]="12/currentRoom.next.length">

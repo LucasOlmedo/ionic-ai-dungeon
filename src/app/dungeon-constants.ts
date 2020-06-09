@@ -67,7 +67,7 @@ export const CURSE_TYPES = [
         value: 5,
         operator: '-',
         title: 'Queimadura',
-        location: 'Rochas incandescentes',
+        location: 'Salão solar',
         description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
     },
     {
@@ -124,7 +124,7 @@ export const BLESS_TYPES = [
         value: 20,
         operator: '+',
         title: 'Aumento de Ataque',
-        location: 'Caverna pontiaguda',
+        location: 'Caverna escura',
         description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
     },
     {
@@ -144,5 +144,38 @@ export const BLESS_TYPES = [
         title: 'Aumento de Velocidade',
         location: 'Corredor das faíscas',
         description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+    },
+];
+
+export const TRAPS = [
+    {
+        img: '../assets/images/trap/wolf-trap.png',
+        value: 25,
+        location: 'Armadilha de lobo',
+        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+    },
+    {
+        img: '../assets/images/trap/wine.png',
+        value: 15,
+        location: 'Tentáculo de erva-espinho',
+        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+    },
+    {
+        img: '../assets/images/trap/earthquake.png',
+        value: 30,
+        location: 'Falha geológica',
+        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+    },
+    {
+        img: '../assets/images/trap/spike.png',
+        value: 30,
+        location: 'Corredor pontiagudo',
+        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+    },
+    {
+        img: '../assets/images/trap/fireball.png',
+        value: 20,
+        location: 'Rocha incandescente',
+        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
     },
 ];
