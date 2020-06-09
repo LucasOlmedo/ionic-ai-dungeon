@@ -5,7 +5,7 @@ import { START_ROOM, CURSE_TYPES, BLESS_TYPES } from './dungeon-constants';
   providedIn: 'root'
 })
 export class DungeonService {
-  private act = ['battle', 'quest', 'trap', 'empty', 'chest', 'boss', 'bless', 'curse'];
+  private act = ['battle', 'quest', 'trap', 'empty', 'chest', 'bless', 'curse'];
 
   constructor() { }
 
@@ -43,6 +43,7 @@ export class DungeonService {
   private verifyRoom(room) {
     switch (room.action) {
       case 'start':
+      case 'empty':
         let start = START_ROOM[Math.floor(Math.random() * START_ROOM.length)];
         room.img = start.img;
         room.title = start.title;
@@ -56,6 +57,16 @@ export class DungeonService {
       case 'bless':
         let bless = BLESS_TYPES[Math.floor(Math.random() * BLESS_TYPES.length)];
         room.actionItem = bless;
+        break;
+      case 'chest':
+        let chest = {
+          location: 'Tesouro da sorte',
+          description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+          loot: {
+            name: 'Item X',
+          },
+        };
+        room.actionItem = chest;
         break;
       default:
         break;

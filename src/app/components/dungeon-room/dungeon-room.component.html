@@ -1,5 +1,5 @@
 <ion-card class="box-no-shadow" *ngIf="loaded">
-  <div *ngIf="currentRoom.action == 'start'">
+  <div *ngIf="currentRoom.action == 'start' || currentRoom.action == 'empty'">
     <img src="{{ currentRoom.img }}" />
     <ion-card-header class="adjust-padding">
       <ion-card-subtitle>{{ currentRoom.location }}</ion-card-subtitle>
@@ -36,6 +36,35 @@
       <div class="ion-text-center" *ngIf="actionItemTurn > 0">
         Por {{ actionItemTurn }} turno(s)
       </div>
+    </ion-card-content>
+  </div>
+
+  <div *ngIf="currentRoom.action == 'chest'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" offset="4">
+          <ion-img src="../assets/images/chest.png"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card-header class="adjust-padding">
+      <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="adjust-padding">
+      <div class="ion-text-start">
+        {{ currentRoom.actionItem.description }}
+      </div>
+      <div *ngIf="chestOpened" class="ion-text-center text-color-chest ion-padding-top">
+        Você encontrou {{ currentRoom.actionItem.loot.name }}!
+      </div>
+      <ion-row *ngIf="!eventDone">
+        <ion-col class="ion-text-center ion-padding-top">
+          <ion-button color="dark" fill="outline" (click)="openChest()">
+            Abrir
+            <ion-icon slot="end" name="key-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </ion-card-content>
   </div>
 

@@ -16,6 +16,7 @@ export class DungeonRoomComponent implements OnInit {
   eventDone: boolean = false;
   player: Player;
   actionItemTurn: number = 0;
+  chestOpened: boolean = false;
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -48,16 +49,25 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   enterRoom(room) {
-    // this.eventDone = false;
+    this.eventDone = false;
+    this.chestOpened = false;
     this.currentRoom = room;
+    console.log(this.currentRoom);
     this.manageRoom();
+  }
+
+  openChest() {
+    this.chestOpened = true;
+    this.eventDone = true;
   }
 
   private manageRoom() {
     let room = this.currentRoom;
-
     this.changeConditionPlayer();
     switch (room.action) {
+      case 'empty':
+        this.eventDone = true;
+        break;
       case 'curse':
       case 'bless':
         this.actionItemTurn = room.actionItem.turns();
