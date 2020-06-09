@@ -11,7 +11,7 @@ export class DungeonService {
 
   generateDungeon() {
     return new Promise(resolve => {
-      resolve(this.createDungeonRecursive(10, 2));
+      resolve(this.createDungeonRecursive(20, 2));
     });
   }
 

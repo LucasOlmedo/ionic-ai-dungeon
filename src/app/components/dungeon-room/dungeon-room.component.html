@@ -33,9 +33,8 @@
           {{ currentRoom.actionItem.operator }} {{ currentRoom.actionItem.value }} %
         </span>
       </div>
-      <div class="ion-text-center"
-        *ngIf="currentRoom.actionItem.icon != 'heal' || currentRoom.actionItem.icon != 'mana'">
-        Por {{ currentRoom.actionItem.turns() }} turno(s)
+      <div class="ion-text-center" *ngIf="actionItemTurn > 0">
+        Por {{ actionItemTurn }} turno(s)
       </div>
     </ion-card-content>
   </div>

@@ -12,6 +12,11 @@
           <ion-progress-bar color="warning" [value]="expPercent"></ion-progress-bar>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col>
+          <img class="img-condition" *ngFor="let cnd of player.conditions" [src]="cnd.img"/>
+        </ion-col>
+      </ion-row>
     </ion-grid>
   </ion-title>
 </ion-toolbar>
@@ -28,7 +33,7 @@
           </ion-col>
           <ion-col size="2">
             <ion-text class="small-text">
-              <small>{{ life }}/{{ baseLife }}</small>
+              <small>{{ player.getLife() }}/{{ baseLife }}</small>
             </ion-text>
           </ion-col>
         </ion-row>
@@ -38,7 +43,7 @@
           </ion-col>
           <ion-col size="2">
             <ion-text class="small-text">
-              <small>{{ mana }}/{{ baseMana }}</small>
+              <small>{{ player.getMana() }}/{{ baseMana }}</small>
             </ion-text>
           </ion-col>
         </ion-row>

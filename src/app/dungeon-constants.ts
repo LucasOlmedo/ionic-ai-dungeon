@@ -54,7 +54,7 @@ export const START_ROOM = [
 export const CURSE_TYPES = [
     {
         icon: 'venom',
-        turns: () => Math.ceil(Math.random() * 5),
+        turns: () => Math.ceil(Math.random() * 4),
         value: 5,
         operator: '-',
         title: 'Envenenamento',
@@ -63,7 +63,7 @@ export const CURSE_TYPES = [
     },
     {
         icon: 'burn',
-        turns: () => Math.ceil(Math.random() * 5),
+        turns: () => Math.ceil(Math.random() * 4),
         value: 5,
         operator: '-',
         title: 'Queimadura',
@@ -72,7 +72,7 @@ export const CURSE_TYPES = [
     },
     {
         icon: 'atk',
-        turns: () => Math.ceil(Math.random() * 5),
+        turns: () => Math.ceil(Math.random() * 4),
         value: 20,
         operator: '-',
         title: 'Redução de Ataque',
@@ -81,7 +81,7 @@ export const CURSE_TYPES = [
     },
     {
         icon: 'def',
-        turns: () => Math.ceil(Math.random() * 5),
+        turns: () => Math.ceil(Math.random() * 4),
         value: 20,
         operator: '-',
         title: 'Redução de Defesa',
@@ -90,7 +90,7 @@ export const CURSE_TYPES = [
     },
     {
         icon: 'vel',
-        turns: () => Math.ceil(Math.random() * 5),
+        turns: () => Math.ceil(Math.random() * 4),
         value: 20,
         operator: '-',
         title: 'Redução de Velocidade',
@@ -102,7 +102,7 @@ export const CURSE_TYPES = [
 export const BLESS_TYPES = [
     {
         icon: 'heal',
-        turns: () => Math.ceil(Math.random() * 5),
+        turns: () => 0,
         value: 20,
         operator: '+',
         title: 'Cura',
@@ -111,7 +111,7 @@ export const BLESS_TYPES = [
     },
     {
         icon: 'mana',
-        turns: () => Math.ceil(Math.random() * 5),
+        turns: () => 0,
         value: 20,
         operator: '+',
         title: 'Mana',
@@ -120,7 +120,7 @@ export const BLESS_TYPES = [
     },
     {
         icon: 'atk',
-        turns: () => Math.ceil(Math.random() * 5),
+        turns: () => Math.ceil(Math.random() * 4),
         value: 20,
         operator: '+',
         title: 'Aumento de Ataque',
@@ -129,7 +129,7 @@ export const BLESS_TYPES = [
     },
     {
         icon: 'def',
-        turns: () => Math.ceil(Math.random() * 5),
+        turns: () => Math.ceil(Math.random() * 4),
         value: 20,
         operator: '+',
         title: 'Aumento de Defesa',
@@ -138,7 +138,7 @@ export const BLESS_TYPES = [
     },
     {
         icon: 'vel',
-        turns: () => Math.ceil(Math.random() * 5),
+        turns: () => Math.ceil(Math.random() * 4),
         value: 20,
         operator: '+',
         title: 'Aumento de Velocidade',

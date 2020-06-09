@@ -15,6 +15,7 @@ export class DungeonRoomComponent implements OnInit {
   loaded: boolean = false;
   eventDone: boolean = false;
   player: Player;
+  actionItemTurn: number = 0;
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -34,7 +35,6 @@ export class DungeonRoomComponent implements OnInit {
     await this.playerService.getPlayer()
       .subscribe(p => {
         this.player = p;
-        console.log(this.player);
         return this.dungeonService.generateDungeon().then(result => {
           this.dungeon = result;
           this.currentRoom = this.dungeon[0];
@@ -43,7 +43,6 @@ export class DungeonRoomComponent implements OnInit {
             this.eventDone = true;
           }
           loading.dismiss();
-          console.log(this.currentRoom);
         });
       });
   }
@@ -51,7 +50,32 @@ export class DungeonRoomComponent implements OnInit {
   enterRoom(room) {
     // this.eventDone = false;
     this.currentRoom = room;
-    console.log(this.currentRoom);
+    this.manageRoom();
   }
 
+  private manageRoom() {
+    let room = this.currentRoom;
+
+    this.changeConditionPlayer();
+    switch (room.action) {
+      case 'curse':
+      case 'bless':
+        this.actionItemTurn = room.actionItem.turns();
+        if (this.actionItemTurn > 0) {
+          this.player.conditions.push({
+            img: `../assets/images/${room.action}/${room.actionItem.icon}.png`,
+            turns: this.actionItemTurn,
+          });
+        }
+        this.eventDone = true;
+        break;
+    }
+  }
+
+  private changeConditionPlayer() {
+    this.player.conditions = this.player.conditions.map(cnd => {
+      cnd.turns -= 1;
+      return cnd;
+    }).filter(cnd => cnd.turns > 0);
+  }
 }

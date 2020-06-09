@@ -23,6 +23,7 @@ export class Player {
         eva: 1,
     };
     skills = [0, 0, 0, 0];
+    conditions = [];
 
     getBonusLvl() {
         let bonusLvl = 1;
