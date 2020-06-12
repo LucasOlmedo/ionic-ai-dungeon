@@ -17,6 +17,10 @@ export class DungeonRoomComponent implements OnInit {
   player: Player;
   actionItemTurn: number = 0;
   chestOpened: boolean = false;
+  monsterBaseHP: number = 100;
+  monsterCurrentHP: number = 100;
+  monsterIsDead: boolean = false;
+  monsterEXP: number = 0;
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -51,6 +55,8 @@ export class DungeonRoomComponent implements OnInit {
   enterRoom(room) {
     this.eventDone = false;
     this.chestOpened = false;
+    this.monsterIsDead = false;
+    this.monsterEXP = 0;
     this.currentRoom = room;
     console.log(this.currentRoom);
     this.manageRoom();
@@ -61,12 +67,33 @@ export class DungeonRoomComponent implements OnInit {
     this.eventDone = true;
   }
 
+  battleAction(skill) {
+    let auxCurHP = this.monsterCurrentHP - skill.damage;
+    this.monsterCurrentHP = auxCurHP <= 0 ? 0 : auxCurHP;
+
+    if (this.monsterCurrentHP == 0) {
+      this.eventDone = true;
+      this.monsterIsDead = true;
+      // Não funciona ainda
+      // this.player.exp = this.monsterEXP;
+    } else {
+      // Monstro ataca
+    }
+
+    this.changeConditionPlayer();
+  }
+
   private manageRoom() {
     let room = this.currentRoom;
     this.changeConditionPlayer();
     switch (room.action) {
       case 'empty':
+      case 'quest':
         this.eventDone = true;
+        break;
+      case 'battle':
+        this.monsterCurrentHP = this.monsterBaseHP = room.actionItem.baseLife;
+        this.monsterEXP = room.actionItem.exp;
         break;
       case 'trap':
         this.eventDone = true;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { START_ROOM, CURSE_TYPES, BLESS_TYPES, TRAPS } from './dungeon-constants';
+import { START_ROOM, CURSE_TYPES, BLESS_TYPES, TRAPS, MONSTER } from './dungeon-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class DungeonService {
 
   generateDungeon() {
     return new Promise(resolve => {
-      resolve(this.createDungeonRecursive(20, 2));
+      resolve(this.createDungeonRecursive(25, 2));
     });
   }
 
@@ -71,6 +71,10 @@ export class DungeonService {
       case 'trap':
         let trap = TRAPS[Math.floor(Math.random() * TRAPS.length)];
         room.actionItem = trap;
+        break;
+      case 'battle':
+        let monster = MONSTER[Math.floor(Math.random() * MONSTER.length)];
+        room.actionItem = monster;
         break;
       default:
         break;

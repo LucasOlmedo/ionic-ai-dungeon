@@ -179,3 +179,48 @@ export const TRAPS = [
         description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
     },
 ];
+
+export const MONSTER = [
+    {
+        img: '../assets/images/monster/monster-0.png',
+        name: 'Tritão do pântano',
+        baseLife: 100,
+        level: playerLv => Math.ceil(Math.random() * playerLv),
+        exp: 20,
+    },
+    {
+        img: '../assets/images/monster/monster-1.png',
+        name: 'Zvilpogghua',
+        baseLife: 100,
+        level: playerLv => Math.ceil(Math.random() * playerLv),
+        exp: 20,
+    },
+    {
+        img: '../assets/images/monster/monster-2.png',
+        name: 'Innsmouth',
+        baseLife: 100,
+        level: playerLv => Math.ceil(Math.random() * playerLv),
+        exp: 20,
+    },
+    {
+        img: '../assets/images/monster/monster-3.png',
+        name: 'Hiena gárgula',
+        baseLife: 100,
+        level: playerLv => Math.ceil(Math.random() * playerLv),
+        exp: 20,
+    },
+    {
+        img: '../assets/images/monster/monster-4.png',
+        name: 'Servo de Drácula',
+        baseLife: 100,
+        level: playerLv => Math.ceil(Math.random() * playerLv),
+        exp: 20,
+    },
+    {
+        img: '../assets/images/monster/monster-5.png',
+        name: 'Rato mutante',
+        baseLife: 100,
+        level: playerLv => Math.ceil(Math.random() * playerLv),
+        exp: 20,
+    },
+];

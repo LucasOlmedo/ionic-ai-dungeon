@@ -22,7 +22,32 @@ export class Player {
         crit: 1,
         eva: 1,
     };
-    skills = [0, 0, 0, 0];
+    skills = [
+        {
+            img: '../assets/images/skill/basic-atk.png',
+            color: 'skillGray',
+            active: true,
+            damage: 20,
+        },
+        {
+            img: '../assets/images/skill/strike-shot.png',
+            color: 'skillEmerald',
+            active: true,
+            damage: 15,
+        },
+        {
+            img: '../assets/images/skill/shield-reflect.png',
+            color: 'skillYellow',
+            active: true,
+            damage: 0,
+        },
+        {
+            img: '../assets/images/skill/slash-claws.png',
+            color: 'skillDarkred',
+            active: true,
+            damage: 35,
+        },
+    ];
     conditions = [];
 
     getBonusLvl() {

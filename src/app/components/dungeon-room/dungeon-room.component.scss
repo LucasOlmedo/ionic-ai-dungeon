@@ -45,3 +45,31 @@
 .text-color-chest {
     color: gold;
 }
+
+.img-monster {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.monster-hp {
+    height: 7px;
+    --buffer-background: #262626;
+}
+
+.info-monster-hp {
+    font-size: 0.7rem;
+    position: relative;
+    top: 3px;
+}
+
+.col-skill {
+    height: fit-content;
+    ion-button {
+        width: -webkit-fill-available;
+        height: 50%;
+        ion-img {
+            margin: 5px;
+            width: 70%;
+        }
+    }
+}

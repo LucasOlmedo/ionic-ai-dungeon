@@ -84,9 +84,55 @@
         {{ currentRoom.actionItem.description }}
       </div>
       <div class="ion-text-center ion-margin-top text-bless-atk">
-          Você perdeu {{ currentRoom.actionItem.value }} de HP!
+        Você perdeu {{ currentRoom.actionItem.value }} de HP!
       </div>
     </ion-card-content>
+  </div>
+
+  <div *ngIf="currentRoom.action == 'battle'">
+    <div *ngIf="!monsterIsDead">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-img class="img-monster" src="{{ currentRoom.actionItem.img }}"></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-card-header class="adjust-padding">
+        <ion-card-subtitle style="padding-top: 0;">
+          <span class="ion-float-left" style="margin-bottom: 8px;">
+            Nv {{ currentRoom.actionItem.level(player.level) }} - {{ currentRoom.actionItem.name }}
+          </span>
+          <span class="ion-float-right info-monster-hp">
+            {{ monsterCurrentHP }}/{{ monsterBaseHP }}
+          </span>
+          <ion-progress-bar class="monster-hp" color="danger" [value]="monsterCurrentHP/monsterBaseHP">
+          </ion-progress-bar>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content class="adjust-padding">
+        <ion-grid style="padding: 0; margin-top: 5px;">
+          <ion-row>
+            <ion-col size="6" class="col-skill" *ngFor="let skill of player.skills">
+              <ion-button [disabled]="!skill.active" [color]="skill.color || 'dark'" fill="outline"
+                (click)="battleAction(skill)">
+                <ion-img src="{{ skill.img || '../assets/images/skill/empty.png'}}"></ion-img>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </div>
+    <div *ngIf="monsterIsDead">
+      <ion-card-content class="adjust-padding">
+        <div class="ion-text-center ion-margin-top">
+          Você derrotou {{ currentRoom.actionItem.name }}!
+        </div>
+        <div class="ion-text-center ion-margin-top text-color-chest ">
+          Adquiriu {{ currentRoom.actionItem.exp }} de experiência!
+        </div>
+      </ion-card-content>
+    </div>
   </div>
 
   <ion-grid *ngIf="eventDone" class="ion-padding-top">
