@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../config.service';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-main-game-settings',
@@ -12,7 +13,11 @@ export class MainGameSettingsPage implements OnInit {
   selectedEffects: boolean;
   selectedFontSize: number;
 
-  constructor(public config: ConfigService) {
+  constructor(
+    public config: ConfigService, 
+    private alertCtrl: AlertController,
+    private navCtrl: NavController
+  ) {
     this.loadMusic();
     this.loadEffects();
     this.loadFontSize();
@@ -52,6 +57,32 @@ export class MainGameSettingsPage implements OnInit {
     let value = $event.detail.value;
     this.selectedFontSize = value;
     this.config.setFontSize(value);
+  }
+
+  quitDungeon() {
+    this.quitDungeonConfirm();
+  }
+
+  async quitDungeonConfirm() {
+    let alert = await this.alertCtrl.create({
+      header: 'Sair da Dungeon?',
+      message: 'O seu progresso não será salvo ao sair da dungeon.',
+      buttons: [
+        {
+          text: 'Permanecer',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Sair',
+          cssClass: 'confirm-quit',
+          handler: () => {
+            this.navCtrl.navigateRoot('/');
+          }
+        }
+      ]
+    });
+
+    alert.present();
   }
 
 }

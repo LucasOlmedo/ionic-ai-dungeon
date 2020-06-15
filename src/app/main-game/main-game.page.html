@@ -9,12 +9,12 @@
               <span class="text-level"> Nv {{ player.level }}</span>
             </small>
           </ion-text>
-          <ion-progress-bar color="warning" [value]="expPercent"></ion-progress-bar>
+          <ion-progress-bar color="warning" [value]="player.expPercent"></ion-progress-bar>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <img class="img-condition" *ngFor="let cnd of player.conditions" [src]="cnd.img"/>
+          <img class="img-condition" *ngFor="let cnd of player.conditions" [src]="cnd.img" />
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -29,21 +29,21 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-progress-bar color="danger" [value]="lPercent"></ion-progress-bar>
+            <ion-progress-bar color="danger" [value]="player.current.life/player.base.life"></ion-progress-bar>
           </ion-col>
           <ion-col size="2">
             <ion-text class="small-text">
-              <small>{{ player.getLife() }}/{{ baseLife }}</small>
+              <small>{{ player.current.life }}/{{ player.base.life }}</small>
             </ion-text>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-progress-bar color="primary" [value]="mPercent"></ion-progress-bar>
+            <ion-progress-bar color="primary" [value]="player.current.mana/player.base.mana"></ion-progress-bar>
           </ion-col>
           <ion-col size="2">
             <ion-text class="small-text">
-              <small>{{ player.getMana() }}/{{ baseMana }}</small>
+              <small>{{ player.current.mana }}/{{ player.base.mana }}</small>
             </ion-text>
           </ion-col>
         </ion-row>

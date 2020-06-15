@@ -55,7 +55,7 @@
         {{ currentRoom.actionItem.description }}
       </div>
       <div *ngIf="chestOpened" class="ion-text-center text-color-chest ion-padding-top">
-        Você encontrou {{ currentRoom.actionItem.loot.name }}!
+        Você encontrou {{ chestGold }} moedas de ouro!
       </div>
       <ion-row *ngIf="!eventDone">
         <ion-col class="ion-text-center ion-padding-top">
@@ -101,12 +101,12 @@
       <ion-card-header class="adjust-padding">
         <ion-card-subtitle style="padding-top: 0;">
           <span class="ion-float-left" style="margin-bottom: 8px;">
-            Nv {{ currentRoom.actionItem.level(player.level) }} - {{ currentRoom.actionItem.name }}
+            Nv {{ currentRoom.actionItem.level }} - {{ currentRoom.actionItem.name }}
           </span>
           <span class="ion-float-right info-monster-hp">
-            {{ monsterCurrentHP }}/{{ monsterBaseHP }}
+            {{ monsterCurrentHP }}/{{ currentMonster.baseLife }}
           </span>
-          <ion-progress-bar class="monster-hp" color="danger" [value]="monsterCurrentHP/monsterBaseHP">
+          <ion-progress-bar class="monster-hp" color="danger" [value]="monsterCurrentHP/currentMonster.baseLife">
           </ion-progress-bar>
         </ion-card-subtitle>
       </ion-card-header>
@@ -114,7 +114,7 @@
         <ion-grid style="padding: 0; margin-top: 5px;">
           <ion-row>
             <ion-col size="6" class="col-skill" *ngFor="let skill of player.skills">
-              <ion-button [disabled]="!skill.active" [color]="skill.color || 'dark'" fill="outline"
+              <ion-button [disabled]="!canAtk || !skill.active" [color]="skill.color || 'dark'" fill="outline"
                 (click)="battleAction(skill)">
                 <ion-img src="{{ skill.img || '../assets/images/skill/empty.png'}}"></ion-img>
               </ion-button>

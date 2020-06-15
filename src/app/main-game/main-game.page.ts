@@ -26,8 +26,8 @@ export class MainGamePage implements OnInit {
     this.playerService.getPlayer()
       .subscribe((p: Player) => {
         this.player = p;
-        this.life = this.baseLife = this.player.getLife();
-        this.mana = this.baseMana = this.player.getMana();
+        this.life = this.baseLife = this.player.base.life;
+        this.mana = this.baseMana = this.player.base.mana;
         this.exp = this.player.exp;
         this.nextLvl = this.player.nextLvl;
         this.setPercentage();

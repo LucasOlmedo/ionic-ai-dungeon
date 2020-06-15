@@ -5,13 +5,21 @@ import { START_ROOM, CURSE_TYPES, BLESS_TYPES, TRAPS, MONSTER } from './dungeon-
   providedIn: 'root'
 })
 export class DungeonService {
-  private act = ['battle', 'quest', 'trap', 'empty', 'chest', 'bless', 'curse'];
+  private act = [
+    'battle', 'battle', 'battle', 
+    'battle', 'battle', 'battle',
+    'trap', 'trap',
+    'empty', 'empty', 'empty',
+    'chest',
+    'bless', 'bless',
+    'curse', 'curse',
+  ];
 
   constructor() { }
 
   generateDungeon() {
     return new Promise(resolve => {
-      resolve(this.createDungeonRecursive(25, 2));
+      resolve(this.createDungeonRecursive(20, 2));
     });
   }
 
@@ -62,9 +70,7 @@ export class DungeonService {
         let chest = {
           location: 'Baú da sorte',
           description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
-          loot: {
-            name: 'Item X',
-          },
+          loot: (playerLv) => (Math.floor(Math.random() * 40) + 10) * playerLv,
         };
         room.actionItem = chest;
         break;

@@ -4,6 +4,12 @@
       <ion-back-button defaultHref="/main-game"></ion-back-button>
     </ion-buttons>
     <ion-title>Inventário</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-text color="warning" class="ion-margin-end">{{ player.gold }}</ion-text>
+        <img src="../assets/images/buttons/coin.png" style="height: 20px;">
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
