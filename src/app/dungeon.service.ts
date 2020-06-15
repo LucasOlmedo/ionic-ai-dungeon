@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { START_ROOM, CURSE_TYPES, BLESS_TYPES, TRAPS, MONSTER } from './dungeon-constants';
+import { START_ROOM, CURSE_TYPES, BLESS_TYPES, TRAPS, MONSTER, BOSS } from './dungeon-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DungeonService {
   private act = [
-    'battle', 'battle', 'battle', 
-    'battle', 'battle', 'battle',
+    'battle', 'battle', 'battle', 'battle',
+    'battle', 'battle', 'battle', 'battle',
     'trap', 'trap',
-    'empty', 'empty', 'empty',
+    'empty', 'empty',
     'chest',
     'bless', 'bless',
     'curse', 'curse',
@@ -81,6 +81,10 @@ export class DungeonService {
       case 'battle':
         let monster = MONSTER[Math.floor(Math.random() * MONSTER.length)];
         room.actionItem = monster;
+        break;
+      case 'boss':
+        let boss = BOSS[Math.floor(Math.random() * BOSS.length)];
+        room.actionItem = boss;
         break;
       default:
         break;

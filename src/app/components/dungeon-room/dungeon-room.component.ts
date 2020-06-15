@@ -61,6 +61,10 @@ export class DungeonRoomComponent implements OnInit {
       });
   }
 
+  nextFloor(){
+    this.loadingDungeon();
+  }
+
   enterRoom(room) {
     this.eventDone = false;
     this.chestOpened = false;
@@ -85,6 +89,7 @@ export class DungeonRoomComponent implements OnInit {
   async battleAction(skill) {
     let auxCurHP = this.monsterCurrentHP - skill.damage;
     this.monsterCurrentHP = auxCurHP <= 0 ? 0 : auxCurHP;
+    this.player.current.mana -= skill.cost;
 
     this.canAtk = false;
     if (this.monsterCurrentHP == 0) {
@@ -95,6 +100,9 @@ export class DungeonRoomComponent implements OnInit {
       await this.helper.sleep(1000);
       this.canAtk = true;
       this.player.current.life -= this.currentMonster.damage;
+      if (this.player.current.mana <= 0) {
+        this.player.current.mana = 0;
+      }
       if (this.player.current.life <= 0) {
         this.player.current.life = 0;
       }
@@ -114,6 +122,7 @@ export class DungeonRoomComponent implements OnInit {
         this.chestGold = room.actionItem.loot(this.player.level);
         break;
       case 'battle':
+      case 'boss':
         this.currentMonster = room.actionItem;
         this.monsterCurrentHP = room.actionItem.baseLife;
         this.monsterEXP = room.actionItem.exp;

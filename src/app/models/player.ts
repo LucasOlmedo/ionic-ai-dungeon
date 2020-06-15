@@ -41,25 +41,29 @@ export class Player {
             img: '../assets/images/skill/basic-atk.png',
             color: 'skillGray',
             active: true,
-            damage: 20,
+            damage: 25,
+            cost: 0,
         },
         {
-            // img: '../assets/images/skill/strike-shot.png',
-            // color: 'skillEmerald',
-            // active: true,
-            // damage: 15,
+            img: '../assets/images/skill/strike-shot.png',
+            color: 'skillEmerald',
+            active: true,
+            damage: 30,
+            cost: 10,
         },
         {
-            // img: '../assets/images/skill/shield-reflect.png',
-            // color: 'skillYellow',
-            // active: true,
-            // damage: 0,
+            img: '../assets/images/skill/shield-reflect.png',
+            color: 'skillYellow',
+            active: true,
+            damage: 0,
+            cost: 15,
         },
         {
-            // img: '../assets/images/skill/slash-claws.png',
-            // color: 'skillDarkred',
-            // active: true,
-            // damage: 35,
+            img: '../assets/images/skill/slash-claws.png',
+            color: 'skillDarkred',
+            active: true,
+            damage: 45,
+            cost: 20,
         },
     ];
     conditions = [];
@@ -86,23 +90,23 @@ export class Player {
     }
 
     updateLife() {
-        this.current.life += ~~(this.base.life * 0.23);
+        this.current.life += ~~(this.base.life * 0.25);
         if (this.current.life >= this.base.life) {
             this.current.life = Math.floor((this.base.life + ((this.vitality || 1) *
-                (10 + (this.level * 0.3)))));
+                (25 + (this.level * 0.4)))));
         }
         this.base.life = Math.floor((this.base.life + ((this.vitality || 1) *
-            (10 + (this.level * 0.3)))));
+            (25 + (this.level * 0.4)))));
     }
 
     updateMana() {
-        this.current.mana += ~~(this.base.mana * 0.23);
+        this.current.mana += ~~(this.base.mana * 0.25);
         if (this.current.mana >= this.base.mana) {
             this.current.mana = Math.floor((this.base.mana + ((this.intelligence || 1) *
-                (5 + (this.level * 0.3)))));
+                (10 + (this.level * 0.4)))));
         }
         this.base.mana = Math.floor((this.base.mana + ((this.intelligence || 1) *
-            (5 + (this.level * 0.3)))));
+            (10 + (this.level * 0.4)))));
     }
 
     initCurrent() {
@@ -115,61 +119,5 @@ export class Player {
         this.current.vel = this.base.vel;
         this.current.crit = this.base.crit;
         this.current.eva = this.base.eva;
-    }
-
-
-
-
-
-
-    getBonusLvl() {
-        let bonusLvl = 1;
-        for (let index = 0; index < this.level; index++) {
-            bonusLvl += 0.05;
-        }
-        return bonusLvl;
-    }
-
-    getLife() {
-        return Math.floor((this.base.life + (this.vitality *
-            (50 + (this.level * 1.5)))));
-    }
-
-    getAtk() {
-        return Math.floor((this.base.atk + (this.vitality *
-            (10 + (this.level * 0.5)))));
-    }
-
-    getDef() {
-        return Math.floor((this.base.def + (this.vitality *
-            (10 + (this.level * 0.2)))));
-    }
-
-    getMana() {
-        return Math.floor((this.base.mana + (this.intelligence *
-            (50 + (this.level * 1.5)))));
-    }
-
-    getMagic() {
-        return Math.floor((this.base.magic + (this.intelligence *
-            (10 + (this.level * 0.5)))));
-    }
-
-    getProt() {
-        return Math.floor((this.base.prot + (this.intelligence *
-            (10 + (this.level * 0.2)))));
-    }
-
-    getVel() {
-        return Math.floor((this.base.vel + (this.agility *
-            (10 + (this.level * 0.5)))));
-    }
-
-    getCrit() {
-        return Math.floor(this.base.crit + (this.agility * 0.2));
-    }
-
-    getEva() {
-        return Math.floor(this.base.eva + (this.agility * 0.1));
     }
 }

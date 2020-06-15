@@ -207,7 +207,7 @@ export const MONSTER = [
         baseLife: 100,
         level: 1,
         exp: 50,
-        damage: 15,
+        damage: 7,
     },
     {
         img: '../assets/images/monster/monster-1.png',
@@ -215,7 +215,7 @@ export const MONSTER = [
         baseLife: 100,
         level: 1,
         exp: 50,
-        damage: 15,
+        damage: 7,
     },
     {
         img: '../assets/images/monster/monster-2.png',
@@ -223,7 +223,7 @@ export const MONSTER = [
         baseLife: 100,
         level: 1,
         exp: 50,
-        damage: 15,
+        damage: 7,
     },
     {
         img: '../assets/images/monster/monster-3.png',
@@ -231,7 +231,7 @@ export const MONSTER = [
         baseLife: 100,
         level: 1,
         exp: 50,
-        damage: 15,
+        damage: 7,
     },
     {
         img: '../assets/images/monster/monster-4.png',
@@ -239,7 +239,7 @@ export const MONSTER = [
         baseLife: 100,
         level: 1,
         exp: 50,
-        damage: 15,
+        damage: 7,
     },
     {
         img: '../assets/images/monster/monster-5.png',
@@ -247,6 +247,49 @@ export const MONSTER = [
         baseLife: 100,
         level: 1,
         exp: 50,
-        damage: 15,
+        damage: 7,
+    },
+];
+
+export const BOSS = [
+    {
+        img: '../assets/images/boss/angel.png',
+        name: 'Anjo revoltado',
+        baseLife: 500,
+        level: 1,
+        exp: 100,
+        damage: 20,
+    },
+    {
+        img: '../assets/images/boss/ogre-skull.png',
+        name: 'Ogro caveira',
+        baseLife: 500,
+        level: 1,
+        exp: 100,
+        damage: 20,
+    },
+    {
+        img: '../assets/images/boss/slime-dragon.png',
+        name: 'Dragão pantanoso',
+        baseLife: 500,
+        level: 1,
+        exp: 100,
+        damage: 20,
+    },
+    {
+        img: '../assets/images/boss/succubus.png',
+        name: 'Súcubo infernal',
+        baseLife: 500,
+        level: 1,
+        exp: 100,
+        damage: 20,
+    },
+    {
+        img: '../assets/images/boss/yog-shoggoth.png',
+        name: 'Yog Shoggoth',
+        baseLife: 500,
+        level: 1,
+        exp: 100,
+        damage: 20,
     },
 ];
