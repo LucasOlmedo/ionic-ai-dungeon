@@ -8,8 +8,8 @@ export class DungeonService {
   private act = [
     'battle', 'battle', 'battle', 'battle',
     'battle', 'battle', 'battle', 'battle',
-    'trap', 'trap',
-    'empty', 'empty',
+    'trap',
+    'empty',
     'chest',
     'bless', 'bless',
     'curse', 'curse',
@@ -19,7 +19,7 @@ export class DungeonService {
 
   generateDungeon() {
     return new Promise(resolve => {
-      resolve(this.createDungeonRecursive(20, 2));
+      resolve(this.createDungeonRecursive(25, 2));
     });
   }
 

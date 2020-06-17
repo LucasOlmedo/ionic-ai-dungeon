@@ -73,3 +73,26 @@
         }
     }
 }
+
+.text-game-over {
+    color: red;
+    font-weight: 900;
+    font-size: larger;
+}
+
+.text-boss {
+    float: right !important;
+    font-weight: 900;
+    font-size: large;
+    color: gold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: red;
+    text-shadow: 2px 2px 0 red, -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red, 1px 1px 0 red;
+    animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

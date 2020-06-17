@@ -1,158 +1,192 @@
 <ion-card class="box-no-shadow" *ngIf="loaded">
-  <div *ngIf="currentRoom.action == 'start' || currentRoom.action == 'empty'">
-    <img src="{{ currentRoom.img }}" />
-    <ion-card-header class="adjust-padding">
-      <ion-card-subtitle>{{ currentRoom.location }}</ion-card-subtitle>
-      <ion-card-title>{{ currentRoom.title }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content class="adjust-padding">
-      <div class="ion-text-start">
-        {{ currentRoom.description }}
-      </div>
-    </ion-card-content>
-  </div>
+  <div *ngIf="!playerIsDead">
+    <!-- START | EMPTY -->
+    <div *ngIf="currentRoom.action == 'start' || currentRoom.action == 'empty'">
+      <img src="{{ currentRoom.img }}" />
+      <ion-card-header class="adjust-padding">
+        <ion-card-subtitle>{{ currentRoom.location }}</ion-card-subtitle>
+        <ion-card-title>{{ currentRoom.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="adjust-padding">
+        <div class="ion-text-start">
+          {{ currentRoom.description }}
+        </div>
+      </ion-card-content>
+    </div>
 
-  <div *ngIf="currentRoom.action == 'curse' || currentRoom.action == 'bless'">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="4" offset="4">
-          <ion-img src="../assets/images/{{ currentRoom.action }}/{{ currentRoom.actionItem.icon }}.png"></ion-img>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-card-header class="adjust-padding">
-      <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content class="adjust-padding">
-      <div class="ion-text-start">
-        {{ currentRoom.actionItem.description }}
-      </div>
-      <div class="ion-text-center ion-margin-top text-{{ currentRoom.action }}-{{ currentRoom.actionItem.icon }}">
-        {{ currentRoom.actionItem.title }}
-        <span class="ion-margin-start">
-          {{ currentRoom.actionItem.operator }} {{ currentRoom.actionItem.value }} %
-        </span>
-      </div>
-      <div class="ion-text-center" *ngIf="actionItemTurn > 0">
-        Por {{ actionItemTurn }} turno(s)
-      </div>
-    </ion-card-content>
-  </div>
-
-  <div *ngIf="currentRoom.action == 'chest'">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="4" offset="4">
-          <ion-img src="../assets/images/chest.png"></ion-img>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-card-header class="adjust-padding">
-      <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content class="adjust-padding">
-      <div class="ion-text-start">
-        {{ currentRoom.actionItem.description }}
-      </div>
-      <div *ngIf="chestOpened" class="ion-text-center text-color-chest ion-padding-top">
-        Você encontrou {{ chestGold }} moedas de ouro!
-      </div>
-      <ion-row *ngIf="!eventDone">
-        <ion-col class="ion-text-center ion-padding-top">
-          <ion-button color="dark" fill="outline" (click)="openChest()">
-            Abrir
-            <ion-icon slot="end" name="key-outline"></ion-icon>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </div>
-
-  <div *ngIf="currentRoom.action == 'trap'">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="4" offset="4">
-          <ion-img src="{{ currentRoom.actionItem.img }}"></ion-img>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-card-header class="adjust-padding">
-      <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content class="adjust-padding">
-      <div class="ion-text-start">
-        {{ currentRoom.actionItem.description }}
-      </div>
-      <div class="ion-text-center ion-margin-top text-bless-atk">
-        Você perdeu {{ currentRoom.actionItem.value }} de HP!
-      </div>
-    </ion-card-content>
-  </div>
-
-  <div *ngIf="currentRoom.action == 'battle' || currentRoom.action == 'boss'">
-    <div *ngIf="!monsterIsDead">
+    <!-- CURSE | BLESS -->
+    <div *ngIf="currentRoom.action == 'curse' || currentRoom.action == 'bless'">
       <ion-grid>
         <ion-row>
-          <ion-col>
-            <ion-img class="img-monster" src="{{ currentRoom.actionItem.img }}"></ion-img>
+          <ion-col size="4" offset="4">
+            <ion-img src="../assets/images/{{ currentRoom.action }}/{{ currentRoom.actionItem.icon }}.png"></ion-img>
           </ion-col>
         </ion-row>
       </ion-grid>
       <ion-card-header class="adjust-padding">
-        <ion-card-subtitle style="padding-top: 0;">
-          <span class="ion-float-left" style="margin-bottom: 8px;">
-            Nv {{ currentRoom.actionItem.level }} - {{ currentRoom.actionItem.name }}
-          </span>
-          <span class="ion-float-right info-monster-hp">
-            {{ monsterCurrentHP }}/{{ currentMonster.baseLife }}
-          </span>
-          <ion-progress-bar class="monster-hp" color="danger" [value]="monsterCurrentHP/currentMonster.baseLife">
-          </ion-progress-bar>
-        </ion-card-subtitle>
+        <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content class="adjust-padding">
-        <ion-grid style="padding: 0; margin-top: 5px;">
+        <div class="ion-text-start">
+          {{ currentRoom.actionItem.description }}
+        </div>
+        <div class="ion-text-center ion-margin-top text-{{ currentRoom.action }}-{{ currentRoom.actionItem.icon }}">
+          {{ currentRoom.actionItem.title }}
+          <span class="ion-margin-start">
+            {{ currentRoom.actionItem.operator }} {{ currentRoom.actionItem.value }} %
+          </span>
+        </div>
+        <div class="ion-text-center" *ngIf="actionItemTurn > 0">
+          Por {{ actionItemTurn }} turno(s)
+        </div>
+      </ion-card-content>
+    </div>
+
+    <!-- CHEST -->
+    <div *ngIf="currentRoom.action == 'chest'">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4" offset="4">
+            <ion-img src="../assets/images/chest.png"></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-card-header class="adjust-padding">
+        <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content class="adjust-padding">
+        <div class="ion-text-start">
+          {{ currentRoom.actionItem.description }}
+        </div>
+        <div *ngIf="chestOpened" class="ion-text-center text-color-chest ion-padding-top">
+          Você encontrou {{ chestGold }} moedas de ouro!
+        </div>
+        <ion-row *ngIf="!eventDone">
+          <ion-col class="ion-text-center ion-padding-top">
+            <ion-button color="dark" fill="outline" (click)="openChest()">
+              Abrir
+              <ion-icon slot="end" name="key-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </div>
+
+    <!-- TRAP -->
+    <div *ngIf="currentRoom.action == 'trap'">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4" offset="4">
+            <ion-img src="{{ currentRoom.actionItem.img }}"></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-card-header class="adjust-padding">
+        <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content class="adjust-padding">
+        <div class="ion-text-start">
+          {{ currentRoom.actionItem.description }}
+        </div>
+        <div class="ion-text-center ion-margin-top text-bless-atk">
+          Você perdeu {{ currentRoom.actionItem.value }} de HP!
+        </div>
+      </ion-card-content>
+    </div>
+
+    <!-- BATTLE | BOSS -->
+    <div *ngIf="currentRoom.action == 'battle' || currentRoom.action == 'boss'">
+      <div *ngIf="currentMonster.currentLife > 0">
+        <ion-grid>
           <ion-row>
-            <ion-col size="6" class="col-skill" *ngFor="let skill of player.skills">
-              <ion-button [disabled]="(skill.cost > player.current.mana) || !canAtk" [color]="skill.color || 'dark'"
-                fill="outline" (click)="battleAction(skill)">
-                <ion-img src="{{ skill.img || '../assets/images/skill/empty.png'}}"></ion-img>
-              </ion-button>
+            <ion-col>
+              <ion-text *ngIf="currentRoom.action == 'boss'" class="text-boss">BOSS</ion-text>
+              <ion-img class="img-monster" src="{{ currentRoom.actionItem.img }}"></ion-img>
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ion-card-content>
+        <ion-card-header class="adjust-padding">
+          <ion-card-subtitle style="padding-top: 0;">
+            <span class="ion-float-left" style="margin-bottom: 8px;">
+              Nv {{ currentMonster.level }} - {{ currentRoom.actionItem.name }}
+            </span>
+            <span class="ion-float-right info-monster-hp">
+              {{ currentMonster.currentLife }}/{{ currentMonster.baseLife }}
+            </span>
+            <ion-progress-bar class="monster-hp" color="danger"
+              [value]="currentMonster.currentLife/currentMonster.baseLife">
+            </ion-progress-bar>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content class="adjust-padding">
+          <ion-grid style="padding: 0; margin-top: 5px;">
+            <ion-row>
+              <ion-col size="6" class="col-skill" *ngFor="let skill of player.skills">
+                <ion-button [disabled]="(skill.cost > player.current.mana) || !canAtk" [color]="skill.color || 'dark'"
+                  fill="outline" (click)="battleAction(skill)">
+                  <ion-img src="{{ skill.img || '../assets/images/skill/empty.png'}}"></ion-img>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </div>
+      <div *ngIf="currentMonster.currentLife <= 0">
+        <ion-card-content class="adjust-padding">
+          <div class="ion-text-center ion-margin-top">
+            Você derrotou {{ currentRoom.actionItem.name }}!
+          </div>
+          <div class="ion-text-center ion-margin-top text-color-chest ">
+            Adquiriu {{ currentMonster.exp }} de experiência!
+          </div>
+        </ion-card-content>
+      </div>
     </div>
-    <div *ngIf="monsterIsDead">
-      <ion-card-content class="adjust-padding">
-        <div class="ion-text-center ion-margin-top">
-          Você derrotou {{ currentRoom.actionItem.name }}!
-        </div>
-        <div class="ion-text-center ion-margin-top text-color-chest ">
-          Adquiriu {{ currentRoom.actionItem.exp }} de experiência!
-        </div>
-      </ion-card-content>
-    </div>
-  </div>
 
-  <ion-grid *ngIf="eventDone" class="ion-padding-top">
-    <ion-row>
-      <ion-col *ngFor="let way of currentRoom.next; let i = index" [size]="12/currentRoom.next.length">
-        <ion-button color="dark" fill="outline" expand="block" (click)="enterRoom(way)">
-          Seguir
-          <ion-icon *ngIf="currentRoom.next.length < 2; else buttonsNext" slot="end" name="arrow-up-outline"></ion-icon>
-          <ng-template #buttonsNext>
-            <ion-icon *ngIf="i == 0" slot="end" name="arrow-back-outline"></ion-icon>
-            <ion-icon *ngIf="i == 1" slot="end" name="arrow-forward-outline"></ion-icon>
-          </ng-template>
-        </ion-button>
-      </ion-col>
-      <ion-col *ngIf="currentRoom.next.length == 0" size="12">
-        <ion-button color="dark" fill="outline" expand="block" (click)="nextFloor()">
-          Próximo andar
-          <ion-icon slot="end" name="push-outline"></ion-icon>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <!-- EVENT DONE -->
+    <ion-grid *ngIf="eventDone && !playerIsDead" class="ion-padding-top">
+      <ion-row>
+        <ion-col *ngFor="let way of currentRoom.next; let i = index" [size]="12/currentRoom.next.length">
+          <ion-button color="dark" fill="outline" expand="block" (click)="enterRoom(way)">
+            Seguir
+            <ion-icon *ngIf="currentRoom.next.length < 2; else buttonsNext" slot="end" name="arrow-up-outline">
+            </ion-icon>
+            <ng-template #buttonsNext>
+              <ion-icon *ngIf="i == 0" slot="end" name="arrow-back-outline"></ion-icon>
+              <ion-icon *ngIf="i == 1" slot="end" name="arrow-forward-outline"></ion-icon>
+            </ng-template>
+          </ion-button>
+        </ion-col>
+        <ion-col *ngIf="currentRoom.next.length == 0" size="12">
+          <ion-button color="dark" fill="outline" expand="block" (click)="nextFloor()">
+            Próximo andar
+            <ion-icon slot="end" name="push-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="playerIsDead">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" offset="4" class="ion-margin-top ion-padding-top">
+          <ion-img src="../assets/images/tomb.png"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card-content class="adjust-padding">
+      <div class="ion-text-center ion-margin-top text-game-over">
+        VOCÊ MORREU!
+      </div>
+    </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-padding-top ion-padding-start ion-padding-end">
+          <ion-button color="danger" fill="outline" expand="block" routerLink="/" routerDirection="root">
+            Voltar ao menu principal
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-card>

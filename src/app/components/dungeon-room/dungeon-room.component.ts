@@ -18,16 +18,19 @@ export class DungeonRoomComponent implements OnInit {
   player: Player;
   actionItemTurn: number = 0;
   chestOpened: boolean = false;
-  monsterCurrentHP: number = 100;
-  monsterIsDead: boolean = false;
-  monsterEXP: number = 0;
   canAtk: boolean = false;
   currentMonster = {
     baseLife: 0,
+    currentLife: 0,
     exp: 0,
-    damage: 0,
+    atk: 0,
+    def: 0,
+    magic: 0,
+    prot: 0,
+    vel: 0,
   };
   chestGold = 0;
+  playerIsDead = false;
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -61,7 +64,7 @@ export class DungeonRoomComponent implements OnInit {
       });
   }
 
-  nextFloor(){
+  nextFloor() {
     this.loadingDungeon();
   }
 
@@ -69,13 +72,6 @@ export class DungeonRoomComponent implements OnInit {
     this.eventDone = false;
     this.chestOpened = false;
     this.chestGold = 0;
-    this.monsterIsDead = false;
-    this.monsterEXP = 0;
-    this.currentMonster = {
-      baseLife: 0,
-      exp: 0,
-      damage: 0,
-    };
     this.currentRoom = room;
     this.manageRoom();
   }
@@ -86,29 +82,50 @@ export class DungeonRoomComponent implements OnInit {
     this.player.gold += this.chestGold;
   }
 
-  async battleAction(skill) {
-    let auxCurHP = this.monsterCurrentHP - skill.damage;
-    this.monsterCurrentHP = auxCurHP <= 0 ? 0 : auxCurHP;
-    this.player.current.mana -= skill.cost;
+  gameOver() {
+    this.playerIsDead = true;
+    this.eventDone = false;
+  }
 
+  async battleAction(skill) {
+    let skillDamage = ~~((this.player.current.atk / 2) + skill.damage);
+    let auxCurHP = this.currentMonster.currentLife - this.calcDamage(skillDamage, this.currentMonster.def);
     this.canAtk = false;
-    if (this.monsterCurrentHP == 0) {
-      this.eventDone = true;
-      this.monsterIsDead = true;
-      this.player.updateExp(this.currentMonster.exp);
-    } else {
-      await this.helper.sleep(1000);
-      this.canAtk = true;
-      this.player.current.life -= this.currentMonster.damage;
-      if (this.player.current.mana <= 0) {
-        this.player.current.mana = 0;
+    if (this.player.current.vel >= this.currentMonster.vel) {
+      this.player.current.mana -= skill.cost;
+      this.currentMonster.currentLife = auxCurHP <= 0 ? 0 : auxCurHP;
+      if (this.currentMonster.currentLife == 0) {
+        this.eventDone = true;
+        this.player.updateExp(this.currentMonster.exp);
+      } else {
+        await this.helper.sleep(500);
+        this.player.current.life -= this.calcDamage(this.currentMonster.atk, this.player.current.def);
+        if (this.player.current.life <= 0) {
+          this.player.current.life = 0;
+          this.gameOver();
+        }
       }
+    } else {
+      this.player.current.life -= this.calcDamage(this.currentMonster.atk, this.player.current.def);
       if (this.player.current.life <= 0) {
         this.player.current.life = 0;
+        this.gameOver();
+      }
+      await this.helper.sleep(500);
+      this.currentMonster.currentLife = auxCurHP <= 0 ? 0 : auxCurHP;
+      this.player.current.mana -= skill.cost;
+      if (this.currentMonster.currentLife == 0) {
+        this.eventDone = true;
+        this.player.updateExp(this.currentMonster.exp);
       }
     }
-
+    this.canAtk = true;
     this.changeConditionPlayer();
+  }
+
+  private calcDamage(launcherAtk, targetDef) {
+    let damage = launcherAtk - targetDef;
+    return damage < 5 ? 5 : damage;
   }
 
   private manageRoom() {
@@ -123,9 +140,17 @@ export class DungeonRoomComponent implements OnInit {
         break;
       case 'battle':
       case 'boss':
-        this.currentMonster = room.actionItem;
-        this.monsterCurrentHP = room.actionItem.baseLife;
-        this.monsterEXP = room.actionItem.exp;
+        this.currentMonster = {
+          baseLife: 0,
+          currentLife: 0,
+          exp: 0,
+          atk: 0,
+          def: 0,
+          magic: 0,
+          prot: 0,
+          vel: 0,
+        };
+        this.currentMonster = this.calcMonster(room.actionItem, room.action);
         this.canAtk = true;
         break;
       case 'trap':
@@ -133,6 +158,7 @@ export class DungeonRoomComponent implements OnInit {
         this.player.current.life -= room.actionItem.value;
         if (this.player.current.life <= 0) {
           this.player.current.life = 0;
+          this.gameOver();
         }
         break;
       case 'curse':
@@ -159,10 +185,30 @@ export class DungeonRoomComponent implements OnInit {
           if (this.player.current[room.actionItem.atr] <= 0) {
             this.player.current[room.actionItem.atr] = 0;
           }
+
+          if (this.player.current.life <= 0) {
+            this.player.current.life = 0;
+            this.gameOver();
+          }
         }
         this.eventDone = true;
         break;
     }
+  }
+
+  private calcMonster(m, type) {
+    let monster = Object.assign({}, m), lvAux = type == 'boss'
+      ? this.player.level : ~~(Math.random() * this.player.level);
+    monster.level = lvAux == 0 ? 1 : lvAux;
+    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 2))) + 40;
+    monster.currentLife = monster.baseLife;
+    monster.exp = ~~(m.exp * (monster.level / 2) + m.exp);
+    monster.atk = ~~(m.atk + (monster.level / 0.05));
+    monster.def = ~~(m.def + (monster.level / 0.09));
+    monster.magic = ~~(m.magic + (monster.level / 0.06));
+    monster.prot = ~~(m.prot + (monster.level / 0.08));
+    monster.vel = ~~(m.vel + (monster.level / 0.07));
+    return monster;
   }
 
   private changeConditionPlayer() {
