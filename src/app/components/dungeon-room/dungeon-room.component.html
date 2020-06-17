@@ -139,6 +139,9 @@
           <div class="ion-text-center ion-margin-top text-color-chest ">
             Adquiriu {{ currentMonster.exp }} de experiência!
           </div>
+          <div class="ion-text-center ion-margin-top text-color-chest ">
+            Encontrou {{ currentMonster.gold }} moedas de ouro!
+          </div>
         </ion-card-content>
       </div>
     </div>
@@ -166,6 +169,8 @@
       </ion-row>
     </ion-grid>
   </div>
+
+  <!-- GAME OVER -->
   <div *ngIf="playerIsDead">
     <ion-grid>
       <ion-row>

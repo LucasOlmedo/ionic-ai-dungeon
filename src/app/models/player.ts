@@ -102,20 +102,20 @@ export class Player {
         this.current.life += ~~(this.base.life * 0.25);
         if (this.current.life >= this.base.life) {
             this.current.life = ~~((this.base.life + ((this.vitality || 1) *
-                (19 + (this.level * 0.5)))));
+                (12 + (this.level * 0.6)))));
         }
         this.base.life = ~~((this.base.life + ((this.vitality || 1) *
-            (19 + (this.level * 0.5)))));
+            (12 + (this.level * 0.6)))));
     }
 
     updateMana() {
         this.current.mana += ~~(this.base.mana * 0.25);
         if (this.current.mana >= this.base.mana) {
             this.current.mana = ~~((this.base.mana + ((this.intelligence || 1) *
-                (9 + (this.level * 0.5)))));
+                (7 + (this.level * 0.6)))));
         }
         this.base.mana = ~~((this.base.mana + ((this.intelligence || 1) *
-            (9 + (this.level * 0.5)))));
+            (7 + (this.level * 0.6)))));
     }
 
     updateVitality() {

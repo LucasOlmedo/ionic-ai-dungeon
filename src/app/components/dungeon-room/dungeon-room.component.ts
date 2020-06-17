@@ -23,6 +23,7 @@ export class DungeonRoomComponent implements OnInit {
     baseLife: 0,
     currentLife: 0,
     exp: 0,
+    gold: 0,
     atk: 0,
     def: 0,
     magic: 0,
@@ -85,6 +86,11 @@ export class DungeonRoomComponent implements OnInit {
   gameOver() {
     this.playerIsDead = true;
     this.eventDone = false;
+    let toolbars = document.getElementsByTagName('ion-toolbar')
+    for (let i = 0; i < toolbars.length; i++) {
+      toolbars[i].style.opacity = '0';
+    }
+    return false;
   }
 
   async battleAction(skill) {
@@ -97,26 +103,30 @@ export class DungeonRoomComponent implements OnInit {
       if (this.currentMonster.currentLife == 0) {
         this.eventDone = true;
         this.player.updateExp(this.currentMonster.exp);
+        this.player.gold += this.currentMonster.gold;
       } else {
         await this.helper.sleep(500);
         this.player.current.life -= this.calcDamage(this.currentMonster.atk, this.player.current.def);
         if (this.player.current.life <= 0) {
           this.player.current.life = 0;
-          this.gameOver();
+          await this.helper.sleep(500);
+          return this.gameOver();
         }
       }
     } else {
       this.player.current.life -= this.calcDamage(this.currentMonster.atk, this.player.current.def);
       if (this.player.current.life <= 0) {
         this.player.current.life = 0;
-        this.gameOver();
+        await this.helper.sleep(500);
+        return this.gameOver();
       }
       await this.helper.sleep(500);
-      this.currentMonster.currentLife = auxCurHP <= 0 ? 0 : auxCurHP;
       this.player.current.mana -= skill.cost;
+      this.currentMonster.currentLife = auxCurHP <= 0 ? 0 : auxCurHP;
       if (this.currentMonster.currentLife == 0) {
         this.eventDone = true;
         this.player.updateExp(this.currentMonster.exp);
+        this.player.gold += this.currentMonster.gold;
       }
     }
     this.canAtk = true;
@@ -125,7 +135,7 @@ export class DungeonRoomComponent implements OnInit {
 
   private calcDamage(launcherAtk, targetDef) {
     let damage = launcherAtk - targetDef;
-    return damage < 5 ? 5 : damage;
+    return damage < 10 ? 10 : damage;
   }
 
   private manageRoom() {
@@ -144,6 +154,7 @@ export class DungeonRoomComponent implements OnInit {
           baseLife: 0,
           currentLife: 0,
           exp: 0,
+          gold: 0,
           atk: 0,
           def: 0,
           magic: 0,
@@ -158,7 +169,7 @@ export class DungeonRoomComponent implements OnInit {
         this.player.current.life -= room.actionItem.value;
         if (this.player.current.life <= 0) {
           this.player.current.life = 0;
-          this.gameOver();
+          return this.gameOver();
         }
         break;
       case 'curse':
@@ -181,14 +192,12 @@ export class DungeonRoomComponent implements OnInit {
           if (this.player.current[room.actionItem.atr] >= this.player.base[room.actionItem.atr]) {
             this.player.current[room.actionItem.atr] = this.player.base[room.actionItem.atr]
           }
-
           if (this.player.current[room.actionItem.atr] <= 0) {
             this.player.current[room.actionItem.atr] = 0;
           }
-
           if (this.player.current.life <= 0) {
             this.player.current.life = 0;
-            this.gameOver();
+            return this.gameOver();
           }
         }
         this.eventDone = true;
@@ -203,6 +212,7 @@ export class DungeonRoomComponent implements OnInit {
     monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 2))) + 40;
     monster.currentLife = monster.baseLife;
     monster.exp = ~~(m.exp * (monster.level / 2) + m.exp);
+    monster.gold = ~~(m.gold * monster.level);
     monster.atk = ~~(m.atk + (monster.level / 0.05));
     monster.def = ~~(m.def + (monster.level / 0.09));
     monster.magic = ~~(m.magic + (monster.level / 0.06));
