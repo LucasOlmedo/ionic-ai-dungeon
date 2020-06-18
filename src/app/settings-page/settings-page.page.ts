@@ -13,6 +13,7 @@ export class SettingsPagePage implements OnInit {
   selectedNotification: boolean;
   selectedMusic: boolean;
   selectedEffects: boolean;
+  showIntro: boolean;
   selectedFontSize: number;
 
   constructor(
@@ -24,6 +25,7 @@ export class SettingsPagePage implements OnInit {
     this.loadMusic();
     this.loadEffects();
     this.loadFontSize();
+    this.loadIntro();
   }
 
   ngOnInit() {
@@ -54,6 +56,11 @@ export class SettingsPagePage implements OnInit {
       .subscribe(val => this.selectedFontSize = val);
   }
 
+  async loadIntro() {
+    await this.config.getShowIntro()
+      .subscribe(val => this.showIntro = val);
+  }
+
   toggleNotification($event) {
     let checked = $event.detail.checked;
     this.selectedNotification = checked;
@@ -70,6 +77,12 @@ export class SettingsPagePage implements OnInit {
     let checked = $event.detail.checked;
     this.selectedEffects = checked;
     this.config.setEffects(checked);
+  }
+
+  toggleShowIntro($event) {
+    let checked = $event.detail.checked;
+    this.showIntro = checked;
+    this.config.setShowIntro(checked);
   }
 
   changeFontSize($event) {

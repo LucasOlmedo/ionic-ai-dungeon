@@ -49,6 +49,9 @@
         </ion-row>
         <ion-row class="ion-margin-top">
           <ion-col size="3">
+            <ion-badge *ngIf="player.points > 0" color="danger" class="has-points">
+              {{ player.points }}
+            </ion-badge>
             <ion-button color="dark" fill="outline" routerLink="/main-game-char">
               <ion-img src="../assets/images/buttons/in-game-char.png" style="height: 80%;"></ion-img>
             </ion-button>

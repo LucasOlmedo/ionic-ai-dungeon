@@ -48,3 +48,9 @@ ion-title {
     height: 25px;
     margin-right: 5px;
 }
+
+.has-points {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+}

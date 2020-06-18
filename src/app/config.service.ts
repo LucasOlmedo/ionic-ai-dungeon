@@ -8,12 +8,12 @@ import { Storage } from '@ionic/storage';
 export class ConfigService {
 
   private storage: Storage = new Storage({ name: '_ionicstorage' });
-
   private notification: BehaviorSubject<any> = new BehaviorSubject(null);
   private language: BehaviorSubject<any> = new BehaviorSubject(null);
   private music: BehaviorSubject<any> = new BehaviorSubject(null);
   private effects: BehaviorSubject<any> = new BehaviorSubject(null);
   private fontSize: BehaviorSubject<any> = new BehaviorSubject(null);
+  private showIntro: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor() {
     this.initConfig();
@@ -34,6 +34,9 @@ export class ConfigService {
     });
     await this.storage.get('fontSize').then(val => {
       this.setFontSize(val != null ? val : 3);
+    });
+    await this.storage.get('showIntro').then(val => {
+      this.setShowIntro(val != null ? val : true);
     });
   }
 
@@ -71,6 +74,15 @@ export class ConfigService {
 
   getEffects() {
     return this.effects.asObservable();
+  }
+
+  setShowIntro(flag: boolean) {
+    this.storage.set('showIntro', flag)
+      .then(val => this.showIntro.next(val));
+  }
+
+  getShowIntro() {
+    return this.showIntro.asObservable();
   }
 
   setFontSize(size: number) {

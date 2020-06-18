@@ -18,13 +18,12 @@
       <h3>Capacidade: 0/{{ player.inventory.length }}</h3>
     </ion-label>
   </ion-item>
-  <ion-grid>
+  <ion-grid class="ion-margin-bottom ion-padding-bottom">
     <ion-row>
-      <ion-col *ngFor="let slot of player.inventory" size="4">
-        <ion-card class="slot-inventory" color="light">
-          <ion-card-content>
-          </ion-card-content>
-        </ion-card>
+      <ion-col size="4" class="col-skill" *ngFor="let slot of player.inventory">
+        <ion-button [disabled]="!slot.img" color="dark" fill="outline">
+          <img [src]="slot.img || '../assets/images/skill/empty.png'" />
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

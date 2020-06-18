@@ -17,11 +17,11 @@ export class MainPagePage implements OnInit {
   }
 
   startGame() {
-    this.storage.get('dismiss-lore').then(val => {
+    this.storage.get('showIntro').then(val => {
       if (val) {
-        this.navCtrl.navigateRoot('/create-character');
-      } else {
         this.navCtrl.navigateRoot('/start-game');
+      } else {
+        this.navCtrl.navigateRoot('/create-character');
       }
     });
   }

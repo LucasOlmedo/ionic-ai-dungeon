@@ -7,66 +7,66 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
-  <ion-grid class="ion-margin-top">
+  <ion-grid class="ion-margin-top ion-margin-bottom">
     <ion-row>
-      <ion-col size="4" offset="4">
-        <ion-img src="../assets/images/helmet.png" style="height: 50px;"></ion-img>
+      <ion-col size="4" offset="4" class="col-skill">
+        <ion-button [disabled]="!player.equip.helmet" color="dark" fill="outline">
+          <img [src]="player.equip.helmet || '../assets/images/helmet.png'" />
+        </ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="4">
-        <ion-img src="../assets/images/shield.png" style="height: 70px;"></ion-img>
+      <ion-col size="4" class="col-skill">
+        <ion-button [disabled]="!player.equip.shield" color="dark" fill="outline">
+          <img [src]="player.equip.shield || '../assets/images/shield.png'" />
+        </ion-button>
       </ion-col>
-      <ion-col size="4">
-        <ion-img src="../assets/images/armor.png"></ion-img>
+      <ion-col size="4" class="col-skill">
+        <ion-button [disabled]="!player.equip.armor" color="dark" fill="outline">
+          <img [src]="player.equip.armor || '../assets/images/armor.png'" />
+        </ion-button>
       </ion-col>
-      <ion-col size="4">
-        <ion-img src="../assets/images/sword.png" style="height: 75px;"></ion-img>
+      <ion-col size="4" class="col-skill">
+        <ion-button [disabled]="!player.equip.sword" color="dark" fill="outline">
+          <img [src]="player.equip.sword || '../assets/images/sword.png'" />
+        </ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="4">
-        <ion-img src="../assets/images/ring.png" style="height: 50px;"></ion-img>
+      <ion-col size="4" class="col-skill">
+        <ion-button [disabled]="!player.equip.ring" color="dark" fill="outline">
+          <img [src]="player.equip.ring || '../assets/images/ring.png'" />
+        </ion-button>
       </ion-col>
-      <ion-col size="4">
-        <br>
-        <br>
-        <ion-img src="../assets/images/boots.png" style="height: 65px;"></ion-img>
+      <ion-col size="4" class="col-skill ion-padding-top">
+        <ion-button [disabled]="!player.equip.boots" color="dark" fill="outline">
+          <img [src]="player.equip.boots || '../assets/images/boots.png'" />
+        </ion-button>
       </ion-col>
-      <ion-col size="4">
-        <ion-img src="../assets/images/necklace.png" style="height: 60px;"></ion-img>
+      <ion-col size="4" class="col-skill">
+        <ion-button [disabled]="!player.equip.necklace" color="dark" fill="outline">
+          <img [src]="player.equip.necklace || '../assets/images/necklace.png'" />
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid class="ion-padding-top ion-padding-start ion-padding-end">
+  <ion-item>
+    <ion-label>
+      Atributos de equipamento
+    </ion-label>
+  </ion-item>
+  <ion-grid class="ion-padding ion-margin-bottom">
     <ion-row>
-      <ion-col size="8" offset="2">
-        <ion-text color="danger" class="ion-float-left">Vida</ion-text>
-        <ion-text color="danger" class="ion-float-right">{{ player.current.life }}</ion-text>
+      <ion-col>
+        <ion-text color="danger">+ 100 HP</ion-text>
         <br>
-        <ion-text color="danger" class="ion-float-left">Ataque</ion-text>
-        <ion-text color="danger" class="ion-float-right">{{ player.current.atk }}</ion-text>
+        <ion-text color="danger">+ 50 Ataque</ion-text>
         <br>
-        <ion-text color="danger" class="ion-float-left">Defesa</ion-text>
-        <ion-text color="danger" class="ion-float-right">{{ player.current.def }}</ion-text>
+        <ion-text color="primary">+ 25 Magia</ion-text>
         <br>
-        <ion-text color="primary" class="ion-float-left">Mana</ion-text>
-        <ion-text color="primary" class="ion-float-right">{{ player.current.mana }}</ion-text>
+        <ion-text color="success">+ 32 Velocidade</ion-text>
         <br>
-        <ion-text color="primary" class="ion-float-left">Mágica</ion-text>
-        <ion-text color="primary" class="ion-float-right">{{ player.current.magic }}</ion-text>
-        <br>
-        <ion-text color="primary" class="ion-float-left">Proteção</ion-text>
-        <ion-text color="primary" class="ion-float-right">{{ player.current.prot }}</ion-text>
-        <br>
-        <ion-text color="success" class="ion-float-left">Velocidade</ion-text>
-        <ion-text color="success" class="ion-float-right">{{ player.current.vel }}</ion-text>
-        <br>
-        <ion-text color="success" class="ion-float-left">Crítico</ion-text>
-        <ion-text color="success" class="ion-float-right">{{ player.current.crit }} %</ion-text>
-        <br>
-        <ion-text color="success" class="ion-float-left">Evasão</ion-text>
-        <ion-text color="success" class="ion-float-right">{{ player.current.eva }} %</ion-text>
+        <ion-text color="success">+ 15 % Crítico</ion-text>
         <br>
       </ion-col>
     </ion-row>

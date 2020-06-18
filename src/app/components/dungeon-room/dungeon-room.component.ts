@@ -30,8 +30,9 @@ export class DungeonRoomComponent implements OnInit {
     prot: 0,
     vel: 0,
   };
-  chestGold = 0;
-  playerIsDead = false;
+  chestGold: number = 0;
+  playerIsDead: boolean = false
+  currentFloorIndex: number = 0;
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -66,6 +67,7 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   nextFloor() {
+    this.currentFloorIndex++;
     this.loadingDungeon();
   }
 
@@ -185,9 +187,9 @@ export class DungeonRoomComponent implements OnInit {
           });
         } else {
           room.actionItem.operator == '+' ? this.player.current[room.actionItem.atr] +=
-            ~~(room.actionItem.calc(this.player.current[room.actionItem.atr]))
+            ~~(room.actionItem.calc(this.player.base[room.actionItem.atr]))
             : this.player.current[room.actionItem.atr] -=
-            ~~(room.actionItem.calc(this.player.current[room.actionItem.atr]));
+            ~~(room.actionItem.calc(this.player.base[room.actionItem.atr]));
 
           if (this.player.current[room.actionItem.atr] >= this.player.base[room.actionItem.atr]) {
             this.player.current[room.actionItem.atr] = this.player.base[room.actionItem.atr]
@@ -207,7 +209,8 @@ export class DungeonRoomComponent implements OnInit {
 
   private calcMonster(m, type) {
     let monster = Object.assign({}, m), lvAux = type == 'boss'
-      ? this.player.level : ~~(Math.random() * this.player.level);
+      ? this.player.level : ~~(Math.random() * (this.player.level - this.currentFloorIndex)
+        + this.currentFloorIndex);
     monster.level = lvAux == 0 ? 1 : lvAux;
     monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 2))) + 40;
     monster.currentLife = monster.baseLife;

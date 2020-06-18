@@ -2,3 +2,16 @@
     margin: 0;
     height: 80px;
 }
+
+.col-skill {
+    height: fit-content;
+    padding-top: 0;
+    ion-button {
+        width: -webkit-fill-available;
+        height: 50%;
+        img {
+            margin: 10px;
+            width: 100%;
+        }
+    }
+}
