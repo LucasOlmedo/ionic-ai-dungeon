@@ -89,7 +89,7 @@
           {{ currentRoom.actionItem.description }}
         </div>
         <div class="ion-text-center ion-margin-top text-bless-atk">
-          Você perdeu {{ currentRoom.actionItem.value }} de HP!
+          Você perdeu {{ currentRoom.actionItem.value(player.base.life) }} de HP!
         </div>
       </ion-card-content>
     </div>
@@ -122,8 +122,8 @@
           <ion-grid style="padding: 0; margin-top: 5px;">
             <ion-row>
               <ion-col size="6" class="col-skill" *ngFor="let skill of player.skills">
-                <ion-button [disabled]="(skill.cost > player.current.mana) || !canAtk" [color]="skill.color || 'dark'"
-                  fill="outline" (click)="battleAction(skill)">
+                <ion-button [disabled]="(skill.cost > player.current.mana) || !canAtk || !skill.active"
+                  [color]="skill.color || 'dark'" fill="outline" (click)="battleAction(skill)">
                   <ion-img src="{{ skill.img || '../assets/images/skill/empty.png'}}"></ion-img>
                 </ion-button>
               </ion-col>

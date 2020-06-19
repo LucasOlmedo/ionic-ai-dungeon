@@ -17,8 +17,8 @@ export class Player {
     ];
     base = {
         life: 100,
-        atk: 10,
-        def: 10,
+        atk: 12,
+        def: 12,
         mana: 100,
         magic: 10,
         prot: 10,
@@ -28,8 +28,8 @@ export class Player {
     };
     current = {
         life: 100,
-        atk: 10,
-        def: 10,
+        atk: 12,
+        def: 12,
         mana: 100,
         magic: 10,
         prot: 10,
@@ -42,30 +42,10 @@ export class Player {
             img: '../assets/images/skill/basic-atk.png',
             color: 'skillGray',
             active: true,
-            damage: 40,
+            damage: 55,
             cost: 0,
         },
-        {
-            img: '../assets/images/skill/strike-shot.png',
-            color: 'skillEmerald',
-            active: true,
-            damage: 50,
-            cost: 15,
-        },
-        {
-            img: '../assets/images/skill/shield-reflect.png',
-            color: 'skillYellow',
-            active: true,
-            damage: 0,
-            cost: 20,
-        },
-        {
-            img: '../assets/images/skill/slash-claws.png',
-            color: 'skillDarkred',
-            active: true,
-            damage: 65,
-            cost: 25,
-        },
+        0,0,0,
     ];
     equip = {
         helmet: null,
@@ -122,32 +102,32 @@ export class Player {
     }
 
     updateLife() {
-        this.current.life += ~~(this.base.life * 0.25);
+        this.current.life += ~~(this.base.life * 0.20);
         if (this.current.life >= this.base.life) {
             this.current.life = ~~((this.base.life + ((this.vitality || 1) *
-                (9 + (this.level * 0.5)))));
+                (6 + (this.level * 0.2)))));
         }
         this.base.life = ~~((this.base.life + ((this.vitality || 1) *
-            (9 + (this.level * 0.5)))));
+            (6 + (this.level * 0.2)))));
     }
 
     updateMana() {
-        this.current.mana += ~~(this.base.mana * 0.25);
+        this.current.mana += ~~(this.base.mana * 0.20);
         if (this.current.mana >= this.base.mana) {
             this.current.mana = ~~((this.base.mana + ((this.intelligence || 1) *
-                (4 + (this.level * 0.3)))));
+                (4 + (this.level * 0.1)))));
         }
         this.base.mana = ~~((this.base.mana + ((this.intelligence || 1) *
-            (4 + (this.level * 0.3)))));
+            (4 + (this.level * 0.1)))));
     }
 
     updateVitality() {
         // atk
-        this.base.atk = ~~((8 + ((this.vitality || 1) * (this.level / 0.7))));
-        this.current.atk = ~~((8 + ((this.vitality || 1) * (this.level / 0.7))));
+        this.base.atk = ~~((8 + ((this.vitality || 1) * (this.level / 0.6))));
+        this.current.atk = ~~((8 + ((this.vitality || 1) * (this.level / 0.6))));
         // def
-        this.base.def = ~~((5 + ((this.vitality || 1) * (this.level / 0.9))));
-        this.current.def = ~~((5 + ((this.vitality || 1) * (this.level / 0.9))));
+        this.base.def = ~~((7 + ((this.vitality || 1) * (this.level / 0.8))));
+        this.current.def = ~~((7 + ((this.vitality || 1) * (this.level / 0.8))));
     }
 
     updateIntelligence() {

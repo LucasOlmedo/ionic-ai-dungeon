@@ -170,31 +170,31 @@ export const BLESS_TYPES = [
 export const TRAPS = [
     {
         img: '../assets/images/trap/wolf-trap.png',
-        value: 15,
+        value: hp => ~~(hp * 0.09),
         location: 'Armadilha de lobo',
         description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
     },
     {
         img: '../assets/images/trap/wine.png',
-        value: 10,
+        value: hp => ~~(hp * 0.07),
         location: 'Tentáculo de erva-espinho',
         description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
     },
     {
         img: '../assets/images/trap/earthquake.png',
-        value: 15,
+        value: hp => ~~(hp * 0.11),
         location: 'Falha geológica',
         description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
     },
     {
         img: '../assets/images/trap/spike.png',
-        value: 20,
+        value: hp => ~~(hp * 0.10),
         location: 'Corredor pontiagudo',
         description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
     },
     {
         img: '../assets/images/trap/fireball.png',
-        value: 15,
+        value: hp => ~~(hp * 0.08),
         location: 'Rocha incandescente',
         description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
     },

@@ -13,13 +13,48 @@ export class DungeonService {
     'trap',
     'empty',
     'chest',
-    'bless', 'bless',
-    'curse', 'curse',
+    'bless',
+    'curse',
+  ];
+
+  private actProb = [];
+  private act_ = [
+    {
+      type: 'battle',
+      prob: 75,
+    },
+    {
+      type: 'trap',
+      prob: 5,
+    },
+    {
+      type: 'empty',
+      prob: 5,
+    },
+    {
+      type: 'chest',
+      prob: 5,
+    },
+    {
+      type: 'bless',
+      prob: 5,
+    },
+    {
+      type: 'curse',
+      prob: 5,
+    },
   ];
 
   constructor() { }
 
   generateDungeon() {
+    this.actProb = [];
+    for (let p = 0; p < this.act_.length; p++) {
+      let actItem = this.act_[p];
+      for (let i = 0; i < actItem.prob; i++) {
+        this.actProb.push(actItem.type);
+      }
+    }
     return new Promise(resolve => {
       resolve(this.createDungeonRecursive(25, 2));
     });
@@ -33,7 +68,8 @@ export class DungeonService {
 
     for (let i = 1; i <= (iterator == 0 ? 1 : iterator); i++) {
       let type = next ? (depth - 1 < 1 ? 'last' : 'node') : 'root',
-        action = next ? (type == 'last' ? 'boss' : this.act[~~(Math.random() * this.act.length)]) : 'start',
+        action = next ? (type == 'last' ? 'boss' :
+          this.actProb[~~(Math.random() * this.actProb.length)]) : 'start',
         roomItem = {
           id: `${id + i.toString()}`,
           type: type,
@@ -72,7 +108,7 @@ export class DungeonService {
         let chest = {
           location: 'Baú da sorte',
           description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
-          loot: (playerLv) => (Math.floor(Math.random() * 60) + 15) * playerLv,
+          loot: (playerLv) => (Math.floor(Math.random() * 50) + 10) * playerLv,
         };
         room.actionItem = chest;
         break;

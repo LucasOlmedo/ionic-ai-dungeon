@@ -167,8 +167,9 @@ export class DungeonRoomComponent implements OnInit {
         this.canAtk = true;
         break;
       case 'trap':
+        let percLife = room.actionItem.value(this.player.base.life);
         this.eventDone = true;
-        this.player.current.life -= room.actionItem.value;
+        this.player.current.life -= percLife;
         if (this.player.current.life <= 0) {
           this.player.current.life = 0;
           return this.gameOver();
@@ -212,15 +213,15 @@ export class DungeonRoomComponent implements OnInit {
       ? this.player.level : ~~(Math.random() * (this.player.level - this.currentFloorIndex)
         + this.currentFloorIndex);
     monster.level = lvAux == 0 ? 1 : lvAux;
-    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 2))) + 40;
+    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 2))) + 30;
     monster.currentLife = monster.baseLife;
     monster.exp = ~~(m.exp * (monster.level / 2) + m.exp);
     monster.gold = ~~(m.gold * monster.level);
     monster.atk = ~~(m.atk + (monster.level / 0.05));
-    monster.def = ~~(m.def + (monster.level / 0.09));
-    monster.magic = ~~(m.magic + (monster.level / 0.06));
-    monster.prot = ~~(m.prot + (monster.level / 0.08));
-    monster.vel = ~~(m.vel + (monster.level / 0.07));
+    monster.def = ~~(m.def + (monster.level / 0.08));
+    monster.magic = ~~(m.magic + (monster.level / 0.05));
+    monster.prot = ~~(m.prot + (monster.level / 0.07));
+    monster.vel = ~~(m.vel + (monster.level / 0.06));
     return monster;
   }
 
