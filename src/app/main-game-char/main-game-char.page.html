@@ -48,6 +48,12 @@
   <ion-grid class="ion-padding-start ion-padding-end ion-margin-bottom">
     <ion-row>
       <ion-col>
+        <ion-text color="medium">Andar</ion-text>
+        <ion-text color="medium" class="ion-float-end">{{ player.floorIndex }}</ion-text>
+        <br>
+        <ion-text color="medium">Sala atual</ion-text>
+        <ion-text color="medium" class="ion-float-end">{{ player.roomIndex }}</ion-text>
+        <br>
         <ion-text color="warning">EXP</ion-text>
         <ion-text color="warning" class="ion-float-end">
           {{ player.getCurrentNextLvl() }}/{{ player.getNextLvl() }}

@@ -88,9 +88,14 @@
         <div class="ion-text-start">
           {{ currentRoom.actionItem.description }}
         </div>
-        <div class="ion-text-center ion-margin-top text-bless-atk">
+        <div *ngIf="trapped; else evasion" class="ion-text-center ion-margin-top text-bless-atk">
           Você perdeu {{ currentRoom.actionItem.value(player.base.life) }} de HP!
         </div>
+        <ng-template #evasion>
+          <div class="ion-text-center ion-margin-top text-bless-heal">
+            Você esquivou da armadilha!
+          </div>
+        </ng-template>
       </ion-card-content>
     </div>
 
@@ -180,13 +185,53 @@
       </ion-row>
     </ion-grid>
     <ion-card-content class="adjust-padding">
-      <div class="ion-text-center ion-margin-top text-game-over">
+      <div class="ion-text-center text-game-over">
         VOCÊ MORREU!
       </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-text color="medium">
+              {{ player.name }} - Nível {{ player.level }}
+            </ion-text>
+            <br>
+            <ion-text color="medium">
+              Andar máximo: {{ player.floorIndex }}F
+            </ion-text>
+            <br>
+            <ion-text color="medium">
+              {{ player.killCount }} monstros mortos!
+            </ion-text>
+            <br>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <div class="ranking" *ngIf="player.killCount <= 15">
+              <ion-text class="is-c">C</ion-text>
+            </div>
+            <div class="ranking" *ngIf="player.killCount > 15 && player.killCount <= 30">
+              <ion-text class="is-b">B</ion-text>
+            </div>
+            <div class="ranking" *ngIf="player.killCount > 30 && player.killCount <= 55">
+              <ion-text class="is-b2">B+</ion-text>
+            </div>
+            <div class="ranking" *ngIf="player.killCount > 55 && player.killCount <= 80">
+              <ion-text class="is-a">A</ion-text>
+            </div>
+            <div class="ranking" *ngIf="player.killCount > 80 && player.killCount <= 100">
+              <ion-text class="is-a2">A+</ion-text>
+            </div>
+            <div class="ranking" *ngIf="player.killCount > 100">
+              <ion-text class="is-s">S</ion-text>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
     <ion-grid>
       <ion-row>
-        <ion-col class="ion-padding-top ion-padding-start ion-padding-end">
+        <ion-col class="ion-padding-start ion-padding-end">
           <ion-button color="secondary" fill="outline" expand="block" routerLink="/create-character"
             routerDirection="root">
             Jogar de novo

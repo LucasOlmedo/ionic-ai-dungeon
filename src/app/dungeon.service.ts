@@ -6,43 +6,33 @@ import { MONSTERS, BOSSES } from './bestiary-constants';
   providedIn: 'root'
 })
 export class DungeonService {
-  private act = [
-    'battle', 'battle', 'battle',
-    'battle', 'battle', 'battle',
-    'battle', 'battle', 'battle',
-    'trap',
-    'empty',
-    'chest',
-    'bless',
-    'curse',
-  ];
 
   private actProb = [];
   private act_ = [
-    {
-      type: 'battle',
-      prob: 75,
-    },
+    // {
+    //   type: 'battle',
+    //   prob: 70,
+    // },
     {
       type: 'trap',
       prob: 5,
     },
-    {
-      type: 'empty',
-      prob: 5,
-    },
-    {
-      type: 'chest',
-      prob: 5,
-    },
-    {
-      type: 'bless',
-      prob: 5,
-    },
-    {
-      type: 'curse',
-      prob: 5,
-    },
+    // {
+    //   type: 'empty',
+    //   prob: 5,
+    // },
+    // {
+    //   type: 'chest',
+    //   prob: 10,
+    // },
+    // {
+    //   type: 'bless',
+    //   prob: 5,
+    // },
+    // {
+    //   type: 'curse',
+    //   prob: 5,
+    // },
   ];
 
   constructor() { }

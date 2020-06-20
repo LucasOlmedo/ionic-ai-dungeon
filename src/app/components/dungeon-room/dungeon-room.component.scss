@@ -96,3 +96,42 @@
     opacity: 0;
   }
 }
+
+// RANKING EFFECTS
+
+.ranking {
+    font-size: xx-large;
+    font-weight: 900;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    .is-c {
+        background: radial-gradient(#ffedd9, #991f00);
+        background-clip: text;
+        color: transparent;
+    }
+    .is-b {
+        background: radial-gradient(#ffffff, #34383a);
+        background-clip: text;
+        color: transparent;
+    }
+    .is-b2 {
+        background: radial-gradient(#99ffc0, #05471e);
+        background-clip: text;
+        color: transparent;
+    }
+    .is-a {
+        background: radial-gradient(#e1e8ff, #0034c4);
+        background-clip: text;
+        color: transparent;
+    }
+    .is-a2 {
+        background: radial-gradient(#f2e6ff, #67008f);
+        background-clip: text;
+        color: transparent;
+    }
+    .is-s {
+        background: radial-gradient(#ffffff, #ffe602);
+        background-clip: text;
+        color: transparent;
+    }
+}

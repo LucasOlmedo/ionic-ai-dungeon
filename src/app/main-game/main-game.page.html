@@ -6,7 +6,7 @@
           <ion-text>
             <small>
               <span class="text-char-name">{{ player.name }}</span>
-              <span class="text-level"> Nv {{ player.level }}</span>
+              <span class="text-level">{{ player.floorIndex }}F - Nv {{ player.level }}</span>
             </small>
           </ion-text>
           <ion-progress-bar color="warning" [value]="player.expPercent"></ion-progress-bar>

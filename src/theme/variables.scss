@@ -74,16 +74,6 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
-
-  /** SKILLS **/
-
-  /** skillGray **/
-  --ion-color-skillGray: #9b9b9b;
-  --ion-color-skillGray-rgb: 244, 245, 248;
-  --ion-color-skillGray-contrast: #000000;
-  --ion-color-skillGray-contrast-rgb: 0, 0, 0;
-  --ion-color-skillGray-shade: #d7d8da;
-  --ion-color-skillGray-tint: #f5f6f9;
 }
 
 // @media (prefers-color-scheme: dark) {
@@ -153,16 +143,6 @@ body {
   --ion-color-light-contrast-rgb: 255, 255, 255;
   --ion-color-light-shade: #1e2023;
   --ion-color-light-tint: #383a3e;
-
-  /** SKILLS **/
-
-  /** skillGray **/
-  --ion-color-skillGray: #9b9b9b;
-  --ion-color-skillGray-rgb: 244, 245, 248;
-  --ion-color-skillGray-contrast: #000000;
-  --ion-color-skillGray-contrast-rgb: 0, 0, 0;
-  --ion-color-skillGray-shade: #d7d8da;
-  --ion-color-skillGray-tint: #f5f6f9;
 }
 
 // iOS Dark Theme
@@ -242,35 +222,43 @@ body {
 :root {
   // gray
   --ion-color-skillGray: #9b9b9b;
-  --ion-color-skillGray-rgb: 105,187,123;
+  --ion-color-skillGray-rgb: 105, 187, 123;
   --ion-color-skillGray-contrast: #ffffff;
-  --ion-color-skillGray-contrast-rgb: 255,255,255;
+  --ion-color-skillGray-contrast-rgb: 255, 255, 255;
   --ion-color-skillGray-shade: #9b9b9b;
   --ion-color-skillGray-tint: #9b9b9b;
 
   // emerald
   --ion-color-skillEmerald: #09ff8e;
-  --ion-color-skillEmerald-rgb: 105,187,123;
+  --ion-color-skillEmerald-rgb: 105, 187, 123;
   --ion-color-skillEmerald-contrast: #ffffff;
-  --ion-color-skillEmerald-contrast-rgb: 255,255,255;
+  --ion-color-skillEmerald-contrast-rgb: 255, 255, 255;
   --ion-color-skillEmerald-shade: #09ff8e;
   --ion-color-skillEmerald-tint: #09ff8e;
 
   // yellow
   --ion-color-skillYellow: #eef705;
-  --ion-color-skillYellow-rgb: 105,187,123;
+  --ion-color-skillYellow-rgb: 105, 187, 123;
   --ion-color-skillYellow-contrast: #ffffff;
-  --ion-color-skillYellow-contrast-rgb: 255,255,255;
+  --ion-color-skillYellow-contrast-rgb: 255, 255, 255;
   --ion-color-skillYellow-shade: #eef705;
   --ion-color-skillYellow-tint: #eef705;
 
   // darkred
   --ion-color-skillDarkred: #e11417;
-  --ion-color-skillDarkred-rgb: 105,187,123;
+  --ion-color-skillDarkred-rgb: 105, 187, 123;
   --ion-color-skillDarkred-contrast: #ffffff;
-  --ion-color-skillDarkred-contrast-rgb: 255,255,255;
+  --ion-color-skillDarkred-contrast-rgb: 255, 255, 255;
   --ion-color-skillDarkred-shade: #e11417;
   --ion-color-skillDarkred-tint: #e11417;
+
+  // olive
+  --ion-color-skillOlive: #008a16;
+  --ion-color-skillOlive-rgb: 105, 187, 123;
+  --ion-color-skillOlive-contrast: #ffffff;
+  --ion-color-skillOlive-contrast-rgb: 255, 255, 255;
+  --ion-color-skillOlive-shade: #008a16;
+  --ion-color-skillOlive-tint: #008a16;
 }
 
 // gray
@@ -311,4 +299,14 @@ body {
   --ion-color-contrast-rgb: var(--ion-color-skillDarkred-contrast-rgb);
   --ion-color-shade: var(--ion-color-skillDarkred-shade);
   --ion-color-tint: var(--ion-color-skillDarkred-tint);
+}
+
+// olive
+.ion-color-skillOlive {
+  --ion-color-base: var(--ion-color-skillOlive);
+  --ion-color-base-rgb: var(--ion-color-skillOlive-rgb);
+  --ion-color-contrast: var(--ion-color-skillOlive-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-skillOlive-contrast-rgb);
+  --ion-color-shade: var(--ion-color-skillOlive-shade);
+  --ion-color-tint: var(--ion-color-skillOlive-tint);
 }
