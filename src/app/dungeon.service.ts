@@ -9,30 +9,30 @@ export class DungeonService {
 
   private actProb = [];
   private act_ = [
-    // {
-    //   type: 'battle',
-    //   prob: 70,
-    // },
+    {
+      type: 'battle',
+      prob: 70,
+    },
     {
       type: 'trap',
       prob: 5,
     },
-    // {
-    //   type: 'empty',
-    //   prob: 5,
-    // },
-    // {
-    //   type: 'chest',
-    //   prob: 10,
-    // },
-    // {
-    //   type: 'bless',
-    //   prob: 5,
-    // },
-    // {
-    //   type: 'curse',
-    //   prob: 5,
-    // },
+    {
+      type: 'empty',
+      prob: 5,
+    },
+    {
+      type: 'chest',
+      prob: 10,
+    },
+    {
+      type: 'bless',
+      prob: 5,
+    },
+    {
+      type: 'curse',
+      prob: 5,
+    },
   ];
 
   constructor() { }
