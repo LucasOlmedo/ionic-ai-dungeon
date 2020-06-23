@@ -10,42 +10,42 @@
   <ion-grid class="ion-margin-top ion-margin-bottom">
     <ion-row>
       <ion-col size="4" offset="4" class="col-skill">
-        <ion-button [disabled]="!player.equip.helmet" color="dark" fill="outline">
-          <img [src]="player.equip.helmet || '../assets/images/helmet.png'" />
+        <ion-button [disabled]="player.equip.helmet == null" color="dark" fill="outline">
+          <img [src]="player.equip.helmet != null ? player.equip.helmet.img : '../assets/images/helmet.png'" />
         </ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="4" class="col-skill">
-        <ion-button [disabled]="!player.equip.shield" color="dark" fill="outline">
-          <img [src]="player.equip.shield || '../assets/images/shield.png'" />
+        <ion-button [disabled]="player.equip.shield == null" color="dark" fill="outline">
+          <img [src]="player.equip.shield != null ? player.equip.shield.img : '../assets/images/shield.png'" />
         </ion-button>
       </ion-col>
       <ion-col size="4" class="col-skill">
-        <ion-button [disabled]="!player.equip.armor" color="dark" fill="outline">
-          <img [src]="player.equip.armor || '../assets/images/armor.png'" />
+        <ion-button [disabled]="player.equip.armor == null" color="dark" fill="outline">
+          <img [src]="player.equip.armor != null ? player.equip.armor.img : '../assets/images/armor.png'" />
         </ion-button>
       </ion-col>
       <ion-col size="4" class="col-skill">
-        <ion-button [disabled]="!player.equip.sword" color="dark" fill="outline">
-          <img [src]="player.equip.sword || '../assets/images/sword.png'" />
+        <ion-button [disabled]="player.equip.sword == null" color="dark" fill="outline">
+          <img [src]="player.equip.sword != null ? player.equip.sword.img : '../assets/images/sword.png'" />
         </ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="4" class="col-skill">
-        <ion-button [disabled]="!player.equip.ring" color="dark" fill="outline">
-          <img [src]="player.equip.ring || '../assets/images/ring.png'" />
+        <ion-button [disabled]="player.equip.ring == null" color="dark" fill="outline">
+          <img [src]="player.equip.ring != null ? player.equip.ring.img : '../assets/images/ring.png'" />
         </ion-button>
       </ion-col>
       <ion-col size="4" class="col-skill ion-padding-top">
-        <ion-button [disabled]="!player.equip.boots" color="dark" fill="outline">
-          <img [src]="player.equip.boots || '../assets/images/boots.png'" />
+        <ion-button [disabled]="player.equip.boots == null" color="dark" fill="outline">
+          <img [src]="player.equip.boots != null ? player.equip.boots.img : '../assets/images/boots.png'" />
         </ion-button>
       </ion-col>
       <ion-col size="4" class="col-skill">
-        <ion-button [disabled]="!player.equip.necklace" color="dark" fill="outline">
-          <img [src]="player.equip.necklace || '../assets/images/necklace.png'" />
+        <ion-button [disabled]="player.equip.necklace == null" color="dark" fill="outline">
+          <img [src]="player.equip.necklace != null ? player.equip.necklace.img : '../assets/images/necklace.png'" />
         </ion-button>
       </ion-col>
     </ion-row>
@@ -58,16 +58,12 @@
   <ion-grid class="ion-padding ion-margin-bottom">
     <ion-row>
       <ion-col>
-        <ion-text color="danger">+ 100 HP</ion-text>
-        <br>
-        <ion-text color="danger">+ 50 Ataque</ion-text>
-        <br>
-        <ion-text color="primary">+ 25 Magia</ion-text>
-        <br>
-        <ion-text color="success">+ 32 Velocidade</ion-text>
-        <br>
-        <ion-text color="success">+ 15 % Crítico</ion-text>
-        <br>
+        <div *ngFor="let buff of buffs">
+          <ion-text [color]="buff.color" *ngIf="buff.value > 0">
+            + {{ buff.value }} {{ buff.cond }} {{ buff.name }}
+            <br>
+          </ion-text>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

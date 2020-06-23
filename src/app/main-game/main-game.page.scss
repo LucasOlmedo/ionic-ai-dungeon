@@ -40,6 +40,13 @@ ion-title {
 
 .text-level {
     color: var(--ion-color-warning);
+    margin-bottom: 5px;
+    float: left;
+    margin-left: 12px;
+}
+
+.text-floor {
+    color: var(--ion-color-medium);
     float: right;
     margin-bottom: 5px;
 }

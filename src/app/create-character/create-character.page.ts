@@ -76,8 +76,10 @@ export class CreateCharacterPage implements OnInit {
     player.vitality = this.vitality;
     player.intelligence = this.intelligence;
     player.agility = this.agility;
+    player.calcEquipAttr();
     player.initCurrent();
     player.calcLevel();
+    player.initEquipAttr();
     this.playerService.setPlayer(player);
   }
 }

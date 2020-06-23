@@ -20,6 +20,7 @@ export class DungeonRoomComponent implements OnInit {
   chestOpened: boolean = false;
   canAtk: boolean = false;
   currentMonster = {
+    name: '',
     baseLife: 0,
     currentLife: 0,
     exp: 0,
@@ -34,6 +35,7 @@ export class DungeonRoomComponent implements OnInit {
   chestGold: number = 0;
   playerIsDead: boolean = false;
   currentFloorIndex: number = 0;
+  deathCause: string = '';
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -102,8 +104,9 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   async battleAction(skill) {
+    let playerVel = ~~(this.player.current.vel + this.player.equipAttr.vel);
     this.canAtk = false;
-    if (this.player.current.vel >= this.currentMonster.vel) {
+    if (playerVel >= this.currentMonster.vel) {
       await this.playerAtk(skill);
       if (this.currentMonster.currentLife == 0) {
         this.eventDone = true;
@@ -130,7 +133,7 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   private async monsterAtk() {
-    let magicAtk = false;
+    let magicAtk = false, damage = 0;
     if (this.currentMonster.magic > 0) {
       let prob = [], aux = [{ p: 30, v: true }, { p: 70, v: false }];
       for (let p = 0; p < aux.length; p++) {
@@ -143,13 +146,19 @@ export class DungeonRoomComponent implements OnInit {
     }
 
     if (magicAtk) {
-      this.player.current.life -= this.calcDamage(this.currentMonster.magic, this.player.current.prot);
+      damage = this.calcDamage(this.currentMonster.magic,
+        (this.player.current.prot + this.player.equipAttr.prot));
     } else {
-      this.player.current.life -= this.calcDamage(this.currentMonster.atk, this.player.current.def);
+      damage = this.calcDamage(this.currentMonster.atk,
+        (this.player.current.def + this.player.equipAttr.def));
     }
-    if (this.player.current.life <= 0) {
-      this.player.current.life = 0;
+
+    this.player.currentLife -= damage;
+
+    if (this.player.currentLife <= 0) {
+      this.player.currentLife = 0;
       await this.helper.sleep(500);
+      this.deathCause = this.currentMonster.name;
       return this.gameOver();
     }
   }
@@ -158,11 +167,11 @@ export class DungeonRoomComponent implements OnInit {
     let damage = 0, auxCurHP = 0;
     switch (sk.type) {
       case 'atk':
-        damage = ~~((this.player.current[sk.attr] / 2) + sk.val);
+        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr] + sk.val) / 2);
         auxCurHP = this.currentMonster.currentLife - this.calcDamage(damage, this.currentMonster.def);
         break;
       case 'magic':
-        damage = ~~((this.player.current[sk.attr] / 2) + sk.val);
+        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr] + sk.val) / 2);
         auxCurHP = this.currentMonster.currentLife - this.calcDamage(damage, this.currentMonster.prot);
         break;
       case 'buff':
@@ -206,6 +215,7 @@ export class DungeonRoomComponent implements OnInit {
       case 'battle':
       case 'boss':
         this.currentMonster = {
+          name: '',
           baseLife: 0,
           currentLife: 0,
           exp: 0,
@@ -220,15 +230,16 @@ export class DungeonRoomComponent implements OnInit {
         this.canAtk = true;
         break;
       case 'trap':
-        let percLife = room.actionItem.value(this.player.base.life);
+        let percLife = room.actionItem.value(this.player.baseLife);
         let evasion = ~~(Math.random() * 100);
         if (evasion <= this.player.current.eva) {
           this.trapped = false;
         }
         if (this.trapped) {
-          this.player.current.life -= percLife;
-          if (this.player.current.life <= 0) {
-            this.player.current.life = 0;
+          this.player.currentLife -= percLife;
+          if (this.player.currentLife <= 0) {
+            this.player.currentLife = 0;
+            this.deathCause = room.actionItem.location;
             return this.gameOver();
           }
         }
@@ -245,22 +256,27 @@ export class DungeonRoomComponent implements OnInit {
             calc: room.actionItem.calc,
             atr: room.actionItem.atr,
             operator: room.actionItem.operator,
+            title: room.actionItem.title,
           });
         } else {
-          room.actionItem.operator == '+' ? this.player.current[room.actionItem.atr] +=
-            ~~(room.actionItem.calc(this.player.base[room.actionItem.atr]))
-            : this.player.current[room.actionItem.atr] -=
-            ~~(room.actionItem.calc(this.player.base[room.actionItem.atr]));
-
-          if (this.player.current[room.actionItem.atr] >= this.player.base[room.actionItem.atr]) {
-            this.player.current[room.actionItem.atr] = this.player.base[room.actionItem.atr];
-          }
-          if (this.player.current[room.actionItem.atr] <= 0) {
-            this.player.current[room.actionItem.atr] = 0;
-          }
-          if (this.player.current.life <= 0) {
-            this.player.current.life = 0;
-            return this.gameOver();
+          switch (room.actionItem.atr) {
+            case 'life':
+              room.actionItem.operator == '+'
+                ? this.player.currentLife += ~~(room.actionItem.calc(this.player.baseLife))
+                : this.player.currentLife -= ~~(room.actionItem.calc(this.player.baseLife));
+              break;
+            case 'mana':
+              room.actionItem.operator == '+'
+                ? this.player.currentMana += ~~(room.actionItem.calc(this.player.baseMana))
+                : this.player.currentMana -= ~~(room.actionItem.calc(this.player.baseMana));
+              break;
+            default:
+              room.actionItem.operator == '+'
+                ? this.player.current[room.actionItem.atr] +=
+                ~~(room.actionItem.calc(this.player.base[room.actionItem.atr]))
+                : this.player.current[room.actionItem.atr] -=
+                ~~(room.actionItem.calc(this.player.base[room.actionItem.atr]));
+              break;
           }
         }
         this.eventDone = true;
@@ -287,12 +303,24 @@ export class DungeonRoomComponent implements OnInit {
 
   private changeConditionPlayer() {
     this.player.conditions = this.player.conditions.map(cnd => {
-      cnd.operator == '+' ? this.player.current[cnd.atr] += ~~(cnd.calc(this.player.base[cnd.atr]))
-        : this.player.current[cnd.atr] -= ~~(cnd.calc(this.player.base[cnd.atr]));
       cnd.turns -= 1;
-      if (this.player.current[cnd.atr] <= 0 && (cnd.atr != 'life' || cnd.atr != 'mana')) {
-        this.player.current[cnd.atr] = 0;
-        return this.gameOver();
+      switch (cnd.atr) {
+        case 'life':
+          cnd.operator == '+'
+            ? this.player.currentLife += ~~(cnd.calc(this.player.baseLife))
+            : this.player.currentLife -= ~~(cnd.calc(this.player.baseLife));
+
+          if (this.player.currentLife <= 0) {
+            this.player.currentLife = 0;
+            this.deathCause = cnd.title;
+            return this.gameOver();
+          }
+          break;
+        default:
+          cnd.operator == '+'
+            ? this.player.current[cnd.atr] += ~~(cnd.calc(this.player.base[cnd.atr]))
+            : this.player.current[cnd.atr] -= ~~(cnd.calc(this.player.base[cnd.atr]));
+          break;
       }
       if (cnd.turns <= 0 && (cnd.atr != 'life' && cnd.atr != 'mana')) {
         this.player.current[cnd.atr] = this.player.base[cnd.atr];

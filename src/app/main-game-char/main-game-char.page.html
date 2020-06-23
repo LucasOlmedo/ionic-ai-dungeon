@@ -64,34 +64,48 @@
         <br>
         <ion-text color="danger">HP</ion-text>
         <ion-text color="danger" class="ion-float-end">
-          {{ player.current.life }}/{{ player.base.life }}
+          {{ player.currentLife }}/{{ player.baseLife }}
         </ion-text>
         <br>
         <ion-text color="danger">Ataque</ion-text>
-        <ion-text color="danger" class="ion-float-end">{{ player.current.atk }}</ion-text>
+        <ion-text color="danger" class="ion-float-end">
+          {{ player.current.atk + player.equipAttr.atk }}
+        </ion-text>
         <br>
         <ion-text color="danger">Defesa</ion-text>
-        <ion-text color="danger" class="ion-float-end">{{ player.current.def }}</ion-text>
+        <ion-text color="danger" class="ion-float-end">
+          {{ player.current.def + player.equipAttr.def }}
+        </ion-text>
         <br>
         <ion-text color="primary">Mana</ion-text>
         <ion-text color="primary" class="ion-float-end">
-          {{ player.current.mana }}/{{ player.base.mana }}
+          {{ player.currentMana }}/{{ player.baseMana }}
         </ion-text>
         <br>
         <ion-text color="primary">Magia</ion-text>
-        <ion-text color="primary" class="ion-float-end">{{ player.current.magic }}</ion-text>
+        <ion-text color="primary" class="ion-float-end">
+          {{ player.current.magic + player.equipAttr.magic }}
+        </ion-text>
         <br>
         <ion-text color="primary">Proteção</ion-text>
-        <ion-text color="primary" class="ion-float-end">{{ player.current.prot }}</ion-text>
+        <ion-text color="primary" class="ion-float-end">
+          {{ player.current.prot + player.equipAttr.prot }}
+        </ion-text>
         <br>
         <ion-text color="success">Velocidade</ion-text>
-        <ion-text color="success" class="ion-float-end">{{ player.current.vel }}</ion-text>
+        <ion-text color="success" class="ion-float-end">
+          {{ player.current.vel + player.equipAttr.vel }}
+        </ion-text>
         <br>
         <ion-text color="success">Crítico</ion-text>
-        <ion-text color="success" class="ion-float-end">{{ player.current.crit }}%</ion-text>
+        <ion-text color="success" class="ion-float-end">
+          {{ player.current.crit + player.equipAttr.crit }}%
+        </ion-text>
         <br>
         <ion-text color="success">Evasão</ion-text>
-        <ion-text color="success" class="ion-float-end">{{ player.current.eva }}%</ion-text>
+        <ion-text color="success" class="ion-float-end">
+          {{ player.current.eva + player.equipAttr.eva }}%
+        </ion-text>
         <br>
       </ion-col>
     </ion-row>
