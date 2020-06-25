@@ -4,6 +4,7 @@ import { DungeonService } from 'src/app/dungeon.service';
 import { PlayerService } from 'src/app/player.service';
 import { Player } from 'src/app/models/player';
 import { HelperService } from 'src/app/helper.service';
+import { EQUIPS } from 'src/app/equip-constants';
 
 @Component({
   selector: 'app-dungeon-room',
@@ -33,9 +34,11 @@ export class DungeonRoomComponent implements OnInit {
   };
   trapped: boolean = true;
   chestGold: number = 0;
+  lootEquip = null;
   playerIsDead: boolean = false;
   currentFloorIndex: number = 0;
   deathCause: string = '';
+  canGetLoot: boolean = false;
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -77,6 +80,7 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   enterRoom(room) {
+    this.lootEquip = null;
     this.trapped = true;
     this.eventDone = false;
     this.chestOpened = false;
@@ -87,9 +91,44 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   openChest() {
+    this.getLootEquip();
+    this.canGetLoot = this.player.inventory.filter(t => t == 0).length > 0;
+    console.log(this.player.inventory.filter(t => t == 0), this.player.inventory.filter(t => t == 0).length > 0);
     this.chestOpened = true;
     this.eventDone = true;
     this.player.gold += this.chestGold;
+  }
+
+  private getLootEquip() {
+    let isEquip = false, prob = [], aux = [{ p: 100, v: true }, { p: 0, v: false }];
+    for (let p = 0; p < aux.length; p++) {
+      let a = aux[p];
+      for (let i = 0; i < a.p; i++) {
+        prob.push(a.v);
+      }
+    }
+    isEquip = prob[~~(Math.random() * prob.length)];
+    if (isEquip) {
+      let match = false;
+      this.lootEquip = EQUIPS[~~(Math.random() * EQUIPS.length)];
+      let thisEquip = Object.assign({}, this.lootEquip);
+      if (thisEquip.type == 'equip') {
+        thisEquip.id = this.helper.randomId();
+      }
+      this.player.inventory.map((t: any) => {
+        if (t != 0 && t.id == thisEquip.id) {
+          match = true;
+          t.count++;
+        }
+        return t;
+      });
+      if (!match) {
+        let indexLoot = this.player.inventory.indexOf(0);
+        if (indexLoot != -1) {
+          this.player.inventory[indexLoot] = thisEquip;
+        }
+      }
+    }
   }
 
   async gameOver() {
@@ -112,6 +151,7 @@ export class DungeonRoomComponent implements OnInit {
         this.eventDone = true;
         this.player.updateExp(this.currentMonster.exp);
         this.player.gold += this.currentMonster.gold;
+        this.getLootEquip();
         this.player.killCount++;
       } else {
         await this.helper.sleep(500);
@@ -125,6 +165,7 @@ export class DungeonRoomComponent implements OnInit {
         this.eventDone = true;
         this.player.updateExp(this.currentMonster.exp);
         this.player.gold += this.currentMonster.gold;
+        this.getLootEquip();
         this.player.killCount++;
       }
     }
@@ -167,11 +208,11 @@ export class DungeonRoomComponent implements OnInit {
     let damage = 0, auxCurHP = 0;
     switch (sk.type) {
       case 'atk':
-        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr] + sk.val) / 2);
+        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 2) + sk.val;
         auxCurHP = this.currentMonster.currentLife - this.calcDamage(damage, this.currentMonster.def);
         break;
       case 'magic':
-        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr] + sk.val) / 2);
+        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 2) + sk.val;
         auxCurHP = this.currentMonster.currentLife - this.calcDamage(damage, this.currentMonster.prot);
         break;
       case 'buff':
@@ -185,9 +226,9 @@ export class DungeonRoomComponent implements OnInit {
         });
         break;
       case 'heal':
-        this.player.current[sk.attr] += ~~(this.player.base[sk.attr] * (sk.val / 100));
-        if (this.player.current[sk.attr] >= this.player.base[sk.attr]) {
-          this.player.current[sk.attr] = this.player.base[sk.attr];
+        this.player.currentLife += ~~(this.player.baseLife * (sk.val / 100));
+        if (this.player.currentLife >= this.player.baseLife) {
+          this.player.currentLife = this.player.baseLife;
         }
         break;
     }
@@ -199,7 +240,7 @@ export class DungeonRoomComponent implements OnInit {
 
   private calcDamage(launcherAtk, targetDef) {
     let damage = launcherAtk - targetDef;
-    return damage < 7 ? 7 : damage;
+    return damage < 9 ? 9 : damage;
   }
 
   private async manageRoom() {
@@ -228,6 +269,7 @@ export class DungeonRoomComponent implements OnInit {
         };
         this.currentMonster = this.calcMonster(room.actionItem, room.action);
         this.canAtk = true;
+        console.log(this.player, this.currentMonster);
         break;
       case 'trap':
         let percLife = room.actionItem.value(this.player.baseLife);
@@ -264,11 +306,17 @@ export class DungeonRoomComponent implements OnInit {
               room.actionItem.operator == '+'
                 ? this.player.currentLife += ~~(room.actionItem.calc(this.player.baseLife))
                 : this.player.currentLife -= ~~(room.actionItem.calc(this.player.baseLife));
+              if (this.player.currentLife >= this.player.baseLife) {
+                this.player.currentLife = this.player.baseLife;
+              }
               break;
             case 'mana':
               room.actionItem.operator == '+'
                 ? this.player.currentMana += ~~(room.actionItem.calc(this.player.baseMana))
                 : this.player.currentMana -= ~~(room.actionItem.calc(this.player.baseMana));
+              if (this.player.currentMana >= this.player.baseMana) {
+                this.player.currentMana = this.player.baseMana;
+              }
               break;
             default:
               room.actionItem.operator == '+'
@@ -286,18 +334,18 @@ export class DungeonRoomComponent implements OnInit {
 
   private calcMonster(m, type) {
     let monster = Object.assign({}, m), lvAux = type == 'boss'
-      ? this.player.level : ~~(Math.random() * (this.player.level - this.currentFloorIndex)
-        + this.currentFloorIndex);
-    monster.level = lvAux == 0 ? 1 : lvAux;
-    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 2))) + 35;
+      ? (this.player.level - 1) : ~~(Math.random() * (this.player.level - this.currentFloorIndex)
+        + this.currentFloorIndex) - 1;
+    monster.level = lvAux <= 0 ? 1 : lvAux;
+    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 1.5))) + (40 * monster.level);
     monster.currentLife = monster.baseLife;
     monster.exp = ~~(m.exp * (monster.level / 2) + m.exp);
     monster.gold = ~~(m.gold * (monster.level / 2));
-    monster.atk = ~~(m.atk + (monster.level / 0.05));
-    monster.def = ~~(m.def + (monster.level / 0.08));
-    monster.magic = ~~(m.magic + (monster.level / 0.05));
-    monster.prot = ~~(m.prot + (monster.level / 0.07));
-    monster.vel = ~~(m.vel + (monster.level / 0.06));
+    monster.atk = ~~(m.atk + (monster.level * 10)) + (5 * monster.level);
+    monster.def = ~~(m.def + (monster.level * 9)) + (4 * monster.level);
+    monster.magic = ~~(m.magic + (monster.level / 0.08));
+    monster.prot = ~~(m.prot + (monster.level / 0.09));
+    monster.vel = ~~(m.vel + (monster.level / 0.07));
     return monster;
   }
 

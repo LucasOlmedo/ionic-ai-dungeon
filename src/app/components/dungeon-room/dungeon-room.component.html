@@ -61,6 +61,20 @@
         <div *ngIf="chestOpened" class="ion-text-center text-color-chest ion-padding-top">
           Você encontrou {{ chestGold }} moedas de ouro!
         </div>
+        <div *ngIf="canGetLoot">
+          <div *ngIf="lootEquip" class="ion-text-center text-color-equip">
+            <span class="ion-margin-bottom">
+              Você encontrou {{ lootEquip.name }}!
+            </span>
+            <br>
+            <img [src]="lootEquip.img" style="height: 60px; margin-top: 20px;">
+          </div>
+        </div>
+        <div *ngIf="chestOpened && !canGetLoot">
+          <div class="ion-text-center ion-margin-top text-bless-atk">
+            Seu inventário está cheio!
+          </div>
+        </div>
         <ion-row *ngIf="!eventDone">
           <ion-col class="ion-text-center ion-padding-top">
             <ion-button color="dark" fill="outline" (click)="openChest()">
@@ -89,7 +103,7 @@
           {{ currentRoom.actionItem.description }}
         </div>
         <div *ngIf="trapped; else evasion" class="ion-text-center ion-margin-top text-bless-atk">
-          Você perdeu {{ currentRoom.actionItem.value(player.base.life) }} de HP!
+          Você perdeu {{ currentRoom.actionItem.value(player.baseLife) }} de HP!
         </div>
         <ng-template #evasion>
           <div class="ion-text-center ion-margin-top text-bless-heal">
@@ -127,7 +141,7 @@
           <ion-grid style="padding: 0; margin-top: 5px;">
             <ion-row>
               <ion-col size="6" class="col-skill" *ngFor="let skill of player.skills">
-                <ion-button [disabled]="(skill.cost > player.current.mana) || !canAtk || !skill.active"
+                <ion-button [disabled]="(skill.cost > player.currentMana) || !canAtk || !skill.active"
                   [color]="skill.color || 'dark'" fill="outline" (click)="battleAction(skill)">
                   <ion-img src="{{ skill.img || '../assets/images/skill/empty.png'}}"></ion-img>
                 </ion-button>
@@ -146,6 +160,20 @@
           </div>
           <div class="ion-text-center ion-margin-top text-color-chest ">
             Encontrou {{ currentMonster.gold }} moedas de ouro!
+          </div>
+          <div *ngIf="canGetLoot">
+            <div *ngIf="lootEquip" class="ion-text-center text-color-equip">
+              <span class="ion-margin-bottom">
+                Você encontrou {{ lootEquip.name }}!
+              </span>
+              <br>
+              <img [src]="lootEquip.img" style="height: 60px; margin-top: 20px;">
+            </div>
+          </div>
+          <div *ngIf="!canGetLoot">
+            <div class="ion-text-center ion-margin-top text-bless-atk">
+              Seu inventário está cheio!
+            </div>
           </div>
         </ion-card-content>
       </div>

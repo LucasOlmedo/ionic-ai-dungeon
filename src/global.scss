@@ -26,5 +26,13 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .confirm-quit {
-    color: var(--ion-color-danger, #eb445a) !important;
+    color: var(--ion-color-danger) !important;
+}
+
+.sell-item {
+    color: var(--ion-color-warning) !important;
+}
+
+.alert-button-group-vertical.sc-ion-alert-md {
+    flex-direction: initial !important;
 }

@@ -15,14 +15,26 @@
 <ion-content fullscreen>
   <ion-item lines="none">
     <ion-label>
-      <h3>Capacidade: 0/{{ player.inventory.length }}</h3>
+      <h3>
+        Capacidade: {{ count }}/{{ player.inventory.length }}
+        <span *ngIf="count == player.inventory.length" class="full-loot">
+          Cheio!
+        </span>
+      </h3>
     </ion-label>
   </ion-item>
   <ion-grid class="ion-margin-bottom ion-padding-bottom">
     <ion-row>
       <ion-col size="4" class="col-skill" *ngFor="let slot of player.inventory">
-        <ion-button [disabled]="!slot.img" color="dark" fill="outline">
+        <ion-button [disabled]="!slot.img && !slot.equiped" color="dark" fill="outline"
+          (click)="manageSlot(slot)">
           <img [src]="slot.img || '../assets/images/skill/empty.png'" />
+          <div *ngIf="slot.type == 'potion'">
+            <span class="loot-count">{{ slot.count }}x</span>
+          </div>
+          <div *ngIf="slot.type == 'equip' && slot.equiped == true">
+            <span class="loot-equip">e</span>
+          </div>
         </ion-button>
       </ion-col>
     </ion-row>

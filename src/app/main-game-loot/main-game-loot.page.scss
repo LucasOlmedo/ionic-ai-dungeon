@@ -15,3 +15,22 @@
         }
     }
 }
+
+.loot-count {
+    text-transform: lowercase;
+    position: absolute;
+    top: 3px;
+    left: -10px;
+}
+
+.loot-equip {
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 2px;
+    right: -12px;
+}
+
+.full-loot {
+    color: red;
+    float: right !important;
+}
