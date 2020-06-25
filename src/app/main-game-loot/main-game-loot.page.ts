@@ -61,12 +61,21 @@ export class MainGameLootPage implements OnInit {
       ${this.nameRef[t.attr]}`).join('<br>');
     let alert = await this.alertCtrl.create({
       header: `${equip.equiped == true ? 'Desequipar' : 'Equipar'} item?`,
-      message: equip.equiped == true ? '' : `${messageText}<br><br>${attribText}`,
+      message: equip.equiped == true ? '' : `${messageText}<br><br>${attribText}<br><br><br>
+        Vale ${equip.cost} moedas`,
       buttons: [
-        {
-          text: 'Vender',
+        equip.equiped == true ? `` : {
+          text: `Vender`,
           cssClass: 'sell-item',
-          handler: () => { },
+          handler: () => {
+            this.player.gold += equip.cost;
+            this.player.inventory = this.player.inventory.map((t: any) => {
+              if (t.id == equip.id) {
+                return 0;
+              }
+              return t;
+            });
+          },
         },
         {
           text: 'Não',
@@ -154,12 +163,25 @@ export class MainGameLootPage implements OnInit {
     let slotAttr = potion.attr == 'life' ? 'HP' : 'Mana';
     let alert = await this.alertCtrl.create({
       header: 'Usar item?',
-      message: `${potion.name}<br>Recupera ${potion.value}% de ${slotAttr}`,
+      message: `${potion.name}<br>Recupera ${potion.value}% de ${slotAttr}<br><br><br>
+        Vale ${potion.cost} moedas`,
       buttons: [
         {
           text: 'Vender',
           cssClass: 'sell-item',
-          handler: () => { },
+          handler: () => {
+            potion.count--;
+            this.player.gold += potion.cost;
+            this.player.inventory = this.player.inventory.map((t: any) => {
+              if (t.id == potion.id) {
+                if (t.count <= 0 || potion.count <= 0) {
+                  potion = 0;
+                }
+                return potion;
+              }
+              return t;
+            });
+          },
         },
         {
           text: 'Não',

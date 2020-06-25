@@ -93,7 +93,6 @@ export class DungeonRoomComponent implements OnInit {
   openChest() {
     this.getLootEquip();
     this.canGetLoot = this.player.inventory.filter(t => t == 0).length > 0;
-    console.log(this.player.inventory.filter(t => t == 0), this.player.inventory.filter(t => t == 0).length > 0);
     this.chestOpened = true;
     this.eventDone = true;
     this.player.gold += this.chestGold;
@@ -269,7 +268,6 @@ export class DungeonRoomComponent implements OnInit {
         };
         this.currentMonster = this.calcMonster(room.actionItem, room.action);
         this.canAtk = true;
-        console.log(this.player, this.currentMonster);
         break;
       case 'trap':
         let percLife = room.actionItem.value(this.player.baseLife);

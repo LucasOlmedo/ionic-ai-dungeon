@@ -13,6 +13,7 @@ export const EQUIPS = [
                 value: 17,
             },
         ],
+        cost: 117,
     },
 
     // SHIELD
@@ -28,6 +29,7 @@ export const EQUIPS = [
                 value: 10,
             },
         ],
+        cost: 86,
     },
 
     // ARMOR
@@ -51,6 +53,7 @@ export const EQUIPS = [
                 value: 12,
             },
         ],
+        cost: 201,
     },
 
     // SWORD
@@ -70,6 +73,7 @@ export const EQUIPS = [
                 value: 3,
             },
         ],
+        cost: 148,
     },
 
     // RING
@@ -89,6 +93,7 @@ export const EQUIPS = [
                 value: 1,
             },
         ],
+        cost: 130,
     },
 
     // BOOTS
@@ -109,6 +114,7 @@ export const EQUIPS = [
                 value: 5,
             },
         ],
+        cost: 129,
     },
 
     // NECKLACE
@@ -129,6 +135,7 @@ export const EQUIPS = [
                 value: 10,
             },
         ],
+        cost: 132,
     },
 
     // LOOT
@@ -141,6 +148,7 @@ export const EQUIPS = [
         count: 1,
         attr: 'life',
         value: 15,
+        cost: 50,
     },
     {
         id: 2,
@@ -151,5 +159,6 @@ export const EQUIPS = [
         count: 1,
         attr: 'mana',
         value: 15,
+        cost: 50,
     }
 ];

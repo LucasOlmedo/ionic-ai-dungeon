@@ -23,6 +23,7 @@ export class Player {
             count: 5,
             attr: 'life',
             value: 15,
+            cost: 50,
         },
         {
             id: 2,
@@ -33,6 +34,7 @@ export class Player {
             count: 5,
             attr: 'mana',
             value: 15,
+            cost: 50,
         }, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

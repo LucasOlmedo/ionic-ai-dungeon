@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../player.service';
 import { Player } from '../models/player';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-main-game-equip',
@@ -23,18 +24,22 @@ export class MainGameEquipPage implements OnInit {
     eva: 'Evasão',
   };
 
-  constructor(private playerService: PlayerService) { }
+  constructor(
+    private playerService: PlayerService,
+    private alertCtrl: AlertController,
+  ) { }
 
   ngOnInit() {
     this.playerService.getPlayer()
       .subscribe((p: Player) => {
         this.player = p;
-        this.initBuffs();
+        this.updateBuffs();
       });
   }
 
-  initBuffs() {
+  updateBuffs() {
     let playerEquipAttr = this.player.equipAttr, color = '';
+    this.buffs = [];
     for (let buff in playerEquipAttr) {
       switch (buff) {
         case 'life':
@@ -62,4 +67,54 @@ export class MainGameEquipPage implements OnInit {
     }
   }
 
+  async removeEquip(equip) {
+    let messageText = `${equip.name}`, attribText = equip.extra
+      .map(t => `+ ${t.value} ${t.attr == 'crit' || t.attr == 'eva' ? '%' : ''} ${this.nameRef[t.attr]}`)
+      .join('<br>');
+    let alert = await this.alertCtrl.create({
+      header: 'Desequipar item?',
+      message: `${messageText}<br><br>${attribText}`,
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+          cssClass: 'confirm-quit',
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            let tAtrbLife = equip.extra.find(x => x.attr == 'life'),
+              tAtrbMana = equip.extra.find(x => x.attr == 'mana');
+
+            this.player.equip[equip.equip] = null;
+            this.player.calcEquipAttr();
+
+            if (tAtrbLife != null) {
+              this.player.baseLife -= tAtrbLife.value;
+              if (this.player.currentLife >= this.player.baseLife) {
+                this.player.currentLife = this.player.baseLife;
+              }
+            }
+
+            if (tAtrbMana != null) {
+              this.player.baseMana -= tAtrbMana.value;
+              if (this.player.currentMana >= this.player.baseMana) {
+                this.player.currentMana = this.player.baseMana;
+              }
+            }
+
+            equip.equiped = false;
+            this.player.inventory = this.player.inventory.map((t: any) => {
+              if (t.id == equip.id) {
+                return equip;
+              }
+              return t;
+            });
+            this.updateBuffs();
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
 }
