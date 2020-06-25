@@ -99,7 +99,7 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   private getLootEquip() {
-    let isEquip = false, prob = [], aux = [{ p: 100, v: true }, { p: 0, v: false }];
+    let isEquip = false, prob = [], aux = [{ p: 35, v: true }, { p: 65, v: false }];
     for (let p = 0; p < aux.length; p++) {
       let a = aux[p];
       for (let i = 0; i < a.p; i++) {
