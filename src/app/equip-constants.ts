@@ -2,6 +2,7 @@ export const EQUIPS = [
 
     // HELMET
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -20,6 +21,7 @@ export const EQUIPS = [
         cost: 124,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -42,6 +44,7 @@ export const EQUIPS = [
         cost: 146,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -60,6 +63,7 @@ export const EQUIPS = [
         cost: 136,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -78,6 +82,7 @@ export const EQUIPS = [
         cost: 121,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -96,6 +101,7 @@ export const EQUIPS = [
         cost: 122,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -114,6 +120,7 @@ export const EQUIPS = [
         cost: 118,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -136,6 +143,7 @@ export const EQUIPS = [
         cost: 135,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -154,6 +162,7 @@ export const EQUIPS = [
         cost: 113,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -176,6 +185,7 @@ export const EQUIPS = [
         cost: 127,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -198,6 +208,7 @@ export const EQUIPS = [
         cost: 125,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -220,6 +231,7 @@ export const EQUIPS = [
         cost: 132,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -238,6 +250,7 @@ export const EQUIPS = [
         cost: 121,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -260,6 +273,7 @@ export const EQUIPS = [
         cost: 142,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -278,6 +292,7 @@ export const EQUIPS = [
         cost: 123,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -296,6 +311,7 @@ export const EQUIPS = [
         cost: 120,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -314,6 +330,7 @@ export const EQUIPS = [
         cost: 136,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
@@ -336,11 +353,12 @@ export const EQUIPS = [
         cost: 140,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'helmet',
         img: '../assets/images/equip/helmet/wizard-hat.png',
-        name: 'Chapéu mágico',
+        name: 'Turbante do mago',
         extra: [
             {
                 attr: 'life',
@@ -357,9 +375,48 @@ export const EQUIPS = [
         ],
         cost: 142,
     },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'helmet',
+        img: '../assets/images/equip/helmet/witch-hat.png',
+        name: 'Chapéu de bruxa',
+        extra: [
+            {
+                attr: 'prot',
+                value: 10,
+            },
+            {
+                attr: 'life',
+                value: 10,
+            },
+        ],
+        cost: 160,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'helmet',
+        img: '../assets/images/equip/helmet/wizard-helm.png',
+        name: 'Chapéu mágico',
+        extra: [
+            {
+                attr: 'life',
+                value: 15,
+            },
+            {
+                attr: 'magic',
+                value: 7,
+            },
+        ],
+        cost: 152,
+    },
 
     // SHIELD
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -374,6 +431,7 @@ export const EQUIPS = [
         cost: 86,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -392,6 +450,7 @@ export const EQUIPS = [
         cost: 90,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -410,6 +469,7 @@ export const EQUIPS = [
         cost: 92,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -428,6 +488,7 @@ export const EQUIPS = [
         cost: 100,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -446,6 +507,7 @@ export const EQUIPS = [
         cost: 124,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -464,6 +526,7 @@ export const EQUIPS = [
         cost: 85,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -486,6 +549,7 @@ export const EQUIPS = [
         cost: 150,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -504,6 +568,7 @@ export const EQUIPS = [
         cost: 161,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -522,6 +587,7 @@ export const EQUIPS = [
         cost: 130,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -544,6 +610,7 @@ export const EQUIPS = [
         cost: 142,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'shield',
@@ -568,6 +635,7 @@ export const EQUIPS = [
 
     // ARMOR
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -586,6 +654,7 @@ export const EQUIPS = [
         cost: 201,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -604,6 +673,7 @@ export const EQUIPS = [
         cost: 187,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -626,6 +696,7 @@ export const EQUIPS = [
         cost: 220,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -644,6 +715,7 @@ export const EQUIPS = [
         cost: 175,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -666,6 +738,7 @@ export const EQUIPS = [
         cost: 221,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -684,6 +757,7 @@ export const EQUIPS = [
         cost: 171,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -706,6 +780,7 @@ export const EQUIPS = [
         cost: 223,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -724,6 +799,7 @@ export const EQUIPS = [
         cost: 176,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -746,6 +822,7 @@ export const EQUIPS = [
         cost: 182,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -768,6 +845,7 @@ export const EQUIPS = [
         cost: 196,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -790,6 +868,7 @@ export const EQUIPS = [
         cost: 200,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -812,6 +891,7 @@ export const EQUIPS = [
         cost: 205,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -834,6 +914,7 @@ export const EQUIPS = [
         cost: 199,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -856,6 +937,7 @@ export const EQUIPS = [
         cost: 201,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -874,6 +956,7 @@ export const EQUIPS = [
         cost: 177,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -892,6 +975,7 @@ export const EQUIPS = [
         cost: 175,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'armor',
@@ -916,6 +1000,7 @@ export const EQUIPS = [
 
     // SWORD
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'sword',
@@ -934,6 +1019,7 @@ export const EQUIPS = [
         cost: 120,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'sword',
@@ -952,6 +1038,7 @@ export const EQUIPS = [
         cost: 152,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'sword',
@@ -974,6 +1061,7 @@ export const EQUIPS = [
         cost: 163,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'sword',
@@ -996,6 +1084,7 @@ export const EQUIPS = [
         cost: 175,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'sword',
@@ -1018,6 +1107,7 @@ export const EQUIPS = [
         cost: 186,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'sword',
@@ -1040,6 +1130,7 @@ export const EQUIPS = [
         cost: 185,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'sword',
@@ -1058,6 +1149,7 @@ export const EQUIPS = [
         cost: 174,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'sword',
@@ -1076,6 +1168,7 @@ export const EQUIPS = [
         cost: 196,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'sword',
@@ -1094,6 +1187,7 @@ export const EQUIPS = [
         cost: 148,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'sword',
@@ -1115,9 +1209,372 @@ export const EQUIPS = [
         ],
         cost: 203,
     },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/great-bow.png',
+        name: 'Arco rápido',
+        extra: [
+            {
+                attr: 'atk',
+                value: 16,
+            },
+            {
+                attr: 'vel',
+                value: 5,
+            },
+        ],
+        cost: 187,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/hatchet.png',
+        name: 'Machete de pedra',
+        extra: [
+            {
+                attr: 'def',
+                value: 4,
+            },
+            {
+                attr: 'atk',
+                value: 13,
+            },
+        ],
+        cost: 146,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/heart-arrow.png',
+        name: 'Flecha coração',
+        extra: [
+            {
+                attr: 'life',
+                value: 8,
+            },
+            {
+                attr: 'atk',
+                value: 11,
+            },
+        ],
+        cost: 152,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/heavy-hammer.png',
+        name: 'Mjolnir',
+        extra: [
+            {
+                attr: 'atk',
+                value: 17,
+            },
+            {
+                attr: 'def',
+                value: 6,
+            },
+            {
+                attr: 'prot',
+                value: 4,
+            },
+        ],
+        cost: 177,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/knife.png',
+        name: 'Facão leve',
+        extra: [
+            {
+                attr: 'atk',
+                value: 13,
+            },
+            {
+                attr: 'crit',
+                value: 2,
+            },
+            {
+                attr: 'vel',
+                value: 4,
+            },
+        ],
+        cost: 179,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/kunai.png',
+        name: 'Kunai',
+        extra: [
+            {
+                attr: 'atk',
+                value: 8,
+            },
+            {
+                attr: 'vel',
+                value: 6,
+            },
+            {
+                attr: 'crit',
+                value: 3,
+            },
+        ],
+        cost: 181,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/longspear.png',
+        name: 'Lança primitiva',
+        extra: [
+            {
+                attr: 'atk',
+                value: 13,
+            },
+            {
+                attr: 'def',
+                value: 3,
+            },
+        ],
+        cost: 174,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/magic-bow.png',
+        name: 'Arco mágico de elite',
+        extra: [
+            {
+                attr: 'atk',
+                value: 16,
+            },
+            {
+                attr: 'magic',
+                value: 8,
+            },
+        ],
+        cost: 183,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/magic-tome.png',
+        name: 'Tomo mágico',
+        extra: [
+            {
+                attr: 'magic',
+                value: 14,
+            },
+            {
+                attr: 'prot',
+                value: 7,
+            },
+        ],
+        cost: 182,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/pick.png',
+        name: 'Picatera',
+        extra: [
+            {
+                attr: 'atk',
+                value: 12,
+            },
+            {
+                attr: 'life',
+                value: 7,
+            },
+        ],
+        cost: 191,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/piper.png',
+        name: 'Banjo leve',
+        extra: [
+            {
+                attr: 'magic',
+                value: 8,
+            },
+            {
+                attr: 'atk',
+                value: 7,
+            },
+            {
+                attr: 'vel',
+                value: 5,
+            },
+        ],
+        cost: 174,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/pirate-knife.png',
+        name: 'Faca de pirata',
+        extra: [
+            {
+                attr: 'atk',
+                value: 13,
+            },
+            {
+                attr: 'eva',
+                value: 2,
+            },
+        ],
+        cost: 176,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/plate-sword.png',
+        name: 'Espada de prata',
+        extra: [
+            {
+                attr: 'atk',
+                value: 17,
+            },
+            {
+                attr: 'def',
+                value: 3,
+            },
+        ],
+        cost: 185,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/rock-spear.png',
+        name: 'Lança de pedra',
+        extra: [
+            {
+                attr: 'atk',
+                value: 11,
+            },
+            {
+                attr: 'life',
+                value: 4,
+            },
+        ],
+        cost: 173,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/short-spear.png',
+        name: 'Lança curta samurai',
+        extra: [
+            {
+                attr: 'atk',
+                value: 16,
+            },
+            {
+                attr: 'vel',
+                value: 7,
+            },
+        ],
+        cost: 201,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/short-sword.png',
+        name: 'Gládio',
+        extra: [
+            {
+                attr: 'atk',
+                value: 15,
+            },
+            {
+                attr: 'def',
+                value: 5,
+            },
+        ],
+        cost: 191,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/shuriken.png',
+        name: 'Shuriken',
+        extra: [
+            {
+                attr: 'atk',
+                value: 11,
+            },
+            {
+                attr: 'vel',
+                value: 4,
+            },
+            {
+                attr: 'eva',
+                value: 1,
+            },
+        ],
+        cost: 193,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'sword',
+        img: '../assets/images/equip/sword/spike-mace.png',
+        name: 'Maça de espinhos',
+        extra: [
+            {
+                attr: 'atk',
+                value: 17,
+            },
+            {
+                attr: 'def',
+                value: 4,
+            },
+        ],
+        cost: 192,
+    },
 
     // RING
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'ring',
@@ -1136,6 +1593,7 @@ export const EQUIPS = [
         cost: 130,
     },
     {
+        id: null,
         type: 'equip',
         equiped: false,
         equip: 'ring',
@@ -1156,6 +1614,322 @@ export const EQUIPS = [
             },
         ],
         cost: 158,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/circus-ring.png',
+        name: 'Anel de circo',
+        extra: [
+            {
+                attr: 'prot',
+                value: 5,
+            },
+            {
+                attr: 'magic',
+                value: 6,
+            },
+        ],
+        cost: 145,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/cross-ring.png',
+        name: 'Anel de cruz',
+        extra: [
+            {
+                attr: 'def',
+                value: 8,
+            },
+            {
+                attr: 'life',
+                value: 14,
+            },
+        ],
+        cost: 163,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/diamond-ring.png',
+        name: 'Anel com diamante',
+        extra: [
+            {
+                attr: 'def',
+                value: 8,
+            },
+            {
+                attr: 'prot',
+                value: 6,
+            },
+        ],
+        cost: 157,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/fire-ring.png',
+        name: 'Anel vulcânico',
+        extra: [
+            {
+                attr: 'magic',
+                value: 10,
+            },
+            {
+                attr: 'prot',
+                value: 4,
+            },
+        ],
+        cost: 158,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/gold-ring.png',
+        name: 'Anel de ouro',
+        extra: [
+            {
+                attr: 'def',
+                value: 7,
+            },
+            {
+                attr: 'life',
+                value: 13,
+            },
+        ],
+        cost: 163,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/great-ring.png',
+        name: 'Grande anel azul',
+        extra: [
+            {
+                attr: 'def',
+                value: 12,
+            },
+            {
+                attr: 'prot',
+                value: 11,
+            },
+        ],
+        cost: 178,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/heart-ring.png',
+        name: 'Anel coração',
+        extra: [
+            {
+                attr: 'life',
+                value: 12,
+            },
+            {
+                attr: 'vel',
+                value: 3,
+            },
+        ],
+        cost: 153,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/ruby-ring.png',
+        name: 'Anel com rubi',
+        extra: [
+            {
+                attr: 'life',
+                value: 10,
+            },
+            {
+                attr: 'atk',
+                value: 5,
+            },
+        ],
+        cost: 154,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/saphire-ring.png',
+        name: 'Anel de safira',
+        extra: [
+            {
+                attr: 'life',
+                value: 10,
+            },
+            {
+                attr: 'atk',
+                value: 5,
+            },
+        ],
+        cost: 154,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/saphire-ring.png',
+        name: 'Anel de safira',
+        extra: [
+            {
+                attr: 'life',
+                value: 10,
+            },
+            {
+                attr: 'atk',
+                value: 5,
+            },
+        ],
+        cost: 154,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/silver-ring.png',
+        name: 'Anel prateado',
+        extra: [
+            {
+                attr: 'def',
+                value: 8,
+            },
+            {
+                attr: 'prot',
+                value: 6,
+            },
+        ],
+        cost: 152,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/solid-ring.png',
+        name: 'Anel sólido',
+        extra: [
+            {
+                attr: 'magic',
+                value: 6,
+            },
+            {
+                attr: 'prot',
+                value: 6,
+            },
+        ],
+        cost: 158,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/spike-ring.png',
+        name: 'Anel de espinhos',
+        extra: [
+            {
+                attr: 'atk',
+                value: 7,
+            },
+            {
+                attr: 'eva',
+                value: 2,
+            },
+        ],
+        cost: 176,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/triple-ring.png',
+        name: 'Anel de espinhos',
+        extra: [
+            {
+                attr: 'def',
+                value: 7,
+            },
+            {
+                attr: 'prot',
+                value: 7,
+            },
+            {
+                attr: 'vel',
+                value: 7,
+            },
+        ],
+        cost: 186,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/triple-ring.png',
+        name: 'Tríplice anel',
+        extra: [
+            {
+                attr: 'def',
+                value: 7,
+            },
+            {
+                attr: 'prot',
+                value: 7,
+            },
+            {
+                attr: 'vel',
+                value: 7,
+            },
+        ],
+        cost: 186,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/triple-ring.png',
+        name: 'Tríplice anel',
+        extra: [
+            {
+                attr: 'def',
+                value: 7,
+            },
+            {
+                attr: 'prot',
+                value: 7,
+            },
+            {
+                attr: 'vel',
+                value: 7,
+            },
+        ],
+        cost: 186,
     },
 
     // BOOTS
@@ -1203,7 +1977,7 @@ export const EQUIPS = [
         equiped: false,
         equip: 'boots',
         img: '../assets/images/equip/boots/boat.png',
-        name: 'Sapato de neve',
+        name: 'Coturno pesado',
         extra: [
             {
                 attr: 'prot',
@@ -1620,6 +2394,132 @@ export const EQUIPS = [
         ],
         cost: 212,
     },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'boots',
+        img: '../assets/images/equip/boots/samurai-shoes.png',
+        name: 'Sapato samurai',
+        extra: [
+            {
+                attr: 'prot',
+                value: 6,
+            },
+            {
+                attr: 'def',
+                value: 7,
+            },
+            {
+                attr: 'life',
+                value: 8,
+            },
+        ],
+        cost: 200,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'boots',
+        img: '../assets/images/equip/boots/scale-boots.png',
+        name: 'Bota de escamas',
+        extra: [
+            {
+                attr: 'life',
+                value: 13,
+            },
+            {
+                attr: 'def',
+                value: 7,
+            },
+            {
+                attr: 'magic',
+                value: 2,
+            },
+        ],
+        cost: 203,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'boots',
+        img: '../assets/images/equip/boots/snow-shoes.png',
+        name: 'Sapato de neve',
+        extra: [
+            {
+                attr: 'life',
+                value: 11,
+            },
+            {
+                attr: 'def',
+                value: 5,
+            },
+        ],
+        cost: 183,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'boots',
+        img: '../assets/images/equip/boots/steel-boots.png',
+        name: 'Bota de aço',
+        extra: [
+            {
+                attr: 'life',
+                value: 16,
+            },
+            {
+                attr: 'def',
+                value: 10,
+            },
+            {
+                attr: 'prot',
+                value: 5,
+            },
+        ],
+        cost: 211,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'boots',
+        img: '../assets/images/equip/boots/viking-boots.png',
+        name: 'Bota viking',
+        extra: [
+            {
+                attr: 'life',
+                value: 14,
+            },
+            {
+                attr: 'prot',
+                value: 8,
+            },
+        ],
+        cost: 200,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'boots',
+        img: '../assets/images/equip/boots/wizard-boots.png',
+        name: 'Botas de mago',
+        extra: [
+            {
+                attr: 'magic',
+                value: 12,
+            },
+            {
+                attr: 'prot',
+                value: 9,
+            },
+        ],
+        cost: 204,
+    },
 
     // NECKLACE
     {
@@ -1678,6 +2578,246 @@ export const EQUIPS = [
             },
         ],
         cost: 178,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/aqua-necklace.png',
+        name: 'Aqua colar',
+        extra: [
+            {
+                attr: 'magic',
+                value: 5,
+            },
+            {
+                attr: 'prot',
+                value: 6,
+            },
+            {
+                attr: 'mana',
+                value: 15,
+            },
+        ],
+        cost: 167,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/coin-pendant.png',
+        name: 'Pendente duplo',
+        extra: [
+            {
+                attr: 'def',
+                value: 8,
+            },
+            {
+                attr: 'prot',
+                value: 10,
+            },
+        ],
+        cost: 183,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/cross-necklace.png',
+        name: 'Colar de cruz',
+        extra: [
+            {
+                attr: 'life',
+                value: 13,
+            },
+            {
+                attr: 'def',
+                value: 5,
+            },
+            {
+                attr: 'prot',
+                value: 5,
+            },
+            {
+                attr: 'mana',
+                value: 10,
+            },
+        ],
+        cost: 193,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/forest-necklace.png',
+        name: 'Bordão da floresta',
+        extra: [
+            {
+                attr: 'life',
+                value: 16,
+            },
+            {
+                attr: 'vel',
+                value: 5,
+            },
+        ],
+        cost: 174,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/magic-necklace.png',
+        name: 'Colar mágico',
+        extra: [
+            {
+                attr: 'life',
+                value: 16,
+            },
+            {
+                attr: 'magic',
+                value: 6,
+            },
+            {
+                attr: 'mana',
+                value: 15,
+            },
+        ],
+        cost: 178,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/medallion.png',
+        name: 'Medalhão de cobre',
+        extra: [
+            {
+                attr: 'atk',
+                value: 3,
+            },
+            {
+                attr: 'life',
+                value: 16,
+            },
+        ],
+        cost: 167,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/pearl-necklace.png',
+        name: 'Colar de pérolas',
+        extra: [
+            {
+                attr: 'prot',
+                value: 6,
+            },
+            {
+                attr: 'life',
+                value: 18,
+            },
+        ],
+        cost: 186,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/quick-necklace.png',
+        name: 'Colar leve',
+        extra: [
+            {
+                attr: 'vel',
+                value: 8,
+            },
+            {
+                attr: 'eva',
+                value: 2,
+            },
+        ],
+        cost: 177,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/quick-necklace.png',
+        name: 'Colar leve',
+        extra: [
+            {
+                attr: 'vel',
+                value: 8,
+            },
+            {
+                attr: 'eva',
+                value: 2,
+            },
+        ],
+        cost: 177,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/ruby-pendant.png',
+        name: 'Pendente de rubi',
+        extra: [
+            {
+                attr: 'life',
+                value: 20,
+            },
+        ],
+        cost: 185,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/saphire-pendant.png',
+        name: 'Pendente de safira',
+        extra: [
+            {
+                attr: 'mana',
+                value: 17,
+            },
+            {
+                attr: 'def',
+                value: 5,
+            },
+        ],
+        cost: 174,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/tooth-necklace.png',
+        name: 'Dente de dragão',
+        extra: [
+            {
+                attr: 'atk',
+                value: 8,
+            },
+            {
+                attr: 'magic',
+                value: 5,
+            },
+        ],
+        cost: 169,
     },
 
     // LOOT

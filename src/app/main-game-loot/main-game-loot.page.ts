@@ -61,8 +61,7 @@ export class MainGameLootPage implements OnInit {
       ${this.nameRef[t.attr]}`).join('<br>');
     let alert = await this.alertCtrl.create({
       header: `${equip.equiped == true ? 'Desequipar' : 'Equipar'} item?`,
-      message: equip.equiped == true ? '' : `${messageText}<br><br>${attribText}<br><br><br>
-        Vale ${equip.cost} moedas`,
+      message: `${messageText}<br><br>${attribText}<br><br><br>Vale ${equip.cost} moedas`,
       buttons: [
         equip.equiped == true ? `` : {
           text: `Vender`,

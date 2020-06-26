@@ -38,7 +38,7 @@ export class DungeonRoomComponent implements OnInit {
   playerIsDead: boolean = false;
   currentFloorIndex: number = 0;
   deathCause: string = '';
-  canGetLoot: boolean = false;
+  canGetLoot: boolean = true;
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -87,6 +87,7 @@ export class DungeonRoomComponent implements OnInit {
     this.chestGold = 0;
     this.currentRoom = room;
     this.player.roomIndex++;
+    this.canGetLoot = true;
     this.manageRoom();
   }
 
@@ -193,7 +194,12 @@ export class DungeonRoomComponent implements OnInit {
         (this.player.current.def + this.player.equipAttr.def));
     }
 
-    this.player.currentLife -= damage;
+    let evasion = ~~(Math.random() * 100) + 1;
+    if (evasion <= this.player.current.eva) {
+      console.log('evasão');
+    } else {
+      this.player.currentLife -= damage;
+    }
 
     if (this.player.currentLife <= 0) {
       this.player.currentLife = 0;
@@ -204,14 +210,22 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   private async playerAtk(sk) {
-    let damage = 0, auxCurHP = 0;
+    let damage = 0, auxCurHP = 0, critChance = ~~(Math.random() * 100) + 1;
     switch (sk.type) {
       case 'atk':
         damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 2) + sk.val;
+        if (critChance <= this.player.current.crit) {
+          console.log('critico ataque');
+          damage = damage * 1.5;
+        }
         auxCurHP = this.currentMonster.currentLife - this.calcDamage(damage, this.currentMonster.def);
         break;
       case 'magic':
         damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 2) + sk.val;
+        if (critChance <= this.player.current.crit) {
+          console.log('critico magia');
+          damage = damage * 1.5;
+        }
         auxCurHP = this.currentMonster.currentLife - this.calcDamage(damage, this.currentMonster.prot);
         break;
       case 'buff':
@@ -271,7 +285,7 @@ export class DungeonRoomComponent implements OnInit {
         break;
       case 'trap':
         let percLife = room.actionItem.value(this.player.baseLife);
-        let evasion = ~~(Math.random() * 100);
+        let evasion = ~~(Math.random() * 100) + 1;
         if (evasion <= this.player.current.eva) {
           this.trapped = false;
         }
@@ -335,12 +349,12 @@ export class DungeonRoomComponent implements OnInit {
       ? (this.player.level - 1) : ~~(Math.random() * (this.player.level - this.currentFloorIndex)
         + this.currentFloorIndex) - 1;
     monster.level = lvAux <= 0 ? 1 : lvAux;
-    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 1.5))) + (40 * monster.level);
+    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 1.5))) + (20 * monster.level);
     monster.currentLife = monster.baseLife;
     monster.exp = ~~(m.exp * (monster.level / 2) + m.exp);
     monster.gold = ~~(m.gold * (monster.level / 2));
-    monster.atk = ~~(m.atk + (monster.level * 10)) + (5 * monster.level);
-    monster.def = ~~(m.def + (monster.level * 9)) + (4 * monster.level);
+    monster.atk = ~~(m.atk + (monster.level * 7)) + (5 * monster.level);
+    monster.def = ~~(m.def + (monster.level * 6)) + (4 * monster.level);
     monster.magic = ~~(m.magic + (monster.level / 0.08));
     monster.prot = ~~(m.prot + (monster.level / 0.09));
     monster.vel = ~~(m.vel + (monster.level / 0.07));
