@@ -19,6 +19,7 @@ export const EQUIPS = [
             },
         ],
         cost: 124,
+        skill: null,
     },
     {
         id: null,
@@ -42,6 +43,7 @@ export const EQUIPS = [
             },
         ],
         cost: 146,
+        skill: null,
     },
     {
         id: null,
@@ -61,6 +63,7 @@ export const EQUIPS = [
             },
         ],
         cost: 136,
+        skill: null,
     },
     {
         id: null,
@@ -80,6 +83,7 @@ export const EQUIPS = [
             },
         ],
         cost: 121,
+        skill: null,
     },
     {
         id: null,
@@ -99,6 +103,7 @@ export const EQUIPS = [
             },
         ],
         cost: 122,
+        skill: null,
     },
     {
         id: null,
@@ -118,6 +123,7 @@ export const EQUIPS = [
             },
         ],
         cost: 118,
+        skill: null,
     },
     {
         id: null,
@@ -141,6 +147,7 @@ export const EQUIPS = [
             },
         ],
         cost: 135,
+        skill: null,
     },
     {
         id: null,
@@ -160,6 +167,7 @@ export const EQUIPS = [
             },
         ],
         cost: 113,
+        skill: null,
     },
     {
         id: null,
@@ -183,6 +191,7 @@ export const EQUIPS = [
             },
         ],
         cost: 127,
+        skill: null,
     },
     {
         id: null,
@@ -206,6 +215,7 @@ export const EQUIPS = [
             },
         ],
         cost: 125,
+        skill: null,
     },
     {
         id: null,
@@ -229,6 +239,7 @@ export const EQUIPS = [
             },
         ],
         cost: 132,
+        skill: null,
     },
     {
         id: null,
@@ -248,6 +259,7 @@ export const EQUIPS = [
             },
         ],
         cost: 121,
+        skill: null,
     },
     {
         id: null,
@@ -271,6 +283,7 @@ export const EQUIPS = [
             },
         ],
         cost: 142,
+        skill: null,
     },
     {
         id: null,
@@ -290,6 +303,7 @@ export const EQUIPS = [
             },
         ],
         cost: 123,
+        skill: null,
     },
     {
         id: null,
@@ -309,6 +323,7 @@ export const EQUIPS = [
             },
         ],
         cost: 120,
+        skill: null,
     },
     {
         id: null,
@@ -328,6 +343,7 @@ export const EQUIPS = [
             },
         ],
         cost: 136,
+        skill: null,
     },
     {
         id: null,
@@ -351,6 +367,7 @@ export const EQUIPS = [
             },
         ],
         cost: 140,
+        skill: null,
     },
     {
         id: null,
@@ -374,6 +391,7 @@ export const EQUIPS = [
             },
         ],
         cost: 142,
+        skill: null,
     },
     {
         id: null,
@@ -393,6 +411,7 @@ export const EQUIPS = [
             },
         ],
         cost: 160,
+        skill: null,
     },
     {
         id: null,
@@ -412,6 +431,7 @@ export const EQUIPS = [
             },
         ],
         cost: 152,
+        skill: null,
     },
 
     // SHIELD
@@ -429,6 +449,7 @@ export const EQUIPS = [
             },
         ],
         cost: 86,
+        skill: null,
     },
     {
         id: null,
@@ -448,6 +469,7 @@ export const EQUIPS = [
             },
         ],
         cost: 90,
+        skill: null,
     },
     {
         id: null,
@@ -467,6 +489,7 @@ export const EQUIPS = [
             },
         ],
         cost: 92,
+        skill: null,
     },
     {
         id: null,
@@ -486,6 +509,7 @@ export const EQUIPS = [
             },
         ],
         cost: 100,
+        skill: null,
     },
     {
         id: null,
@@ -505,6 +529,7 @@ export const EQUIPS = [
             },
         ],
         cost: 124,
+        skill: null,
     },
     {
         id: null,
@@ -524,6 +549,7 @@ export const EQUIPS = [
             },
         ],
         cost: 85,
+        skill: null,
     },
     {
         id: null,
@@ -547,6 +573,7 @@ export const EQUIPS = [
             },
         ],
         cost: 150,
+        skill: null,
     },
     {
         id: null,
@@ -566,6 +593,7 @@ export const EQUIPS = [
             },
         ],
         cost: 161,
+        skill: null,
     },
     {
         id: null,
@@ -585,6 +613,7 @@ export const EQUIPS = [
             },
         ],
         cost: 130,
+        skill: null,
     },
     {
         id: null,
@@ -608,6 +637,7 @@ export const EQUIPS = [
             },
         ],
         cost: 142,
+        skill: null,
     },
     {
         id: null,
@@ -631,6 +661,7 @@ export const EQUIPS = [
             },
         ],
         cost: 142,
+        skill: null,
     },
 
     // ARMOR
@@ -652,6 +683,7 @@ export const EQUIPS = [
             },
         ],
         cost: 201,
+        skill: null,
     },
     {
         id: null,
@@ -671,6 +703,7 @@ export const EQUIPS = [
             },
         ],
         cost: 187,
+        skill: null,
     },
     {
         id: null,
@@ -694,6 +727,7 @@ export const EQUIPS = [
             },
         ],
         cost: 220,
+        skill: null,
     },
     {
         id: null,
@@ -713,6 +747,7 @@ export const EQUIPS = [
             },
         ],
         cost: 175,
+        skill: null,
     },
     {
         id: null,
@@ -736,6 +771,7 @@ export const EQUIPS = [
             },
         ],
         cost: 221,
+        skill: null,
     },
     {
         id: null,
@@ -755,6 +791,7 @@ export const EQUIPS = [
             },
         ],
         cost: 171,
+        skill: null,
     },
     {
         id: null,
@@ -778,6 +815,7 @@ export const EQUIPS = [
             },
         ],
         cost: 223,
+        skill: null,
     },
     {
         id: null,
@@ -797,6 +835,7 @@ export const EQUIPS = [
             },
         ],
         cost: 176,
+        skill: null,
     },
     {
         id: null,
@@ -820,6 +859,7 @@ export const EQUIPS = [
             },
         ],
         cost: 182,
+        skill: null,
     },
     {
         id: null,
@@ -843,6 +883,7 @@ export const EQUIPS = [
             },
         ],
         cost: 196,
+        skill: null,
     },
     {
         id: null,
@@ -866,6 +907,7 @@ export const EQUIPS = [
             },
         ],
         cost: 200,
+        skill: null,
     },
     {
         id: null,
@@ -889,6 +931,7 @@ export const EQUIPS = [
             },
         ],
         cost: 205,
+        skill: null,
     },
     {
         id: null,
@@ -912,6 +955,7 @@ export const EQUIPS = [
             },
         ],
         cost: 199,
+        skill: null,
     },
     {
         id: null,
@@ -935,6 +979,7 @@ export const EQUIPS = [
             },
         ],
         cost: 201,
+        skill: null,
     },
     {
         id: null,
@@ -954,6 +999,7 @@ export const EQUIPS = [
             },
         ],
         cost: 177,
+        skill: null,
     },
     {
         id: null,
@@ -973,6 +1019,7 @@ export const EQUIPS = [
             },
         ],
         cost: 175,
+        skill: null,
     },
     {
         id: null,
@@ -996,6 +1043,7 @@ export const EQUIPS = [
             },
         ],
         cost: 196,
+        skill: null,
     },
 
     // SWORD
@@ -1017,6 +1065,7 @@ export const EQUIPS = [
             },
         ],
         cost: 120,
+        skill: null,
     },
     {
         id: null,
@@ -1036,6 +1085,7 @@ export const EQUIPS = [
             },
         ],
         cost: 152,
+        skill: null,
     },
     {
         id: null,
@@ -1059,6 +1109,7 @@ export const EQUIPS = [
             },
         ],
         cost: 163,
+        skill: null,
     },
     {
         id: null,
@@ -1082,6 +1133,7 @@ export const EQUIPS = [
             },
         ],
         cost: 175,
+        skill: null,
     },
     {
         id: null,
@@ -1105,6 +1157,7 @@ export const EQUIPS = [
             },
         ],
         cost: 186,
+        skill: null,
     },
     {
         id: null,
@@ -1128,6 +1181,7 @@ export const EQUIPS = [
             },
         ],
         cost: 185,
+        skill: null,
     },
     {
         id: null,
@@ -1147,6 +1201,7 @@ export const EQUIPS = [
             },
         ],
         cost: 174,
+        skill: null,
     },
     {
         id: null,
@@ -1166,6 +1221,7 @@ export const EQUIPS = [
             },
         ],
         cost: 196,
+        skill: null,
     },
     {
         id: null,
@@ -1185,6 +1241,7 @@ export const EQUIPS = [
             },
         ],
         cost: 148,
+        skill: null,
     },
     {
         id: null,
@@ -1208,6 +1265,7 @@ export const EQUIPS = [
             },
         ],
         cost: 203,
+        skill: null,
     },
     {
         id: null,
@@ -1227,6 +1285,7 @@ export const EQUIPS = [
             },
         ],
         cost: 187,
+        skill: null,
     },
     {
         id: null,
@@ -1246,6 +1305,7 @@ export const EQUIPS = [
             },
         ],
         cost: 146,
+        skill: null,
     },
     {
         id: null,
@@ -1265,6 +1325,7 @@ export const EQUIPS = [
             },
         ],
         cost: 152,
+        skill: null,
     },
     {
         id: null,
@@ -1288,6 +1349,7 @@ export const EQUIPS = [
             },
         ],
         cost: 177,
+        skill: null,
     },
     {
         id: null,
@@ -1311,6 +1373,7 @@ export const EQUIPS = [
             },
         ],
         cost: 179,
+        skill: null,
     },
     {
         id: null,
@@ -1334,6 +1397,7 @@ export const EQUIPS = [
             },
         ],
         cost: 181,
+        skill: null,
     },
     {
         id: null,
@@ -1353,6 +1417,7 @@ export const EQUIPS = [
             },
         ],
         cost: 174,
+        skill: null,
     },
     {
         id: null,
@@ -1372,6 +1437,7 @@ export const EQUIPS = [
             },
         ],
         cost: 183,
+        skill: null,
     },
     {
         id: null,
@@ -1391,6 +1457,7 @@ export const EQUIPS = [
             },
         ],
         cost: 182,
+        skill: null,
     },
     {
         id: null,
@@ -1410,6 +1477,7 @@ export const EQUIPS = [
             },
         ],
         cost: 191,
+        skill: null,
     },
     {
         id: null,
@@ -1433,6 +1501,7 @@ export const EQUIPS = [
             },
         ],
         cost: 174,
+        skill: null,
     },
     {
         id: null,
@@ -1452,6 +1521,7 @@ export const EQUIPS = [
             },
         ],
         cost: 176,
+        skill: null,
     },
     {
         id: null,
@@ -1471,6 +1541,7 @@ export const EQUIPS = [
             },
         ],
         cost: 185,
+        skill: null,
     },
     {
         id: null,
@@ -1490,6 +1561,7 @@ export const EQUIPS = [
             },
         ],
         cost: 173,
+        skill: null,
     },
     {
         id: null,
@@ -1509,6 +1581,7 @@ export const EQUIPS = [
             },
         ],
         cost: 201,
+        skill: null,
     },
     {
         id: null,
@@ -1528,6 +1601,7 @@ export const EQUIPS = [
             },
         ],
         cost: 191,
+        skill: null,
     },
     {
         id: null,
@@ -1551,6 +1625,7 @@ export const EQUIPS = [
             },
         ],
         cost: 193,
+        skill: null,
     },
     {
         id: null,
@@ -1570,6 +1645,7 @@ export const EQUIPS = [
             },
         ],
         cost: 192,
+        skill: null,
     },
 
     // RING
@@ -1591,6 +1667,7 @@ export const EQUIPS = [
             },
         ],
         cost: 130,
+        skill: null,
     },
     {
         id: null,
@@ -1614,6 +1691,7 @@ export const EQUIPS = [
             },
         ],
         cost: 158,
+        skill: null,
     },
     {
         id: null,
@@ -1633,6 +1711,7 @@ export const EQUIPS = [
             },
         ],
         cost: 145,
+        skill: null,
     },
     {
         id: null,
@@ -1652,6 +1731,7 @@ export const EQUIPS = [
             },
         ],
         cost: 163,
+        skill: null,
     },
     {
         id: null,
@@ -1671,6 +1751,7 @@ export const EQUIPS = [
             },
         ],
         cost: 157,
+        skill: null,
     },
     {
         id: null,
@@ -1690,6 +1771,7 @@ export const EQUIPS = [
             },
         ],
         cost: 158,
+        skill: null,
     },
     {
         id: null,
@@ -1709,6 +1791,7 @@ export const EQUIPS = [
             },
         ],
         cost: 163,
+        skill: null,
     },
     {
         id: null,
@@ -1728,6 +1811,7 @@ export const EQUIPS = [
             },
         ],
         cost: 178,
+        skill: null,
     },
     {
         id: null,
@@ -1747,6 +1831,7 @@ export const EQUIPS = [
             },
         ],
         cost: 153,
+        skill: null,
     },
     {
         id: null,
@@ -1766,6 +1851,7 @@ export const EQUIPS = [
             },
         ],
         cost: 154,
+        skill: null,
     },
     {
         id: null,
@@ -1785,6 +1871,7 @@ export const EQUIPS = [
             },
         ],
         cost: 154,
+        skill: null,
     },
     {
         id: null,
@@ -1804,6 +1891,7 @@ export const EQUIPS = [
             },
         ],
         cost: 154,
+        skill: null,
     },
     {
         id: null,
@@ -1823,6 +1911,7 @@ export const EQUIPS = [
             },
         ],
         cost: 152,
+        skill: null,
     },
     {
         id: null,
@@ -1842,6 +1931,7 @@ export const EQUIPS = [
             },
         ],
         cost: 158,
+        skill: null,
     },
     {
         id: null,
@@ -1861,29 +1951,7 @@ export const EQUIPS = [
             },
         ],
         cost: 176,
-    },
-    {
-        id: null,
-        type: 'equip',
-        equiped: false,
-        equip: 'ring',
-        img: '../assets/images/equip/ring/triple-ring.png',
-        name: 'Anel de espinhos',
-        extra: [
-            {
-                attr: 'def',
-                value: 7,
-            },
-            {
-                attr: 'prot',
-                value: 7,
-            },
-            {
-                attr: 'vel',
-                value: 7,
-            },
-        ],
-        cost: 186,
+        skill: null,
     },
     {
         id: null,
@@ -1907,6 +1975,7 @@ export const EQUIPS = [
             },
         ],
         cost: 186,
+        skill: null,
     },
     {
         id: null,
@@ -1930,6 +1999,31 @@ export const EQUIPS = [
             },
         ],
         cost: 186,
+        skill: null,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'ring',
+        img: '../assets/images/equip/ring/triple-ring.png',
+        name: 'Tríplice anel',
+        extra: [
+            {
+                attr: 'def',
+                value: 7,
+            },
+            {
+                attr: 'prot',
+                value: 7,
+            },
+            {
+                attr: 'vel',
+                value: 7,
+            },
+        ],
+        cost: 186,
+        skill: null,
     },
 
     // BOOTS
@@ -1951,6 +2045,7 @@ export const EQUIPS = [
             },
         ],
         cost: 139,
+        skill: null,
     },
     {
         id: null,
@@ -1970,6 +2065,7 @@ export const EQUIPS = [
             },
         ],
         cost: 124,
+        skill: null,
     },
     {
         id: null,
@@ -1989,6 +2085,7 @@ export const EQUIPS = [
             },
         ],
         cost: 120,
+        skill: null,
     },
     {
         id: null,
@@ -2008,6 +2105,7 @@ export const EQUIPS = [
             },
         ],
         cost: 134,
+        skill: null,
     },
     {
         id: null,
@@ -2027,6 +2125,7 @@ export const EQUIPS = [
             },
         ],
         cost: 186,
+        skill: null,
     },
     {
         id: null,
@@ -2050,6 +2149,7 @@ export const EQUIPS = [
             },
         ],
         cost: 179,
+        skill: null,
     },
     {
         id: null,
@@ -2069,6 +2169,7 @@ export const EQUIPS = [
             },
         ],
         cost: 180,
+        skill: null,
     },
     {
         id: null,
@@ -2088,6 +2189,7 @@ export const EQUIPS = [
             },
         ],
         cost: 167,
+        skill: null,
     },
     {
         id: null,
@@ -2107,6 +2209,7 @@ export const EQUIPS = [
             },
         ],
         cost: 190,
+        skill: null,
     },
     {
         id: null,
@@ -2126,6 +2229,7 @@ export const EQUIPS = [
             },
         ],
         cost: 185,
+        skill: null,
     },
     {
         id: null,
@@ -2145,6 +2249,7 @@ export const EQUIPS = [
             },
         ],
         cost: 182,
+        skill: null,
     },
     {
         id: null,
@@ -2164,6 +2269,7 @@ export const EQUIPS = [
             },
         ],
         cost: 201,
+        skill: null,
     },
     {
         id: null,
@@ -2187,6 +2293,7 @@ export const EQUIPS = [
             },
         ],
         cost: 220,
+        skill: null,
     },
     {
         id: null,
@@ -2206,6 +2313,7 @@ export const EQUIPS = [
             },
         ],
         cost: 211,
+        skill: null,
     },
     {
         id: null,
@@ -2229,6 +2337,7 @@ export const EQUIPS = [
             },
         ],
         cost: 176,
+        skill: null,
     },
     {
         id: null,
@@ -2236,7 +2345,7 @@ export const EQUIPS = [
         equiped: false,
         equip: 'boots',
         img: '../assets/images/equip/boots/magic-boots.png',
-        name: 'Bota de couro',
+        name: 'Bota mágica',
         extra: [
             {
                 attr: 'magic',
@@ -2252,6 +2361,7 @@ export const EQUIPS = [
             },
         ],
         cost: 183,
+        skill: null,
     },
     {
         id: null,
@@ -2271,6 +2381,7 @@ export const EQUIPS = [
             },
         ],
         cost: 196,
+        skill: null,
     },
     {
         id: null,
@@ -2290,6 +2401,7 @@ export const EQUIPS = [
             },
         ],
         cost: 194,
+        skill: null,
     },
     {
         id: null,
@@ -2309,6 +2421,7 @@ export const EQUIPS = [
             },
         ],
         cost: 207,
+        skill: null,
     },
     {
         id: null,
@@ -2332,6 +2445,7 @@ export const EQUIPS = [
             },
         ],
         cost: 222,
+        skill: null,
     },
     {
         id: null,
@@ -2351,6 +2465,7 @@ export const EQUIPS = [
             },
         ],
         cost: 203,
+        skill: null,
     },
     {
         id: null,
@@ -2374,6 +2489,7 @@ export const EQUIPS = [
             },
         ],
         cost: 214,
+        skill: null,
     },
     {
         id: null,
@@ -2393,6 +2509,7 @@ export const EQUIPS = [
             },
         ],
         cost: 212,
+        skill: null,
     },
     {
         id: null,
@@ -2416,6 +2533,7 @@ export const EQUIPS = [
             },
         ],
         cost: 200,
+        skill: null,
     },
     {
         id: null,
@@ -2439,6 +2557,7 @@ export const EQUIPS = [
             },
         ],
         cost: 203,
+        skill: null,
     },
     {
         id: null,
@@ -2458,6 +2577,7 @@ export const EQUIPS = [
             },
         ],
         cost: 183,
+        skill: null,
     },
     {
         id: null,
@@ -2481,6 +2601,7 @@ export const EQUIPS = [
             },
         ],
         cost: 211,
+        skill: null,
     },
     {
         id: null,
@@ -2500,6 +2621,7 @@ export const EQUIPS = [
             },
         ],
         cost: 200,
+        skill: null,
     },
     {
         id: null,
@@ -2519,6 +2641,7 @@ export const EQUIPS = [
             },
         ],
         cost: 204,
+        skill: null,
     },
 
     // NECKLACE
@@ -2540,6 +2663,7 @@ export const EQUIPS = [
             },
         ],
         cost: 132,
+        skill: null,
     },
     {
         id: null,
@@ -2559,6 +2683,7 @@ export const EQUIPS = [
             },
         ],
         cost: 156,
+        skill: null,
     },
     {
         id: null,
@@ -2578,6 +2703,7 @@ export const EQUIPS = [
             },
         ],
         cost: 178,
+        skill: null,
     },
     {
         id: null,
@@ -2601,6 +2727,7 @@ export const EQUIPS = [
             },
         ],
         cost: 167,
+        skill: null,
     },
     {
         id: null,
@@ -2620,6 +2747,7 @@ export const EQUIPS = [
             },
         ],
         cost: 183,
+        skill: null,
     },
     {
         id: null,
@@ -2647,6 +2775,7 @@ export const EQUIPS = [
             },
         ],
         cost: 193,
+        skill: null,
     },
     {
         id: null,
@@ -2666,6 +2795,7 @@ export const EQUIPS = [
             },
         ],
         cost: 174,
+        skill: null,
     },
     {
         id: null,
@@ -2689,6 +2819,7 @@ export const EQUIPS = [
             },
         ],
         cost: 178,
+        skill: null,
     },
     {
         id: null,
@@ -2708,6 +2839,7 @@ export const EQUIPS = [
             },
         ],
         cost: 167,
+        skill: null,
     },
     {
         id: null,
@@ -2727,6 +2859,7 @@ export const EQUIPS = [
             },
         ],
         cost: 186,
+        skill: null,
     },
     {
         id: null,
@@ -2746,6 +2879,7 @@ export const EQUIPS = [
             },
         ],
         cost: 177,
+        skill: null,
     },
     {
         id: null,
@@ -2765,6 +2899,7 @@ export const EQUIPS = [
             },
         ],
         cost: 177,
+        skill: null,
     },
     {
         id: null,
@@ -2780,6 +2915,7 @@ export const EQUIPS = [
             },
         ],
         cost: 185,
+        skill: null,
     },
     {
         id: null,
@@ -2799,6 +2935,7 @@ export const EQUIPS = [
             },
         ],
         cost: 174,
+        skill: null,
     },
     {
         id: null,
@@ -2818,6 +2955,7 @@ export const EQUIPS = [
             },
         ],
         cost: 169,
+        skill: null,
     },
 
     // LOOT
@@ -2842,5 +2980,49 @@ export const EQUIPS = [
         attr: 'mana',
         value: 15,
         cost: 50,
-    }
+    },
+    {
+        id: 3,
+        type: 'potion',
+        equiped: false,
+        img: '../assets/images/equip/loot/exp-potion.png',
+        name: 'Poção de EXP',
+        count: 1,
+        attr: 'exp',
+        value: 150,
+        cost: 80,
+    },
+    {
+        id: 4,
+        type: 'bottle',
+        equiped: false,
+        img: '../assets/images/equip/loot/life-bottle.png',
+        name: 'Garrafa de cura',
+        count: 1,
+        attr: 'life',
+        value: 30,
+        cost: 100,
+    },
+    {
+        id: 5,
+        type: 'bottle',
+        equiped: false,
+        img: '../assets/images/equip/loot/mana-bottle.png',
+        name: 'Garrafa de mana',
+        count: 1,
+        attr: 'mana',
+        value: 30,
+        cost: 100,
+    },
+    {
+        id: 6,
+        type: 'bottle',
+        equiped: false,
+        img: '../assets/images/equip/loot/exp-bottle.png',
+        name: 'Garrafa de EXP',
+        count: 1,
+        attr: 'exp',
+        value: 300,
+        cost: 160,
+    },
 ];

@@ -29,7 +29,7 @@
         <ion-button [disabled]="!slot.img && !slot.equiped" color="dark" fill="outline"
           (click)="manageSlot(slot)">
           <img [src]="slot.img || '../assets/images/skill/empty.png'" />
-          <div *ngIf="slot.type == 'potion'">
+          <div *ngIf="slot.type == 'potion' || slot.type == 'bottle'">
             <span class="loot-count">{{ slot.count }}x</span>
           </div>
           <div *ngIf="slot.type == 'equip' && slot.equiped == true">

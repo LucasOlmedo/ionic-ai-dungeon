@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AnimationController } from '@ionic/angular';
 import { DungeonService } from 'src/app/dungeon.service';
 import { PlayerService } from 'src/app/player.service';
 import { Player } from 'src/app/models/player';
@@ -39,12 +39,15 @@ export class DungeonRoomComponent implements OnInit {
   currentFloorIndex: number = 0;
   deathCause: string = '';
   canGetLoot: boolean = true;
+  animateBattleColor: string = '';
+  animateBattleText: string = '';
 
   constructor(
     private loadingCtrl: LoadingController,
     private dungeonService: DungeonService,
     private playerService: PlayerService,
-    private helper: HelperService
+    private helper: HelperService,
+    private animation: AnimationController,
   ) {
     this.loadingDungeon();
   }
@@ -100,7 +103,7 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   private getLootEquip() {
-    let isEquip = false, prob = [], aux = [{ p: 35, v: true }, { p: 65, v: false }];
+    let isEquip = false, prob = [], aux = [{ p: 50, v: true }, { p: 50, v: false }];
     for (let p = 0; p < aux.length; p++) {
       let a = aux[p];
       for (let i = 0; i < a.p; i++) {
@@ -109,11 +112,29 @@ export class DungeonRoomComponent implements OnInit {
     }
     isEquip = prob[~~(Math.random() * prob.length)];
     if (isEquip) {
-      let match = false;
-      this.lootEquip = EQUIPS[~~(Math.random() * EQUIPS.length)];
+      let match = false, probEq = [],
+        auxEq = [{ p: 30, v: 'equip' }, { p: 45, v: 'potion' }, { p: 25, v: 'bottle' }];
+      for (let p = 0; p < auxEq.length; p++) {
+        let a = auxEq[p];
+        for (let i = 0; i < a.p; i++) {
+          probEq.push(a.v);
+        }
+      }
+      let typeEq = probEq[~~(Math.random() * probEq.length)],
+        selectedTypeEq = EQUIPS.filter(e => e.type == typeEq);
+      this.lootEquip = selectedTypeEq[~~(Math.random() * selectedTypeEq.length)];
       let thisEquip = Object.assign({}, this.lootEquip);
       if (thisEquip.type == 'equip') {
         thisEquip.id = this.helper.randomId();
+        thisEquip.extra = thisEquip.extra.map(t => {
+          let auxLv = Math.ceil(Math.random() * this.player.level);
+          if (t.attr == 'crit' || t.attr == 'eva') {
+            t.value += ~~(auxLv / 6);
+          } else {
+            t.value += ~~(((t.value / 3) * auxLv) / 2);
+          }
+          return t;
+        });
       }
       this.player.inventory.map((t: any) => {
         if (t != 0 && t.id == thisEquip.id) {
@@ -132,7 +153,7 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   async gameOver() {
-    await this.helper.sleep(250);
+    await this.helper.sleep(100);
     this.playerIsDead = true;
     this.eventDone = false;
     let toolbars = document.getElementsByTagName('ion-toolbar')
@@ -156,8 +177,10 @@ export class DungeonRoomComponent implements OnInit {
       } else {
         await this.helper.sleep(500);
         await this.monsterAtk();
+        await this.helper.sleep(100);
       }
     } else {
+      await this.helper.sleep(100);
       await this.monsterAtk();
       await this.helper.sleep(500);
       await this.playerAtk(skill);
@@ -176,7 +199,7 @@ export class DungeonRoomComponent implements OnInit {
   private async monsterAtk() {
     let magicAtk = false, damage = 0;
     if (this.currentMonster.magic > 0) {
-      let prob = [], aux = [{ p: 30, v: true }, { p: 70, v: false }];
+      let prob = [], aux = [{ p: 35, v: true }, { p: 65, v: false }];
       for (let p = 0; p < aux.length; p++) {
         let a = aux[p];
         for (let i = 0; i < a.p; i++) {
@@ -196,37 +219,53 @@ export class DungeonRoomComponent implements OnInit {
 
     let evasion = ~~(Math.random() * 100) + 1;
     if (evasion <= this.player.current.eva) {
-      console.log('evasão');
+      this.animateBattleColor = 'text-bless-heal';
+      this.animateBattleText = 'Você esquivou do ataque!';
+      await this.animateBattle().play();
     } else {
       this.player.currentLife -= damage;
+      if (this.player.currentLife <= 0) {
+        this.player.currentLife = 0;
+      }
+      this.animateBattleColor = magicAtk ? 'text-curse-burn' : 'text-bless-atk';
+      this.animateBattleText = `O inimigo te atacou com ${damage} de Dano ${magicAtk ? 'Mágico' : ''}`;
+      await this.animateBattle().play();
     }
 
     if (this.player.currentLife <= 0) {
       this.player.currentLife = 0;
-      await this.helper.sleep(500);
+      await this.helper.sleep(150);
       this.deathCause = this.currentMonster.name;
       return this.gameOver();
     }
   }
 
   private async playerAtk(sk) {
-    let damage = 0, auxCurHP = 0, critChance = ~~(Math.random() * 100) + 1;
+    let damage = 0, auxCurHP = 0, critChance = ~~(Math.random() * 100) + 1, critDamage = false, calcDamageResult = 0;
     switch (sk.type) {
       case 'atk':
-        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 2) + sk.val;
+        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 2) + sk.val
+        this.animateBattleColor = 'text-bless-atk';
         if (critChance <= this.player.current.crit) {
-          console.log('critico ataque');
+          critDamage = true;
+          this.animateBattleColor = 'text-color-equip';
           damage = damage * 1.5;
         }
-        auxCurHP = this.currentMonster.currentLife - this.calcDamage(damage, this.currentMonster.def);
+        calcDamageResult = this.calcDamage(damage, this.currentMonster.def);
+        auxCurHP = this.currentMonster.currentLife - calcDamageResult;
+        this.animateBattleText = `Você atacou com ${calcDamageResult} de Dano ${critDamage ? 'Crítico' : ''}`;
         break;
       case 'magic':
         damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 2) + sk.val;
+        this.animateBattleColor = 'text-curse-burn';
         if (critChance <= this.player.current.crit) {
-          console.log('critico magia');
+          critDamage = true;
+          this.animateBattleColor = 'text-color-equip';
           damage = damage * 1.5;
         }
-        auxCurHP = this.currentMonster.currentLife - this.calcDamage(damage, this.currentMonster.prot);
+        calcDamageResult = this.calcDamage(damage, this.currentMonster.prot);
+        auxCurHP = this.currentMonster.currentLife - calcDamageResult;
+        this.animateBattleText = `Você atacou com ${calcDamageResult} de Dano Mágico ${critDamage ? 'Crítico' : ''}`;
         break;
       case 'buff':
         this.player.current[sk.attr] += ~~(this.player.base[sk.attr] * (sk.val / 100));
@@ -237,9 +276,14 @@ export class DungeonRoomComponent implements OnInit {
           atr: sk.attr,
           operator: '+',
         });
+        this.animateBattleColor = `text-bless-${sk.attr}`;
+        this.animateBattleText = `Você usou ${sk.name}`;
         break;
       case 'heal':
-        this.player.currentLife += ~~(this.player.baseLife * (sk.val / 100));
+        let healLife = ~~(this.player.baseLife * (sk.val / 100));
+        this.animateBattleColor = 'text-bless-heal';
+        this.animateBattleText = `Você recuperou ${healLife} de HP`;
+        this.player.currentLife += healLife;
         if (this.player.currentLife >= this.player.baseLife) {
           this.player.currentLife = this.player.baseLife;
         }
@@ -248,12 +292,13 @@ export class DungeonRoomComponent implements OnInit {
     this.player.current.mana -= sk.cost;
     if (damage > 0) {
       this.currentMonster.currentLife = auxCurHP <= 0 ? 0 : auxCurHP;
+      await this.animateBattle().play();
     }
   }
 
   private calcDamage(launcherAtk, targetDef) {
-    let damage = launcherAtk - targetDef;
-    return damage < 9 ? 9 : damage;
+    let damage = ~~(launcherAtk - targetDef);
+    return damage < 10 ? ~~(Math.random() * 10) + 1 : damage;
   }
 
   private async manageRoom() {
@@ -297,7 +342,7 @@ export class DungeonRoomComponent implements OnInit {
             return this.gameOver();
           }
         }
-        await this.helper.sleep(300);
+        await this.helper.sleep(500);
         this.eventDone = true;
         break;
       case 'curse':
@@ -349,14 +394,14 @@ export class DungeonRoomComponent implements OnInit {
       ? (this.player.level - 1) : ~~(Math.random() * (this.player.level - this.currentFloorIndex)
         + this.currentFloorIndex) - 1;
     monster.level = lvAux <= 0 ? 1 : lvAux;
-    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 1.5))) + (20 * monster.level);
+    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 1.6))) + (27 * monster.level);
     monster.currentLife = monster.baseLife;
     monster.exp = ~~(m.exp * (monster.level / 2) + m.exp);
     monster.gold = ~~(m.gold * (monster.level / 2));
-    monster.atk = ~~(m.atk + (monster.level * 7)) + (5 * monster.level);
-    monster.def = ~~(m.def + (monster.level * 6)) + (4 * monster.level);
-    monster.magic = ~~(m.magic + (monster.level / 0.08));
-    monster.prot = ~~(m.prot + (monster.level / 0.09));
+    monster.atk = ~~(m.atk + (monster.level * 9)) + (6 * monster.level);
+    monster.def = ~~(m.def + (monster.level * 4)) + (3 * monster.level);
+    monster.magic = ~~(m.magic + (monster.level / 0.06));
+    monster.prot = ~~(m.prot + (monster.level / 0.08));
     monster.vel = ~~(m.vel + (monster.level / 0.07));
     return monster;
   }
@@ -387,5 +432,15 @@ export class DungeonRoomComponent implements OnInit {
       }
       return cnd;
     }).filter(cnd => cnd.turns > 0);
+  }
+
+  private animateBattle() {
+    return this.animation.create()
+      .addElement(document.querySelector('#animate-battle'))
+      .duration(750)
+      .iterations(1)
+      .fromTo('opacity', '0', '1')
+      .fromTo('transform', 'translateY(0px)', 'translateY(-50px)')
+      .fromTo('opacity', '1', '0');
   }
 }

@@ -48,6 +48,7 @@ export class MainGameLootPage implements OnInit {
         await this.handleEquip(slot);
         break;
       case 'potion':
+      case 'bottle':
         await this.handlePotion(slot);
         break;
       default:
@@ -159,11 +160,26 @@ export class MainGameLootPage implements OnInit {
   }
 
   private async handlePotion(potion) {
-    let slotAttr = potion.attr == 'life' ? 'HP' : 'Mana';
+    let slotAttr = '', messageText = '';
+    if (potion.attr == 'life') {
+      slotAttr = 'HP';
+      messageText = `${potion.name}<br>Recupera ${potion.value}% de ${slotAttr}<br><br><br>
+        Vale ${potion.cost} moedas`;
+    }
+    if (potion.attr == 'mana') {
+      slotAttr = 'Mana';
+      messageText = `${potion.name}<br>Recupera ${potion.value}% de ${slotAttr}<br><br><br>
+        Vale ${potion.cost} moedas`;
+    }
+    if (potion.attr == 'exp') {
+      slotAttr = 'EXP';
+      messageText = `${potion.name}<br>Adiciona ${potion.value} de ${slotAttr}<br><br><br>
+        Vale ${potion.cost} moedas`;
+    }
+
     let alert = await this.alertCtrl.create({
       header: 'Usar item?',
-      message: `${potion.name}<br>Recupera ${potion.value}% de ${slotAttr}<br><br><br>
-        Vale ${potion.cost} moedas`,
+      message: messageText,
       buttons: [
         {
           text: 'Vender',
@@ -203,6 +219,9 @@ export class MainGameLootPage implements OnInit {
               if (this.player.currentMana >= this.player.baseMana) {
                 this.player.currentMana = this.player.baseMana;
               }
+            }
+            if (potion.attr == 'exp') {
+              this.player.updateExp(potion.value);
             }
             this.player.inventory = this.player.inventory.map((t: any) => {
               if (t.id == potion.id) {
