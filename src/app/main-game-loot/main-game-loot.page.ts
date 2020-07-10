@@ -123,12 +123,55 @@ export class MainGameLootPage implements OnInit {
                 }
                 this.player.calcEquipAttr();
               }
+
+              if (source.skill != null) {
+                let match = this.player.skills.find(t => {
+                  if (t != null) {
+                    return t.equip == source.skill.equip;
+                  }
+                });
+                if (match) {
+                  this.player.skills = this.player.skills.map(t => {
+                    if (t != null && t.equip == source.skill.equip) {
+                      return source.skill;
+                    }
+                    return t;
+                  });
+                } else {
+                  let indexSk = this.player.skills.indexOf(null);
+                  if (indexSk != -1) {
+                    this.player.skills[indexSk] = source.skill;
+                  }
+                }
+              }
+
             } else {
               let tAtrbLife = target.extra.find(x => x.attr == 'life'),
                 tAtrbMana = target.extra.find(x => x.attr == 'mana');
 
               this.player.equip[source.equip] = null;
               this.player.calcEquipAttr();
+              
+              this.player.skills = this.player.skills.map(t => {
+                if (t != null && source.skill.name == t.name) {
+                  return null;
+                }
+                return t;
+              });
+
+              if (this.player.skills[0] == null) {
+                this.player.skills[0] = {
+                  name: 'Ataque básico',
+                  img: '../assets/images/skill/hand-atk.png',
+                  color: 'skillGray',
+                  active: true,
+                  val: 30,
+                  cost: 0,
+                  type: 'atk',
+                  attr: 'atk',
+                  equip: 'sword',
+                };
+              }
 
               if (tAtrbLife != null) {
                 this.player.baseLife -= tAtrbLife.value;

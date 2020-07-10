@@ -103,7 +103,7 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   private getLootEquip() {
-    let isEquip = false, prob = [], aux = [{ p: 50, v: true }, { p: 50, v: false }];
+    let isEquip = false, prob = [], aux = [{ p: 65, v: true }, { p: 35, v: false }];
     for (let p = 0; p < aux.length; p++) {
       let a = aux[p];
       for (let i = 0; i < a.p; i++) {
@@ -113,7 +113,7 @@ export class DungeonRoomComponent implements OnInit {
     isEquip = prob[~~(Math.random() * prob.length)];
     if (isEquip) {
       let match = false, probEq = [],
-        auxEq = [{ p: 30, v: 'equip' }, { p: 45, v: 'potion' }, { p: 25, v: 'bottle' }];
+        auxEq = [{ p: 55, v: 'equip' }, { p: 30, v: 'potion' }, { p: 15, v: 'bottle' }];
       for (let p = 0; p < auxEq.length; p++) {
         let a = auxEq[p];
         for (let i = 0; i < a.p; i++) {
@@ -122,16 +122,27 @@ export class DungeonRoomComponent implements OnInit {
       }
       let typeEq = probEq[~~(Math.random() * probEq.length)],
         selectedTypeEq = EQUIPS.filter(e => e.type == typeEq);
-      this.lootEquip = selectedTypeEq[~~(Math.random() * selectedTypeEq.length)];
-      let thisEquip = Object.assign({}, this.lootEquip);
+      let equipChoosed = Object.assign({}, selectedTypeEq[~~(Math.random() * selectedTypeEq.length)]);
+      this.lootEquip = equipChoosed;
+      let thisEquip = {
+        id: equipChoosed.id,
+        type: equipChoosed.type,
+        equiped: equipChoosed.equiped,
+        equip: equipChoosed.equip,
+        img: equipChoosed.img,
+        name: equipChoosed.name,
+        extra: equipChoosed.extra,
+        cost: equipChoosed.cost,
+        skill: equipChoosed.skill,
+      };
       if (thisEquip.type == 'equip') {
         thisEquip.id = this.helper.randomId();
         thisEquip.extra = thisEquip.extra.map(t => {
-          let auxLv = Math.ceil(Math.random() * this.player.level);
+          let auxLv = Math.ceil(Math.random() * this.player.level) + 1;
           if (t.attr == 'crit' || t.attr == 'eva') {
-            t.value += ~~(auxLv / 6);
+            t.value += ~~(auxLv / 7);
           } else {
-            t.value += ~~(((t.value / 3) * auxLv) / 2);
+            t.value += ~~(((t.value / 4) * auxLv) / 2);
           }
           return t;
         });
@@ -289,7 +300,7 @@ export class DungeonRoomComponent implements OnInit {
         }
         break;
     }
-    this.player.current.mana -= sk.cost;
+    this.player.currentMana -= sk.cost;
     if (damage > 0) {
       this.currentMonster.currentLife = auxCurHP <= 0 ? 0 : auxCurHP;
       await this.animateBattle().play();
@@ -298,7 +309,7 @@ export class DungeonRoomComponent implements OnInit {
 
   private calcDamage(launcherAtk, targetDef) {
     let damage = ~~(launcherAtk - targetDef);
-    return damage < 10 ? ~~(Math.random() * 10) + 1 : damage;
+    return damage < 15 ? ~~(Math.random() * 15) + 1 : damage;
   }
 
   private async manageRoom() {
@@ -394,15 +405,15 @@ export class DungeonRoomComponent implements OnInit {
       ? (this.player.level - 1) : ~~(Math.random() * (this.player.level - this.currentFloorIndex)
         + this.currentFloorIndex) - 1;
     monster.level = lvAux <= 0 ? 1 : lvAux;
-    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 1.6))) + (27 * monster.level);
+    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 1.5))) + (31 * monster.level);
     monster.currentLife = monster.baseLife;
     monster.exp = ~~(m.exp * (monster.level / 2) + m.exp);
     monster.gold = ~~(m.gold * (monster.level / 2));
     monster.atk = ~~(m.atk + (monster.level * 9)) + (6 * monster.level);
     monster.def = ~~(m.def + (monster.level * 4)) + (3 * monster.level);
-    monster.magic = ~~(m.magic + (monster.level / 0.06));
-    monster.prot = ~~(m.prot + (monster.level / 0.08));
-    monster.vel = ~~(m.vel + (monster.level / 0.07));
+    monster.magic = ~~(m.magic + (monster.level / 0.05));
+    monster.prot = ~~(m.prot + (monster.level / 0.09));
+    monster.vel = ~~(m.vel + (monster.level / 0.06));
     return monster;
   }
 
