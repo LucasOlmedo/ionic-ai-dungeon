@@ -13,7 +13,7 @@ export class Player {
     floorIndex: number = 1;
     roomIndex: number = 1;
     killCount: number = 0;
-    inventory = [
+    inventory: any = [
         {
             id: 1,
             type: 'potion',
@@ -46,7 +46,7 @@ export class Player {
     currentMana = 0;
     baseMana = 0;
     base = {
-        life: 120,
+        life: 100,
         atk: 10,
         def: 10,
         mana: 100,
@@ -57,7 +57,7 @@ export class Player {
         eva: 1,
     };
     current = {
-        life: 120,
+        life: 100,
         atk: 10,
         def: 10,
         mana: 100,
@@ -84,7 +84,7 @@ export class Player {
             img: '../assets/images/skill/hand-atk.png',
             color: 'skillGray',
             active: true,
-            val: 30,
+            val: 25,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -170,23 +170,23 @@ export class Player {
     }
 
     updateLife() {
-        this.currentLife += ~~(this.baseLife * 0.15);
+        this.currentLife += ~~(this.baseLife * 0.10);
         if (this.currentLife >= this.baseLife) {
             this.currentLife = ~~((this.baseLife + ((this.vitality || 1) *
-                (3 + (this.level * 0.3)))));
+                (3 + (this.level * 0.2)))));
         }
         this.baseLife = ~~((this.baseLife + ((this.vitality || 1) *
-            (3 + (this.level * 0.3)))));
+            (3 + (this.level * 0.2)))));
     }
 
     updateMana() {
-        this.currentMana += ~~(this.baseMana * 0.15);
+        this.currentMana += ~~(this.baseMana * 0.10);
         if (this.currentMana >= this.baseMana) {
             this.currentMana = ~~((this.baseMana + ((this.intelligence || 1) *
-                (2 + (this.level * 0.2)))));
+                (1 + (this.level * 0.2)))));
         }
         this.baseMana = ~~((this.baseMana + ((this.intelligence || 1) *
-            (2 + (this.level * 0.2)))));
+            (1 + (this.level * 0.2)))));
     }
 
     updateVitality() {
@@ -194,29 +194,29 @@ export class Player {
         this.base.atk = ~~((8 + ((this.vitality || 1) * (this.level / 0.4))));
         this.current.atk = ~~((8 + ((this.vitality || 1) * (this.level / 0.4))));
         // def
-        this.base.def = ~~((7 + ((this.vitality || 1) * (this.level / 0.6))));
-        this.current.def = ~~((7 + ((this.vitality || 1) * (this.level / 0.6))));
+        this.base.def = ~~((5 + ((this.vitality || 1) * (this.level / 0.7))));
+        this.current.def = ~~((5 + ((this.vitality || 1) * (this.level / 0.7))));
     }
 
     updateIntelligence() {
         // magic
-        this.base.magic = ~~((7 + ((this.intelligence || 1) * (this.level / 0.5))));
-        this.current.magic = ~~((7 + ((this.intelligence || 1) * (this.level / 0.5))));
+        this.base.magic = ~~((7 + ((this.intelligence || 1) * (this.level / 0.6))));
+        this.current.magic = ~~((7 + ((this.intelligence || 1) * (this.level / 0.6))));
         // prot
-        this.base.prot = ~~((6 + ((this.intelligence || 1) * (this.level / 0.7))));
-        this.current.prot = ~~((6 + ((this.intelligence || 1) * (this.level / 0.7))));
+        this.base.prot = ~~((5 + ((this.intelligence || 1) * (this.level / 0.8))));
+        this.current.prot = ~~((5 + ((this.intelligence || 1) * (this.level / 0.8))));
     }
 
     updateAgility() {
         // vel
-        this.base.vel = ~~((this.base.vel + ((this.agility || 1) * (this.level / 0.4))));
-        this.current.vel = ~~((this.current.vel + ((this.agility || 1) * (this.level / 0.4))));
+        this.base.vel = ~~((this.base.vel + ((this.agility || 1) * (this.level / 0.9))));
+        this.current.vel = ~~((this.current.vel + ((this.agility || 1) * (this.level / 0.9))));
         // crit
-        this.base.crit = Math.ceil(1.2 + ((this.agility || 1) * (this.level * 0.1)));
-        this.current.crit = Math.ceil(1.2 + ((this.agility || 1) * (this.level * 0.1)));
+        this.base.crit = Math.ceil(1 + ((this.agility || 1) * (this.level * 0.1)));
+        this.current.crit = Math.ceil(1 + ((this.agility || 1) * (this.level * 0.1)));
         // eva
-        this.base.eva = ~~(0.5 + ((this.agility || 1) * (this.level * 0.1)));
-        this.current.eva = ~~(0.5 + ((this.agility || 1) * (this.level * 0.1)));
+        this.base.eva = ~~(0.3 + ((this.agility || 1) * (this.level * 0.1)));
+        this.current.eva = ~~(0.3 + ((this.agility || 1) * (this.level * 0.1)));
     }
 
     initCurrent() {

@@ -103,7 +103,7 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   private getLootEquip() {
-    let isEquip = false, prob = [], aux = [{ p: 65, v: true }, { p: 35, v: false }];
+    let isEquip = false, prob = [], aux = [{ p: 65, v: true }, { p: 0, v: false }];
     for (let p = 0; p < aux.length; p++) {
       let a = aux[p];
       for (let i = 0; i < a.p; i++) {
@@ -122,32 +122,39 @@ export class DungeonRoomComponent implements OnInit {
       }
       let typeEq = probEq[~~(Math.random() * probEq.length)],
         selectedTypeEq = EQUIPS.filter(e => e.type == typeEq);
-      let equipChoosed = Object.assign({}, selectedTypeEq[~~(Math.random() * selectedTypeEq.length)]);
+      let equipChoosed = Object.assign({},
+        selectedTypeEq[~~(Math.random() * selectedTypeEq.length)]);
       this.lootEquip = equipChoosed;
       let thisEquip = {
-        id: equipChoosed.id,
-        type: equipChoosed.type,
-        equiped: equipChoosed.equiped,
-        equip: equipChoosed.equip,
-        img: equipChoosed.img,
-        name: equipChoosed.name,
-        extra: equipChoosed.extra,
-        cost: equipChoosed.cost,
-        skill: equipChoosed.skill,
+        id: equipChoosed.id || null,
+        type: equipChoosed.type || null,
+        equiped: equipChoosed.equiped || false,
+        equip: equipChoosed.equip || null,
+        img: equipChoosed.img || null,
+        name: equipChoosed.name || null,
+        extra: equipChoosed.extra || null,
+        cost: equipChoosed.cost || 0,
+        skill: equipChoosed.skill || null,
+        count: equipChoosed.count || 1,
+        attr: equipChoosed.attr || null,
+        value: equipChoosed.value || 0,
       };
       if (thisEquip.type == 'equip') {
         thisEquip.id = this.helper.randomId();
+        let auxLv = Math.ceil(Math.random() * this.player.level) + 1;
         thisEquip.extra = thisEquip.extra.map(t => {
-          let auxLv = Math.ceil(Math.random() * this.player.level) + 1;
-          if (t.attr == 'crit' || t.attr == 'eva') {
-            t.value += ~~(auxLv / 7);
+          let _t = Object.assign({}, t);
+          if (_t.attr == 'crit' || _t.attr == 'eva') {
+            _t.value += ~~(auxLv / 7);
           } else {
-            t.value += ~~(((t.value / 4) * auxLv) / 2);
+            _t.value += ~~(((_t.value / 4) * auxLv) / 2);
           }
-          return t;
+          return _t;
         });
+        thisEquip.name = `${thisEquip.name} Nv ${auxLv}`;
+        thisEquip.cost = thisEquip.cost * auxLv;
       }
-      this.player.inventory.map((t: any) => {
+      this.player.inventory.filter((t: any) => {
         if (t != 0 && t.id == thisEquip.id) {
           match = true;
           t.count++;
