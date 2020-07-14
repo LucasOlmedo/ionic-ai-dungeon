@@ -347,6 +347,30 @@ body {
   --ion-color-skillMagenta-contrast-rgb: 255, 255, 255;
   --ion-color-skillMagenta-shade: #BD10E0;
   --ion-color-skillMagenta-tint: #BD10E0;
+
+  // purple
+  --ion-color-skillPurple: #6500BF;
+  --ion-color-skillPurple-rgb: 105, 187, 123;
+  --ion-color-skillPurple-contrast: #ffffff;
+  --ion-color-skillPurple-contrast-rgb: 255, 255, 255;
+  --ion-color-skillPurple-shade: #6500BF;
+  --ion-color-skillPurple-tint: #6500BF;
+
+  // red
+  --ion-color-skillRed: #FE2A25;
+  --ion-color-skillRed-rgb: 105, 187, 123;
+  --ion-color-skillRed-contrast: #ffffff;
+  --ion-color-skillRed-contrast-rgb: 255, 255, 255;
+  --ion-color-skillRed-shade: #FE2A25;
+  --ion-color-skillRed-tint: #FE2A25;
+
+  // diamond
+  --ion-color-skillDiamond: #8BFFE4;
+  --ion-color-skillDiamond-rgb: 105, 187, 123;
+  --ion-color-skillDiamond-contrast: #ffffff;
+  --ion-color-skillDiamond-contrast-rgb: 255, 255, 255;
+  --ion-color-skillDiamond-shade: #8BFFE4;
+  --ion-color-skillDiamond-tint: #8BFFE4;
 }
 
 // gray
@@ -507,4 +531,34 @@ body {
   --ion-color-contrast-rgb: var(--ion-color-skillGold-contrast-rgb);
   --ion-color-shade: var(--ion-color-skillGold-shade);
   --ion-color-tint: var(--ion-color-skillGold-tint);
+}
+
+// purple
+.ion-color-skillPurple {
+  --ion-color-base: var(--ion-color-skillPurple);
+  --ion-color-base-rgb: var(--ion-color-skillPurple-rgb);
+  --ion-color-contrast: var(--ion-color-skillPurple-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-skillPurple-contrast-rgb);
+  --ion-color-shade: var(--ion-color-skillPurple-shade);
+  --ion-color-tint: var(--ion-color-skillPurple-tint);
+}
+
+// red
+.ion-color-skillRed {
+  --ion-color-base: var(--ion-color-skillRed);
+  --ion-color-base-rgb: var(--ion-color-skillRed-rgb);
+  --ion-color-contrast: var(--ion-color-skillRed-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-skillRed-contrast-rgb);
+  --ion-color-shade: var(--ion-color-skillRed-shade);
+  --ion-color-tint: var(--ion-color-skillRed-tint);
+}
+
+// diamond
+.ion-color-skillDiamond {
+  --ion-color-base: var(--ion-color-skillDiamond);
+  --ion-color-base-rgb: var(--ion-color-skillDiamond-rgb);
+  --ion-color-contrast: var(--ion-color-skillDiamond-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-skillDiamond-contrast-rgb);
+  --ion-color-shade: var(--ion-color-skillDiamond-shade);
+  --ion-color-tint: var(--ion-color-skillDiamond-tint);
 }
