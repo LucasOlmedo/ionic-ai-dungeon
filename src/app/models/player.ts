@@ -20,7 +20,7 @@ export class Player {
             equiped: false,
             img: '../assets/images/equip/loot/life-potion.png',
             name: 'Poção de cura',
-            count: 5,
+            count: 3,
             attr: 'life',
             value: 15,
             cost: 50,
@@ -32,12 +32,13 @@ export class Player {
             equiped: false,
             img: '../assets/images/equip/loot/mana-potion.png',
             name: 'Poção de mana',
-            count: 5,
+            count: 3,
             attr: 'mana',
             value: 15,
             cost: 50,
             skill: null,
         }, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     ];
@@ -52,7 +53,7 @@ export class Player {
         mana: 100,
         magic: 10,
         prot: 10,
-        vel: 10,
+        vel: 3,
         crit: 1,
         eva: 1,
     };
@@ -63,7 +64,7 @@ export class Player {
         mana: 100,
         magic: 10,
         prot: 10,
-        vel: 10,
+        vel: 3,
         crit: 1,
         eva: 1,
     };
@@ -84,7 +85,7 @@ export class Player {
             img: '../assets/images/skill/hand-atk.png',
             color: 'skillGray',
             active: true,
-            val: 25,
+            val: 32,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -170,7 +171,7 @@ export class Player {
     }
 
     updateLife() {
-        this.currentLife += ~~(this.baseLife * 0.10);
+        this.currentLife += ~~(this.baseLife * 0.05);
         if (this.currentLife >= this.baseLife) {
             this.currentLife = ~~((this.baseLife + ((this.vitality || 1) *
                 (3 + (this.level * 0.2)))));
@@ -180,13 +181,13 @@ export class Player {
     }
 
     updateMana() {
-        this.currentMana += ~~(this.baseMana * 0.10);
+        this.currentMana += ~~(this.baseMana * 0.05);
         if (this.currentMana >= this.baseMana) {
             this.currentMana = ~~((this.baseMana + ((this.intelligence || 1) *
-                (1 + (this.level * 0.2)))));
+                (1 + (this.level * 0.1)))));
         }
         this.baseMana = ~~((this.baseMana + ((this.intelligence || 1) *
-            (1 + (this.level * 0.2)))));
+            (1 + (this.level * 0.1)))));
     }
 
     updateVitality() {
@@ -194,17 +195,17 @@ export class Player {
         this.base.atk = ~~((8 + ((this.vitality || 1) * (this.level / 0.4))));
         this.current.atk = ~~((8 + ((this.vitality || 1) * (this.level / 0.4))));
         // def
-        this.base.def = ~~((5 + ((this.vitality || 1) * (this.level / 0.7))));
-        this.current.def = ~~((5 + ((this.vitality || 1) * (this.level / 0.7))));
+        this.base.def = ~~((4 + ((this.vitality || 1) * (this.level / 0.6))));
+        this.current.def = ~~((4 + ((this.vitality || 1) * (this.level / 0.6))));
     }
 
     updateIntelligence() {
         // magic
-        this.base.magic = ~~((7 + ((this.intelligence || 1) * (this.level / 0.6))));
-        this.current.magic = ~~((7 + ((this.intelligence || 1) * (this.level / 0.6))));
+        this.base.magic = ~~((7 + ((this.intelligence || 1) * (this.level / 0.4))));
+        this.current.magic = ~~((7 + ((this.intelligence || 1) * (this.level / 0.4))));
         // prot
-        this.base.prot = ~~((5 + ((this.intelligence || 1) * (this.level / 0.8))));
-        this.current.prot = ~~((5 + ((this.intelligence || 1) * (this.level / 0.8))));
+        this.base.prot = ~~((4 + ((this.intelligence || 1) * (this.level / 0.9))));
+        this.current.prot = ~~((4 + ((this.intelligence || 1) * (this.level / 0.9))));
     }
 
     updateAgility() {

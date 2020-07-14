@@ -103,7 +103,7 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   private getLootEquip() {
-    let isEquip = false, prob = [], aux = [{ p: 65, v: true }, { p: 0, v: false }];
+    let isEquip = false, prob = [], aux = [{ p: 60, v: true }, { p: 40, v: false }];
     for (let p = 0; p < aux.length; p++) {
       let a = aux[p];
       for (let i = 0; i < a.p; i++) {
@@ -113,7 +113,7 @@ export class DungeonRoomComponent implements OnInit {
     isEquip = prob[~~(Math.random() * prob.length)];
     if (isEquip) {
       let match = false, probEq = [],
-        auxEq = [{ p: 55, v: 'equip' }, { p: 30, v: 'potion' }, { p: 15, v: 'bottle' }];
+        auxEq = [{ p: 70, v: 'equip' }, { p: 20, v: 'potion' }, { p: 10, v: 'bottle' }];
       for (let p = 0; p < auxEq.length; p++) {
         let a = auxEq[p];
         for (let i = 0; i < a.p; i++) {
@@ -145,14 +145,14 @@ export class DungeonRoomComponent implements OnInit {
         thisEquip.extra = thisEquip.extra.map(t => {
           let _t = Object.assign({}, t);
           if (_t.attr == 'crit' || _t.attr == 'eva') {
-            _t.value += ~~(auxLv / 7);
+            _t.value += ~~(auxLv / 5);
           } else {
-            _t.value += ~~(((_t.value / 4) * auxLv) / 2);
+            _t.value += ~~(((_t.value / 3) * auxLv) / 2);
           }
           return _t;
         });
         thisEquip.name = `${thisEquip.name} Nv ${auxLv}`;
-        thisEquip.cost = thisEquip.cost * auxLv;
+        thisEquip.cost = thisEquip.cost + (18 * auxLv);
       }
       this.player.inventory.filter((t: any) => {
         if (t != 0 && t.id == thisEquip.id) {
@@ -286,11 +286,23 @@ export class DungeonRoomComponent implements OnInit {
         this.animateBattleText = `Você atacou com ${calcDamageResult} de Dano Mágico ${critDamage ? 'Crítico' : ''}`;
         break;
       case 'buff':
-        this.player.current[sk.attr] += ~~(this.player.base[sk.attr] * (sk.val / 100));
+        switch (sk.attr) {
+          case 'atk':
+            this.player.current.atk += ~~(this.player.base.atk * (sk.val / 100));
+            this.player.current.magic += ~~(this.player.base.magic * (sk.val / 100));
+            break;
+          case 'def':
+            this.player.current.def += ~~(this.player.base.def * (sk.val / 100));
+            this.player.current.prot += ~~(this.player.base.prot * (sk.val / 100));
+            break;
+          default:
+            this.player.current[sk.attr] += ~~(this.player.base[sk.attr] * (sk.val / 100));
+            break;
+        }
         this.player.conditions.push({
           img: `../assets/images/bless/${sk.attr}.png`,
-          turns: 3,
-          calc: val => val * (sk.val / 100),
+          turns: 4,
+          calc: val => val * (sk.val / 100) + sk.val,
           atr: sk.attr,
           operator: '+',
         });
@@ -309,9 +321,9 @@ export class DungeonRoomComponent implements OnInit {
     }
     this.player.currentMana -= sk.cost;
     if (damage > 0) {
-      this.currentMonster.currentLife = auxCurHP <= 0 ? 0 : auxCurHP;
-      await this.animateBattle().play();
+      this.currentMonster.currentLife = auxCurHP <= 0 ? 0 : ~~auxCurHP;
     }
+    await this.animateBattle().play();
   }
 
   private calcDamage(launcherAtk, targetDef) {
@@ -369,7 +381,7 @@ export class DungeonRoomComponent implements OnInit {
         if (this.actionItemTurn > 0) {
           this.player.conditions.push({
             img: `../assets/images/${room.action}/${room.actionItem.icon}.png`,
-            turns: this.actionItemTurn,
+            turns: this.actionItemTurn + 1,
             calc: room.actionItem.calc,
             atr: room.actionItem.atr,
             operator: room.actionItem.operator,
@@ -412,13 +424,13 @@ export class DungeonRoomComponent implements OnInit {
       ? (this.player.level - 1) : ~~(Math.random() * (this.player.level - this.currentFloorIndex)
         + this.currentFloorIndex) - 1;
     monster.level = lvAux <= 0 ? 1 : lvAux;
-    monster.baseLife = ~~(m.baseLife + (m.baseLife * (monster.level / 1.5))) + (31 * monster.level);
-    monster.currentLife = monster.baseLife;
+    monster.baseLife = ~~((m.baseLife + (m.baseLife * (monster.level / 1.35))) + (36.5 * monster.level));
+    monster.currentLife = ~~monster.baseLife;
     monster.exp = ~~(m.exp * (monster.level / 2) + m.exp);
     monster.gold = ~~(m.gold * (monster.level / 2));
-    monster.atk = ~~(m.atk + (monster.level * 9)) + (6 * monster.level);
-    monster.def = ~~(m.def + (monster.level * 4)) + (3 * monster.level);
-    monster.magic = ~~(m.magic + (monster.level / 0.05));
+    monster.atk = ~~(m.atk + (monster.level * 8.5)) + (7.5 * monster.level);
+    monster.def = ~~(m.def + (monster.level * 1.5)) + (1.5 * monster.level);
+    monster.magic = ~~(m.magic + (monster.level * 6)) + (5.75 * monster.level);
     monster.prot = ~~(m.prot + (monster.level / 0.09));
     monster.vel = ~~(m.vel + (monster.level / 0.06));
     return monster;
@@ -439,6 +451,22 @@ export class DungeonRoomComponent implements OnInit {
             return this.gameOver();
           }
           break;
+        case 'atk':
+          if (cnd.operator == '+') {
+            this.player.current.atk += ~~(cnd.calc(this.player.base.atk));
+            this.player.current.magic += ~~(cnd.calc(this.player.base.magic));
+          } else {
+            this.player.current.atk -= ~~(cnd.calc(this.player.base.atk));
+            this.player.current.magic -= ~~(cnd.calc(this.player.base.magic));
+          }
+        case 'def':
+          if (cnd.operator == '+') {
+            this.player.current.def += ~~(cnd.calc(this.player.base.def));
+            this.player.current.prot += ~~(cnd.calc(this.player.base.prot));
+          } else {
+            this.player.current.def -= ~~(cnd.calc(this.player.base.def));
+            this.player.current.prot -= ~~(cnd.calc(this.player.base.prot));
+          }
         default:
           cnd.operator == '+'
             ? this.player.current[cnd.atr] += ~~(cnd.calc(this.player.base[cnd.atr]))
@@ -455,7 +483,7 @@ export class DungeonRoomComponent implements OnInit {
   private animateBattle() {
     return this.animation.create()
       .addElement(document.querySelector('#animate-battle'))
-      .duration(750)
+      .duration(800)
       .iterations(1)
       .fromTo('opacity', '0', '1')
       .fromTo('transform', 'translateY(0px)', 'translateY(-50px)')
