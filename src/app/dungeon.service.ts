@@ -11,7 +11,7 @@ export class DungeonService {
   private act_ = [
     {
       type: 'battle',
-      prob: 65,
+      prob: 60,
     },
     {
       type: 'trap',
@@ -31,7 +31,7 @@ export class DungeonService {
     },
     {
       type: 'curse',
-      prob: 5,
+      prob: 10,
     },
   ];
 
@@ -98,7 +98,7 @@ export class DungeonService {
         let chest = {
           location: 'Baú da sorte',
           description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
-          loot: (playerLv) => (Math.floor(Math.random() * 30) + 10) * playerLv,
+          loot: (playerLv) => ~~((Math.floor(Math.random() * 24) + 13) * playerLv),
         };
         room.actionItem = chest;
         break;

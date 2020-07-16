@@ -303,7 +303,7 @@ export class DungeonRoomComponent implements OnInit {
           img: `../assets/images/bless/${sk.attr}.png`,
           turns: 4,
           calc: val => val * (sk.val / 100) + sk.val,
-          atr: sk.attr,
+          attr: sk.attr,
           operator: '+',
         });
         this.animateBattleColor = `text-bless-${sk.attr}`;
@@ -381,38 +381,63 @@ export class DungeonRoomComponent implements OnInit {
         if (this.actionItemTurn > 0) {
           this.player.conditions.push({
             img: `../assets/images/${room.action}/${room.actionItem.icon}.png`,
-            turns: this.actionItemTurn + 1,
+            turns: this.actionItemTurn,
             calc: room.actionItem.calc,
-            atr: room.actionItem.atr,
+            attr: room.actionItem.attr,
             operator: room.actionItem.operator,
             title: room.actionItem.title,
           });
-        } else {
-          switch (room.actionItem.atr) {
-            case 'life':
-              room.actionItem.operator == '+'
-                ? this.player.currentLife += ~~(room.actionItem.calc(this.player.baseLife))
-                : this.player.currentLife -= ~~(room.actionItem.calc(this.player.baseLife));
-              if (this.player.currentLife >= this.player.baseLife) {
-                this.player.currentLife = this.player.baseLife;
-              }
-              break;
-            case 'mana':
-              room.actionItem.operator == '+'
-                ? this.player.currentMana += ~~(room.actionItem.calc(this.player.baseMana))
-                : this.player.currentMana -= ~~(room.actionItem.calc(this.player.baseMana));
-              if (this.player.currentMana >= this.player.baseMana) {
-                this.player.currentMana = this.player.baseMana;
-              }
-              break;
-            default:
-              room.actionItem.operator == '+'
-                ? this.player.current[room.actionItem.atr] +=
-                ~~(room.actionItem.calc(this.player.base[room.actionItem.atr]))
-                : this.player.current[room.actionItem.atr] -=
-                ~~(room.actionItem.calc(this.player.base[room.actionItem.atr]));
-              break;
-          }
+        }
+        switch (room.actionItem.attr) {
+          case 'life':
+            room.actionItem.operator == '+'
+              ? this.player.currentLife += ~~(room.actionItem.calc(this.player.baseLife))
+              : this.player.currentLife -= ~~(room.actionItem.calc(this.player.baseLife));
+            if (this.player.currentLife >= this.player.baseLife) {
+              this.player.currentLife = this.player.baseLife;
+            }
+            break;
+          case 'mana':
+            room.actionItem.operator == '+'
+              ? this.player.currentMana += ~~(room.actionItem.calc(this.player.baseMana))
+              : this.player.currentMana -= ~~(room.actionItem.calc(this.player.baseMana));
+            if (this.player.currentMana >= this.player.baseMana) {
+              this.player.currentMana = this.player.baseMana;
+            }
+            break;
+          case 'atk':
+            if (room.actionItem.operator == '+') {
+              this.player.current.atk = this.player.base.atk
+                + ~~(room.actionItem.calc(this.player.base.atk));
+              this.player.current.magic = this.player.base.magic
+                + ~~(room.actionItem.calc(this.player.base.magic));
+            } else {
+              this.player.current.atk = this.player.base.atk
+                - ~~(room.actionItem.calc(this.player.base.atk));
+              this.player.current.magic = this.player.base.magic
+                - ~~(room.actionItem.calc(this.player.base.magic));
+            }
+            break;
+          case 'def':
+            if (room.actionItem.operator == '+') {
+              this.player.current.def = this.player.base.def
+                + ~~(room.actionItem.calc(this.player.base.def));
+              this.player.current.prot = this.player.base.prot
+                + ~~(room.actionItem.calc(this.player.base.prot));
+            } else {
+              this.player.current.def = this.player.base.def
+                - ~~(room.actionItem.calc(this.player.base.def));
+              this.player.current.prot = this.player.base.prot
+                - ~~(room.actionItem.calc(this.player.base.prot));
+            }
+            break;
+          default:
+            room.actionItem.operator == '+'
+              ? this.player.current[room.actionItem.attr] = this.player.base[room.actionItem.attr] +
+              ~~(room.actionItem.calc(this.player.base[room.actionItem.attr]))
+              : this.player.current[room.actionItem.attr] = this.player.base[room.actionItem.attr] -
+              ~~(room.actionItem.calc(this.player.base[room.actionItem.attr]));
+            break;
         }
         this.eventDone = true;
         break;
@@ -439,7 +464,7 @@ export class DungeonRoomComponent implements OnInit {
   private changeConditionPlayer() {
     this.player.conditions = this.player.conditions.map(cnd => {
       cnd.turns -= 1;
-      switch (cnd.atr) {
+      switch (cnd.attr) {
         case 'life':
           cnd.operator == '+'
             ? this.player.currentLife += ~~(cnd.calc(this.player.baseLife))
@@ -453,28 +478,40 @@ export class DungeonRoomComponent implements OnInit {
           break;
         case 'atk':
           if (cnd.operator == '+') {
-            this.player.current.atk += ~~(cnd.calc(this.player.base.atk));
-            this.player.current.magic += ~~(cnd.calc(this.player.base.magic));
+            this.player.current.atk = this.player.base.atk + ~~(cnd.calc(this.player.base.atk));
+            this.player.current.magic = this.player.base.magic + ~~(cnd.calc(this.player.base.magic));
           } else {
-            this.player.current.atk -= ~~(cnd.calc(this.player.base.atk));
-            this.player.current.magic -= ~~(cnd.calc(this.player.base.magic));
+            this.player.current.atk = this.player.base.atk - ~~(cnd.calc(this.player.base.atk));
+            this.player.current.magic = this.player.base.magic - ~~(cnd.calc(this.player.base.magic));
           }
+          break;
         case 'def':
           if (cnd.operator == '+') {
-            this.player.current.def += ~~(cnd.calc(this.player.base.def));
-            this.player.current.prot += ~~(cnd.calc(this.player.base.prot));
+            this.player.current.def = this.player.base.def + ~~(cnd.calc(this.player.base.def));
+            this.player.current.prot = this.player.base.prot + ~~(cnd.calc(this.player.base.prot));
           } else {
-            this.player.current.def -= ~~(cnd.calc(this.player.base.def));
-            this.player.current.prot -= ~~(cnd.calc(this.player.base.prot));
+            this.player.current.def = this.player.base.def - ~~(cnd.calc(this.player.base.def));
+            this.player.current.prot = this.player.base.prot - ~~(cnd.calc(this.player.base.prot));
           }
+          break;
         default:
           cnd.operator == '+'
-            ? this.player.current[cnd.atr] += ~~(cnd.calc(this.player.base[cnd.atr]))
-            : this.player.current[cnd.atr] -= ~~(cnd.calc(this.player.base[cnd.atr]));
+            ? this.player.current[cnd.attr] = this.player.base[cnd.attr] + ~~(cnd.calc(this.player.base[cnd.attr]))
+            : this.player.current[cnd.attr] = this.player.base[cnd.attr] - ~~(cnd.calc(this.player.base[cnd.attr]));
           break;
       }
-      if (cnd.turns <= 0 && (cnd.atr != 'life' && cnd.atr != 'mana')) {
-        this.player.current[cnd.atr] = this.player.base[cnd.atr];
+      if (cnd.turns <= 0 && (cnd.attr != 'life' && cnd.attr != 'mana')) {
+        if (cnd.attr == 'atk') {
+          this.player.current.atk = this.player.base.atk;
+          this.player.current.magic = this.player.base.magic;
+        } 
+        if (cnd.attr == 'def') {
+          this.player.current.def = this.player.base.def;
+          this.player.current.prot = this.player.base.prot;
+        }
+        if (cnd.attr != 'atk' && cnd.attr != 'def') {
+          this.player.current[cnd.attr] = this.player.base[cnd.attr];
+        }
       }
       return cnd;
     }).filter(cnd => cnd.turns > 0);

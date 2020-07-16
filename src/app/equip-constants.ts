@@ -921,7 +921,7 @@ export const EQUIPS = [
             },
             {
                 attr: 'life',
-                value: 151,
+                value: 15,
             },
         ],
         cost: 141,
