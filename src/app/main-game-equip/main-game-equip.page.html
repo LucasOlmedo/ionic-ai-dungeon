@@ -59,6 +59,20 @@
   </ion-grid>
   <ion-item>
     <ion-label>
+      Habilidades
+    </ion-label>
+  </ion-item>
+  <ion-grid>
+    <ion-row *ngFor="let skill of player.skills">
+      <ion-col>
+        <ion-button *ngIf="skill != null" expand="full" fill="outline" [color]="skill.color">
+          {{ skill.name }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-item>
+    <ion-label>
       Atributos de equipamento
     </ion-label>
   </ion-item>

@@ -60,9 +60,39 @@ export class MainGameLootPage implements OnInit {
     let equipExtra = equip.extra, messageText = `${equip.name}`,
       attribText = equipExtra.map(t => `+ ${t.value} ${t.attr == 'crit' || t.attr == 'eva' ? '%' : ''} 
       ${this.nameRef[t.attr]}`).join('<br>');
+
+    if (equip.skill != null) {
+      let skillValue = '';
+      switch (equip.skill.type) {
+        case 'atk':
+          skillValue = `${equip.skill.val} de Dano Físico`;
+          break;
+        case 'magic':
+          skillValue = `${equip.skill.val} de Dano Mágico`;
+          break;
+        case 'buff':
+          skillValue = `+ ${equip.skill.val}% ${this.nameRef[equip.skill.attr]} por 4 Turnos`;
+          break;
+        case 'heal':
+          skillValue = `Cura ${equip.skill.val}% da Vida Máxima`;
+          break;
+        default:
+          skillValue = '';
+          break;
+      }
+      attribText += `<br><br>
+        <ion-label>
+          <small>
+            Habilidade: ${equip.skill.name}<br>
+            Custo: ${equip.skill.cost} de Mana<br>
+            ${skillValue}
+          </small>
+        </ion-label>`;
+    }
+
     let alert = await this.alertCtrl.create({
       header: `${equip.equiped == true ? 'Desequipar' : 'Equipar'} item?`,
-      message: `${messageText}<br><br>${attribText}<br><br><br>Vale ${equip.cost} moedas`,
+      message: `${messageText}<br><br>${attribText}<br><br>Vale ${equip.cost} moedas`,
       buttons: [
         equip.equiped == true ? `` : {
           text: `Vender`,
@@ -151,7 +181,7 @@ export class MainGameLootPage implements OnInit {
 
               this.player.equip[source.equip] = null;
               this.player.calcEquipAttr();
-              
+
               this.player.skills = this.player.skills.map(t => {
                 if (t != null && source.skill.name == t.name) {
                   return null;

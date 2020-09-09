@@ -13,6 +13,7 @@ export class Player {
     floorIndex: number = 1;
     roomIndex: number = 1;
     killCount: number = 0;
+    inBattle: boolean = false;
     inventory: any = [
         {
             id: 1,

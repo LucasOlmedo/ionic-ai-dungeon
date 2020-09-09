@@ -1801,7 +1801,7 @@ export const EQUIPS = [
         equiped: false,
         equip: 'sword',
         img: '../assets/images/equip/sword/pick.png',
-        name: 'Picatera',
+        name: 'Picareta',
         extra: [
             {
                 attr: 'atk',

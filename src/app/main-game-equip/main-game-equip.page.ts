@@ -72,9 +72,9 @@ export class MainGameEquipPage implements OnInit {
       .map(t => `+ ${t.value} ${t.attr == 'crit' || t.attr == 'eva' ? '%' : ''} ${this.nameRef[t.attr]}`)
       .join('<br>');
     let alert = await this.alertCtrl.create({
-      header: 'Desequipar item?',
+      header: this.player.inBattle == false ? 'Desequipar item?' : 'Detalhes',
       message: `${messageText}<br><br>${attribText}`,
-      buttons: [
+      buttons: this.player.inBattle == false ? [
         {
           text: 'Não',
           role: 'cancel',
@@ -113,7 +113,7 @@ export class MainGameEquipPage implements OnInit {
             this.updateBuffs();
           },
         },
-      ],
+      ] : [],
     });
     await alert.present();
   }

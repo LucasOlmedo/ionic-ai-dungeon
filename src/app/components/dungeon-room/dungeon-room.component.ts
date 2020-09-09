@@ -174,6 +174,7 @@ export class DungeonRoomComponent implements OnInit {
     await this.helper.sleep(100);
     this.playerIsDead = true;
     this.eventDone = false;
+    this.player.inBattle = false;
     let toolbars = document.getElementsByTagName('ion-toolbar')
     for (let i = 0; i < toolbars.length; i++) {
       toolbars[i].style.opacity = '0';
@@ -188,6 +189,7 @@ export class DungeonRoomComponent implements OnInit {
       await this.playerAtk(skill);
       if (this.currentMonster.currentLife == 0) {
         this.eventDone = true;
+        this.player.inBattle = false;
         this.player.updateExp(this.currentMonster.exp);
         this.player.gold += this.currentMonster.gold;
         this.getLootEquip();
@@ -204,6 +206,7 @@ export class DungeonRoomComponent implements OnInit {
       await this.playerAtk(skill);
       if (this.currentMonster.currentLife == 0) {
         this.eventDone = true;
+        this.player.inBattle = false;
         this.player.updateExp(this.currentMonster.exp);
         this.player.gold += this.currentMonster.gold;
         this.getLootEquip();
@@ -343,6 +346,7 @@ export class DungeonRoomComponent implements OnInit {
         break;
       case 'battle':
       case 'boss':
+        this.player.inBattle = true;
         this.currentMonster = {
           name: '',
           baseLife: 0,

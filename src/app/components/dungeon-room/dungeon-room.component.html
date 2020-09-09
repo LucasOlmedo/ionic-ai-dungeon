@@ -147,6 +147,9 @@
                 <ion-button [disabled]="skill == null || (skill.cost > player.currentMana) || !canAtk || !skill.active"
                   [color]="skill != null ? skill.color : 'dark'" fill="outline" (click)="battleAction(skill)">
                   <ion-img src="{{ skill != null ? skill.img : '../assets/images/skill/empty.png'}}"></ion-img>
+                  <span class="skill-item-cost" *ngIf="skill != null">
+                    {{ skill.cost != 0 ? skill.cost : '' }}
+                  </span>
                 </ion-button>
               </ion-col>
             </ion-row>

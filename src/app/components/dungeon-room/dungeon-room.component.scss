@@ -75,6 +75,13 @@
             margin: 5px;
             width: 70%;
         }
+        .skill-item-cost {
+            position: absolute;
+            right: -12px;
+            bottom: 3px;
+            font-size: 10px;
+            color: white;
+        }
     }
 }
 
@@ -105,9 +112,9 @@
 }
 
 @keyframes blinker {
-  50% {
-    opacity: 0;
-  }
+    50% {
+        opacity: 0;
+    }
 }
 
 // RANKING EFFECTS
