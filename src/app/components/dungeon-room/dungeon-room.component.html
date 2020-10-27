@@ -120,14 +120,14 @@
           <ion-row>
             <ion-col>
               <ion-text *ngIf="currentRoom.action == 'boss'" class="text-boss">BOSS</ion-text>
-              <ion-img class="img-monster" src="{{ currentRoom.actionItem.img }}"></ion-img>
+              <ion-img class="img-monster" src="{{ currentMonster.img }}"></ion-img>
             </ion-col>
           </ion-row>
         </ion-grid>
         <ion-card-header class="adjust-padding" class="padding-top: 0;">
           <ion-card-subtitle style="padding-top: 0;">
             <span class="ion-float-left" style="margin-bottom: 8px;">
-              Nv {{ currentMonster.level }} - {{ currentRoom.actionItem.name }}
+              Nv {{ currentMonster.level }} - {{ currentMonster.name }}
             </span>
             <span class="ion-float-right info-monster-hp">
               {{ currentMonster.currentLife }}/{{ currentMonster.baseLife }}
@@ -159,7 +159,7 @@
       <div *ngIf="eventDone">
         <ion-card-content class="adjust-padding">
           <div class="ion-text-center ion-margin-top">
-            Você derrotou {{ currentRoom.actionItem.name }}!
+            Você derrotou {{ currentMonster.name }}!
           </div>
           <div class="ion-text-center ion-margin-top text-color-chest ">
             Adquiriu {{ currentMonster.exp }} de experiência!

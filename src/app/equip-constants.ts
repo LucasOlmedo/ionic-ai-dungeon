@@ -467,6 +467,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'shield',
+            desc: 'Avança com seu escudo, atingindo o inimigo com o impacto',
         },
     },
     {
@@ -497,6 +498,7 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'def',
             equip: 'shield',
+            desc: 'Cria um escudo de energia aumentando a defesa',
         },
     },
     {
@@ -527,6 +529,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'shield',
+            desc: 'Emite uma luz verde ofuscante, tão forte que é capaz de queimar a pele do inimigo',
         },
     },
     {
@@ -557,6 +560,7 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'atk',
             equip: 'shield',
+            desc: 'O escudo vibra, criando um campo magnético em volta de si',
         },
     },
     {
@@ -587,6 +591,7 @@ export const EQUIPS = [
             type: 'heal',
             attr: 'life',
             equip: 'shield',
+            desc: 'As cápsulas contidas em um compartimento secreto desse escudo trazem alívio para dores e uma sensação revigorante',
         },
     },
     {
@@ -617,6 +622,7 @@ export const EQUIPS = [
             type: 'heal',
             attr: 'life',
             equip: 'shield',
+            desc: 'Utiliza uma aura mágica para recuperar o vigor e sarar ferimentos',
         },
     },
     {
@@ -651,6 +657,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'shield',
+            desc: 'Os selos do escudo se rompem, liberando a chama espiritual através do portador',
         },
     },
     {
@@ -681,6 +688,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'shield',
+            desc: 'Dispara fragmentos de gemas mágicas no inimigo',
         },
     },
     {
@@ -715,6 +723,7 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'def',
             equip: 'shield',
+            desc: 'Poucos ataques conseguem ser capazes de ferir o portador dessa habilidade',
         },
     },
     {
@@ -749,6 +758,7 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'vel',
             equip: 'shield',
+            desc: 'O portador é envolvido em um fogo mágico que aumenta sua velocidade',
         },
     },
     {
@@ -783,6 +793,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'shield',
+            desc: 'Concentra toda a força em um único punho e acerta o inimigo',
         },
     },
 
@@ -1221,6 +1232,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1251,6 +1263,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1285,6 +1298,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1319,6 +1333,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1353,6 +1368,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1387,6 +1403,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1417,6 +1434,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1447,6 +1465,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1477,6 +1496,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1511,6 +1531,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1541,6 +1562,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1571,6 +1593,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1601,6 +1624,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1635,6 +1659,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1669,6 +1694,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1703,6 +1729,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1733,6 +1760,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1763,6 +1791,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1793,6 +1822,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1823,6 +1853,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1857,6 +1888,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1887,6 +1919,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1917,6 +1950,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1947,6 +1981,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -1977,6 +2012,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2011,6 +2047,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2045,6 +2082,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2079,6 +2117,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2109,6 +2148,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2139,6 +2179,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2169,6 +2210,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2203,6 +2245,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2233,6 +2276,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2263,6 +2307,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2293,6 +2338,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2327,6 +2373,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2361,6 +2408,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2391,6 +2439,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2425,6 +2474,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2459,6 +2509,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2489,6 +2540,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2519,6 +2571,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2549,6 +2602,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2583,6 +2637,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2613,6 +2668,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2643,6 +2699,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2677,6 +2734,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
     {
@@ -2711,6 +2769,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
+            desc: '',
         },
     },
 
@@ -2747,6 +2806,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
+            desc: '',
         },
     },
     {
@@ -2781,6 +2841,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
+            desc: 'Utiliza o terreno local para gerar uma esfera de pedra e a atira contra o adversário',
         },
     },
     {
@@ -2811,6 +2872,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
+            desc: '',
         },
     },
     {
@@ -2841,6 +2903,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
+            desc: 'Acerta o inimigo marcando-o com um stigma de cruz, queimando profundamente seu corpo',
         },
     },
     {
@@ -2871,6 +2934,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
+            desc: '',
         },
     },
     {
@@ -2901,6 +2965,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
+            desc: '',
         },
     },
     {
@@ -2931,6 +2996,7 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'vel',
             equip: 'ring',
+            desc: '',
         },
     },
     {
@@ -2965,6 +3031,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
+            desc: '',
         },
     },
     {
@@ -2995,6 +3062,7 @@ export const EQUIPS = [
             type: 'heal',
             attr: 'life',
             equip: 'ring',
+            desc: '',
         },
     },
     {
@@ -3029,6 +3097,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
+            desc: '',
         },
     },
     {
@@ -3059,6 +3128,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
+            desc: '',
         },
     },
     {
@@ -3089,6 +3159,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
+            desc: '',
         },
     },
     {
@@ -3123,6 +3194,7 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'def',
             equip: 'ring',
+            desc: 'Ergue uma parede de energia na frente do portador, reduzindo a gravidade dos golpes sofridos',
         },
     },
     {
@@ -3157,6 +3229,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
+            desc: 'Ataca o inimigo com espinhos afiados feitos a partir de uma substância de alta resistência',
         },
     },
     {
@@ -3191,6 +3264,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
+            desc: '',
         },
     },
 
@@ -3873,6 +3947,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -3907,6 +3982,7 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'atk',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -3941,6 +4017,7 @@ export const EQUIPS = [
             type: 'heal',
             attr: 'life',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -3975,6 +4052,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -4005,6 +4083,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -4043,6 +4122,7 @@ export const EQUIPS = [
             type: 'heal',
             attr: 'life',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -4077,6 +4157,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -4111,6 +4192,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -4141,6 +4223,7 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -4171,6 +4254,7 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'def',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -4201,6 +4285,7 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'vel',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -4227,6 +4312,7 @@ export const EQUIPS = [
             type: 'heal',
             attr: 'life',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -4257,6 +4343,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
+            desc: '',
         },
     },
     {
@@ -4287,6 +4374,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
+            desc: '',
         },
     },
 
@@ -4299,7 +4387,7 @@ export const EQUIPS = [
         name: 'Poção de cura',
         count: 1,
         attr: 'life',
-        value: 15,
+        value: 20,
         cost: 50,
         skill: null,
     },
@@ -4311,7 +4399,7 @@ export const EQUIPS = [
         name: 'Poção de mana',
         count: 1,
         attr: 'mana',
-        value: 15,
+        value: 20,
         cost: 50,
         skill: null,
     },
@@ -4323,7 +4411,7 @@ export const EQUIPS = [
         name: 'Poção de EXP',
         count: 1,
         attr: 'exp',
-        value: 175,
+        value: 200,
         cost: 85,
         skill: null,
     },
@@ -4335,7 +4423,7 @@ export const EQUIPS = [
         name: 'Garrafa de cura',
         count: 1,
         attr: 'life',
-        value: 35,
+        value: 40,
         cost: 175,
         skill: null,
     },
@@ -4347,7 +4435,7 @@ export const EQUIPS = [
         name: 'Garrafa de mana',
         count: 1,
         attr: 'mana',
-        value: 35,
+        value: 40,
         cost: 175,
         skill: null,
     },
@@ -4359,7 +4447,7 @@ export const EQUIPS = [
         name: 'Garrafa de EXP',
         count: 1,
         attr: 'exp',
-        value: 350,
+        value: 500,
         cost: 215,
         skill: null,
     },

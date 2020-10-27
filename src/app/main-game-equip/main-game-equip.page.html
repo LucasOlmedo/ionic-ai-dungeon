@@ -65,7 +65,8 @@
   <ion-grid>
     <ion-row *ngFor="let skill of player.skills">
       <ion-col>
-        <ion-button *ngIf="skill != null" expand="full" fill="outline" [color]="skill.color">
+        <ion-button (click)="showSkill(skill)" *ngIf="skill != null" expand="block" fill="outline"
+          [color]="skill.color">
           {{ skill.name }}
         </ion-button>
       </ion-col>

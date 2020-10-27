@@ -117,4 +117,36 @@ export class MainGameEquipPage implements OnInit {
     });
     await alert.present();
   }
+
+  async showSkill(skill) {
+    console.log(skill);
+    let skillValue = '';
+    switch (skill.type) {
+      case 'atk':
+        skillValue = `${skill.val} de Dano Físico`;
+        break;
+      case 'magic':
+        skillValue = `${skill.val} de Dano Mágico`;
+        break;
+      case 'buff':
+        skillValue = `+ ${skill.val}% ${this.nameRef[skill.attr]} por 4 Turnos`;
+        break;
+      case 'heal':
+        skillValue = `Cura ${skill.val}% da Vida Máxima`;
+        break;
+      default:
+        skillValue = '';
+        break;
+    }
+    let alert = await this.alertCtrl.create({
+      header: 'Descrição da skill',
+      message: `<ion-label>
+            Habilidade: ${skill.name}<br>
+            Custo: ${skill.cost} de Mana<br>
+            ${skillValue}<br><br>
+            <em>"${skill.desc || ''}"</em>
+        </ion-label>`,
+    });
+    await alert.present();
+  }
 }

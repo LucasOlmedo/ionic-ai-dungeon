@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, AnimationController } from '@ionic/angular';
+import { LoadingController, AnimationController, AlertController } from '@ionic/angular';
 import { DungeonService } from 'src/app/dungeon.service';
 import { PlayerService } from 'src/app/player.service';
 import { Player } from 'src/app/models/player';
 import { HelperService } from 'src/app/helper.service';
 import { EQUIPS } from 'src/app/equip-constants';
+import { FINAL_BOSS } from 'src/app/bestiary-constants';
 
 @Component({
   selector: 'app-dungeon-room',
@@ -48,6 +49,7 @@ export class DungeonRoomComponent implements OnInit {
     private playerService: PlayerService,
     private helper: HelperService,
     private animation: AnimationController,
+    private alertCtrl: AlertController,
   ) {
     this.loadingDungeon();
   }
@@ -171,19 +173,52 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   async gameOver() {
-    await this.helper.sleep(100);
-    this.playerIsDead = true;
-    this.eventDone = false;
-    this.player.inBattle = false;
-    let toolbars = document.getElementsByTagName('ion-toolbar')
-    for (let i = 0; i < toolbars.length; i++) {
-      toolbars[i].style.opacity = '0';
-    }
-    return false;
+    await this.helper.sleep(300);
+    let alert = await this.alertCtrl.create({
+      header: 'Você foi atingido fatalmente!',
+      message: `A sua vida está por um fio. Enquanto seu corpo cai sem força,
+        uma voz o incentiva a continuar. Você não sabe quem é, mas percebe uma presença
+        poderosa ao seu lado. <br><br>
+        Quer se levantar e continuar?`,
+      buttons: [
+        {
+          text: 'Continuar (ADS)',
+          cssClass: 'sell-item',
+          handler: () => {
+            let baseLife = this.player.baseLife, baseMana = this.player.baseMana;
+            this.player.currentLife = Math.round(baseLife / 2);
+            if (this.player.currentLife >= this.player.baseLife) {
+              this.player.currentLife = this.player.baseLife;
+            }
+            this.player.currentMana += Math.round(baseMana / 4);
+            if (this.player.currentMana >= this.player.baseMana) {
+              this.player.currentMana = this.player.baseMana;
+            }
+            return true;
+          },
+        },
+        {
+          text: 'Desistir',
+          role: 'cancel',
+          cssClass: 'confirm-quit',
+          handler: () => {
+            this.playerIsDead = true;
+            this.eventDone = false;
+            this.player.inBattle = false;
+            let toolbars = document.getElementsByTagName('ion-toolbar')
+            for (let i = 0; i < toolbars.length; i++) {
+              toolbars[i].style.opacity = '0';
+            }
+            return false;
+          },
+        },
+      ],
+    });
+    await alert.present();
   }
 
   async battleAction(skill) {
-    let playerVel = ~~(this.player.current.vel + this.player.equipAttr.vel);
+    let playerVel = ~~(this.player.current.vel + this.player.equipAttr.vel), mnsAtk;
     this.canAtk = false;
     if (playerVel >= this.currentMonster.vel) {
       await this.playerAtk(skill);
@@ -196,21 +231,23 @@ export class DungeonRoomComponent implements OnInit {
         this.player.killCount++;
       } else {
         await this.helper.sleep(500);
-        await this.monsterAtk();
+        mnsAtk = await this.monsterAtk();
         await this.helper.sleep(100);
       }
     } else {
       await this.helper.sleep(100);
-      await this.monsterAtk();
-      await this.helper.sleep(500);
-      await this.playerAtk(skill);
-      if (this.currentMonster.currentLife == 0) {
-        this.eventDone = true;
-        this.player.inBattle = false;
-        this.player.updateExp(this.currentMonster.exp);
-        this.player.gold += this.currentMonster.gold;
-        this.getLootEquip();
-        this.player.killCount++;
+      mnsAtk = await this.monsterAtk();
+      if (mnsAtk) {
+        await this.helper.sleep(500);
+        await this.playerAtk(skill);
+        if (this.currentMonster.currentLife == 0) {
+          this.eventDone = true;
+          this.player.inBattle = false;
+          this.player.updateExp(this.currentMonster.exp);
+          this.player.gold += this.currentMonster.gold;
+          this.getLootEquip();
+          this.player.killCount++;
+        }
       }
     }
     this.canAtk = true;
@@ -259,6 +296,8 @@ export class DungeonRoomComponent implements OnInit {
       this.deathCause = this.currentMonster.name;
       return this.gameOver();
     }
+
+    return true;
   }
 
   private async playerAtk(sk) {
@@ -346,6 +385,7 @@ export class DungeonRoomComponent implements OnInit {
         break;
       case 'battle':
       case 'boss':
+        let actualFloor = (this.currentFloorIndex + 1);
         this.player.inBattle = true;
         this.currentMonster = {
           name: '',
@@ -359,7 +399,13 @@ export class DungeonRoomComponent implements OnInit {
           prot: 0,
           vel: 0,
         };
-        this.currentMonster = this.calcMonster(room.actionItem, room.action);
+        if ((actualFloor % 2 == 0) && room.action == 'boss') {
+          let bsIndx = 0;
+          let finalBoss = FINAL_BOSS[bsIndx];
+          this.currentMonster = this.finalBossMonster(finalBoss);
+        } else {
+          this.currentMonster = this.calcMonster(room.actionItem, room.action);
+        }
         this.canAtk = true;
         break;
       case 'trap':
@@ -448,6 +494,21 @@ export class DungeonRoomComponent implements OnInit {
     }
   }
 
+  private finalBossMonster(m) {
+    let monster = Object.assign({}, m), lvAux = this.player.level - 1;
+    monster.level = lvAux <= 0 ? 1 : lvAux;
+    monster.baseLife = ~~((m.baseLife + (m.baseLife * (monster.level / 1.35))) + (36.5 * monster.level));
+    monster.currentLife = ~~monster.baseLife;
+    monster.exp = ~~(m.exp * (monster.level / 2) + m.exp);
+    monster.gold = ~~(m.gold * (monster.level / 2));
+    monster.atk = ~~(m.atk + (monster.level * 8.5)) + (7.5 * monster.level);
+    monster.def = ~~(m.def + (monster.level * 1.5)) + (1.5 * monster.level);
+    monster.magic = ~~(m.magic + (monster.level * 6)) + (5.75 * monster.level);
+    monster.prot = ~~(m.prot + (monster.level / 0.09));
+    monster.vel = ~~(m.vel + (monster.level / 0.06));
+    return monster;
+  }
+
   private calcMonster(m, type) {
     let monster = Object.assign({}, m), lvAux = type == 'boss'
       ? (this.player.level - 1) : ~~(Math.random() * (this.player.level - this.currentFloorIndex)
@@ -508,7 +569,7 @@ export class DungeonRoomComponent implements OnInit {
         if (cnd.attr == 'atk') {
           this.player.current.atk = this.player.base.atk;
           this.player.current.magic = this.player.base.magic;
-        } 
+        }
         if (cnd.attr == 'def') {
           this.player.current.def = this.player.base.def;
           this.player.current.prot = this.player.base.prot;
