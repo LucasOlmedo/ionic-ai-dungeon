@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package next.floor.dungeon;
 
 import android.os.Bundle;
 

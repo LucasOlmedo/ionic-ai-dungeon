@@ -248,4 +248,28 @@ export class Player {
     getNextLvl() {
         return ~~this.nextLvl;
     }
+
+    removeEquipSkill(equip) {
+        this.skills = this.skills.map(t => {
+            if (t != null && equip.skill.name == t.name) {
+                return null;
+            }
+            return t;
+        });
+
+        if (this.skills[0] == null) {
+            this.skills[0] = {
+                name: 'Ataque básico',
+                img: '../assets/images/skill/hand-atk.png',
+                color: 'skillGray',
+                active: true,
+                val: 30,
+                cost: 0,
+                type: 'atk',
+                attr: 'atk',
+                equip: 'sword',
+                desc: '',
+            };
+        }
+    }
 }

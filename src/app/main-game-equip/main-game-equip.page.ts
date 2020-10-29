@@ -103,6 +103,7 @@ export class MainGameEquipPage implements OnInit {
               }
             }
 
+            this.player.removeEquipSkill(equip);
             equip.equiped = false;
             this.player.inventory = this.player.inventory.map((t: any) => {
               if (t.id == equip.id) {
@@ -139,9 +140,8 @@ export class MainGameEquipPage implements OnInit {
         break;
     }
     let alert = await this.alertCtrl.create({
-      header: 'Descrição da skill',
+      header: `${skill.name}`,
       message: `<ion-label>
-            Habilidade: ${skill.name}<br>
             Custo: ${skill.cost} de Mana<br>
             ${skillValue}<br><br>
             <em>"${skill.desc || ''}"</em>

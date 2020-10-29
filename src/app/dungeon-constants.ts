@@ -199,3 +199,10 @@ export const TRAPS = [
         description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
     },
 ];
+
+export const BOSS_SPEAK = [
+    {
+        floor: 10,
+        message: '...O...O...Que...Você ainda...está...fazendo...aqui?',
+    },
+];

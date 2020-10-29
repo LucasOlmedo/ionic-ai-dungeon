@@ -4343,7 +4343,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
-            desc: '',
+            desc: 'Bolhas são formadas a partir de um líquido mágico que escorre do pendente',
         },
     },
     {
@@ -4374,7 +4374,7 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
-            desc: '',
+            desc: 'Sopra uma rajada de fogo dracônico, queimando todos os adverários na sua frente',
         },
     },
 

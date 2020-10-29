@@ -25,9 +25,16 @@
   </ion-item>
   <ion-grid class="ion-margin-bottom ion-padding-bottom">
     <ion-row>
+      <ion-col>
+        <ion-button class="btn-reorder" size="small" color="dark" fill="outline" (click)="reorderLoot()">
+          <ion-icon slot="icon-only" name="swap-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col size="4" class="col-skill" *ngFor="let slot of player.inventory">
-        <ion-button [disabled]="!slot.img && !slot.equiped || (slot.type == 'equip' && player.inBattle)" color="dark" fill="outline"
-          (click)="manageSlot(slot)">
+        <ion-button [disabled]="!slot.img && !slot.equiped || (slot.type == 'equip' && player.inBattle)" color="dark"
+          fill="outline" (click)="manageSlot(slot)">
           <img [src]="slot.img || '../assets/images/skill/empty.png'" />
           <div *ngIf="slot.type == 'potion' || slot.type == 'bottle'">
             <span class="loot-count">{{ slot.count }}x</span>

@@ -181,27 +181,7 @@ export class MainGameLootPage implements OnInit {
 
               this.player.equip[source.equip] = null;
               this.player.calcEquipAttr();
-
-              this.player.skills = this.player.skills.map(t => {
-                if (t != null && source.skill.name == t.name) {
-                  return null;
-                }
-                return t;
-              });
-
-              if (this.player.skills[0] == null) {
-                this.player.skills[0] = {
-                  name: 'Ataque básico',
-                  img: '../assets/images/skill/hand-atk.png',
-                  color: 'skillGray',
-                  active: true,
-                  val: 30,
-                  cost: 0,
-                  type: 'atk',
-                  attr: 'atk',
-                  equip: 'sword',
-                };
-              }
+              this.player.removeEquipSkill(source);
 
               if (tAtrbLife != null) {
                 this.player.baseLife -= tAtrbLife.value;
@@ -310,6 +290,10 @@ export class MainGameLootPage implements OnInit {
       ]
     });
     await alert.present();
+  }
+
+  async reorderLoot() {
+    this.player.inventory.sort().reverse();
   }
 
 }

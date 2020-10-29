@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, AnimationController, AlertController } from '@ionic/angular';
+import { LoadingController, AnimationController, AlertController, Platform } from '@ionic/angular';
 import { DungeonService } from 'src/app/dungeon.service';
 import { PlayerService } from 'src/app/player.service';
 import { Player } from 'src/app/models/player';
 import { HelperService } from 'src/app/helper.service';
 import { EQUIPS } from 'src/app/equip-constants';
 import { FINAL_BOSS } from 'src/app/bestiary-constants';
+import { BOSS_SPEAK } from 'src/app/dungeon-constants';
 
 @Component({
   selector: 'app-dungeon-room',
@@ -42,6 +43,7 @@ export class DungeonRoomComponent implements OnInit {
   canGetLoot: boolean = true;
   animateBattleColor: string = '';
   animateBattleText: string = '';
+  canRevive: boolean = true;
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -50,6 +52,7 @@ export class DungeonRoomComponent implements OnInit {
     private helper: HelperService,
     private animation: AnimationController,
     private alertCtrl: AlertController,
+    public platform: Platform,
   ) {
     this.loadingDungeon();
   }
@@ -194,6 +197,7 @@ export class DungeonRoomComponent implements OnInit {
             if (this.player.currentMana >= this.player.baseMana) {
               this.player.currentMana = this.player.baseMana;
             }
+            this.canRevive = false;
             return true;
           },
         },
@@ -214,7 +218,18 @@ export class DungeonRoomComponent implements OnInit {
         },
       ],
     });
-    await alert.present();
+    if (this.canRevive) {
+      await alert.present();
+    } else {
+      this.playerIsDead = true;
+      this.eventDone = false;
+      this.player.inBattle = false;
+      let toolbars = document.getElementsByTagName('ion-toolbar')
+      for (let i = 0; i < toolbars.length; i++) {
+        toolbars[i].style.opacity = '0';
+      }
+      return false;
+    }
   }
 
   async battleAction(skill) {
@@ -251,7 +266,9 @@ export class DungeonRoomComponent implements OnInit {
       }
     }
     this.canAtk = true;
-    this.changeConditionPlayer();
+    if (mnsAtk) {
+      this.changeConditionPlayer();
+    }
   }
 
   private async monsterAtk() {
@@ -399,10 +416,11 @@ export class DungeonRoomComponent implements OnInit {
           prot: 0,
           vel: 0,
         };
-        if ((actualFloor % 2 == 0) && room.action == 'boss') {
+        if ((actualFloor % 10 == 0) && room.action == 'boss') {
           let bsIndx = 0;
           let finalBoss = FINAL_BOSS[bsIndx];
           this.currentMonster = this.finalBossMonster(finalBoss);
+          await this.animateFinalBoss();
         } else {
           this.currentMonster = this.calcMonster(room.actionItem, room.action);
         }
@@ -419,7 +437,10 @@ export class DungeonRoomComponent implements OnInit {
           if (this.player.currentLife <= 0) {
             this.player.currentLife = 0;
             this.deathCause = room.actionItem.location;
-            return this.gameOver();
+            let isntOver = this.gameOver();
+            if (!isntOver) {
+              return isntOver;
+            }
           }
         }
         await this.helper.sleep(500);
@@ -590,5 +611,16 @@ export class DungeonRoomComponent implements OnInit {
       .fromTo('opacity', '0', '1')
       .fromTo('transform', 'translateY(0px)', 'translateY(-50px)')
       .fromTo('opacity', '1', '0');
+  }
+
+  async animateFinalBoss() {
+    let actualFloor = (this.currentFloorIndex + 1);
+    let speak = BOSS_SPEAK.find(t => t.floor == actualFloor);
+    if (speak) {
+      let alert = await this.alertCtrl.create({
+        message: `<em>"${speak.message}"</em>`,
+      });
+      await alert.present();
+    }
   }
 }
