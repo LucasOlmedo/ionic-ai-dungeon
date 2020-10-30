@@ -7,6 +7,9 @@ import { HelperService } from 'src/app/helper.service';
 import { EQUIPS } from 'src/app/equip-constants';
 import { FINAL_BOSS } from 'src/app/bestiary-constants';
 import { BOSS_SPEAK } from 'src/app/dungeon-constants';
+import { AdOptions, AdSize, AdPosition } from 'capacitor-admob';
+import { Plugins } from '@capacitor/core';
+const { AdMob, Toast } = Plugins;
 
 @Component({
   selector: 'app-dungeon-room',
@@ -65,6 +68,15 @@ export class DungeonRoomComponent implements OnInit {
       message: 'Carregando...',
     });
     loading.present();
+
+    const options: AdOptions = {
+      // PROD ADS
+      // adId: 'ca-app-pub-4059005643306368/4060920978',
+      // TEST ADS
+      adId: 'ca-app-pub-3940256099942544/5224354917',
+    }
+    await AdMob.prepareRewardVideoAd(options);
+
     await this.playerService.getPlayer()
       .subscribe(p => {
         this.player = p;
@@ -178,6 +190,8 @@ export class DungeonRoomComponent implements OnInit {
   async gameOver() {
     await this.helper.sleep(300);
     let alert = await this.alertCtrl.create({
+      backdropDismiss: false,
+      keyboardClose: false,
       header: 'Você foi atingido fatalmente!',
       message: `A sua vida está por um fio. Enquanto seu corpo cai sem força,
         uma voz o incentiva a continuar. Você não sabe quem é, mas percebe uma presença
@@ -187,18 +201,36 @@ export class DungeonRoomComponent implements OnInit {
         {
           text: 'Continuar (ADS)',
           cssClass: 'sell-item',
-          handler: () => {
-            let baseLife = this.player.baseLife, baseMana = this.player.baseMana;
-            this.player.currentLife = Math.round(baseLife / 2);
-            if (this.player.currentLife >= this.player.baseLife) {
-              this.player.currentLife = this.player.baseLife;
-            }
-            this.player.currentMana += Math.round(baseMana / 4);
-            if (this.player.currentMana >= this.player.baseMana) {
-              this.player.currentMana = this.player.baseMana;
-            }
-            this.canRevive = false;
-            return true;
+          handler: async () => {
+            let loading = await this.loadingCtrl.create({
+              spinner: 'circular',
+              message: 'Carregando...',
+            });
+            loading.present();
+
+            await AdMob.showRewardVideoAd().then((value: any) => {
+              if (value) {
+                let baseLife = this.player.baseLife, baseMana = this.player.baseMana;
+                this.player.currentLife = Math.round(baseLife / 2);
+                if (this.player.currentLife >= this.player.baseLife) {
+                  this.player.currentLife = this.player.baseLife;
+                }
+                this.player.currentMana += Math.round(baseMana / 4);
+                if (this.player.currentMana >= this.player.baseMana) {
+                  this.player.currentMana = this.player.baseMana;
+                }
+                this.canRevive = false;
+                loading.dismiss();
+                return true;
+              }
+            }, (err) => {
+              loading.dismiss();
+              Toast.show({
+                text: err,
+                duration: 'long',
+                position: 'top',
+              });
+            });
           },
         },
         {

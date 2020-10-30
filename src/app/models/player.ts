@@ -251,7 +251,7 @@ export class Player {
 
     removeEquipSkill(equip) {
         this.skills = this.skills.map(t => {
-            if (t != null && equip.skill.name == t.name) {
+            if (t != null && equip.skill != null && equip.skill.name == t.name) {
                 return null;
             }
             return t;
