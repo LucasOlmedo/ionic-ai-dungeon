@@ -46,7 +46,7 @@ export class DungeonService {
       }
     }
     return new Promise(resolve => {
-      resolve(this.createDungeonRecursive(20, 2));
+      resolve(this.createDungeonRecursive(15, 2));
     });
   }
 
@@ -98,7 +98,7 @@ export class DungeonService {
         let chest = {
           location: 'Baú da sorte',
           description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
-          loot: (playerLv) => ~~((Math.floor(Math.random() * 24) + 13) * playerLv),
+          loot: (playerLv) => ~~((Math.floor(Math.random() * 17) + 6) * playerLv),
         };
         room.actionItem = chest;
         break;

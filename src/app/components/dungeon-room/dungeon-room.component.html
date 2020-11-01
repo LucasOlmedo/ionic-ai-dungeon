@@ -1,5 +1,6 @@
 <ion-card class="box-no-shadow" *ngIf="loaded">
   <div *ngIf="!playerIsDead">
+
     <!-- START | EMPTY -->
     <div *ngIf="currentRoom.action == 'start' || currentRoom.action == 'empty'">
       <img src="{{ currentRoom.img }}" />
@@ -61,6 +62,14 @@
         <div *ngIf="chestOpened" class="ion-text-center text-color-chest ion-padding-top">
           Você encontrou {{ chestGold }} moedas de ouro!
         </div>
+        <ion-row *ngIf="canChestReward" class="ion-padding-bottom">
+          <ion-col class="ion-text-center ion-padding-top">
+            <ion-button color="warning" fill="outline" (click)="getRewardChest()">
+              <ion-icon slot="start" name="play-circle-outline"></ion-icon>
+              2X Ouro
+            </ion-button>
+          </ion-col>
+        </ion-row>
         <div *ngIf="canGetLoot">
           <div *ngIf="lootEquip" class="ion-text-center text-color-equip">
             <span class="ion-margin-bottom">
@@ -156,7 +165,7 @@
           </ion-grid>
         </ion-card-content>
       </div>
-      <div *ngIf="eventDone">
+      <div *ngIf="eventDone && !isMerchant">
         <ion-card-content class="adjust-padding">
           <div class="ion-text-center ion-margin-top">
             Você derrotou {{ currentMonster.name }}!
@@ -186,7 +195,7 @@
     </div>
 
     <!-- EVENT DONE -->
-    <ion-grid *ngIf="eventDone && !playerIsDead" class="ion-padding-top">
+    <ion-grid *ngIf="eventDone && !playerIsDead && !isMerchant" class="ion-padding-top">
       <ion-row>
         <ion-col *ngFor="let way of currentRoom.next; let i = index" [size]="12/currentRoom.next.length">
           <ion-button color="dark" fill="outline" expand="block" (click)="enterRoom(way)">
@@ -200,6 +209,36 @@
           </ion-button>
         </ion-col>
         <ion-col *ngIf="currentRoom.next.length == 0" size="12">
+          <ion-button color="dark" fill="outline" expand="block" (click)="visitMerchant()">
+            Avançar
+            <ion-icon slot="end" name="arrow-up-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- MERCHANT -->
+    <ion-grid *ngIf="eventDone && !playerIsDead && isMerchant" class="ion-padding-top ion-padding-bottom">
+      <ion-row class="ion-padding-bottom">
+        <ion-col>
+          <div class="ion-text-center">
+            <span>
+              <em>"Olá aventureiro. Antes de prosseguir para o próximo andar,
+                o que acha de dar uma olhada nessas mercadorias?"</em>
+            </span>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-padding-bottom">
+        <img class="merchant-img" src="../assets/images/merchant.png" />
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="col-skill" *ngFor="let item of merchantItems">
+          <ion-button [disabled]="!item || !item.img" color="dark" fill="outline" (click)="showMerchantItem(item)">
+            <img class="merchant-item-img" [src]="item.img || '../assets/images/skill/empty.png'" />
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-padding-top" *ngIf="currentRoom.next.length == 0" size="12">
           <ion-button color="dark" fill="outline" expand="block" (click)="nextFloor()">
             Próximo andar
             <ion-icon slot="end" name="push-outline"></ion-icon>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, AnimationController, AlertController, Platform } from '@ionic/angular';
+import { LoadingController, AnimationController, AlertController, ToastController } from '@ionic/angular';
 import { DungeonService } from 'src/app/dungeon.service';
 import { PlayerService } from 'src/app/player.service';
 import { Player } from 'src/app/models/player';
@@ -7,7 +7,7 @@ import { HelperService } from 'src/app/helper.service';
 import { EQUIPS } from 'src/app/equip-constants';
 import { FINAL_BOSS } from 'src/app/bestiary-constants';
 import { BOSS_SPEAK } from 'src/app/dungeon-constants';
-import { AdOptions, AdSize, AdPosition } from 'capacitor-admob';
+import { AdOptions } from 'capacitor-admob';
 import { Plugins } from '@capacitor/core';
 const { AdMob, Toast } = Plugins;
 
@@ -47,6 +47,27 @@ export class DungeonRoomComponent implements OnInit {
   animateBattleColor: string = '';
   animateBattleText: string = '';
   canRevive: boolean = true;
+  canChestReward: boolean = false;
+  isMerchant: boolean = false;
+  merchantItems = [];
+  nameRef = {
+    life: 'HP',
+    atk: 'Ataque',
+    def: 'Defesa',
+    mana: 'Mana',
+    magic: 'Magia',
+    prot: 'Proteção',
+    vel: 'Velocidade',
+    crit: 'Crítico',
+    eva: 'Evasão',
+  };
+
+  options: AdOptions = {
+    // PROD ADS
+    // adId: 'ca-app-pub-4059005643306368/4060920978',
+    // TEST ADS
+    adId: 'ca-app-pub-3940256099942544/5224354917',
+  }
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -55,7 +76,7 @@ export class DungeonRoomComponent implements OnInit {
     private helper: HelperService,
     private animation: AnimationController,
     private alertCtrl: AlertController,
-    public platform: Platform,
+    private toastCtrl: ToastController,
   ) {
     this.loadingDungeon();
   }
@@ -68,14 +89,6 @@ export class DungeonRoomComponent implements OnInit {
       message: 'Carregando...',
     });
     loading.present();
-
-    const options: AdOptions = {
-      // PROD ADS
-      // adId: 'ca-app-pub-4059005643306368/4060920978',
-      // TEST ADS
-      adId: 'ca-app-pub-3940256099942544/5224354917',
-    }
-    await AdMob.prepareRewardVideoAd(options);
 
     await this.playerService.getPlayer()
       .subscribe(p => {
@@ -93,10 +106,161 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   nextFloor() {
+    this.isMerchant = false;
     this.currentFloorIndex++;
     this.player.floorIndex++;
     this.player.roomIndex = 1;
     this.loadingDungeon();
+  }
+
+  visitMerchant() {
+    let potionLife = EQUIPS.find(t => t.id == 1),
+      potionMana = EQUIPS.find(t => t.id == 2),
+      equips = EQUIPS.filter(t => t.type == 'equip');
+    this.merchantItems = [];
+    this.merchantItems.push(Object.assign({}, potionLife));
+    this.merchantItems.push(Object.assign({}, potionMana));
+    while (this.merchantItems.length != 9) {
+      let randomEquip = equips[~~(Math.random() * equips.length)],
+        cloneEquip = Object.assign({}, randomEquip);
+      if (this.merchantItems.find(t => t.img == cloneEquip.img)) {
+        continue;
+      }
+      this.merchantItems.push(this.modifyEquip(cloneEquip));
+    }
+    this.isMerchant = true;
+  }
+
+  private modifyEquip(equip) {
+    equip.id = this.helper.randomId();
+    let auxLv = Math.ceil(Math.random() * this.player.level) + 1;
+    equip.extra = equip.extra.map(t => {
+      let _t = Object.assign({}, t);
+      if (_t.attr == 'crit' || _t.attr == 'eva') {
+        _t.value += ~~(auxLv / 5);
+      } else {
+        _t.value += ~~(((_t.value / 3) * auxLv) / 2);
+      }
+      return _t;
+    });
+    equip.name = `${equip.name} Nv ${auxLv}`;
+    equip.cost = equip.cost + (15 * auxLv);
+    return equip;
+  }
+
+  async showMerchantItem(equip) {
+    let costValue = equip.cost * this.player.level, messageText = '', attribText = '';
+    if (equip.type == 'potion') {
+      let slotAttr = '';
+      if (equip.attr == 'life') {
+        slotAttr = 'HP';
+        messageText = `${equip.name}<br>Recupera ${equip.value}% de ${slotAttr}<br><br>`;
+      }
+      if (equip.attr == 'mana') {
+        slotAttr = 'Mana';
+        messageText = `${equip.name}<br>Recupera ${equip.value}% de ${slotAttr}<br><br>`;
+      }
+      if (equip.attr == 'exp') {
+        slotAttr = 'EXP';
+        messageText = `${equip.name}<br>Adiciona ${equip.value} de ${slotAttr}<br><br>`;
+      }
+    } else {
+      let equipExtra = equip.extra;
+      attribText = equipExtra.map(t => `+ ${t.value} ${t.attr == 'crit' || t.attr == 'eva' ? '%' : ''} 
+        ${this.nameRef[t.attr]}`).join('<br>');
+
+      messageText = `${equip.name}`;
+      if (equip.skill != null) {
+        let skillValue = '';
+        switch (equip.skill.type) {
+          case 'atk':
+            skillValue = `${equip.skill.val} de Dano Físico`;
+            break;
+          case 'magic':
+            skillValue = `${equip.skill.val} de Dano Mágico`;
+            break;
+          case 'buff':
+            skillValue = `+ ${equip.skill.val}% ${this.nameRef[equip.skill.attr]} por 4 Turnos`;
+            break;
+          case 'heal':
+            skillValue = `Cura ${equip.skill.val}% da Vida Máxima`;
+            break;
+          default:
+            skillValue = '';
+            break;
+        }
+        attribText += `<br><br>
+          <ion-label>
+            <small>
+              Habilidade: ${equip.skill.name}<br>
+              Custo: ${equip.skill.cost} de Mana<br>
+              ${skillValue}
+            </small>
+          </ion-label>`;
+      }
+    }
+    let equipMsgLabel = equip.type == 'equip' ? `${messageText}<br><br>${attribText}<br><br>` : `${messageText}`;
+    let alert = await this.alertCtrl.create({
+      header: 'Comprar item?',
+      message: `${equipMsgLabel}<br>Comprar por ${costValue} moedas?`,
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+          cssClass: 'confirm-quit',
+        },
+        {
+          text: 'Sim',
+          cssClass: 'sell-item',
+          handler: async () => {
+            let cloneEquip = Object.assign({}, equip);
+            let playerGold = this.player.gold, hasSlot = this.player.inventory.indexOf(0);
+            if (playerGold >= costValue) {
+              if (hasSlot != -1) {
+                if (cloneEquip.type == 'potion') {
+                  let match = false;
+                  this.player.inventory.filter((t: any) => {
+                    if (t != 0 && t.id == cloneEquip.id) {
+                      match = true;
+                      t.count++;
+                    }
+                    return t;
+                  });
+                  if (!match) {
+                    let indexLoot = this.player.inventory.indexOf(0);
+                    if (indexLoot != -1) {
+                      this.player.inventory[indexLoot] = cloneEquip;
+                    }
+                  }
+                } else {
+                  let indexLoot = this.player.inventory.indexOf(0);
+                  if (indexLoot != -1) {
+                    this.player.inventory[indexLoot] = cloneEquip;
+                  }
+                }
+                this.player.gold -= costValue;
+                equip.img = null;
+              } else {
+                let toast = await this.toastCtrl.create({
+                  message: 'Você não tem espaço para mais itens!',
+                  position: 'top',
+                  duration: 1500,
+                });
+                toast.present();
+              }
+            } else {
+              let toast = await this.toastCtrl.create({
+                message: 'Você não tem ouro suficiente!',
+                position: 'top',
+                duration: 1500,
+              });
+              toast.present();
+            }
+          },
+        },
+      ],
+    });
+    alert.present();
   }
 
   enterRoom(room) {
@@ -104,6 +268,7 @@ export class DungeonRoomComponent implements OnInit {
     this.trapped = true;
     this.eventDone = false;
     this.chestOpened = false;
+    this.canChestReward = false;
     this.chestGold = 0;
     this.currentRoom = room;
     this.player.roomIndex++;
@@ -115,8 +280,35 @@ export class DungeonRoomComponent implements OnInit {
     this.getLootEquip();
     this.canGetLoot = this.player.inventory.filter(t => t == 0).length > 0;
     this.chestOpened = true;
+    this.canChestReward = true;
     this.eventDone = true;
     this.player.gold += this.chestGold;
+  }
+
+  async getRewardChest() {
+    let loading = await this.loadingCtrl.create({
+      spinner: 'circular',
+      message: 'Carregando...',
+    });
+    loading.present();
+
+    await AdMob.prepareRewardVideoAd(this.options);
+
+    await AdMob.showRewardVideoAd().then((value: any) => {
+      if (value) {
+        this.player.gold += this.chestGold;
+        this.chestGold *= 2;
+        this.canChestReward = false;
+        loading.dismiss();
+      }
+    }, (err) => {
+      loading.dismiss();
+      Toast.show({
+        text: err,
+        duration: 'long',
+        position: 'top',
+      });
+    });
   }
 
   private getLootEquip() {
@@ -157,19 +349,7 @@ export class DungeonRoomComponent implements OnInit {
         value: equipChoosed.value || 0,
       };
       if (thisEquip.type == 'equip') {
-        thisEquip.id = this.helper.randomId();
-        let auxLv = Math.ceil(Math.random() * this.player.level) + 1;
-        thisEquip.extra = thisEquip.extra.map(t => {
-          let _t = Object.assign({}, t);
-          if (_t.attr == 'crit' || _t.attr == 'eva') {
-            _t.value += ~~(auxLv / 5);
-          } else {
-            _t.value += ~~(((_t.value / 3) * auxLv) / 2);
-          }
-          return _t;
-        });
-        thisEquip.name = `${thisEquip.name} Nv ${auxLv}`;
-        thisEquip.cost = thisEquip.cost + (18 * auxLv);
+        thisEquip = this.modifyEquip(thisEquip);
       }
       this.player.inventory.filter((t: any) => {
         if (t != 0 && t.id == thisEquip.id) {
@@ -207,6 +387,8 @@ export class DungeonRoomComponent implements OnInit {
               message: 'Carregando...',
             });
             loading.present();
+
+            await AdMob.prepareRewardVideoAd(this.options);
 
             await AdMob.showRewardVideoAd().then((value: any) => {
               if (value) {
