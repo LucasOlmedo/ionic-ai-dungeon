@@ -448,6 +448,7 @@ export class DungeonRoomComponent implements OnInit {
 
   async battleAction(skill) {
     let playerVel = ~~(this.player.current.vel + this.player.equipAttr.vel), mnsAtk;
+    this.canGetLoot = this.player.inventory.filter(t => t == 0).length > 0;
     this.canAtk = false;
     if (playerVel >= this.currentMonster.vel) {
       await this.playerAtk(skill);
@@ -456,7 +457,9 @@ export class DungeonRoomComponent implements OnInit {
         this.player.inBattle = false;
         this.player.updateExp(this.currentMonster.exp);
         this.player.gold += this.currentMonster.gold;
-        this.getLootEquip();
+        if (this.canGetLoot) {
+          this.getLootEquip();
+        }
         this.player.killCount++;
       } else {
         await this.helper.sleep(500);
@@ -474,7 +477,9 @@ export class DungeonRoomComponent implements OnInit {
           this.player.inBattle = false;
           this.player.updateExp(this.currentMonster.exp);
           this.player.gold += this.currentMonster.gold;
-          this.getLootEquip();
+          if (this.canGetLoot) {
+            this.getLootEquip();
+          }
           this.player.killCount++;
         }
       }
@@ -752,12 +757,12 @@ export class DungeonRoomComponent implements OnInit {
     monster.baseLife = ~~((m.baseLife + (m.baseLife * (monster.level / 1.35))) + (36.5 * monster.level));
     monster.currentLife = ~~monster.baseLife;
     monster.exp = ~~(m.exp * (monster.level / 2) + m.exp);
-    monster.gold = ~~(m.gold * (monster.level / 2));
-    monster.atk = ~~(m.atk + (monster.level * 8.5)) + (7.5 * monster.level);
+    monster.gold = ~~(m.gold * (monster.level / 2) + m.gold);
+    monster.atk = ~~(m.atk + (monster.level * 8.5)) + (8.5 * monster.level);
     monster.def = ~~(m.def + (monster.level * 1.5)) + (1.5 * monster.level);
-    monster.magic = ~~(m.magic + (monster.level * 6)) + (5.75 * monster.level);
+    monster.magic = ~~(m.magic + (monster.level * 5.75)) + (6.35 * monster.level);
     monster.prot = ~~(m.prot + (monster.level / 0.09));
-    monster.vel = ~~(m.vel + (monster.level / 0.06));
+    monster.vel = ~~(m.vel + (monster.level / 0.07));
     return monster;
   }
 

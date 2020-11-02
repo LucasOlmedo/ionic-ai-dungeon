@@ -4162,7 +4162,7 @@ export const EQUIPS = [
             type: 'heal',
             attr: 'life',
             equip: 'necklace',
-            desc: 'Um anel poderoso que pertenceu a um lendário clérigo. Seu brilho cura as feridas',
+            desc: 'Um colar poderoso que pertenceu a um lendário clérigo. Seu brilho cura as feridas',
         },
     },
     {

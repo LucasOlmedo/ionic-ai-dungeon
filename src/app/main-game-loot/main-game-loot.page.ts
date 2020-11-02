@@ -105,6 +105,7 @@ export class MainGameLootPage implements OnInit {
               }
               return t;
             });
+            this.updateCount();
           },
         },
         {
@@ -199,6 +200,7 @@ export class MainGameLootPage implements OnInit {
             }
             source.equiped = !source.equiped;
             this.player.calcEquipAttr();
+            this.updateCount();
           }
         },
       ],
@@ -249,6 +251,7 @@ export class MainGameLootPage implements OnInit {
               }
               return t;
             });
+            this.updateCount();
           },
         },
         {
@@ -285,6 +288,7 @@ export class MainGameLootPage implements OnInit {
               }
               return t;
             });
+            this.updateCount();
           }
         }
       ]

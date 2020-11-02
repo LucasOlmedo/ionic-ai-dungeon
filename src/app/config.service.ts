@@ -8,7 +8,6 @@ import { Storage } from '@ionic/storage';
 export class ConfigService {
 
   private storage: Storage = new Storage({ name: '_ionicstorage' });
-  private notification: BehaviorSubject<any> = new BehaviorSubject(null);
   private language: BehaviorSubject<any> = new BehaviorSubject(null);
   private music: BehaviorSubject<any> = new BehaviorSubject(null);
   private effects: BehaviorSubject<any> = new BehaviorSubject(null);
@@ -20,9 +19,6 @@ export class ConfigService {
   }
 
   async initConfig() {
-    await this.storage.get('notification').then(val => {
-      this.setNotification(val != null ? val : true);
-    });
     await this.storage.get('lang').then(val => {
       this.setLanguage(val != null ? val : 'Português');
     });
@@ -38,15 +34,6 @@ export class ConfigService {
     await this.storage.get('showIntro').then(val => {
       this.setShowIntro(val != null ? val : true);
     });
-  }
-
-  setNotification(flag: boolean) {
-    this.storage.set('notification', flag)
-      .then(val => this.notification.next(val));
-  }
-
-  getNotification() {
-    return this.notification.asObservable();
   }
 
   setLanguage(lang: String) {

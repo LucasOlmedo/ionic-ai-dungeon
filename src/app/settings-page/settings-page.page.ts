@@ -10,7 +10,6 @@ import { ConfigService } from '../config.service';
 export class SettingsPagePage implements OnInit {
 
   selectedLanguage: String = '';
-  selectedNotification: boolean;
   selectedMusic: boolean;
   selectedEffects: boolean;
   showIntro: boolean;
@@ -21,7 +20,6 @@ export class SettingsPagePage implements OnInit {
     public config: ConfigService
   ) {
     this.loadLanguage();
-    this.loadNotification();
     this.loadMusic();
     this.loadEffects();
     this.loadFontSize();
@@ -29,11 +27,6 @@ export class SettingsPagePage implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  async loadNotification() {
-    await this.config.getNotification()
-      .subscribe(val => this.selectedNotification = val);
   }
 
   async loadLanguage() {
@@ -59,12 +52,6 @@ export class SettingsPagePage implements OnInit {
   async loadIntro() {
     await this.config.getShowIntro()
       .subscribe(val => this.showIntro = val);
-  }
-
-  toggleNotification($event) {
-    let checked = $event.detail.checked;
-    this.selectedNotification = checked;
-    this.config.setNotification(checked);
   }
 
   toggleMusic($event) {
