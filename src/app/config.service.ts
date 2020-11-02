@@ -11,7 +11,6 @@ export class ConfigService {
   private language: BehaviorSubject<any> = new BehaviorSubject(null);
   private music: BehaviorSubject<any> = new BehaviorSubject(null);
   private effects: BehaviorSubject<any> = new BehaviorSubject(null);
-  private fontSize: BehaviorSubject<any> = new BehaviorSubject(null);
   private showIntro: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor() {
@@ -27,9 +26,6 @@ export class ConfigService {
     });
     await this.storage.get('effects').then(val => {
       this.setEffects(val != null ? val : true);
-    });
-    await this.storage.get('fontSize').then(val => {
-      this.setFontSize(val != null ? val : 3);
     });
     await this.storage.get('showIntro').then(val => {
       this.setShowIntro(val != null ? val : true);
@@ -70,14 +66,5 @@ export class ConfigService {
 
   getShowIntro() {
     return this.showIntro.asObservable();
-  }
-
-  setFontSize(size: number) {
-    this.storage.set('fontSize', size)
-      .then(val => this.fontSize.next(val));
-  }
-
-  getFontSize() {
-    return this.fontSize.asObservable();
   }
 }

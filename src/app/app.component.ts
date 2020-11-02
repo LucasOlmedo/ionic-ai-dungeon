@@ -14,11 +14,12 @@ const { AdMob } = Plugins;
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private screenOrientation: ScreenOrientation
+    private screenOrientation: ScreenOrientation,
   ) {
     this.initializeApp();
   }

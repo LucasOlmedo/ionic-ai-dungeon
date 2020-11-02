@@ -28,16 +28,10 @@
       <ion-label>Mostrar introdução</ion-label>
       <ion-toggle [checked]="showIntro" (ionChange)="toggleShowIntro($event)"></ion-toggle>
     </ion-item>
-    <ion-item>
-      <ion-icon name="text-outline" slot="start"></ion-icon>
-      <ion-label>Fonte</ion-label>
-      <ion-range min="1" max="6" snaps="true" [value]="selectedFontSize" (ionChange)="changeFontSize($event)">
-      </ion-range>
-    </ion-item>
   </ion-list>
   <ion-row>
     <ion-col class="ion-padding-start ion-padding-end">
-      <ion-button color="dark" fill="outline" expand="block">
+      <ion-button color="dark" fill="outline" expand="block" routerLink="/tutorial">
         Ver tutorial
       </ion-button>
     </ion-col>

@@ -11,7 +11,6 @@ export class MainGameSettingsPage implements OnInit {
 
   selectedMusic: boolean;
   selectedEffects: boolean;
-  selectedFontSize: number;
 
   constructor(
     public config: ConfigService, 
@@ -20,7 +19,6 @@ export class MainGameSettingsPage implements OnInit {
   ) {
     this.loadMusic();
     this.loadEffects();
-    this.loadFontSize();
   }
 
   ngOnInit() {
@@ -36,11 +34,6 @@ export class MainGameSettingsPage implements OnInit {
       .subscribe(val => this.selectedEffects = val);
   }
 
-  async loadFontSize() {
-    await this.config.getFontSize()
-      .subscribe(val => this.selectedFontSize = val);
-  }
-
   toggleMusic($event) {
     let checked = $event.detail.checked;
     this.selectedMusic = checked;
@@ -51,12 +44,6 @@ export class MainGameSettingsPage implements OnInit {
     let checked = $event.detail.checked;
     this.selectedEffects = checked;
     this.config.setEffects(checked);
-  }
-
-  changeFontSize($event) {
-    let value = $event.detail.value;
-    this.selectedFontSize = value;
-    this.config.setFontSize(value);
   }
 
   quitDungeon() {

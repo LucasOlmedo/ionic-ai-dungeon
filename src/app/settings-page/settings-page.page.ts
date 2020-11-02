@@ -13,7 +13,6 @@ export class SettingsPagePage implements OnInit {
   selectedMusic: boolean;
   selectedEffects: boolean;
   showIntro: boolean;
-  selectedFontSize: number;
 
   constructor(
     public alertCtrl: AlertController,
@@ -22,7 +21,6 @@ export class SettingsPagePage implements OnInit {
     this.loadLanguage();
     this.loadMusic();
     this.loadEffects();
-    this.loadFontSize();
     this.loadIntro();
   }
 
@@ -42,11 +40,6 @@ export class SettingsPagePage implements OnInit {
   async loadEffects() {
     await this.config.getEffects()
       .subscribe(val => this.selectedEffects = val);
-  }
-
-  async loadFontSize() {
-    await this.config.getFontSize()
-      .subscribe(val => this.selectedFontSize = val);
   }
 
   async loadIntro() {
@@ -70,12 +63,6 @@ export class SettingsPagePage implements OnInit {
     let checked = $event.detail.checked;
     this.showIntro = checked;
     this.config.setShowIntro(checked);
-  }
-
-  changeFontSize($event) {
-    let value = $event.detail.value;
-    this.selectedFontSize = value;
-    this.config.setFontSize(value);
   }
 
   async changeLanguage() {

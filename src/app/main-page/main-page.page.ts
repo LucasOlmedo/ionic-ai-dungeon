@@ -16,8 +16,8 @@ export class MainPagePage implements OnInit {
   ngOnInit() {
   }
 
-  startGame() {
-    this.storage.get('showIntro').then(val => {
+  async startGame() {
+    await this.storage.get('showIntro').then(val => {
       if (val) {
         this.navCtrl.navigateRoot('/start-game');
       } else {
@@ -25,5 +25,4 @@ export class MainPagePage implements OnInit {
       }
     });
   }
-
 }

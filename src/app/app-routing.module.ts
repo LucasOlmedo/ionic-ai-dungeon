@@ -46,6 +46,10 @@ const routes: Routes = [
     path: 'main-game-char',
     loadChildren: () => import('./main-game-char/main-game-char.module').then( m => m.MainGameCharPageModule)
   },
+  {
+    path: 'tutorial',
+    loadChildren: () => import('./tutorial/tutorial.module').then( m => m.TutorialPageModule)
+  },
 ];
 @NgModule({
   imports: [
