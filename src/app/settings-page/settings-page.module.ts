@@ -8,13 +8,16 @@ import { SettingsPagePageRoutingModule } from './settings-page-routing.module';
 
 import { SettingsPagePage } from './settings-page.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     SettingsPagePageRoutingModule
   ],
   declarations: [SettingsPagePage]
 })
-export class SettingsPagePageModule {}
+export class SettingsPagePageModule { }

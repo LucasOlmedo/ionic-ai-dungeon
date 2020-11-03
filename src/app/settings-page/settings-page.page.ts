@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from '../config.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { ConfigService } from '../config.service';
 })
 export class SettingsPagePage implements OnInit {
 
+  lang: any;
   selectedLanguage: String = '';
   selectedMusic: boolean;
   selectedEffects: boolean;
@@ -16,8 +18,10 @@ export class SettingsPagePage implements OnInit {
 
   constructor(
     public alertCtrl: AlertController,
-    public config: ConfigService
+    public config: ConfigService,
+    public translate: TranslateService,
   ) {
+    this.translate.setDefaultLang('en');
     this.loadLanguage();
     this.loadMusic();
     this.loadEffects();
@@ -29,7 +33,11 @@ export class SettingsPagePage implements OnInit {
 
   async loadLanguage() {
     await this.config.getLanguage()
-      .subscribe(val => this.selectedLanguage = val);
+      .subscribe(val => {
+        this.selectedLanguage = val;
+        this.lang = this.config.parseLang(val);
+        this.translate.use(this.lang);
+      });
   }
 
   async loadMusic() {
@@ -104,6 +112,7 @@ export class SettingsPagePage implements OnInit {
           handler: (data: String) => {
             this.selectedLanguage = data;
             this.config.setLanguage(data);
+            this.translate.use(this.lang);
           }
         }
       ]

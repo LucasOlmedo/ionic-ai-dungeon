@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ShopPagePageRoutingModule } from './shop-page-routing.module';
 
 import { ShopPagePage } from './shop-page.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     ShopPagePageRoutingModule
   ],
   declarations: [ShopPagePage]

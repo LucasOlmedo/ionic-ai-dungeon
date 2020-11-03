@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Animation, AnimationController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfigService } from '../config.service';
 
 @Component({
   selector: 'app-start-game',
@@ -8,14 +10,18 @@ import { Animation, AnimationController } from '@ionic/angular';
 })
 export class StartGamePage implements OnInit {
 
+  lang: any;
   loreAnimation1: Animation;
   loreAnimation2: Animation;
   loreAnimation3: Animation;
   continueAnimation: Animation;
   animationDuration: number = 2500;
 
-  constructor(private animationCtrl: AnimationController) {
-  }
+  constructor(
+    private animationCtrl: AnimationController,
+    public translate: TranslateService,
+    private config: ConfigService,
+  ) {}
 
   ngOnInit() {
     this.loreAnimation1 = this.createLoreAnimation1();
@@ -23,6 +29,18 @@ export class StartGamePage implements OnInit {
     this.loreAnimation3 = this.createLoreAnimation3();
     this.continueAnimation = this.createContinueAnimation();
     this.playAnimations();
+  }
+
+  ionViewDidEnter() {
+    this.initLang();
+  }
+
+  async initLang() {
+    await this.config.getLanguage()
+      .subscribe(val => {
+        this.lang = this.config.parseLang(val);
+        this.translate.use(this.lang);
+      });
   }
 
   createLoreAnimation1() {

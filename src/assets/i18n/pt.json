@@ -1,0 +1,72 @@
+{
+    "main": {
+        "play": "Jogar",
+        "shop": "Loja",
+        "settings": "Opções"
+    },
+    "shop": {
+        "title": "Loja"
+    },
+    "settings": {
+        "title": "Configurações",
+        "lang": "Idioma",
+        "music": "Música",
+        "sound-effect": "Efeitos sonoros",
+        "show-intro": "Mostrar introdução",
+        "tutorial": "Ver tutorial"
+    },
+    "tutorial": {
+        "title": "Como jogar?"
+    },
+    "intro": {
+        "continue": "Continuar...",
+        "text-1": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br> Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem! Possimus error minus quidem repudiandae. <br> Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+        "text-2": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!",
+        "text-3": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem! <br> Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!"
+    },
+    "new-char": {
+        "title": "Novo personagem",
+        "name": "Nome",
+        "points": "Pontos disponíveis",
+        "start": "Começar!"
+    },
+    "in-game": {
+        "dungeon": {
+            "go": "Seguir",
+            "for-turn-1": "Por",
+            "for-turn-2": "turno(s)",
+            "chest-find-1": "Você encontrou",
+            "chest-find-2": "moedas de ouro!",
+            "gold": "Ouro",
+            "you-found": "Você encontrou",
+            "full-loot": "Seu inventário está cheio!",
+            "open": "Abrir",
+            "trap": {
+                "lost": "Você perdeu",
+                "hp": "de HP!",
+                "fail": "Você esquivou da armadilha!"
+            },
+            "battle": {
+                "defeat": "Você derrotou",
+                "exp-1": "Adquiriu",
+                "exp-2": "de experiência!"
+            },
+            "next": "Avançar",
+            "merchant": "Olá aventureiro. Antes de prosseguir para o próximo andar, o que acha de dar uma olhada nessas mercadorias?",
+            "next-floor": "Próximo andar",
+            "game-over": {
+                "dead": "VOCÊ MORREU!",
+                "by": "Morto por",
+                "max": "Andar máximo:",
+                "count": "monstros mortos",
+                "again": "Jogar de novo",
+                "exit": "Menu principal"
+            }
+        }
+    },
+    "player": {
+        "vit": "Vitalidade",
+        "int": "Inteligência",
+        "agi": "Agilidade"
+    }
+}

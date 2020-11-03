@@ -19,7 +19,7 @@ export class ConfigService {
 
   async initConfig() {
     await this.storage.get('lang').then(val => {
-      this.setLanguage(val != null ? val : 'Português');
+      this.setLanguage(val != null ? val : 'English');
     });
     await this.storage.get('music').then(val => {
       this.setMusic(val != null ? val : true);
@@ -30,6 +30,19 @@ export class ConfigService {
     await this.storage.get('showIntro').then(val => {
       this.setShowIntro(val != null ? val : true);
     });
+  }
+
+  parseLang(lang) {
+    switch (lang) {
+      case 'Português':
+        return 'pt';
+      case 'English':
+        return 'en';
+      case 'Español':
+        return 'es';
+      default:
+        return 'en';
+    }
   }
 
   setLanguage(lang: String) {

@@ -12,6 +12,13 @@ import { ConfigService } from './config.service';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +27,16 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     IonicStorageModule.forRoot(),
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     StatusBar,

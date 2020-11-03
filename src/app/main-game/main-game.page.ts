@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfigService } from '../config.service';
 import { Player } from '../models/player';
 import { PlayerService } from '../player.service';
 
@@ -9,6 +11,7 @@ import { PlayerService } from '../player.service';
 })
 export class MainGamePage implements OnInit {
 
+  lang: any;
   player: Player;
   exp: number = 0;
   nextLvl: number = 0;
@@ -20,7 +23,11 @@ export class MainGamePage implements OnInit {
   baseMana: number = 0;
   mPercent: number = 0.0;
 
-  constructor(private playerService: PlayerService) { }
+  constructor(
+    private playerService: PlayerService,
+    public translate: TranslateService,
+    private config: ConfigService,
+  ) { }
 
   ngOnInit() {
     this.playerService.getPlayer()
@@ -31,6 +38,18 @@ export class MainGamePage implements OnInit {
         this.exp = this.player.exp;
         this.nextLvl = this.player.nextLvl;
         this.setPercentage();
+      });
+  }
+
+  ionViewDidEnter() {
+    this.initLang();
+  }
+
+  async initLang() {
+    await this.config.getLanguage()
+      .subscribe(val => {
+        this.lang = this.config.parseLang(val);
+        this.translate.use(this.lang);
       });
   }
 

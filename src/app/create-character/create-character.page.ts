@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfigService } from '../config.service';
 import { Player } from '../models/player';
 import { PlayerService } from '../player.service';
 
@@ -11,6 +13,7 @@ import { PlayerService } from '../player.service';
 })
 export class CreateCharacterPage implements OnInit {
 
+  lang: any;
   charName: string = '';
   points: number = 6;
   vitality: number = 0;
@@ -27,10 +30,24 @@ export class CreateCharacterPage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public toastCtrl: ToastController,
-    private playerService: PlayerService
+    private playerService: PlayerService,
+    public translate: TranslateService,
+    private config: ConfigService,
   ) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.initLang();
+  }
+
+  async initLang() {
+    await this.config.getLanguage()
+      .subscribe(val => {
+        this.lang = this.config.parseLang(val);
+        this.translate.use(this.lang);
+      });
   }
 
   randomName() {

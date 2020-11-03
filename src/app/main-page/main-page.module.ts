@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { MainPagePageRoutingModule } from './main-page-routing.module';
 
 import { MainPagePage } from './main-page.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     MainPagePageRoutingModule
   ],
   declarations: [MainPagePage]

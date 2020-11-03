@@ -3,25 +3,9 @@
     <ion-row>
       <ion-col>
         <div class="ion-text-center ion-margin-top">
-          <p id="lore-text-1">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Enim quas, explicabo accusamus in aut a molestias
-            ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
-            Possimus error minus quidem repudiandae.
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          </p>
-          <p id="lore-text-2">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Enim quas, explicabo accusamus in aut a molestias
-            ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
-          </p>
-          <p id="lore-text-3">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Enim quas, explicabo accusamus in aut a molestias
-            ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
-            Enim quas, explicabo accusamus in aut a molestias
-            ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!
-          </p>
+          <p id="lore-text-1" [innerHTML]="'intro.text-1' | translate"></p>
+          <p id="lore-text-2" [innerHTML]="'intro.text-2' | translate"></p>
+          <p id="lore-text-3" [innerHTML]="'intro.text-3' | translate"></p>
         </div>
       </ion-col>
     </ion-row>
@@ -29,7 +13,7 @@
       <ion-col>
         <ion-button id="btn-continue" class="ion-margin-top" color="dark" expand="block" fill="outline"
           routerLink="/create-character" routerDirection="root">
-          Continuar...
+          {{ 'intro.continue' | translate }}
         </ion-button>
       </ion-col>
     </ion-row>

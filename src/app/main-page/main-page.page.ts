@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfigService } from '../config.service';
 
 @Component({
   selector: 'app-main-page',
@@ -9,11 +11,30 @@ import { Storage } from '@ionic/storage';
 })
 export class MainPagePage implements OnInit {
 
+  lang: any;
   private storage: Storage = new Storage({ name: '_ionicstorage' });
 
-  constructor(public navCtrl: NavController) { }
+  constructor(
+    public navCtrl: NavController,
+    public translate: TranslateService,
+    private config: ConfigService,
+  ) {
+    
+  }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.initLang();
+  }
+
+  async initLang() {
+    await this.config.getLanguage()
+      .subscribe(val => {
+        this.lang = this.config.parseLang(val);
+        this.translate.use(this.lang);
+      });
   }
 
   async startGame() {

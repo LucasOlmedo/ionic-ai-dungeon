@@ -4,14 +4,15 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Novo Personagem
+      {{ 'new-char.title' | translate }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding" fullscreen>
   <ion-list class="ion-padding-top ion-margin-top">
     <ion-item>
-      <ion-input clearInput type="text" placeholder="Nome" [(ngModel)]="charName"></ion-input>
+      <ion-input clearInput type="text" placeholder="{{ 'new-char.name'| translate }}" [(ngModel)]="charName">
+      </ion-input>
       <ion-button color="dark" fill="outline" (click)="randomName()">
         <ion-icon slot="icon-only" name="shuffle-outline"></ion-icon>
       </ion-button>
@@ -19,11 +20,11 @@
   </ion-list>
   <ion-list lines="none" class="ion-padding-top ion-margin-top">
     <ion-item>
-      <ion-label color="medium">Pontos disponíveis</ion-label>
+      <ion-label color="medium">{{ 'new-char.points' | translate }}</ion-label>
       <ion-text color="medium" class="ion-float-right">{{ points }}</ion-text>
     </ion-item>
     <ion-item>
-      <ion-label color="danger">Vitalidade</ion-label>
+      <ion-label color="danger">{{ 'player.vit' | translate }}</ion-label>
       <ion-button color="dark" fill="outline" (click)="decrease('vitality')">
         <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
       </ion-button>
@@ -33,7 +34,7 @@
       </ion-button>
     </ion-item>
     <ion-item>
-      <ion-label color="primary">Inteligência</ion-label>
+      <ion-label color="primary">{{ 'player.int' | translate }}</ion-label>
       <ion-button color="dark" fill="outline" (click)="decrease('intelligence')">
         <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
       </ion-button>
@@ -43,7 +44,7 @@
       </ion-button>
     </ion-item>
     <ion-item>
-      <ion-label color="success">Agilidade</ion-label>
+      <ion-label color="success">{{ 'player.agi' | translate }}</ion-label>
       <ion-button color="dark" fill="outline" (click)="decrease('agility')">
         <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
       </ion-button>
@@ -58,7 +59,7 @@
       <ion-col>
         <ion-button id="btn-continue" class="ion-margin-top" color="dark" expand="block" fill="outline"
           (click)="saveCharStartGame()">
-          Começar!
+          {{ 'new-char.start' | translate }}
         </ion-button>
       </ion-col>
     </ion-row>

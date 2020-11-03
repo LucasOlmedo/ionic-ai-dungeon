@@ -9,6 +9,8 @@ import { FINAL_BOSS } from 'src/app/bestiary-constants';
 import { BOSS_SPEAK } from 'src/app/dungeon-constants';
 import { AdOptions } from 'capacitor-admob';
 import { Plugins } from '@capacitor/core';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfigService } from 'src/app/config.service';
 const { AdMob, Toast } = Plugins;
 
 @Component({
@@ -17,6 +19,8 @@ const { AdMob, Toast } = Plugins;
   styleUrls: ['./dungeon-room.component.scss'],
 })
 export class DungeonRoomComponent implements OnInit {
+
+  lang: any;
   dungeon: any;
   currentRoom: any;
   loaded: boolean = false;
@@ -77,11 +81,25 @@ export class DungeonRoomComponent implements OnInit {
     private animation: AnimationController,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
+    public translate: TranslateService,
+    private config: ConfigService,
   ) {
     this.loadingDungeon();
   }
 
   ngOnInit() { }
+
+  ionViewDidEnter() {
+    this.initLang();
+  }
+
+  async initLang() {
+    await this.config.getLanguage()
+      .subscribe(val => {
+        this.lang = this.config.parseLang(val);
+        this.translate.use(this.lang);
+      });
+  }
 
   async loadingDungeon() {
     let loading = await this.loadingCtrl.create({

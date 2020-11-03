@@ -38,7 +38,8 @@
           </span>
         </div>
         <div class="ion-text-center" *ngIf="actionItemTurn > 0">
-          Por {{ actionItemTurn }} turno(s)
+          {{ 'in-game.dungeon.for-turn-1' | translate }} {{ actionItemTurn }}
+          {{ 'in-game.dungeon.for-turn-2' | translate }}
         </div>
       </ion-card-content>
     </div>
@@ -60,20 +61,21 @@
           {{ currentRoom.actionItem.description }}
         </div>
         <div *ngIf="chestOpened" class="ion-text-center text-color-chest ion-padding-top">
-          Você encontrou {{ chestGold }} moedas de ouro!
+          {{ 'in-game.dungeon.chest-find-1' | translate }} {{ chestGold }}
+          {{ 'in-game.dungeon.chest-find-2' | translate }}
         </div>
         <ion-row *ngIf="canChestReward" class="ion-padding-bottom">
           <ion-col class="ion-text-center ion-padding-top">
             <ion-button color="warning" fill="outline" (click)="getRewardChest()">
               <ion-icon slot="start" name="play-circle-outline"></ion-icon>
-              2X Ouro
+              2X {{ 'in-game.dungeon.gold' | translate }}
             </ion-button>
           </ion-col>
         </ion-row>
         <div *ngIf="canGetLoot">
           <div *ngIf="lootEquip" class="ion-text-center text-color-equip">
             <span class="ion-margin-bottom">
-              Você encontrou {{ lootEquip.name }}!
+              {{ 'in-game.dungeon.you-found' | translate }} {{ lootEquip.name }}!
             </span>
             <br>
             <img [src]="lootEquip.img" style="height: 60px; margin-top: 20px;">
@@ -81,13 +83,13 @@
         </div>
         <div *ngIf="chestOpened && !canGetLoot">
           <div class="ion-text-center ion-margin-top text-bless-atk">
-            Seu inventário está cheio!
+            {{ 'in-game.dungeon.full-loot' | translate }}
           </div>
         </div>
         <ion-row *ngIf="!eventDone">
           <ion-col class="ion-text-center ion-padding-top">
             <ion-button color="dark" fill="outline" (click)="openChest()">
-              Abrir
+              {{ 'in-game.dungeon.open' | translate }}
               <ion-icon slot="end" name="key-outline"></ion-icon>
             </ion-button>
           </ion-col>
@@ -112,11 +114,12 @@
           {{ currentRoom.actionItem.description }}
         </div>
         <div *ngIf="trapped; else evasion" class="ion-text-center ion-margin-top text-bless-atk">
-          Você perdeu {{ currentRoom.actionItem.value(player.baseLife) }} de HP!
+          {{ 'in-game.dungeon.trap.lost' | translate }} {{ currentRoom.actionItem.value(player.baseLife) }}
+          {{ 'in-game.dungeon.trap.hp' | translate }}
         </div>
         <ng-template #evasion>
           <div class="ion-text-center ion-margin-top text-bless-heal">
-            Você esquivou da armadilha!
+            {{ 'in-game.dungeon.trap.fail' | translate }}
           </div>
         </ng-template>
       </ion-card-content>
@@ -168,18 +171,20 @@
       <div *ngIf="eventDone && !isMerchant">
         <ion-card-content class="adjust-padding">
           <div class="ion-text-center ion-margin-top">
-            Você derrotou {{ currentMonster.name }}!
+            {{ 'in-game.dungeon.battle.defeat' | translate }} {{ currentMonster.name }}!
           </div>
           <div class="ion-text-center ion-margin-top text-color-chest ">
-            Adquiriu {{ currentMonster.exp }} de experiência!
+            {{ 'in-game.dungeon.battle.exp-1' | translate }} {{ currentMonster.exp }}
+            {{ 'in-game.dungeon.battle.exp-2' | translate }}
           </div>
           <div class="ion-text-center ion-margin-top text-color-chest ">
-            Encontrou {{ currentMonster.gold }} moedas de ouro!
+            {{ 'in-game.dungeon.chest-find-1' | translate }} {{ currentMonster.gold }}
+            {{ 'in-game.dungeon.chest-find-2' | translate }}
           </div>
           <div *ngIf="canGetLoot">
             <div *ngIf="lootEquip" class="ion-text-center text-color-equip">
               <span class="ion-margin-bottom">
-                Você encontrou {{ lootEquip.name }}!
+                {{ 'in-game.dungeon.chest-find-1' | translate }} {{ lootEquip.name }}!
               </span>
               <br>
               <img [src]="lootEquip.img" style="height: 60px; margin-top: 20px;">
@@ -187,7 +192,7 @@
           </div>
           <div *ngIf="!canGetLoot">
             <div class="ion-text-center ion-margin-top text-bless-atk">
-              Seu inventário está cheio!
+              {{ 'in-game.dungeon.full-loot' | translate }}
             </div>
           </div>
         </ion-card-content>
@@ -199,7 +204,7 @@
       <ion-row>
         <ion-col *ngFor="let way of currentRoom.next; let i = index" [size]="12/currentRoom.next.length">
           <ion-button color="dark" fill="outline" expand="block" (click)="enterRoom(way)">
-            Seguir
+            {{ 'in-game.dungeon.go' | translate }}
             <ion-icon *ngIf="currentRoom.next.length < 2; else buttonsNext" slot="end" name="arrow-up-outline">
             </ion-icon>
             <ng-template #buttonsNext>
@@ -210,7 +215,7 @@
         </ion-col>
         <ion-col *ngIf="currentRoom.next.length == 0" size="12">
           <ion-button color="dark" fill="outline" expand="block" (click)="visitMerchant()">
-            Avançar
+            {{ 'in-game.dungeon.next' | translate }}
             <ion-icon slot="end" name="arrow-up-outline"></ion-icon>
           </ion-button>
         </ion-col>
@@ -223,8 +228,7 @@
         <ion-col>
           <div class="ion-text-center">
             <span>
-              <em>"Olá aventureiro. Antes de prosseguir para o próximo andar,
-                o que acha de dar uma olhada nessas mercadorias?"</em>
+              <em>"{{ 'in-game.dungeon.merchant' | translate }}"</em>
             </span>
           </div>
         </ion-col>
@@ -240,7 +244,7 @@
         </ion-col>
         <ion-col class="ion-padding-top" *ngIf="currentRoom.next.length == 0" size="12">
           <ion-button color="dark" fill="outline" expand="block" (click)="nextFloor()">
-            Próximo andar
+            {{ 'in-game.dungeon.next-floor' | translate }}
             <ion-icon slot="end" name="push-outline"></ion-icon>
           </ion-button>
         </ion-col>
@@ -259,25 +263,25 @@
     </ion-grid>
     <ion-card-content class="adjust-padding">
       <div class="ion-text-center text-game-over">
-        VOCÊ MORREU!
+        {{ 'in-game.dungeon.game-over.dead' | translate }}
       </div>
       <ion-grid>
         <ion-row>
           <ion-col class="ion-text-center">
             <ion-text color="medium">
-              {{ player.name }} - Nível {{ player.level }}
+              {{ player.name }} - Lv {{ player.level }}
             </ion-text>
             <br>
             <ion-text color="medium">
-              Morto por {{ deathCause }}
+              {{ 'in-game.dungeon.game-over.by' | translate }} {{ deathCause }}
             </ion-text>
             <br>
             <ion-text color="medium">
-              Andar máximo: {{ player.floorIndex }}F
+              {{ 'in-game.dungeon.game-over.max' | translate }} {{ player.floorIndex }}F
             </ion-text>
             <br>
             <ion-text color="medium">
-              {{ player.killCount }} monstros mortos!
+              {{ player.killCount }} {{ 'in-game.dungeon.game-over.count' | translate }}
             </ion-text>
             <br>
           </ion-col>
@@ -311,14 +315,14 @@
         <ion-col class="ion-padding-start ion-padding-end">
           <ion-button color="secondary" fill="outline" expand="block" routerLink="/create-character"
             routerDirection="root">
-            Jogar de novo
+            {{ 'in-game.dungeon.game-over.again' | translate }}
           </ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="ion-padding-start ion-padding-end">
           <ion-button color="danger" fill="outline" expand="block" routerLink="/" routerDirection="root">
-            Menu principal
+            {{ 'in-game.dungeon.game-over.exit' | translate }}
           </ion-button>
         </ion-col>
       </ion-row>

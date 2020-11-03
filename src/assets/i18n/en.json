@@ -1,0 +1,72 @@
+{
+    "main": {
+        "play": "Play",
+        "shop": "Shop",
+        "settings": "Settings"
+    },
+    "shop": {
+        "title": "Shop"
+    },
+    "settings": {
+        "title": "Settings",
+        "lang": "Language",
+        "music": "Music",
+        "sound-effect": "Sound effects",
+        "show-intro": "Show intro",
+        "tutorial": "How to play"
+    },
+    "tutorial": {
+        "title": "How to play"
+    },
+    "intro": {
+        "continue": "Continue...",
+        "text-1": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br> Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem! Possimus error minus quidem repudiandae. <br> Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+        "text-2": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!",
+        "text-3": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem! <br> Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!"
+    },
+    "new-char": {
+        "title": "New character",
+        "name": "Name",
+        "points": "Available points",
+        "start": "Start!"
+    },
+    "in-game": {
+        "dungeon": {
+            "go": "Go",
+            "for-turn-1": "Per",
+            "for-turn-2": "turn(s)",
+            "chest-find-1": "You found",
+            "chest-find-2": "gold coins!",
+            "gold": "Gold",
+            "you-found": "You found",
+            "full-loot": "Your inventory is full!",
+            "open": "Open",
+            "trap": {
+                "lost": "You lost",
+                "hp": "HP!",
+                "fail": "You dodged the trap!"
+            },
+            "battle": {
+                "defeat": "You defeated",
+                "exp-1": "Gained",
+                "exp-2": "experience!"
+            },
+            "next": "Next",
+            "merchant": "Hello adventurer. Before proceeding to the next floor, what do you think about taking a look at these items?",
+            "next-floor": "Next floor",
+            "game-over": {
+                "dead": "YOU DIED!",
+                "by": "Killed by",
+                "max": "Max floor:",
+                "count": "monsters killed",
+                "again": "Play again",
+                "exit": "Main menu"
+            }
+        }
+    },
+    "player": {
+        "vit": "Vitality",
+        "int": "Intelligence",
+        "agi": "Agility"
+    }
+}

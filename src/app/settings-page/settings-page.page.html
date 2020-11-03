@@ -3,36 +3,36 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Configurações</ion-title>
+    <ion-title>{{ 'settings.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
   <ion-list>
     <ion-item button (click)="changeLanguage()">
       <ion-icon name="language" slot="start"></ion-icon>
-      <ion-label>Idioma</ion-label>
+      <ion-label>{{ 'settings.lang' | translate }}</ion-label>
       <ion-label class="ion-text-end">({{ selectedLanguage }})</ion-label>
     </ion-item>
     <ion-item>
       <ion-icon name="musical-notes-outline" slot="start"></ion-icon>
-      <ion-label>Música</ion-label>
+      <ion-label>{{ 'settings.music' | translate }}</ion-label>
       <ion-toggle [checked]="selectedMusic" (ionChange)="toggleMusic($event)"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-icon name="headset-outline" slot="start"></ion-icon>
-      <ion-label>Efeitos sonoros</ion-label>
+      <ion-label>{{ 'settings.sound-effect' | translate }}</ion-label>
       <ion-toggle [checked]="selectedEffects" (ionChange)="toggleEffects($event)"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-icon name="receipt-outline" slot="start"></ion-icon>
-      <ion-label>Mostrar introdução</ion-label>
+      <ion-label>{{ 'settings.show-intro' | translate }}</ion-label>
       <ion-toggle [checked]="showIntro" (ionChange)="toggleShowIntro($event)"></ion-toggle>
     </ion-item>
   </ion-list>
   <ion-row>
     <ion-col class="ion-padding-start ion-padding-end">
       <ion-button color="dark" fill="outline" expand="block" routerLink="/tutorial">
-        Ver tutorial
+        {{ 'settings.tutorial' | translate }}
       </ion-button>
     </ion-col>
   </ion-row>
