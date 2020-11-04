@@ -32,7 +32,7 @@
     },
     "in-game": {
         "dungeon": {
-            "go": "Go",
+            "go": "Next",
             "for-turn-1": "Per",
             "for-turn-2": "turn(s)",
             "chest-find-1": "You found",

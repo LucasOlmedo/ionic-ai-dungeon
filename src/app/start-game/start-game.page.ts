@@ -21,7 +21,7 @@ export class StartGamePage implements OnInit {
     private animationCtrl: AnimationController,
     public translate: TranslateService,
     private config: ConfigService,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loreAnimation1 = this.createLoreAnimation1();
@@ -76,7 +76,7 @@ export class StartGamePage implements OnInit {
   }
 
   async playAnimations() {
-    let btnCntn = document.getElementById('btn-continue');
+    let btnCntn = <HTMLInputElement>document.getElementById('btn-continue');
     btnCntn.disabled = true;
     await this.loreAnimation1.play();
     await this.loreAnimation2.play();
