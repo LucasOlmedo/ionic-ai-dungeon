@@ -32,6 +32,7 @@
     },
     "in-game": {
         "dungeon": {
+            "loading": "Loading...",
             "go": "Next",
             "for-turn-1": "Per",
             "for-turn-2": "turn(s)",
@@ -60,7 +61,13 @@
                 "max": "Max floor:",
                 "count": "monsters killed",
                 "again": "Play again",
-                "exit": "Main menu"
+                "exit": "Main menu",
+                "alert": {
+                    "header": "You were fatally hit!",
+                    "message": "Your life is on the line. As your body falls weakly, a voice encourages you to continue. You don't know who you are, but you do notice a powerful presence at your side. <br> <br> Do you want to get up and continue?",
+                    "continue": "Continue (ADS)",
+                    "leave": "Give up"
+                }
             }
         }
     },
@@ -68,5 +75,8 @@
         "vit": "Vitality",
         "int": "Intelligence",
         "agi": "Agility"
+    },
+    "ads": {
+        "fail": "The reward could not be redeemed!"
     }
 }

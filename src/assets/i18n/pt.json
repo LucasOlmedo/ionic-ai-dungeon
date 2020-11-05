@@ -32,6 +32,7 @@
     },
     "in-game": {
         "dungeon": {
+            "loading": "Carregando...",
             "go": "Seguir",
             "for-turn-1": "Por",
             "for-turn-2": "turno(s)",
@@ -60,7 +61,13 @@
                 "max": "Andar máximo:",
                 "count": "monstros mortos",
                 "again": "Jogar de novo",
-                "exit": "Menu principal"
+                "exit": "Menu principal",
+                "alert":{
+                    "header": "Você foi atingido fatalmente!",
+                    "message": "A sua vida está por um fio. Enquanto seu corpo cai sem força, uma voz o incentiva a continuar. Você não sabe quem é, mas percebe uma presença poderosa ao seu lado. <br><br> Quer se levantar e continuar?",
+                    "continue": "Continuar (ADS)",
+                    "leave": "Desistir"
+                }
             }
         }
     },
@@ -68,5 +75,8 @@
         "vit": "Vitalidade",
         "int": "Inteligência",
         "agi": "Agilidade"
+    },
+    "ads": {
+        "fail": "Não foi possível resgatar a recompensa!"
     }
 }

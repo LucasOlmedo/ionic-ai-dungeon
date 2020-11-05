@@ -104,7 +104,7 @@ export class DungeonRoomComponent implements OnInit {
   async loadingDungeon() {
     let loading = await this.loadingCtrl.create({
       spinner: 'circular',
-      message: 'Carregando...',
+      message: this.translate.instant('in-game.dungeon.loading'),
     });
     loading.present();
 
@@ -304,28 +304,30 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   async getRewardChest() {
+    let toastFail = await this.toastCtrl.create({
+      message: this.translate.instant('ads.fail'),
+      position: 'top',
+      duration: 1500,
+    });
     let loading = await this.loadingCtrl.create({
       spinner: 'circular',
-      message: 'Carregando...',
+      message: this.translate.instant('in-game.dungeon.loading'),
     });
     loading.present();
-
     await AdMob.prepareRewardVideoAd(this.options);
-
-    await AdMob.showRewardVideoAd().then((value: any) => {
-      if (value) {
+    await AdMob.showRewardVideoAd();
+    await AdMob.addListener("onRewarded", async (info: boolean) => {
+      if (info == true) {
         this.player.gold += this.chestGold;
         this.chestGold *= 2;
         this.canChestReward = false;
-        loading.dismiss();
       }
-    }, (err) => {
       loading.dismiss();
-      Toast.show({
-        text: err,
-        duration: 'long',
-        position: 'top',
-      });
+    });
+    await AdMob.addListener("onRewardedVideoAdClosed", async (info: boolean) => {
+      this.canChestReward = false;
+      loading.dismiss();
+      toastFail.present();
     });
   }
 
@@ -390,24 +392,19 @@ export class DungeonRoomComponent implements OnInit {
     let alert = await this.alertCtrl.create({
       backdropDismiss: false,
       keyboardClose: false,
-      header: 'Você foi atingido fatalmente!',
-      message: `A sua vida está por um fio. Enquanto seu corpo cai sem força,
-        uma voz o incentiva a continuar. Você não sabe quem é, mas percebe uma presença
-        poderosa ao seu lado. <br><br>
-        Quer se levantar e continuar?`,
+      header: this.translate.instant('in-game.dungeon.game-over.alert.header'),
+      message: this.translate.instant('in-game.dungeon.game-over.alert.message'),
       buttons: [
         {
-          text: 'Continuar (ADS)',
+          text: this.translate.instant('in-game.dungeon.game-over.alert.continue'),
           cssClass: 'sell-item',
           handler: async () => {
             let loading = await this.loadingCtrl.create({
               spinner: 'circular',
-              message: 'Carregando...',
+              message: this.translate.instant('in-game.dungeon.loading'),
             });
             loading.present();
-
             await AdMob.prepareRewardVideoAd(this.options);
-
             await AdMob.showRewardVideoAd().then((value: any) => {
               if (value) {
                 let baseLife = this.player.baseLife, baseMana = this.player.baseMana;
@@ -425,16 +422,11 @@ export class DungeonRoomComponent implements OnInit {
               }
             }, (err) => {
               loading.dismiss();
-              Toast.show({
-                text: err,
-                duration: 'long',
-                position: 'top',
-              });
             });
           },
         },
         {
-          text: 'Desistir',
+          text: this.translate.instant('in-game.dungeon.game-over.alert.leave'),
           role: 'cancel',
           cssClass: 'confirm-quit',
           handler: () => {
