@@ -11,7 +11,7 @@ import { AdOptions } from 'capacitor-admob';
 import { Plugins } from '@capacitor/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from 'src/app/config.service';
-const { AdMob, Toast } = Plugins;
+const { AdMob } = Plugins;
 
 @Component({
   selector: 'app-dungeon-room',
@@ -55,15 +55,15 @@ export class DungeonRoomComponent implements OnInit {
   isMerchant: boolean = false;
   merchantItems = [];
   nameRef = {
-    life: 'HP',
-    atk: 'Ataque',
-    def: 'Defesa',
-    mana: 'Mana',
-    magic: 'Magia',
-    prot: 'Proteção',
-    vel: 'Velocidade',
-    crit: 'Crítico',
-    eva: 'Evasão',
+    life: 'life',
+    atk: 'atk',
+    def: 'def',
+    mana: 'mana',
+    magic: 'magic',
+    prot: 'prot',
+    vel: 'vel',
+    crit: 'crit',
+    eva: 'eva',
   };
 
   options: AdOptions = {
@@ -172,36 +172,39 @@ export class DungeonRoomComponent implements OnInit {
       let slotAttr = '';
       if (equip.attr == 'life') {
         slotAttr = 'HP';
-        messageText = `${equip.name}<br>Recupera ${equip.value}% de ${slotAttr}<br><br>`;
+        messageText = `${equip.name}<br>
+          ${this.translate.instant('item.term.recover', { val: equip.value, attr: slotAttr })}<br><br>`;
       }
       if (equip.attr == 'mana') {
         slotAttr = 'Mana';
-        messageText = `${equip.name}<br>Recupera ${equip.value}% de ${slotAttr}<br><br>`;
+        messageText = `${equip.name}<br>
+        ${this.translate.instant('item.term.recover', { val: equip.value, attr: slotAttr })}<br><br>`;
       }
       if (equip.attr == 'exp') {
         slotAttr = 'EXP';
-        messageText = `${equip.name}<br>Adiciona ${equip.value} de ${slotAttr}<br><br>`;
+        messageText = `${equip.name}<br>
+        ${this.translate.instant('item.term.add', { val: equip.value, attr: slotAttr })} ${equip.value}<br><br>`;
       }
     } else {
       let equipExtra = equip.extra;
       attribText = equipExtra.map(t => `+ ${t.value} ${t.attr == 'crit' || t.attr == 'eva' ? '%' : ''} 
-        ${this.nameRef[t.attr]}`).join('<br>');
+        ${this.translate.instant('player.attr.' + t.attr)}`).join('<br>');
 
       messageText = `${equip.name}`;
       if (equip.skill != null) {
         let skillValue = '';
         switch (equip.skill.type) {
           case 'atk':
-            skillValue = `${equip.skill.val} de Dano Físico`;
+            skillValue = this.translate.instant('item.term.atk-damage', { val: equip.skill.val });
             break;
           case 'magic':
-            skillValue = `${equip.skill.val} de Dano Mágico`;
+            skillValue = this.translate.instant('item.term.mgc-damage', { val: equip.skill.val });
             break;
           case 'buff':
-            skillValue = `+ ${equip.skill.val}% ${this.nameRef[equip.skill.attr]} por 4 Turnos`;
+            skillValue = `+ ${equip.skill.val}% ${this.translate.instant('player.attr.' + equip.skill.attr)} por 4 Turnos`;
             break;
           case 'heal':
-            skillValue = `Cura ${equip.skill.val}% da Vida Máxima`;
+            skillValue = this.translate.instant('item.term.heal', { val: equip.skill.val });
             break;
           default:
             skillValue = '';
@@ -210,8 +213,8 @@ export class DungeonRoomComponent implements OnInit {
         attribText += `<br><br>
           <ion-label>
             <small>
-              Habilidade: ${equip.skill.name}<br>
-              Custo: ${equip.skill.cost} de Mana<br>
+              ${this.translate.instant('item.term.hab', { name: equip.skill.name })}<br>
+              ${this.translate.instant('item.term.cost', { val: equip.skill.cost })}<br>
               ${skillValue}
             </small>
           </ion-label>`;
@@ -219,16 +222,16 @@ export class DungeonRoomComponent implements OnInit {
     }
     let equipMsgLabel = equip.type == 'equip' ? `${messageText}<br><br>${attribText}<br><br>` : `${messageText}`;
     let alert = await this.alertCtrl.create({
-      header: 'Comprar item?',
-      message: `${equipMsgLabel}<br>Comprar por ${costValue} moedas?`,
+      header: this.translate.instant('item.alert.buy'),
+      message: `${equipMsgLabel}<br>${this.translate.instant('item.alert.price', { value: costValue })}`,
       buttons: [
         {
-          text: 'Não',
+          text: this.translate.instant('no'),
           role: 'cancel',
           cssClass: 'confirm-quit',
         },
         {
-          text: 'Sim',
+          text: this.translate.instant('yes'),
           cssClass: 'sell-item',
           handler: async () => {
             let cloneEquip = Object.assign({}, equip);
@@ -260,7 +263,7 @@ export class DungeonRoomComponent implements OnInit {
                 equip.img = null;
               } else {
                 let toast = await this.toastCtrl.create({
-                  message: 'Você não tem espaço para mais itens!',
+                  message: this.translate.instant('item.toast.full'),
                   position: 'top',
                   duration: 1500,
                 });
@@ -268,7 +271,7 @@ export class DungeonRoomComponent implements OnInit {
               }
             } else {
               let toast = await this.toastCtrl.create({
-                message: 'Você não tem ouro suficiente!',
+                message: this.translate.instant('item.toast.no-gold'),
                 position: 'top',
                 duration: 1500,
               });
@@ -524,7 +527,7 @@ export class DungeonRoomComponent implements OnInit {
     let evasion = ~~(Math.random() * 100) + 1;
     if (evasion <= this.player.current.eva) {
       this.animateBattleColor = 'text-bless-heal';
-      this.animateBattleText = 'Você esquivou do ataque!';
+      this.animateBattleText = this.translate.instant('battle.dodge');
       await this.animateBattle().play();
     } else {
       this.player.currentLife -= damage;
@@ -532,7 +535,9 @@ export class DungeonRoomComponent implements OnInit {
         this.player.currentLife = 0;
       }
       this.animateBattleColor = magicAtk ? 'text-curse-burn' : 'text-bless-atk';
-      this.animateBattleText = `O inimigo te atacou com ${damage} de Dano ${magicAtk ? 'Mágico' : ''}`;
+      this.animateBattleText = this.translate.instant('battle.enemy-atk', {
+        val: damage, type: magicAtk ? this.translate.instant('battle.magic') : ''
+      });
       await this.animateBattle().play();
     }
 
@@ -555,11 +560,14 @@ export class DungeonRoomComponent implements OnInit {
         if (critChance <= this.player.current.crit) {
           critDamage = true;
           this.animateBattleColor = 'text-color-equip';
-          damage = damage * 1.5;
+          damage = damage * 2;
         }
         calcDamageResult = this.calcDamage(damage, this.currentMonster.def);
         auxCurHP = this.currentMonster.currentLife - calcDamageResult;
-        this.animateBattleText = `Você atacou com ${calcDamageResult} de Dano ${critDamage ? 'Crítico' : ''}`;
+        this.animateBattleText = this.translate.instant('battle.your-atk', {
+          val: calcDamageResult, mgc: '',
+          type: critDamage ? this.translate.instant('battle.crit') : ''
+        });
         break;
       case 'magic':
         damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 2) + sk.val;
@@ -567,11 +575,14 @@ export class DungeonRoomComponent implements OnInit {
         if (critChance <= this.player.current.crit) {
           critDamage = true;
           this.animateBattleColor = 'text-color-equip';
-          damage = damage * 1.5;
+          damage = damage * 2;
         }
         calcDamageResult = this.calcDamage(damage, this.currentMonster.prot);
         auxCurHP = this.currentMonster.currentLife - calcDamageResult;
-        this.animateBattleText = `Você atacou com ${calcDamageResult} de Dano Mágico ${critDamage ? 'Crítico' : ''}`;
+        this.animateBattleText = this.translate.instant('battle.your-atk', {
+          val: calcDamageResult, mgc: this.translate.instant('battle.magic'),
+          type: critDamage ? this.translate.instant('battle.crit') : ''
+        });
         break;
       case 'buff':
         switch (sk.attr) {
@@ -595,12 +606,12 @@ export class DungeonRoomComponent implements OnInit {
           operator: '+',
         });
         this.animateBattleColor = `text-bless-${sk.attr}`;
-        this.animateBattleText = `Você usou ${sk.name}`;
+        this.animateBattleText = this.translate.instant('battle.bless', { name: sk.name });
         break;
       case 'heal':
         let healLife = ~~(this.player.baseLife * (sk.val / 100));
         this.animateBattleColor = 'text-bless-heal';
-        this.animateBattleText = `Você recuperou ${healLife} de HP`;
+        this.animateBattleText = this.translate.instant('battle.heal', { val: healLife });
         this.player.currentLife += healLife;
         if (this.player.currentLife >= this.player.baseLife) {
           this.player.currentLife = this.player.baseLife;

@@ -59,9 +59,9 @@ export const CURSE_TYPES = [
         attr: 'life',
         value: 3,
         operator: '-',
-        title: 'Envenenamento',
-        location: 'Pântano venenoso',
-        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+        title: 'curse.venom.title',
+        location: 'curse.venom.location',
+        description: 'curse.venom.desc'
     },
     {
         icon: 'burn',
@@ -70,9 +70,9 @@ export const CURSE_TYPES = [
         attr: 'life',
         value: 3,
         operator: '-',
-        title: 'Queimadura',
-        location: 'Salão solar',
-        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+        title: 'curse.burn.title',
+        location: 'curse.burn.location',
+        description: 'curse.burn.desc'
     },
     {
         icon: 'atk',
@@ -81,9 +81,9 @@ export const CURSE_TYPES = [
         attr: 'atk',
         value: 15,
         operator: '-',
-        title: 'Ataque e Magia',
-        location: 'Túmulo das armas',
-        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+        title: 'curse.atk.title',
+        location: 'curse.atk.location',
+        description: 'curse.atk.desc'
     },
     {
         icon: 'def',
@@ -92,9 +92,9 @@ export const CURSE_TYPES = [
         attr: 'def',
         value: 15,
         operator: '-',
-        title: 'Defesa e Proteção',
-        location: 'Túmulo dos soldados',
-        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+        title: 'curse.def.title',
+        location: 'curse.def.location',
+        description: 'curse.def.desc'
     },
     {
         icon: 'vel',
@@ -103,9 +103,9 @@ export const CURSE_TYPES = [
         attr: 'vel',
         value: 15,
         operator: '-',
-        title: 'Velocidade',
-        location: 'Areia movediça',
-        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+        title: 'curse.vel.title',
+        location: 'curse.vel.location',
+        description: 'curse.vel.desc'
     },
 ];
 
@@ -117,9 +117,9 @@ export const BLESS_TYPES = [
         attr: 'life',
         value: 20,
         operator: '+',
-        title: 'Cura',
-        location: 'Estatueta de Atena',
-        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+        title: 'bless.heal.title',
+        location: 'bless.heal.location',
+        description: 'bless.heal.desc'
     },
     {
         icon: 'mana',
@@ -128,9 +128,9 @@ export const BLESS_TYPES = [
         attr: 'mana',
         value: 20,
         operator: '+',
-        title: 'Mana',
-        location: 'Altar sagrado',
-        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+        title: 'bless.mana.title',
+        location: 'bless.mana.location',
+        description: 'bless.mana.desc'
     },
     {
         icon: 'atk',
@@ -139,9 +139,9 @@ export const BLESS_TYPES = [
         attr: 'atk',
         value: 15,
         operator: '+',
-        title: 'Ataque e Magia',
-        location: 'Caverna escura',
-        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+        title: 'bless.atk.title',
+        location: 'bless.atk.location',
+        description: 'bless.atk.desc'
     },
     {
         icon: 'def',
@@ -150,9 +150,9 @@ export const BLESS_TYPES = [
         attr: 'def',
         value: 15,
         operator: '+',
-        title: 'Defesa e Proteção',
-        location: 'Beco de concreto',
-        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+        title: 'bless.def.title',
+        location: 'bless.def.location',
+        description: 'bless.def.desc'
     },
     {
         icon: 'vel',
@@ -161,9 +161,9 @@ export const BLESS_TYPES = [
         attr: 'vel',
         value: 15,
         operator: '+',
-        title: 'Velocidade',
-        location: 'Corredor das faíscas',
-        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`
+        title: 'bless.vel.title',
+        location: 'bless.vel.location',
+        description: 'bless.vel.desc'
     },
 ];
 

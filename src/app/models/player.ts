@@ -271,7 +271,7 @@ export class Player {
                 type: 'atk',
                 attr: 'atk',
                 equip: 'sword',
-                desc: '',
+                desc: 'Usa o próprio corpo como arma para atacar os inimigos',
             };
         }
     }

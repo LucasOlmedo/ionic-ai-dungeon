@@ -42,6 +42,8 @@
             "you-found": "¡Encontraste",
             "full-loot": "¡Tu inventario está lleno!",
             "open": "Abierto",
+            "chest-name": "Cofre de la suerte",
+            "chest-desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
             "trap": {
                 "lost": "¡Perdiste",
                 "hp": "de HP!",
@@ -74,9 +76,104 @@
     "player": {
         "vit": "Vitalidad",
         "int": "Inteligencia",
-        "agi": "Agilidad"
+        "agi": "Agilidad",
+        "attr": {
+            "life": "HP",
+            "atk": "Ataque",
+            "def": "Defensa",
+            "mana": "Mana",
+            "magic": "Magia",
+            "prot": "Protección",
+            "vel": "Velocidad",
+            "crit": "Crítico",
+            "eva": "Evasión"
+        }
     },
     "ads": {
         "fail": "¡La recompensa no se pudo canjear!"
+    },
+    "item": {
+        "term": {
+            "recover": "Restaura el {{val}}% de {{attr}}",
+            "add": "Agrega {{val}} de {{attr}}",
+            "atk-damage": "{{val}} de Daño Físico",
+            "mgc-damage": "{{val}} de Daño Magico",
+            "heal": "Cura {{val}}% de HP",
+            "hab": "Habilidad: {{name}}",
+            "cost": "Costo: {{val}} de Mana"
+        },
+        "alert": {
+            "buy": "¿Comprar artículo?",
+            "price": "¿Comprar por {{value}} monedas?"
+        },
+        "toast": {
+            "full": "¡Tu inventario está lleno!",
+            "no-gold": "¡No tienes suficiente oro!"
+        }
+    },
+    "battle": {
+        "dodge": "¡Has esquivado el ataque!",
+        "enemy-atk": "El enemigo te atacó con {{val}} de Daño {{type}}",
+        "your-atk": "Atacaste con {{val}} de Daño {{mgc}} {{type}}",
+        "bless": "Usaste {{name}}",
+        "heal": "Recuperaste {{val}} de HP",
+        "magic": "Magico",
+        "crit": "Crítico"
+    },
+    "yes": "Sí",
+    "no": "No",
+    "curse": {
+        "venom": {
+            "title": "Envenenamiento",
+            "location": "Pantano venenoso",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "burn": {
+            "title": "Quemar",
+            "location": "Salón solar",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "atk": {
+            "title": "Ataque y magia",
+            "location": "Tumba de las armas",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "def": {
+            "title": "Defensa y protección",
+            "location": "Tumba de los soldados",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "vel": {
+            "title": "Velocidad",
+            "location": "arenas movedizas",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        }
+    },
+    "bless": {
+        "heal": {
+            "title": "Restauración",
+            "location": "Estatuilla de Atenea",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "mana": {
+            "title": "Mana",
+            "location": "Altar sagrado",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "atk": {
+            "title": "Ataque y magia",
+            "location": "Cueva oscura",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "def": {
+            "title": "Defensa y protección",
+            "location": "Callejón de concreto",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "vel": {
+            "title": "Velocidad",
+            "location": "Salón de chispas",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        }
     }
 }

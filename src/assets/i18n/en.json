@@ -42,6 +42,8 @@
             "you-found": "You found",
             "full-loot": "Your inventory is full!",
             "open": "Open",
+            "chest-name": "Lucky chest",
+            "chest-desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
             "trap": {
                 "lost": "You lost",
                 "hp": "HP!",
@@ -74,9 +76,104 @@
     "player": {
         "vit": "Vitality",
         "int": "Intelligence",
-        "agi": "Agility"
+        "agi": "Agility",
+        "attr": {
+            "life": "HP",
+            "atk": "Attack",
+            "def": "Defense",
+            "mana": "Mana",
+            "magic": "Magic",
+            "prot": "Protection",
+            "vel": "Speed",
+            "crit": "Critical",
+            "eva": "Evasion"
+        }
     },
     "ads": {
         "fail": "The reward could not be redeemed!"
+    },
+    "item": {
+        "term": {
+            "recover": "Recover {{val}}% of {{attr}}",
+            "add": "Add {{val}} of {{attr}}",
+            "atk-damage": "{{val}} of Physical Damage",
+            "mgc-damage": "{{val}} of Magical Damage",
+            "heal": "Heal {{val}}% of HP",
+            "hab": "Skill: {{name}}",
+            "cost": "Cost: {{val}} of Mana"
+        },
+        "alert": {
+            "buy": "Buy item?",
+            "price": "Buy for {{value}} coins?"
+        },
+        "toast": {
+            "full": "Your inventory is full!",
+            "no-gold": "You don't have enough gold!"
+        }
+    },
+    "battle": {
+        "dodge": "You dodged the attack!",
+        "enemy-atk": "The enemy attacked you with {{val}} of {{type}} Damage",
+        "your-atk": "You attacked with {{val}} of {{type}} {{mgc}} Damage",
+        "bless": "Used {{name}}",
+        "heal": "Healed {{val}} of HP",
+        "magic": "Magic",
+        "crit": "Critical"
+    },
+    "yes": "Yes",
+    "no": "No",
+    "curse": {
+        "venom": {
+            "title": "Poisoning",
+            "location": "Poisonous swamp",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "burn": {
+            "title": "Burn",
+            "location": "Solar room",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "atk": {
+            "title": "Attack & Magic",
+            "location": "Tomb of the weapons",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "def": {
+            "title": "Defense & Protection",
+            "location": "Soldiers' Tomb",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "vel": {
+            "title": "Speed",
+            "location": "Quicksand",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        }
+    },
+    "bless": {
+        "heal": {
+            "title": "Healing",
+            "location": "Athena Statuette",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "mana": {
+            "title": "Mana",
+            "location": "Sacred altar",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "atk": {
+            "title": "Attack & Magic",
+            "location": "Dark cave",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "def": {
+            "title": "Defense & Protection",
+            "location": "Concrete alley",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "vel": {
+            "title": "Speed",
+            "location": "Corridor of sparks",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        }
     }
 }

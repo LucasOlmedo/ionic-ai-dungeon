@@ -42,6 +42,8 @@
             "you-found": "Você encontrou",
             "full-loot": "Seu inventário está cheio!",
             "open": "Abrir",
+            "chest-name": "Baú da sorte",
+            "chest-desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
             "trap": {
                 "lost": "Você perdeu",
                 "hp": "de HP!",
@@ -62,7 +64,7 @@
                 "count": "monstros mortos",
                 "again": "Jogar de novo",
                 "exit": "Menu principal",
-                "alert":{
+                "alert": {
                     "header": "Você foi atingido fatalmente!",
                     "message": "A sua vida está por um fio. Enquanto seu corpo cai sem força, uma voz o incentiva a continuar. Você não sabe quem é, mas percebe uma presença poderosa ao seu lado. <br><br> Quer se levantar e continuar?",
                     "continue": "Continuar (ADS)",
@@ -74,9 +76,104 @@
     "player": {
         "vit": "Vitalidade",
         "int": "Inteligência",
-        "agi": "Agilidade"
+        "agi": "Agilidade",
+        "attr": {
+            "life": "HP",
+            "atk": "Ataque",
+            "def": "Defesa",
+            "mana": "Mana",
+            "magic": "Magia",
+            "prot": "Proteção",
+            "vel": "Velocidade",
+            "crit": "Crítico",
+            "eva": "Evasão"
+        }
     },
     "ads": {
         "fail": "Não foi possível resgatar a recompensa!"
+    },
+    "item": {
+        "term": {
+            "recover": "Recupera {{val}}% de {{attr}}",
+            "add": "Adiciona {{val}} de {{attr}}",
+            "atk-damage": "{{val}} de Dano Físico",
+            "mgc-damage": "{{val}} de Dano Mágico",
+            "heal": "Cura {{val}}% de HP",
+            "hab": "Habilidade: {{name}}",
+            "cost": "Custo: {{val}} de Mana"
+        },
+        "alert": {
+            "buy": "Comprar item?",
+            "price": "Comprar por {{value}} moedas?"
+        },
+        "toast": {
+            "full": "Você não tem espaço para mais itens!",
+            "no-gold": "Você não tem ouro suficiente!"
+        }
+    },
+    "battle": {
+        "dodge": "Você esquivou do ataque!",
+        "enemy-atk": "O inimigo te atacou com {{val}} de Dano {{type}}",
+        "your-atk": "Você atacou com {{val}} de Dano {{mgc}} {{type}}",
+        "bless": "Você usou {{name}}",
+        "heal": "Você recuperou {{val}} de HP",
+        "magic": "Mágico",
+        "crit": "Crítico"
+    },
+    "yes": "Sim",
+    "no": "Não",
+    "curse": {
+        "venom": {
+            "title": "Envenenamento",
+            "location": "Pântano venenoso",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "burn": {
+            "title": "Queimadura",
+            "location": "Salão solar",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "atk": {
+            "title": "Ataque e Magia",
+            "location": "Túmulo das armas",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "def": {
+            "title": "Defesa e Proteção",
+            "location": "Túmulo dos soldados",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "vel": {
+            "title": "Velocidade",
+            "location": "Areia movediça",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        }
+    },
+    "bless": {
+        "heal": {
+            "title": "Cura",
+            "location": "Estatueta de Atena",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "mana": {
+            "title": "Mana",
+            "location": "Altar sagrado",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "atk": {
+            "title": "Ataque e Magia",
+            "location": "Caverna escura",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "def": {
+            "title": "Defesa e Proteção",
+            "location": "Beco de concreto",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        },
+        "vel": {
+            "title": "Velocidade",
+            "location": "Corredor das faíscas",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+        }
     }
 }

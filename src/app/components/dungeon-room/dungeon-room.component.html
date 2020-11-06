@@ -25,14 +25,14 @@
         </ion-row>
       </ion-grid>
       <ion-card-header class="adjust-padding">
-        <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
+        <ion-card-subtitle>{{ currentRoom.actionItem.location | translate }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content class="adjust-padding">
         <div class="ion-text-start">
-          {{ currentRoom.actionItem.description }}
+          {{ currentRoom.actionItem.description | translate }}
         </div>
         <div class="ion-text-center ion-margin-top text-{{ currentRoom.action }}-{{ currentRoom.actionItem.icon }}">
-          {{ currentRoom.actionItem.title }}
+          {{ currentRoom.actionItem.title | translate }}
           <span class="ion-margin-start">
             {{ currentRoom.actionItem.operator }} {{ currentRoom.actionItem.value }} %
           </span>
@@ -54,11 +54,11 @@
         </ion-row>
       </ion-grid>
       <ion-card-header class="adjust-padding">
-        <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
+        <ion-card-subtitle>{{ 'in-game.dungeon.chest-name' | translate }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content class="adjust-padding">
         <div class="ion-text-start">
-          {{ currentRoom.actionItem.description }}
+          {{ 'in-game.dungeon.chest-desc' | translate }}
         </div>
         <div *ngIf="chestOpened" class="ion-text-center text-color-chest ion-padding-top">
           {{ 'in-game.dungeon.chest-find-1' | translate }} {{ chestGold }}
