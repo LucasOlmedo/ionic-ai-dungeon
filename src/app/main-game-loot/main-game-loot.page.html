@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/main-game"></ion-back-button>
     </ion-buttons>
-    <ion-title>Inventário</ion-title>
+    <ion-title>{{ 'main-game.loot.title' | translate }}</ion-title>
     <ion-buttons slot="end">
       <ion-button>
         <ion-text color="warning" class="ion-margin-end">{{ player.gold }}</ion-text>
@@ -16,9 +16,9 @@
   <ion-item lines="none">
     <ion-label>
       <h3>
-        Capacidade: {{ count }}/{{ player.inventory.length }}
+        {{ 'main-game.loot.cap' | translate }}: {{ count }}/{{ player.inventory.length }}
         <span *ngIf="count == player.inventory.length" class="full-loot">
-          Cheio!
+          {{ 'main-game.loot.full' | translate }}
         </span>
       </h3>
     </ion-label>
@@ -40,7 +40,7 @@
             <span class="loot-count">{{ slot.count }}x</span>
           </div>
           <div *ngIf="slot.type == 'equip' && slot.equiped == true">
-            <span class="loot-equip">e</span>
+            <span class="loot-equip">E</span>
           </div>
         </ion-button>
       </ion-col>

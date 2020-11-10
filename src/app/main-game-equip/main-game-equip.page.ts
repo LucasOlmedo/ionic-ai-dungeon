@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../player.service';
 import { Player } from '../models/player';
 import { AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfigService } from '../config.service';
 
 @Component({
   selector: 'app-main-game-equip',
@@ -10,23 +12,15 @@ import { AlertController } from '@ionic/angular';
 })
 export class MainGameEquipPage implements OnInit {
 
+  lang: any;
   player: Player;
   buffs = [];
-  nameRef = {
-    life: 'HP',
-    atk: 'Ataque',
-    def: 'Defesa',
-    mana: 'Mana',
-    magic: 'Magia',
-    prot: 'Proteção',
-    vel: 'Velocidade',
-    crit: 'Crítico',
-    eva: 'Evasão',
-  };
 
   constructor(
     private playerService: PlayerService,
     private alertCtrl: AlertController,
+    private config: ConfigService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -34,6 +28,18 @@ export class MainGameEquipPage implements OnInit {
       .subscribe((p: Player) => {
         this.player = p;
         this.updateBuffs();
+      });
+  }
+
+  ionViewDidEnter() {
+    this.initLang();
+  }
+
+  async initLang() {
+    await this.config.getLanguage()
+      .subscribe(val => {
+        this.lang = this.config.parseLang(val);
+        this.translate.use(this.lang);
       });
   }
 
@@ -59,7 +65,7 @@ export class MainGameEquipPage implements OnInit {
           break;
       }
       this.buffs.push({
-        name: this.nameRef[buff],
+        name: this.translate.instant(`player.attr.${buff}`),
         value: playerEquipAttr[buff],
         cond: (buff == 'crit' || buff == 'eva') ? '%' : '',
         color: color,
@@ -68,20 +74,23 @@ export class MainGameEquipPage implements OnInit {
   }
 
   async removeEquip(equip) {
-    let messageText = `${equip.name}`, attribText = equip.extra
-      .map(t => `+ ${t.value} ${t.attr == 'crit' || t.attr == 'eva' ? '%' : ''} ${this.nameRef[t.attr]}`)
+    let messageText = `${this.translate.instant(equip.name)}`, attribText = equip.extra
+      .map(t => `+ ${t.value} ${t.attr == 'crit'
+        || t.attr == 'eva' ? '%' : ''} ${this.translate.instant('player.attr.' + t.attr)}`)
       .join('<br>');
     let alert = await this.alertCtrl.create({
-      header: this.player.inBattle == false ? 'Desequipar item?' : 'Detalhes',
+      header: this.player.inBattle == false
+        ? this.translate.instant('main-game.equip.unequip') :
+        this.translate.instant('main-game.equip.details'),
       message: `${messageText}<br><br>${attribText}`,
       buttons: this.player.inBattle == false ? [
         {
-          text: 'Não',
+          text: this.translate.instant('no'),
           role: 'cancel',
           cssClass: 'confirm-quit',
         },
         {
-          text: 'Sim',
+          text: this.translate.instant('yes'),
           handler: () => {
             let tAtrbLife = equip.extra.find(x => x.attr == 'life'),
               tAtrbMana = equip.extra.find(x => x.attr == 'mana');
@@ -120,31 +129,34 @@ export class MainGameEquipPage implements OnInit {
   }
 
   async showSkill(skill) {
-    console.log(skill);
     let skillValue = '';
     switch (skill.type) {
       case 'atk':
-        skillValue = `${skill.val} de Dano Físico`;
+        skillValue = this.translate.instant('item.term.atk-damage', { val: skill.val });
         break;
       case 'magic':
-        skillValue = `${skill.val} de Dano Mágico`;
+        skillValue = this.translate.instant('item.term.mgc-damage', { val: skill.val });
         break;
       case 'buff':
-        skillValue = `+ ${skill.val}% ${this.nameRef[skill.attr]} por 4 Turnos`;
+        skillValue = this.translate
+          .instant('item.term.buff', {
+            val: skill.val,
+            attr: this.translate.instant('player.attr.' + skill.attr)
+          });
         break;
       case 'heal':
-        skillValue = `Cura ${skill.val}% da Vida Máxima`;
+        skillValue = this.translate.instant('item.term.heal', { val: skill.val });
         break;
       default:
         skillValue = '';
         break;
     }
     let alert = await this.alertCtrl.create({
-      header: `${skill.name}`,
+      header: this.translate.instant(skill.name),
       message: `<ion-label>
-            Custo: ${skill.cost} de Mana<br>
+            ${this.translate.instant('item.term.cost', { val: skill.cost})}<br>
             ${skillValue}<br><br>
-            <em>"${skill.desc || ''}"</em>
+            <em>"${this.translate.instant(skill.desc) || ''}"</em>
         </ion-label>`,
     });
     await alert.present();

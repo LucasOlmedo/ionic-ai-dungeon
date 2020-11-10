@@ -43,7 +43,7 @@
             "full-loot": "Your inventory is full!",
             "open": "Open",
             "chest-name": "Lucky chest",
-            "chest-desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+            "chest-desc": "A shiny and mysterious chest that can contain rare items inside",
             "trap": {
                 "lost": "You lost",
                 "hp": "HP!",
@@ -100,7 +100,8 @@
             "mgc-damage": "{{val}} of Magical Damage",
             "heal": "Heal {{val}}% of HP",
             "hab": "Skill: {{name}}",
-            "cost": "Cost: {{val}} of Mana"
+            "cost": "Cost: {{val}} of Mana",
+            "buff": "+ {{val}}% {{attr}} per 4 Turn"
         },
         "alert": {
             "buy": "Buy item?",
@@ -122,58 +123,963 @@
     },
     "yes": "Yes",
     "no": "No",
+    "sell": "Sell",
     "curse": {
         "venom": {
             "title": "Poisoning",
             "location": "Poisonous swamp",
-            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            "desc": "Toxic gas rises from the mire of this deadly swamp, move fast so you don't die"
         },
         "burn": {
             "title": "Burn",
             "location": "Solar room",
-            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            "desc": "A strong and blinding light radiates from the center of this room, it is so strong that it burns your skin"
         },
         "atk": {
             "title": "Attack & Magic",
             "location": "Tomb of the weapons",
-            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            "desc": "Shattered weapons, broken shields, and a negative aura in the air"
         },
         "def": {
             "title": "Defense & Protection",
             "location": "Soldiers' Tomb",
-            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            "desc": "The souls of the soldiers who died torment you in this corridor"
         },
         "vel": {
             "title": "Speed",
             "location": "Quicksand",
-            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            "desc": "The floor of the corridor starts to move and slide, if you are not fast you may end up dying"
         }
     },
     "bless": {
         "heal": {
             "title": "Healing",
             "location": "Athena Statuette",
-            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            "desc": "The statue in the corner of the room exudes a regenerating aura that heals your wounds"
         },
         "mana": {
             "title": "Mana",
             "location": "Sacred altar",
-            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            "desc": "You find a sacred altar with crystal clear water, when you drink, the feeling is invigorating"
         },
         "atk": {
             "title": "Attack & Magic",
             "location": "Dark cave",
-            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            "desc": "When you enter this dark cave, your senses are heightened, you are more prepared for battle"
         },
         "def": {
             "title": "Defense & Protection",
             "location": "Concrete alley",
-            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            "desc": "The atmosphere of the corridor hardens your shield and armor, your protection is now stronger"
         },
         "vel": {
             "title": "Speed",
             "location": "Corridor of sparks",
-            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            "desc": "The magical sparks of the environment give you a speed above normal"
+        }
+    },
+    "start-room": {
+        "room": {
+            "location": "Unknown room",
+            "title": "Madison, WI",
+            "desc": "You pass through a dimensional portal that stops you in a quiet room, full of books on natural sciences and powerful magic. In the corner of the room a very old man tells you in a soft voice that to return to your reality, you must go through the doors marked"
+        },
+        "cave": {
+            "location": "Mysterious cave",
+            "title": "Nibirus, WI",
+            "desc": "It is rumored that in this cave a powerful elite wizard was killed by a formless creature that emanated black energy. The people who live nearby always say that before dawn, strange creatures are seen leaving the cave and heading west."
+        },
+        "woods": {
+            "location": "Forest clearing",
+            "title": "Valencia, WI",
+            "desc": "The great clearing of the Forest of Valencia, there are rumors that in certain moons of the month, owls are seen gathering for no apparent reason. At night, the forest is disturbed by terrible screams from wild creatures"
+        },
+        "prision": {
+            "location": "Abandoned prison",
+            "title": "Krashina, WI",
+            "desc": "It is said that a long time ago, this abandoned prison was used as a shelter for priests of a heretical sect that preached the end of the world through a creature made of pure black energy. One day, residents of a village near the prison mysteriously disappeared. Both residents and priests were never seen again"
+        },
+        "tavern": {
+            "location": "Swabiuz Tavern",
+            "title": "Swabiuz, WI",
+            "desc": "The Swabiuz tavern was used as a reference point for hired killers, many gathered here to account for their deaths and compete with each other. It is rumored that during a fight between one of the killers and a foreigner, everyone, with the exception of Swabiuz and his two sons (who hid in the mead room), were killed by that foreigner"
+        }
+    },
+    "trap": {
+        "wolf-trap": {
+            "location": "Wolf trap",
+            "desc": "Upon entering the next room you realize that the lighting is poor but decided to proceed anyway, to stumble a trap is triggered"
+        },
+        "wine": {
+            "location": "Thornweed tentacle",
+            "desc": "You get a surprise attack from Thornweed tentacles hidden in the cracks of the corridor where you're going"
+        },
+        "earthquake": {
+            "location": "Geological fault",
+            "desc": "Small tremors cause the floor of the corridor to crack and some columns start to collapse in front of you"
+        },
+        "spike": {
+            "location": "Sharp hall",
+            "desc": "Through an oversight, you ended up in a hallway where the floor and walls are formed by sharp edges that can hurt you badly"
+        },
+        "fireball": {
+            "location": "Burning rock",
+            "desc": "When you entered the corridor one of the blocks activated a trap, and now an incandescent rock is coming towards you"
+        }
+    },
+    "final-boss": {
+        "10": {
+            "speak": "...W...What...What are...you still...doing...here?"
+        }
+    },
+    "main-game": {
+        "char": {
+            "title": "Character",
+            "attr": "Player attributes",
+            "floor": "Floor",
+            "actual": "Current room",
+            "exp": "EXP",
+            "gold": "Gold"
+        },
+        "settings": {
+            "title": "Exit Dungeon ?",
+            "menu": "Main menu",
+            "continue": "Continue",
+            "exit": "Exit",
+            "text": "Your progress will not be saved when you leave the dungeon"
+        },
+        "equip": {
+            "title": "Equipment",
+            "skills": "Skills",
+            "attr": "Equipment attributes",
+            "unequip": "Unequip?",
+            "equip": "Equip?",
+            "details": "Details"
+        },
+        "loot": {
+            "title": "Inventory",
+            "cap": "Capacity",
+            "full": "Full!",
+            "sell": "Sale price {{val}} gold coins",
+            "use": "Use item?"
+        }
+    },
+    "skill": {
+        "hand-atk": {
+            "name": "Basic attack",
+            "desc": "Use your own body as a weapon to attack enemies"
+        },
+        "shield-bash": {
+            "name": "Shield bash",
+            "desc": "Advance with your shield, hitting the enemy with the impact"
+        },
+        "egg-defense": {
+            "name": "Shield increase",
+            "desc": "Creates an energy shield increasing the carrier's defense"
+        },
+        "emerald-shield": {
+            "name": "Emerald light",
+            "desc": "Emits a blinding green light, so strong that it is able to burn the enemy's skin"
+        },
+        "vibrating-shield": {
+            "name": "Magnetism",
+            "desc": "The shield vibrates, creating a magnetic field around you"
+        },
+        "health-capsule": {
+            "name": "Regenerating capsule",
+            "desc": "The capsules contained in a secret compartment of this shield bring relief from pain and an invigorating sensation"
+        },
+        "broken-heart": {
+            "name": "Recovery",
+            "desc": "Uses a magical aura to restore vigor and heal wounds"
+        },
+        "pyromaniac": {
+            "name": "Spiritual fire",
+            "desc": "The seals on the shield break, releasing the spiritual flame through the enemy"
+        },
+        "gems": {
+            "name": "Gem Attack",
+            "desc": "Fires fragments of magic gems at the enemy"
+        },
+        "shield-reflect": {
+            "name": "Reflective shield",
+            "desc": "Few attacks are able to hurt the wearer of this ability"
+        },
+        "focus-punch": {
+            "name": "Focus punch",
+            "desc": "Concentrate all your strength in one fist and hit the enemy"
+        },
+        "arch-bow": {
+            "name": "Accurate shot",
+            "desc": "A clear shot at the opponent's weak points"
+        },
+        "axe-atk": {
+            "name": "Brandish ax",
+            "desc": "Swing the ax and propel it towards the enemy. It's a heavy attack"
+        },
+        "bo": {
+            "name": "Attack centered",
+            "desc": "It is a simple training staff, but when used well it can cause considerable damage"
+        },
+        "music-spell": {
+            "name": "Musical vibration",
+            "desc": "The vibrations of this mandolin's note are magical, they hit the minds of enemies"
+        },
+        "musical-notes": {
+            "name": "Sound attack",
+            "desc": "It is a bard musical instrument. You are now automatically a bard too"
+        },
+        "arrow-dunk": {
+            "name": "Curved arrow",
+            "desc": "Regardless of where you shoot, these arrows will always hit your enemies"
+        },
+        "quick-slash": {
+            "name": "Quick attack",
+            "desc": "Strikes with the dagger. The higher your speed, the more effective they will be"
+        },
+        "flail": {
+            "name": "Heavy spike attack",
+            "desc": "Combines the weight of iron with the power of thorns to carry a ferocious attack"
+        },
+        "cross-slash": {
+            "name": "Cross slash",
+            "desc": "Make a quick cross slash on the opponent"
+        },
+        "great-axe-atk": {
+            "name": "Double attack",
+            "desc": "An axe with two blades, serves both for attack and defense"
+        },
+        "heavy-arrow": {
+            "name": "Heavy arrow",
+            "desc": "Carry a super tough arrow and shoot it at the target"
+        },
+        "stone-axe-atk": {
+            "name": "Stone axe attack",
+            "desc": "Strikes the opponent with the stone axe. Rustic, but efficient"
+        },
+        "cupid": {
+            "name": "Cupid's attack",
+            "desc": "A magic arrow that always aims at the opponent's heart"
+        },
+        "hammer": {
+            "name": "Crush",
+            "desc": "An attack so heavy that it sparks around. Is this the legendary hammer?"
+        },
+        "spin-blade": {
+            "name": "Spin attack",
+            "desc": "Hit the enemy with a rotating and penetrating attack"
+        },
+        "throw-kunai": {
+            "name": "Shoot kunai",
+            "desc": "Shoot sharp kunais at the opponent"
+        },
+        "sun-spear": {
+            "name": "Boom drilling",
+            "desc": "It is a primitive spear, yet versatile and great for hand-to-hand combat"
+        },
+        "magic-arrow": {
+            "name": "Sonic arrow",
+            "desc": "Channel magic elements to shoot an arrow at the speed of sound"
+        },
+        "sparkles": {
+            "name": "Magic attack",
+            "desc": "Cast amateur-level magic to sparks at the enemy"
+        },
+        "war-pick": {
+            "name": "Skullbreaker",
+            "desc": "It should be used to break rocks, but here you can break skulls"
+        },
+        "resonance": {
+            "name": "Resonance",
+            "desc": "An ancient banjo from a famous warrior, emits quick magical vibrations"
+        },
+        "saber-slash": {
+            "name": "Pirate drilling",
+            "desc": "Yoo-hoo, let's punch some enemies!"
+        },
+        "sword-slash": {
+            "name": "Clean cut",
+            "desc": "This heavy sword is perfect for cutting enemies at once"
+        },
+        "throw-spear": {
+            "name": "Throw spear",
+            "desc": "Forged with a cutting stone, this attack can pierce heavy armor"
+        },
+        "spear-hook": {
+            "name": "Drill",
+            "desc": "An attack that requires skill and speed"
+        },
+        "basic-sword-atk": {
+            "name": "Gladius attack",
+            "desc": "The famous sword used by the gladiators, their attack is precise and fatal"
+        },
+        "shuriken": {
+            "name": "Shoot shuriken",
+            "desc": "Throws several sharp shurikens towards the opponent"
+        },
+        "mace-head": {
+            "name": "Thorn attack",
+            "desc": "Delivers a devastating physical attack by combining the weight of the body with the weight of iron"
+        },
+        "portal": {
+            "name": "Magic shot",
+            "desc": "Concentrates the energy in one point and fires a magic burst"
+        },
+        "icicles": {
+            "name": "Magic spark",
+            "desc": "Absorb the magic attributes of the stone and shoot magic sparks at the enemy"
+        },
+        "circle-spark": {
+            "name": "Sparkle circle",
+            "desc": "It's a magic stick, you can even take a rabbit out if you have a top hat"
+        },
+        "echo": {
+            "name": "Control waves",
+            "desc": "This magic wand projects psychic waves capable of controlling and paralyzing the opponent"
+        },
+        "laser-spark": {
+            "name": "Star laser",
+            "desc": "Draw a symbol to fire a powerful magical burst"
+        },
+        "splash": {
+            "name": "Attack predicted",
+            "desc": "Predict a magical attack towards the opponent"
+        },
+        "crystal-ball": {
+            "name": "Crystal attack",
+            "desc": "Uses magic sayings to predict an attack of great magic charge on the opponent"
+        },
+        "orb-atk": {
+            "name": "Magic orb",
+            "desc": "A rod of high magic. Concentrate to fire a strong magic orb"
+        },
+        "fairy-wand": {
+            "name": "Fairy gust",
+            "desc": "Summons the power of fairies to emit a powerful burst"
+        },
+        "trident": {
+            "name": "Trident attack",
+            "desc": "A powerful attack by a very dangerous trident can corrupt the user"
+        },
+        "magic-trident": {
+            "name": "Ocean drilling",
+            "desc": "Boost a powerful attack capable of destroying large structures"
+        },
+        "wind-hole": {
+            "name": "Gust hole",
+            "desc": "This elite staff incorporates the power of the wind to confuse and damage the enemy"
+        },
+        "zeus": {
+            "name": "Cast lightning",
+            "desc": "Summons lightning to electrocute the opponent"
+        },
+        "fire-spell": {
+            "name": "Cast spell (Fire)",
+            "desc": "Uses stamps and symbols to control firepower"
+        },
+        "ice-spell": {
+            "name": "Cast spell (Ice)",
+            "desc": "Use seals and symbols to control the power of the ice"
+        },
+        "spell-book": {
+            "name": "Draw spell",
+            "desc": "Read one of the countless spells in this book to damage the enemy"
+        },
+        "impact": {
+            "name": "Astral impact",
+            "desc": "Projects the user's soul to deliver spiritual bursts to opponents"
+        },
+        "book-aura": {
+            "name": "Aura of judgment",
+            "desc": "Emits a powerful aura that can kill many enemies"
+        },
+        "burning-book": {
+            "name": "Holy fire",
+            "desc": "Conjures a devastating fire that can consume even the toughest material"
+        },
+        "mineral": {
+            "name": "Crystalline attack",
+            "desc": "Absorbs the magic power contained in the gems to knock out the opponent"
+        },
+        "snake-bite": {
+            "name": "Snake bite",
+            "desc": "Projects an astral snake to bite the opponent"
+        },
+        "stone-ball": {
+            "name": "Stone sphere",
+            "desc": "Use the local terrain to generate a stone sphere and throw it at the opponent"
+        },
+        "magic-trick": {
+            "name": "Magic trick",
+            "desc": "A ring with magical properties. It goes well with the magician's staff"
+        },
+        "cross-mark": {
+            "name": "Cross mark",
+            "desc": "Hit the enemy by marking him with a cross stigma, burning his body deeply"
+        },
+        "crystal-shine": {
+            "name": "Diamond sparkle",
+            "desc": "Emits a blinding shine from the diamond with unknown properties"
+        },
+        "fire-ring": {
+            "name": "Circle of fire",
+            "desc": "forms a smoking circle around the opponent, causing severe burns"
+        },
+        "circle-gold": {
+            "name": "Shine",
+            "desc": "Shines a revitalizing aura that increases the agility of the wearer"
+        },
+        "ion-blast": {
+            "name": "Ion beam",
+            "desc": "Fires a powerful concentration of ions that can disintegrate the target"
+        },
+        "heart-wings": {
+            "name": "Brave heart",
+            "desc": "Grants the courage of ancient heroes by regenerating a percentage of HP"
+        },
+        "ghost-fire": {
+            "name": "Ghost fire",
+            "desc": "Conjures a spiritual fire that ignites enemies and causes terrible illusions"
+        },
+        "eletric-orb": {
+            "name": "Electricity Orb",
+            "desc": "Generates vibrations that turn into electrical pulses that decimate opponents"
+        },
+        "fang": {
+            "name": "Fang attack",
+            "desc": "Incites the carrier to attack the enemy by biting with fangs of magical origin"
+        },
+        "wall": {
+            "name": "Defensive wall",
+            "desc": "Raise a wall of energy in front of the wearer, reducing the severity of the blows suffered"
+        },
+        "spike-atk": {
+            "name": "Transversal spines",
+            "desc": "Attack the enemy with sharp spikes made from a highly resistant substance"
+        },
+        "plasma-bolt": {
+            "name": "Glowing plasma",
+            "desc": "Creates a powerful accumulation of plasma and projects a destructive burst"
+        },
+        "beam": {
+            "name": "Emerald radius",
+            "desc": "Use the stone as a plumber to fire powerful energy at the enemy"
+        },
+        "buff": {
+            "name": "Increased power",
+            "desc": "You can feel the power running through your veins, your strength becomes unshakable"
+        },
+        "shining-heart": {
+            "name": "Fervent heart",
+            "desc": "Warms up the adventurous spirit, granting relentless courage and determination"
+        },
+        "water-bolt": {
+            "name": "Water shooting",
+            "desc": "Accumulates air humidity and fires a concentrated projectile of water"
+        },
+        "knockout": {
+            "name": "Knockout",
+            "desc": "Accumulates enough strength to strike the enemy and knock him out"
+        },
+        "healing": {
+            "name": "Heal wounds",
+            "desc": "A powerful necklace that belonged to a legendary cleric. Its brilliance heals wounds"
+        },
+        "psychic": {
+            "name": "Psychic waves",
+            "desc": "Summons the power of Einsehard's druids and unleashes psychic waves to destroy enemies"
+        },
+        "energy": {
+            "name": "Magic flash",
+            "desc": "Concentrates the power contained in the necklace and shines a magical glow towards the opponent"
+        },
+        "divert": {
+            "name": "Ricochet shot",
+            "desc": "Throws fragments of copper, iron and other light metals towards the target"
+        },
+        "shell": {
+            "name": "Shell defense",
+            "desc": "It appropriates the material of the shells to form a resistant defense"
+        },
+        "acrobatic": {
+            "name": "Acrobatics",
+            "desc": "Provides flexibility to the carrier, increasing his speed"
+        },
+        "half-heart": {
+            "name": "Recover energy",
+            "desc": "Emanates restorative energies, recovering the user's life"
+        },
+        "bubbles": {
+            "name": "Magic bubbles",
+            "desc": "Bubbles are formed from a magic liquid that drips from the slope"
+        },
+        "dragon-breath": {
+            "name": "Dragon breath",
+            "desc": "Blows a blast of draconic fire, burning all opponents in front of you"
+        }
+    },
+    "equip": {
+        "life-potion": {
+            "name": "Healing potion"
+        },
+        "mana-potion": {
+            "name": "Mana potion"
+        },
+        "exp-potion": {
+            "name": "EXP potion"
+        },
+        "life-bottle": {
+            "name": "Healing bottle"
+        },
+        "mana-bottle": {
+            "name": "Bottle of mana"
+        },
+        "exp-bottle": {
+            "name": "EXP bottle"
+        },
+        "gladiator-helm": {
+            "name": "Gladiator's Helmet"
+        },
+        "gold-helmet": {
+            "name": "Golden helmet"
+        },
+        "great-helmet": {
+            "name": "Spartan helmet"
+        },
+        "great-kabuto": {
+            "name": "Kabuto helmet"
+        },
+        "horn-helm": {
+            "name": "Horned helmet"
+        },
+        "kabuto": {
+            "name": "Superior kabuto"
+        },
+        "knight-helm": {
+            "name": "Knight helmet"
+        },
+        "mask": {
+            "name": "War mask"
+        },
+        "native-helm": {
+            "name": "Aboriginal headdress"
+        },
+        "nordic-helmet": {
+            "name": "Nordic helmet"
+        },
+        "plate-helm": {
+            "name": "Lead helm"
+        },
+        "samurai": {
+            "name": "Samurai mask"
+        },
+        "shogun-mask": {
+            "name": "Shogun emperor"
+        },
+        "silver-helm": {
+            "name": "Silver helmet"
+        },
+        "spartan-helmet": {
+            "name": "Roman helmet"
+        },
+        "spike-helm": {
+            "name": "Pointed helmet"
+        },
+        "viking-great": {
+            "name": "Viking helmet"
+        },
+        "wizard-hat": {
+            "name": "Mage turban"
+        },
+        "witch-hat": {
+            "name": "Witch's Hat"
+        },
+        "wizard-helm": {
+            "name": "Magic hat"
+        },
+        "necromancer-mask": {
+            "name": "Necromancer mask"
+        },
+        "blue-shield": {
+            "name": "Elite shield"
+        },
+        "copper-shield": {
+            "name": "Bronze shield"
+        },
+        "emerald-shield": {
+            "name": "Emerald bastion"
+        },
+        "gold-shield": {
+            "name": "Golden bastion"
+        },
+        "heart-shield": {
+            "name": "Guardian of vitality"
+        },
+        "oak-shield": {
+            "name": "Oak shield"
+        },
+        "obsidian-shield": {
+            "name": "Obsidian shield"
+        },
+        "saphire-shield": {
+            "name": "Sapphire defender"
+        },
+        "silver-shield": {
+            "name": "Silver shield"
+        },
+        "wood-shield": {
+            "name": "Reinforced shield"
+        },
+        "bear-armor": {
+            "name": "Bear protection"
+        },
+        "chain-armor": {
+            "name": "Chain armor"
+        },
+        "draco-armor": {
+            "name": "Dragon skin"
+        },
+        "knight-chest": {
+            "name": "Protection of the warrior"
+        },
+        "lava-armor": {
+            "name": "Volcanic armor"
+        },
+        "leather-armor": {
+            "name": "Leather armor"
+        },
+        "magic-armor": {
+            "name": "Prophet's tunic"
+        },
+        "mail": {
+            "name": "Steel mail"
+        },
+        "obsidian-armor": {
+            "name": "Obsidian armor"
+        },
+        "old-cloth": {
+            "name": "Old armor"
+        },
+        "quick-cloth": {
+            "name": "Quick cloth"
+        },
+        "rogue-cloth": {
+            "name": "Rogue cloth"
+        },
+        "roman-armor": {
+            "name": "Roman armor"
+        },
+        "scale-armor": {
+            "name": "Scale armor"
+        },
+        "silver-armor": {
+            "name": "Silver armor"
+        },
+        "spartan-armor": {
+            "name": "Spartan armor"
+        },
+        "train-vest": {
+            "name": "Tournament vest"
+        },
+        "arch": {
+            "name": "Wooden bow"
+        },
+        "axe": {
+            "name": "Battle ax"
+        },
+        "bamboo": {
+            "name": "Bamboo staff"
+        },
+        "mandolin": {
+            "name": "Mandolin"
+        },
+        "bard-lute": {
+            "name": "Bard Viola"
+        },
+        "bow-arrow": {
+            "name": "Bow & arrow"
+        },
+        "dagger": {
+            "name": "Dagger"
+        },
+        "flail": {
+            "name": "Flail"
+        },
+        "gladius": {
+            "name": "Gladius"
+        },
+        "great ax": {
+            "name": "Double ax"
+        },
+        "great-bow": {
+            "name": "Fast bow"
+        },
+        "hatchet": {
+            "name": "Stone hatchet"
+        },
+        "heart-arrow": {
+            "name": "Heart arrow"
+        },
+        "heavy-hammer": {
+            "name": "Mjolnir"
+        },
+        "knife": {
+            "name": "Light knife"
+        },
+        "kunai": {
+            "name": "Kunai"
+        },
+        "longspear": {
+            "name": "Primitive Spear"
+        },
+        "magic-bow": {
+            "name": "Elite bow"
+        },
+        "magic-tome": {
+            "name": "Magic tome"
+        },
+        "pick": {
+            "name": "Pick"
+        },
+        "piper": {
+            "name": "Light Banjo"
+        },
+        "pirate-knife": {
+            "name": "Pirate knife"
+        },
+        "plate-sword": {
+            "name": "Silver sword"
+        },
+        "rock-spear": {
+            "name": "Stone spear"
+        },
+        "short-spear": {
+            "name": "Samurai spear"
+        },
+        "short-sword": {
+            "name": "Short sword"
+        },
+        "shuriken": {
+            "name": "Shuriken"
+        },
+        "spike-mace": {
+            "name": "Thorn mace"
+        },
+        "magic-wand": {
+            "name": "Magic Wand"
+        },
+        "diamond-wand": {
+            "name": "Diamond wand"
+        },
+        "magic-staff": {
+            "name": "Magician's Staff"
+        },
+        "control-wand": {
+            "name": "Control wand"
+        },
+        "star-staff": {
+            "name": "Star staff"
+        },
+        "magic-ball": {
+            "name": "Crystal ball"
+        },
+        "crystal-ball": {
+            "name": "Magic Oracle"
+        },
+        "archmage-staff": {
+            "name": "Archmage's Staff"
+        },
+        "star-wand": {
+            "name": "Fairy staff"
+        },
+        "red-trident": {
+            "name": "Underworld trident"
+        },
+        "poseidon-trident": {
+            "name": "Poseidon's Trident"
+        },
+        "elite-staff": {
+            "name": "Elite staff"
+        },
+        "lightning-bolt": {
+            "name": "Weapon of Zeus"
+        },
+        "fire-hand": {
+            "name": "Fire controller"
+        },
+        "ice-hand": {
+            "name": "Ice controller"
+        },
+        "eye-book": {
+            "name": "Book of the oracle"
+        },
+        "star-book": {
+            "name": "Esoteric book"
+        },
+        "law-book": {
+            "name": "Book of judgment"
+        },
+        "cross-book": {
+            "name": "Book of Saints"
+        },
+        "magic-crystal": {
+            "name": "Magic gems"
+        },
+        "snake-ring": {
+            "name": "Ouroboros Ring"
+        },
+        "copper-ring": {
+            "name": "Copper ring"
+        },
+        "circus-ring": {
+            "name": "Circus ring"
+        },
+        "cross-ring": {
+            "name": "Cross ring"
+        },
+        "diamond-ring": {
+            "name": "Diamond ring"
+        },
+        "fire-ring": {
+            "name": "Volcanic ring"
+        },
+        "gold-ring": {
+            "name": "Gold ring"
+        },
+        "great-ring": {
+            "name": "Big blue ring"
+        },
+        "heart-ring": {
+            "name": "Heart ring"
+        },
+        "ruby-ring": {
+            "name": "Ruby ring"
+        },
+        "saphire-ring": {
+            "name": "Sapphire ring"
+        },
+        "silver-ring": {
+            "name": "Silver ring"
+        },
+        "solid-ring": {
+            "name": "Solid ring"
+        },
+        "spike-ring": {
+            "name": "Ring of thorns"
+        },
+        "triple-ring": {
+            "name": "Triple ring"
+        },
+        "armored-boots": {
+            "name": "Protection boots"
+        },
+        "bear-boots": {
+            "name": "Bear boots"
+        },
+        "boat": {
+            "name": "Heavy boots"
+        },
+        "cursed-boots": {
+            "name": "Cursed boot"
+        },
+        "dark-shoes": {
+            "name": "Black shoes"
+        },
+        "emerald-boots": {
+            "name": "Emerald boots"
+        },
+        "gladiator": {
+            "name": "Gladiator's shoe"
+        },
+        "golden-boots": {
+            "name": "Golden boots"
+        },
+        "knight-boots": {
+            "name": "Knight's boot"
+        },
+        "lava-boots": {
+            "name": "volcanic boots"
+        },
+        "leather-boot": {
+            "name": "Leather boot"
+        },
+        "magic-boots": {
+            "name": "Magic boot"
+        },
+        "oak-boots": {
+            "name": "Oak shoe"
+        },
+        "obsidian-boots": {
+            "name": "Obsidian boots"
+        },
+        "old-shoes": {
+            "name": "Old shoes"
+        },
+        "rogue-boots": {
+            "name": "Rogue Boots"
+        },
+        "roman-boots": {
+            "name": "Roman boots"
+        },
+        "samurai-shoes": {
+            "name": "Samurai shoe"
+        },
+        "scale-boots": {
+            "name": "Scale boot"
+        },
+        "snow-shoes": {
+            "name": "Snowshoe"
+        },
+        "steel-boots": {
+            "name": "Steel boot"
+        },
+        "viking-boots": {
+            "name": "Viking boot"
+        },
+        "wizard-boots": {
+            "name": "Mage Boots"
+        },
+        "emeral-necklace": {
+            "name": "Emerald necklace"
+        },
+        "green-amulet": {
+            "name": "Viking amulet"
+        },
+        "heart-pendant": {
+            "name": "Heart necklace"
+        },
+        "aqua-necklace": {
+            "name": "Aqua amulet"
+        },
+        "coin-pendant": {
+            "name": "Double pendant"
+        },
+        "cross-necklace": {
+            "name": "Cross necklace"
+        },
+        "forest-necklace": {
+            "name": "Forest necklace"
+        },
+        "magic-necklace": {
+            "name": "Magic necklace"
+        },
+        "medallion": {
+            "name": "Copper medallion"
+        },
+        "pearl-necklace": {
+            "name": "Pearl necklace"
+        },
+        "quick-necklace": {
+            "name": "Quick necklace"
+        },
+        "ruby-pendant": {
+            "name": "Ruby pendant"
+        },
+        "saphire-pendant": {
+            "name": "Sapphire pendant"
+        },
+        "tooth-necklace": {
+            "name": "Dragon's tooth"
         }
     }
 }

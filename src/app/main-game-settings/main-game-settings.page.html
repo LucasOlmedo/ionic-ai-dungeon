@@ -3,26 +3,26 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/main-game"></ion-back-button>
     </ion-buttons>
-    <ion-title>Opções</ion-title>
+    <ion-title>{{ 'settings.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
   <ion-list>
     <ion-item>
       <ion-icon name="musical-notes-outline" slot="start"></ion-icon>
-      <ion-label>Música</ion-label>
+      <ion-label>{{ 'settings.music' | translate }}</ion-label>
       <ion-toggle [checked]="selectedMusic" (ionChange)="toggleMusic($event)"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-icon name="headset-outline" slot="start"></ion-icon>
-      <ion-label>Efeitos sonoros</ion-label>
+      <ion-label>{{ 'settings.sound-effect' | translate }}</ion-label>
       <ion-toggle [checked]="selectedEffects" (ionChange)="toggleEffects($event)"></ion-toggle>
     </ion-item>
   </ion-list>
   <ion-row>
     <ion-col class="ion-padding-start ion-padding-end">
       <ion-button color="danger" fill="outline" expand="block" (click)="quitDungeon()">
-        Menu principal
+        {{ 'main-game.settings.menu' | translate }}
       </ion-button>
     </ion-col>
   </ion-row>

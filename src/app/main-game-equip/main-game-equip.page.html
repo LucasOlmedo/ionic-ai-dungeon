@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/main-game"></ion-back-button>
     </ion-buttons>
-    <ion-title>Equipamentos</ion-title>
+    <ion-title>{{ 'main-game.equip.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
@@ -59,7 +59,7 @@
   </ion-grid>
   <ion-item>
     <ion-label>
-      Habilidades
+      {{ 'main-game.equip.skills' | translate }}
     </ion-label>
   </ion-item>
   <ion-grid>
@@ -67,14 +67,14 @@
       <ion-col>
         <ion-button (click)="showSkill(skill)" *ngIf="skill != null" expand="block" fill="outline"
           [color]="skill.color">
-          {{ skill.name }}
+          {{ skill.name | translate }}
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-item>
     <ion-label>
-      Atributos de equipamento
+      {{ 'main-game.equip.attr' | translate }}
     </ion-label>
   </ion-item>
   <ion-grid class="ion-padding ion-margin-bottom">

@@ -5,12 +5,12 @@
     <div *ngIf="currentRoom.action == 'start' || currentRoom.action == 'empty'">
       <img src="{{ currentRoom.img }}" />
       <ion-card-header class="adjust-padding">
-        <ion-card-subtitle>{{ currentRoom.location }}</ion-card-subtitle>
-        <ion-card-title>{{ currentRoom.title }}</ion-card-title>
+        <ion-card-subtitle>{{ currentRoom.location | translate }}</ion-card-subtitle>
+        <ion-card-title>{{ currentRoom.title | translate }}</ion-card-title>
       </ion-card-header>
       <ion-card-content class="adjust-padding">
         <div class="ion-text-start">
-          {{ currentRoom.description }}
+          {{ currentRoom.description | translate }}
         </div>
       </ion-card-content>
     </div>
@@ -75,7 +75,7 @@
         <div *ngIf="canGetLoot">
           <div *ngIf="lootEquip" class="ion-text-center text-color-equip">
             <span class="ion-margin-bottom">
-              {{ 'in-game.dungeon.you-found' | translate }} {{ lootEquip.name }}!
+              {{ 'in-game.dungeon.you-found' | translate }} {{ lootEquip.name | translate }}!
             </span>
             <br>
             <img [src]="lootEquip.img" style="height: 60px; margin-top: 20px;">
@@ -107,11 +107,11 @@
         </ion-row>
       </ion-grid>
       <ion-card-header class="adjust-padding">
-        <ion-card-subtitle>{{ currentRoom.actionItem.location }}</ion-card-subtitle>
+        <ion-card-subtitle>{{ currentRoom.actionItem.location | translate }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content class="adjust-padding">
         <div class="ion-text-start">
-          {{ currentRoom.actionItem.description }}
+          {{ currentRoom.actionItem.description | translate }}
         </div>
         <div *ngIf="trapped; else evasion" class="ion-text-center ion-margin-top text-bless-atk">
           {{ 'in-game.dungeon.trap.lost' | translate }} {{ currentRoom.actionItem.value(player.baseLife) }}
@@ -139,7 +139,7 @@
         <ion-card-header class="adjust-padding" class="padding-top: 0;">
           <ion-card-subtitle style="padding-top: 0;">
             <span class="ion-float-left" style="margin-bottom: 8px;">
-              Nv {{ currentMonster.level }} - {{ currentMonster.name }}
+              Lv {{ currentMonster.level }} - {{ currentMonster.name }}
             </span>
             <span class="ion-float-right info-monster-hp">
               {{ currentMonster.currentLife }}/{{ currentMonster.baseLife }}
@@ -184,7 +184,7 @@
           <div *ngIf="canGetLoot">
             <div *ngIf="lootEquip" class="ion-text-center text-color-equip">
               <span class="ion-margin-bottom">
-                {{ 'in-game.dungeon.chest-find-1' | translate }} {{ lootEquip.name }}!
+                {{ 'in-game.dungeon.chest-find-1' | translate }} {{ lootEquip.name | translate }}!
               </span>
               <br>
               <img [src]="lootEquip.img" style="height: 60px; margin-top: 20px;">

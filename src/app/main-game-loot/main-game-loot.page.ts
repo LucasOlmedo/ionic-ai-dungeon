@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../player.service';
 import { Player } from '../models/player';
 import { AlertController } from '@ionic/angular';
+import { ConfigService } from '../config.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-main-game-loot',
@@ -10,23 +12,15 @@ import { AlertController } from '@ionic/angular';
 })
 export class MainGameLootPage implements OnInit {
 
+  lang: any;
   player: Player;
   count: number = 0;
-  nameRef = {
-    life: 'HP',
-    atk: 'Ataque',
-    def: 'Defesa',
-    mana: 'Mana',
-    magic: 'Magia',
-    prot: 'Proteção',
-    vel: 'Velocidade',
-    crit: 'Crítico',
-    eva: 'Evasão',
-  };
 
   constructor(
     private playerService: PlayerService,
     private alertCtrl: AlertController,
+    private config: ConfigService,
+    private translate: TranslateService,
   ) { }
 
   ngOnInit() {
@@ -34,6 +28,18 @@ export class MainGameLootPage implements OnInit {
       .subscribe((p: Player) => {
         this.player = p;
         this.updateCount();
+      });
+  }
+
+  ionViewDidEnter() {
+    this.initLang();
+  }
+
+  async initLang() {
+    await this.config.getLanguage()
+      .subscribe(val => {
+        this.lang = this.config.parseLang(val);
+        this.translate.use(this.lang);
       });
   }
 
@@ -57,24 +63,28 @@ export class MainGameLootPage implements OnInit {
   }
 
   private async handleEquip(equip) {
-    let equipExtra = equip.extra, messageText = `${equip.name}`,
+    let equipExtra = equip.extra, messageText = `${this.translate.instant(equip.name)}`,
       attribText = equipExtra.map(t => `+ ${t.value} ${t.attr == 'crit' || t.attr == 'eva' ? '%' : ''} 
-      ${this.nameRef[t.attr]}`).join('<br>');
+      ${this.translate.instant('player.attr.' + t.attr)}`).join('<br>');
 
     if (equip.skill != null) {
       let skillValue = '';
       switch (equip.skill.type) {
         case 'atk':
-          skillValue = `${equip.skill.val} de Dano Físico`;
+          skillValue = this.translate.instant('item.term.atk-damage', { val: equip.skill.val });
           break;
         case 'magic':
-          skillValue = `${equip.skill.val} de Dano Mágico`;
+          skillValue = this.translate.instant('item.term.mgc-damage', { val: equip.skill.val });
           break;
         case 'buff':
-          skillValue = `+ ${equip.skill.val}% ${this.nameRef[equip.skill.attr]} por 4 Turnos`;
+          skillValue = this.translate
+            .instant('item.term.buff', {
+              val: equip.skill.val,
+              attr: this.translate.instant('player.attr.' + equip.skill.attr)
+            });
           break;
         case 'heal':
-          skillValue = `Cura ${equip.skill.val}% da Vida Máxima`;
+          skillValue = this.translate.instant('item.term.heal', { val: equip.skill.val });
           break;
         default:
           skillValue = '';
@@ -83,19 +93,22 @@ export class MainGameLootPage implements OnInit {
       attribText += `<br><br>
         <ion-label>
           <small>
-            Habilidade: ${equip.skill.name}<br>
-            Custo: ${equip.skill.cost} de Mana<br>
+            ${this.translate.instant('item.term.hab', { name: this.translate.instant(equip.skill.name) })}<br>
+            ${this.translate.instant('item.term.cost', { val: equip.skill.cost })}<br>
             ${skillValue}
           </small>
         </ion-label>`;
     }
 
     let alert = await this.alertCtrl.create({
-      header: `${equip.equiped == true ? 'Desequipar' : 'Equipar'} item?`,
-      message: `${messageText}<br><br>${attribText}<br><br>Vale ${equip.cost} moedas`,
+      header: equip.equiped == true
+        ? this.translate.instant('main-game.equip.unequip')
+        : this.translate.instant('main-game.equip.equip'),
+      message: `${messageText}<br><br>${attribText}<br><br>
+        ${this.translate.instant('main-game.loot.sell', { val: equip.cost })}`,
       buttons: [
         equip.equiped == true ? `` : {
-          text: `Vender`,
+          text: this.translate.instant('sell'),
           cssClass: 'sell-item',
           handler: () => {
             this.player.gold += equip.cost;
@@ -109,12 +122,12 @@ export class MainGameLootPage implements OnInit {
           },
         },
         {
-          text: 'Não',
+          text: this.translate.instant('no'),
           role: 'cancel',
           cssClass: 'confirm-quit',
         },
         {
-          text: 'Sim',
+          text: this.translate.instant('yes'),
           handler: () => {
             let source = equip, target = this.verifyEquip(equip);
             if (source.equiped == false) {
@@ -215,29 +228,28 @@ export class MainGameLootPage implements OnInit {
   }
 
   private async handlePotion(potion) {
-    let slotAttr = '', messageText = '';
+    let slotAttr = '', messageText = `${this.translate.instant(potion.name)}<br>`;
     if (potion.attr == 'life') {
       slotAttr = 'HP';
-      messageText = `${potion.name}<br>Recupera ${potion.value}% de ${slotAttr}<br><br><br>
-        Vale ${potion.cost} moedas`;
+      messageText += `${this.translate.instant('item.term.recover', { val: potion.value, attr: slotAttr })}<br><br>`;
     }
     if (potion.attr == 'mana') {
       slotAttr = 'Mana';
-      messageText = `${potion.name}<br>Recupera ${potion.value}% de ${slotAttr}<br><br><br>
-        Vale ${potion.cost} moedas`;
+      messageText += `${this.translate.instant('item.term.recover', { val: potion.value, attr: slotAttr })}<br><br>`;
     }
     if (potion.attr == 'exp') {
-      slotAttr = 'EXP';
-      messageText = `${potion.name}<br>Adiciona ${potion.value} de ${slotAttr}<br><br><br>
-        Vale ${potion.cost} moedas`;
+      slotAttr += 'EXP';
+      messageText = `${this.translate.instant('item.term.add', { val: potion.value, attr: slotAttr })}<br><br>`;
     }
 
+    messageText += this.translate.instant('main-game.loot.sell', { val: potion.cost })
+
     let alert = await this.alertCtrl.create({
-      header: 'Usar item?',
+      header: this.translate.instant('main-game.loot.use'),
       message: messageText,
       buttons: [
         {
-          text: 'Vender',
+          text: this.translate.instant('sell'),
           cssClass: 'sell-item',
           handler: () => {
             potion.count--;
@@ -255,12 +267,12 @@ export class MainGameLootPage implements OnInit {
           },
         },
         {
-          text: 'Não',
+          text: this.translate.instant('no'),
           role: 'cancel',
           cssClass: 'confirm-quit',
         },
         {
-          text: 'Sim',
+          text: this.translate.instant('yes'),
           cssClass: 'success-confirm',
           handler: () => {
             potion.count--;

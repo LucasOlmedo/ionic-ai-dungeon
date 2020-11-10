@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { MainGameCharPageRoutingModule } from './main-game-char-routing.module';
 
 import { MainGameCharPage } from './main-game-char.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     MainGameCharPageRoutingModule
   ],
   declarations: [MainGameCharPage]

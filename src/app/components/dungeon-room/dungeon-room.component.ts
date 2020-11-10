@@ -135,6 +135,9 @@ export class DungeonRoomComponent implements OnInit {
     let potionLife = EQUIPS.find(t => t.id == 1),
       potionMana = EQUIPS.find(t => t.id == 2),
       equips = EQUIPS.filter(t => t.type == 'equip');
+
+    potionLife.name = this.translate.instant(potionLife.name);
+    potionMana.name = this.translate.instant(potionMana.name);
     this.merchantItems = [];
     this.merchantItems.push(Object.assign({}, potionLife));
     this.merchantItems.push(Object.assign({}, potionMana));
@@ -161,7 +164,7 @@ export class DungeonRoomComponent implements OnInit {
       }
       return _t;
     });
-    equip.name = `${equip.name} Nv ${auxLv}`;
+    equip.name = `${this.translate.instant(equip.name)} Lv ${auxLv}`;
     equip.cost = equip.cost + (15 * auxLv);
     return equip;
   }
@@ -213,7 +216,7 @@ export class DungeonRoomComponent implements OnInit {
         attribText += `<br><br>
           <ion-label>
             <small>
-              ${this.translate.instant('item.term.hab', { name: equip.skill.name })}<br>
+              ${this.translate.instant('item.term.hab', { name: this.translate.instant(equip.skill.name) })}<br>
               ${this.translate.instant('item.term.cost', { val: equip.skill.cost })}<br>
               ${skillValue}
             </small>
@@ -858,7 +861,7 @@ export class DungeonRoomComponent implements OnInit {
     let speak = BOSS_SPEAK.find(t => t.floor == actualFloor);
     if (speak) {
       let alert = await this.alertCtrl.create({
-        message: `<em>"${speak.message}"</em>`,
+        message: `<em>"${this.translate.instant(speak.message)}"</em>`,
       });
       await alert.present();
     }

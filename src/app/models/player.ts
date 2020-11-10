@@ -20,7 +20,7 @@ export class Player {
             type: 'potion',
             equiped: false,
             img: '../assets/images/equip/loot/life-potion.png',
-            name: 'Poção de cura',
+            name: 'equip.life-potion.name',
             count: 3,
             attr: 'life',
             value: 20,
@@ -32,7 +32,7 @@ export class Player {
             type: 'potion',
             equiped: false,
             img: '../assets/images/equip/loot/mana-potion.png',
-            name: 'Poção de mana',
+            name: 'equip.mana-potion.name',
             count: 3,
             attr: 'mana',
             value: 20,
@@ -85,7 +85,7 @@ export class Player {
     };
     skills = [
         {
-            name: 'Ataque básico',
+            name: 'skill.hand-atk.name',
             img: '../assets/images/skill/hand-atk.png',
             color: 'skillGray',
             active: true,
@@ -94,7 +94,7 @@ export class Player {
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'Usa o próprio corpo como arma para atacar os inimigos',
+            desc: 'skill.hand-atk.desc',
         },
         null,
         null,
@@ -262,7 +262,7 @@ export class Player {
 
         if (this.skills[0] == null) {
             this.skills[0] = {
-                name: 'Ataque básico',
+                name: 'skill.hand-atk.name',
                 img: '../assets/images/skill/hand-atk.png',
                 color: 'skillGray',
                 active: true,
@@ -271,7 +271,7 @@ export class Player {
                 type: 'atk',
                 attr: 'atk',
                 equip: 'sword',
-                desc: 'Usa o próprio corpo como arma para atacar os inimigos',
+                desc: 'skill.hand-atk.desc',
             };
         }
     }

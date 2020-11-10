@@ -3,37 +3,37 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/main-game"></ion-back-button>
     </ion-buttons>
-    <ion-title>Personagem</ion-title>
+    <ion-title>{{ 'main-game.char.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
   <ion-list>
     <ion-item>
       <ion-label>{{ player.name }}</ion-label>
-      <ion-text class="ion-margin-start ion-margin-end">Nv {{ player.level }}</ion-text>
+      <ion-text class="ion-margin-start ion-margin-end">Lv {{ player.level }}</ion-text>
     </ion-item>
   </ion-list>
   <ion-list>
     <ion-item lines="none">
-      <ion-label color="medium">Pontos disponíveis</ion-label>
+      <ion-label color="medium">{{ 'new-char.points' | translate }}</ion-label>
       <ion-text color="medium" class="ion-margin-start ion-margin-end">{{ player.points }}</ion-text>
     </ion-item>
     <ion-item lines="none">
-      <ion-label color="danger">Vitalidade</ion-label>
+      <ion-label color="danger">{{ 'player.vit' | translate }}</ion-label>
       <ion-button *ngIf="player.points > 0" color="dark" fill="outline" (click)="increase('vitality')">
         <ion-icon slot="icon-only" name="add-outline"></ion-icon>
       </ion-button>
       <ion-text class="ion-margin-start ion-margin-end" color="danger">{{ player.vitality }}</ion-text>
     </ion-item>
     <ion-item lines="none">
-      <ion-label color="primary">Inteligência</ion-label>
+      <ion-label color="primary">{{ 'player.int' | translate }}</ion-label>
       <ion-button *ngIf="player.points > 0" color="dark" fill="outline" (click)="increase('intelligence')">
         <ion-icon slot="icon-only" name="add-outline"></ion-icon>
       </ion-button>
       <ion-text class="ion-margin-start ion-margin-end" color="primary">{{ player.intelligence }}</ion-text>
     </ion-item>
     <ion-item>
-      <ion-label color="success">Agilidade</ion-label>
+      <ion-label color="success">{{ 'player.agi' | translate }}</ion-label>
       <ion-button *ngIf="player.points > 0" color="dark" fill="outline" (click)="increase('agility')">
         <ion-icon slot="icon-only" name="add-outline"></ion-icon>
       </ion-button>
@@ -42,67 +42,67 @@
   </ion-list>
   <ion-list>
     <ion-item lines="none">
-      <ion-label>Atributos do jogador</ion-label>
+      <ion-label>{{ 'main-game.char.attr' | translate }}</ion-label>
     </ion-item>
   </ion-list>
   <ion-grid class="ion-padding-start ion-padding-end ion-margin-bottom">
     <ion-row>
       <ion-col>
-        <ion-text color="medium">Andar</ion-text>
+        <ion-text color="medium">{{ 'main-game.char.floor' | translate }}</ion-text>
         <ion-text color="medium" class="ion-float-end">{{ player.floorIndex }}</ion-text>
         <br>
-        <ion-text color="medium">Sala atual</ion-text>
+        <ion-text color="medium">{{ 'main-game.char.actual' | translate }}</ion-text>
         <ion-text color="medium" class="ion-float-end">{{ player.roomIndex }}</ion-text>
         <br>
-        <ion-text color="warning">EXP</ion-text>
+        <ion-text color="warning">{{ 'main-game.char.exp' | translate }}</ion-text>
         <ion-text color="warning" class="ion-float-end">
           {{ player.getCurrentNextLvl() }}/{{ player.getNextLvl() }}
         </ion-text>
         <br>
-        <ion-text color="warning">Ouro</ion-text>
+        <ion-text color="warning">{{ 'main-game.char.gold' | translate }}</ion-text>
         <ion-text color="warning" class="ion-float-end">{{ player.gold }}</ion-text>
         <br>
-        <ion-text color="danger">HP</ion-text>
+        <ion-text color="danger">{{ 'player.attr.life' | translate }}</ion-text>
         <ion-text color="danger" class="ion-float-end">
           {{ player.currentLife }}/{{ player.baseLife }}
         </ion-text>
         <br>
-        <ion-text color="danger">Ataque</ion-text>
+        <ion-text color="danger">{{ 'player.attr.atk' | translate }}</ion-text>
         <ion-text color="danger" class="ion-float-end">
           {{ player.current.atk + player.equipAttr.atk }}
         </ion-text>
         <br>
-        <ion-text color="danger">Defesa</ion-text>
+        <ion-text color="danger">{{ 'player.attr.def' | translate }}</ion-text>
         <ion-text color="danger" class="ion-float-end">
           {{ player.current.def + player.equipAttr.def }}
         </ion-text>
         <br>
-        <ion-text color="primary">Mana</ion-text>
+        <ion-text color="primary">{{ 'player.attr.mana' | translate }}</ion-text>
         <ion-text color="primary" class="ion-float-end">
           {{ player.currentMana }}/{{ player.baseMana }}
         </ion-text>
         <br>
-        <ion-text color="primary">Magia</ion-text>
+        <ion-text color="primary">{{ 'player.attr.magic' | translate }}</ion-text>
         <ion-text color="primary" class="ion-float-end">
           {{ player.current.magic + player.equipAttr.magic }}
         </ion-text>
         <br>
-        <ion-text color="primary">Proteção</ion-text>
+        <ion-text color="primary">{{ 'player.attr.prot' | translate }}</ion-text>
         <ion-text color="primary" class="ion-float-end">
           {{ player.current.prot + player.equipAttr.prot }}
         </ion-text>
         <br>
-        <ion-text color="success">Velocidade</ion-text>
+        <ion-text color="success">{{ 'player.attr.vel' | translate }}</ion-text>
         <ion-text color="success" class="ion-float-end">
           {{ player.current.vel + player.equipAttr.vel }}
         </ion-text>
         <br>
-        <ion-text color="success">Crítico</ion-text>
+        <ion-text color="success">{{ 'player.attr.crit' | translate }}</ion-text>
         <ion-text color="success" class="ion-float-end">
           {{ player.current.crit + player.equipAttr.crit }}%
         </ion-text>
         <br>
-        <ion-text color="success">Evasão</ion-text>
+        <ion-text color="success">{{ 'player.attr.eva' | translate }}</ion-text>
         <ion-text color="success" class="ion-float-end">
           {{ player.current.eva + player.equipAttr.eva }}%
         </ion-text>

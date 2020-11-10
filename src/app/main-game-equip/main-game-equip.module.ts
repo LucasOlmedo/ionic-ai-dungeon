@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { MainGameEquipPageRoutingModule } from './main-game-equip-routing.module';
 
 import { MainGameEquipPage } from './main-game-equip.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     MainGameEquipPageRoutingModule
   ],
   declarations: [MainGameEquipPage]
