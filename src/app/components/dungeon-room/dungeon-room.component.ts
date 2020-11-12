@@ -310,30 +310,19 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   async getRewardChest() {
-    let toastFail = await this.toastCtrl.create({
-      message: this.translate.instant('ads.fail'),
-      position: 'top',
-      duration: 1500,
-    });
     let loading = await this.loadingCtrl.create({
       spinner: 'circular',
       message: this.translate.instant('in-game.dungeon.loading'),
     });
     loading.present();
     await AdMob.prepareRewardVideoAd(this.options);
-    await AdMob.showRewardVideoAd();
-    await AdMob.addListener("onRewarded", async (info: boolean) => {
-      if (info == true) {
+    await AdMob.showRewardVideoAd().then((value: any) => {
+      if (value) {
         this.player.gold += this.chestGold;
         this.chestGold *= 2;
         this.canChestReward = false;
       }
       loading.dismiss();
-    });
-    await AdMob.addListener("onRewardedVideoAdClosed", async (info: boolean) => {
-      this.canChestReward = false;
-      loading.dismiss();
-      toastFail.present();
     });
   }
 
