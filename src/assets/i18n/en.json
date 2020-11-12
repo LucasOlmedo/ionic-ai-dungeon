@@ -20,9 +20,9 @@
     },
     "intro": {
         "continue": "Continue...",
-        "text-1": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br> Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem! Possimus error minus quidem repudiandae. <br> Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
-        "text-2": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!",
-        "text-3": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem! <br> Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!"
+        "text-1": "Some time ago rumors emerged that priests of an apocalyptic cult were trying to hold a ceremony to open a gap in space-time for the dimension of an ancient world-conquering creature. Two of these priests were captured in a small port village, close to the alleged ritual site, and the village chief called for an elite magician from the Great Province to analyze the situation.",
+        "text-2": "However, upon arriving, the magician reported that he found no resident in the village, not even an animal, there was only a strange black snow on the ground and on the roofs of the houses. To the north, a strange pit appeared, and strange creatures were seen entering and leaving it. Since then, strange things have started happening across the country, several disappearances have been reported, sightings of horrible creatures, people having nightmares and going into a state of madness.",
+        "text-3": "One night, while you were at the Central Market, a crash from the direction your village is in is catching your eye. When he returns, he finds none of his family, friends, or even the animals in his corral. There is black snow on the ground, a strong smell of ammonia and strange footprints going in the same direction. As you chase the trails, you fall into a crack in the floor, and when you wake up, you find yourself in a dark corridor with a door in front of you. Softly, a voice tells you that you will find the answers you need as you walk through that door."
     },
     "new-char": {
         "title": "New character",
@@ -229,7 +229,34 @@
     },
     "final-boss": {
         "10": {
-            "speak": "...W...What...What are...you still...doing...here?"
+            "speak": "..."
+        },
+        "20": {
+            "speak": "...Are...you still...here? ..."
+        },
+        "30": {
+            "speak": "...Get out...of here ..."
+        },
+        "40": {
+            "speak": "I will no...longer...tolerate your...presence here!"
+        },
+        "50": {
+            "speak": "...You...really...managed to piss me off ..."
+        },
+        "60": {
+            "speak": "There's no...use looking for yours...they died!"
+        },
+        "70": {
+            "Speak": "...All will...be...consumed!"
+        },
+        "80": {
+            "speak": "...Give up fighting ..."
+        },
+        "90": {
+            "speak": "Now...you will...face the...consequences of your...foolishness!"
+        },
+        "100": {
+            "speak": "Hahaha!...Give up!...Nothing you do...will prevent the...destruction of your dimension!"
         }
     },
     "main-game": {
@@ -1080,6 +1107,176 @@
         },
         "tooth-necklace": {
             "name": "Dragon's tooth"
+        }
+    },
+    "monster": {
+        "swamp-tritan": {
+            "name": "Swamp Newt"
+        },
+        "zvilpogghua": {
+            "name": "Zvilpogghua"
+        },
+        "innsmouth": {
+            "name": "Innsmouth"
+        },
+        "hyena": {
+            "name": "Hyena gargoyle"
+        },
+        "bat": {
+            "name": "Cave bat"
+        },
+        "giant-rat": {
+            "name": "Giant rat"
+        },
+        "goblin": {
+            "name": "Thief Goblin"
+        },
+        "imp": {
+            "name": "Cave imp"
+        },
+        "slime": {
+            "name": "Corrosive slime"
+        },
+        "rogue": {
+            "name": "Sneak rogue"
+        },
+        "bandit": {
+            "name": "Bandit"
+        },
+        "monoclop": {
+            "name": "Monoclop"
+        },
+        "mage-goblin": {
+            "name": "Wizard goblin"
+        },
+        "archer-reptile": {
+            "name": "Reptilian archer"
+        },
+        "energy-monk": {
+            "name": "Spiritualist monk"
+        },
+        "dark-elf": {
+            "name": "Dark elf"
+        },
+        "witch": {
+            "name": "Witch"
+        },
+        "battle-ogre": {
+            "name": "Battle ogre"
+        },
+        "snakeman": {
+            "name": "Reptilian warrior"
+        },
+        "ranger-elf": {
+            "name": "Hunter elf"
+        },
+        "crow-master": {
+            "name": "Crow master"
+        },
+        "dead-archer": {
+            "name": "Undead Archer"
+        },
+        "goblin-slash": {
+            "name": "Killer goblin"
+        },
+        "robber": {
+            "name": "Thief gnoll"
+        },
+        "gargoyle": {
+            "name": "Gargoyle"
+        },
+        "headless": {
+            "name": "Headless soldier"
+        },
+        "cthulhu-slave": {
+            "name": "Servant of Cthulhu"
+        },
+        "giant-bat": {
+            "name": "Servant of Dracula"
+        },
+        "green-dragon": {
+            "name": "Green dragon"
+        },
+        "snake-warrior": {
+            "name": "Warrior snake"
+        },
+        "earth-dragon": {
+            "name": "Earth dragon"
+        },
+        "dead-alive": {
+            "name": "Cannibal undead"
+        },
+        "wolfman": {
+            "name": "Werewolf"
+        },
+        "anakin": {
+            "name": "Son of Anaque"
+        },
+        "war-bear": {
+            "name": "War Bear"
+        },
+        "griffin": {
+            "name": "Mythical Griffin"
+        },
+        "minotaur": {
+            "name": "Minotaur"
+        },
+        "hobgoblin": {
+            "name": "Hobgoblin"
+        },
+        "angel": {
+            "name": "Angry Angel"
+        },
+        "ogre-skull": {
+            "name": "Ogre skull"
+        },
+        "slime-dragon": {
+            "name": "Swampy Dragon"
+        },
+        "succubus": {
+            "name": "Hellish succubus"
+        },
+        "yog-shoggoth": {
+            "name": "Yog Shoggoth"
+        },
+        "king-skull": {
+            "name": "Skeleton king"
+        },
+        "black-dragon": {
+            "name": "Black dragon"
+        },
+        "black-merlin": {
+            "name": "Dark Merlin"
+        },
+        "great-orc": {
+            "name": "Two-headed orc"
+        },
+        "hydra": {
+            "name": "Poisonous hydra"
+        },
+        "king-goblin": {
+            "name": "King goblin"
+        },
+        "king-lizard": {
+            "name": "Reptilian Archmage"
+        },
+        "tiamat": {
+            "name": "Tiamat"
+        },
+        "huricane-seal": {
+            "name": "Tornado sealed"
+        },
+        "final-boss": {
+            "name": "???"
+        },
+        "elf-warrior": {
+            "name": "Elf warrior"
+        },
+        "elder-one": {
+            "name": "Elder One"
+        },
+        "skeleton-warrior": {
+            "name": "Skeleton warrior"
         }
     }
 }

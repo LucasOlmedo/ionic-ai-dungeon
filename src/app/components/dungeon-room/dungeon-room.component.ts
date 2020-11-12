@@ -176,17 +176,17 @@ export class DungeonRoomComponent implements OnInit {
       if (equip.attr == 'life') {
         slotAttr = 'HP';
         messageText = `${equip.name}<br>
-          ${this.translate.instant('item.term.recover', { val: equip.value, attr: slotAttr })}<br><br>`;
+          ${this.translate.instant('item.term.recover', { val: equip.value, attr: slotAttr })}<br>`;
       }
       if (equip.attr == 'mana') {
         slotAttr = 'Mana';
         messageText = `${equip.name}<br>
-        ${this.translate.instant('item.term.recover', { val: equip.value, attr: slotAttr })}<br><br>`;
+        ${this.translate.instant('item.term.recover', { val: equip.value, attr: slotAttr })}<br>`;
       }
       if (equip.attr == 'exp') {
         slotAttr = 'EXP';
         messageText = `${equip.name}<br>
-        ${this.translate.instant('item.term.add', { val: equip.value, attr: slotAttr })} ${equip.value}<br><br>`;
+        ${this.translate.instant('item.term.add', { val: equip.value, attr: slotAttr })} ${equip.value}<br>`;
       }
     } else {
       let equipExtra = equip.extra;
@@ -217,13 +217,13 @@ export class DungeonRoomComponent implements OnInit {
           <ion-label>
             <small>
               ${this.translate.instant('item.term.hab', { name: this.translate.instant(equip.skill.name) })}<br>
-              ${this.translate.instant('item.term.cost', { val: equip.skill.cost })}<br>
+              ${this.translate.instant('item.term.cost', { val: equip.skill.cost })}
               ${skillValue}
             </small>
           </ion-label>`;
       }
     }
-    let equipMsgLabel = equip.type == 'equip' ? `${messageText}<br><br>${attribText}<br><br>` : `${messageText}`;
+    let equipMsgLabel = equip.type == 'equip' ? `${messageText}<br><br>${attribText}<br>` : `${messageText}`;
     let alert = await this.alertCtrl.create({
       header: this.translate.instant('item.alert.buy'),
       message: `${equipMsgLabel}<br>${this.translate.instant('item.alert.price', { value: costValue })}`,
@@ -661,6 +661,12 @@ export class DungeonRoomComponent implements OnInit {
         };
         if ((actualFloor % 10 == 0) && room.action == 'boss') {
           let bsIndx = 0;
+          if (actualFloor >= 50 && actualFloor <= 80) {
+            bsIndx = 1;
+          }
+          if (actualFloor >= 90) {
+            bsIndx = 2;
+          }
           let finalBoss = FINAL_BOSS[bsIndx];
           this.currentMonster = this.finalBossMonster(finalBoss);
           await this.animateFinalBoss();
@@ -859,11 +865,11 @@ export class DungeonRoomComponent implements OnInit {
   async animateFinalBoss() {
     let actualFloor = (this.currentFloorIndex + 1);
     let speak = BOSS_SPEAK.find(t => t.floor == actualFloor);
-    if (speak) {
-      let alert = await this.alertCtrl.create({
-        message: `<em>"${this.translate.instant(speak.message)}"</em>`,
-      });
-      await alert.present();
-    }
+    let message = speak ? this.translate.instant(speak.message)
+      : this.translate.instant('final-boss.100.speak');
+    let alert = await this.alertCtrl.create({
+      message: `<em>"${message}"</em>`,
+    });
+    await alert.present();
   }
 }

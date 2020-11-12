@@ -2,7 +2,7 @@ export const MONSTERS = [
     // EASY
     {
         img: '../assets/images/monster/swamp-tritan.png',
-        name: 'Tritão do pântano',
+        name: 'monster.swamp-tritan.name',
         baseLife: 4,
         level: 1,
         exp: 29,
@@ -15,7 +15,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/zvilpogghua.png',
-        name: 'Zvilpogghua',
+        name: 'monster.zvilpogghua.name',
         baseLife: 9,
         level: 1,
         exp: 35,
@@ -28,7 +28,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/innsmouth.png',
-        name: 'Innsmouth',
+        name: 'monster.innsmouth.name',
         baseLife: 7,
         level: 1,
         exp: 30,
@@ -41,7 +41,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/hyena.png',
-        name: 'Hiena gárgula',
+        name: 'monster.hyena.name',
         baseLife: 10,
         level: 1,
         exp: 38,
@@ -54,7 +54,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/bat.png',
-        name: 'Morcego da caverna',
+        name: 'monster.bat.name',
         baseLife: 7,
         level: 1,
         exp: 33,
@@ -67,7 +67,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/giant-rat.png',
-        name: 'Rato gigante',
+        name: 'monster.giant-rat.name',
         baseLife: 9,
         level: 1,
         exp: 37,
@@ -80,7 +80,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/goblin.png',
-        name: 'Goblin ladrão',
+        name: 'monster.goblin.name',
         baseLife: 11,
         level: 1,
         exp: 39,
@@ -93,7 +93,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/imp.png',
-        name: 'Imp da caverna',
+        name: 'monster.imp.name',
         baseLife: 9,
         level: 1,
         exp: 36,
@@ -106,7 +106,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/slime.png',
-        name: 'Slime corrosivo',
+        name: 'monster.slime.name',
         baseLife: 12,
         level: 1,
         exp: 38,
@@ -119,7 +119,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/rogue.png',
-        name: 'Ladrão furtivo',
+        name: 'monster.rogue.name',
         baseLife: 10,
         level: 1,
         exp: 35,
@@ -132,7 +132,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/bandit.png',
-        name: 'Bandido',
+        name: 'monster.bandit.name',
         baseLife: 11,
         level: 1,
         exp: 36,
@@ -145,7 +145,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/monoclop.png',
-        name: 'Monoclop',
+        name: 'monster.monoclop.name',
         baseLife: 9,
         level: 1,
         exp: 37,
@@ -160,7 +160,7 @@ export const MONSTERS = [
     // MEDIUM
     {
         img: '../assets/images/monster/mage-goblin.png',
-        name: 'Goblin feiticeiro',
+        name: 'monster.mage-goblin.name',
         baseLife: 13,
         level: 1,
         exp: 35,
@@ -173,7 +173,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/archer-reptile.png',
-        name: 'Arqueiro reptiliano',
+        name: 'monster.archer-reptile.name',
         baseLife: 14,
         level: 1,
         exp: 38,
@@ -186,7 +186,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/energy-monk.png',
-        name: 'Monge espiritualista',
+        name: 'monster.energy-monk.name',
         baseLife: 16,
         level: 1,
         exp: 40,
@@ -199,7 +199,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/dark-elf.png',
-        name: 'Elfo negro',
+        name: 'monster.dark-elf.name',
         baseLife: 14,
         level: 1,
         exp: 39,
@@ -212,7 +212,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/witch.png',
-        name: 'Feiticeira',
+        name: 'monster.witch.name',
         baseLife: 14,
         level: 1,
         exp: 40,
@@ -225,7 +225,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/battle-ogre.png',
-        name: 'Ogro de batalha',
+        name: 'monster.battle-ogre.name',
         baseLife: 18,
         level: 1,
         exp: 42,
@@ -238,7 +238,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/snakeman.png',
-        name: 'Guerreiro reptiliano',
+        name: 'monster.snakeman.name',
         baseLife: 16,
         level: 1,
         exp: 41,
@@ -251,7 +251,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/ranger-elf.png',
-        name: 'Elfa caçadora',
+        name: 'monster.ranger-elf.name',
         baseLife: 14,
         level: 1,
         exp: 40,
@@ -264,7 +264,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/crow-master.png',
-        name: 'Mestre dos corvos',
+        name: 'monster.crow-master.name',
         baseLife: 15,
         level: 1,
         exp: 42,
@@ -277,7 +277,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/dead-archer.png',
-        name: 'Arqueiro morto-vivo',
+        name: 'monster.dead-archer.name',
         baseLife: 12,
         level: 1,
         exp: 42,
@@ -290,7 +290,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/goblin-slash.png',
-        name: 'Goblin assassino',
+        name: 'monster.goblin-slash.name',
         baseLife: 15,
         level: 1,
         exp: 43,
@@ -303,7 +303,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/robber.png',
-        name: 'Gnoll ladrão',
+        name: 'monster.robber.name',
         baseLife: 14,
         level: 1,
         exp: 40,
@@ -316,7 +316,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/gargoyle.png',
-        name: 'Gárgula',
+        name: 'monster.gargoyle.name',
         baseLife: 17,
         level: 1,
         exp: 43,
@@ -329,7 +329,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/headless.png',
-        name: 'Soldado sem-cabeça',
+        name: 'monster.headless.name',
         baseLife: 15,
         level: 1,
         exp: 41,
@@ -342,7 +342,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/cthulhu-slave.png',
-        name: 'Servo de Cthulhu',
+        name: 'monster.cthulhu-slave.name',
         baseLife: 17,
         level: 1,
         exp: 42,
@@ -355,7 +355,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/giant-bat.png',
-        name: 'Servo de Drácula',
+        name: 'monster.giant-bat.name',
         baseLife: 13,
         level: 1,
         exp: 41,
@@ -370,7 +370,7 @@ export const MONSTERS = [
     // HARD
     {
         img: '../assets/images/monster/green-dragon.png',
-        name: 'Dragão verde',
+        name: 'monster.green-dragon.name',
         baseLife: 17,
         level: 1,
         exp: 43,
@@ -383,7 +383,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/snake-warrior.png',
-        name: 'Serpente guerreira',
+        name: 'monster.snake-warrior.name',
         baseLife: 18,
         level: 1,
         exp: 44,
@@ -396,7 +396,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/earth-dragon.png',
-        name: 'Dragão da terra',
+        name: 'monster.earth-dragon.name',
         baseLife: 17,
         level: 1,
         exp: 43,
@@ -409,7 +409,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/dead-alive.png',
-        name: 'Morto-vivo canibal',
+        name: 'monster.dead-alive.name',
         baseLife: 16,
         level: 1,
         exp: 43,
@@ -422,7 +422,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/wolfman.png',
-        name: 'Lobisomen',
+        name: 'monster.wolfman.name',
         baseLife: 18,
         level: 1,
         exp: 45,
@@ -435,7 +435,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/anakin.png',
-        name: 'Filho de Anaque',
+        name: 'monster.anakin.name',
         baseLife: 17,
         level: 1,
         exp: 44,
@@ -448,7 +448,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/war-bear.png',
-        name: 'Urso de guerra',
+        name: 'monster.war-bear.name',
         baseLife: 19,
         level: 1,
         exp: 47,
@@ -461,7 +461,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/griffin.png',
-        name: 'Grifo mítico',
+        name: 'monster.griffin.name',
         baseLife: 17,
         level: 1,
         exp: 43,
@@ -474,7 +474,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/minotaur.png',
-        name: 'Minotauro',
+        name: 'monster.minotaur.name',
         baseLife: 18,
         level: 1,
         exp: 42,
@@ -487,7 +487,7 @@ export const MONSTERS = [
     },
     {
         img: '../assets/images/monster/hobgoblin.png',
-        name: 'Hobgoblin',
+        name: 'monster.hobgoblin.name',
         baseLife: 18,
         level: 1,
         exp: 45,
@@ -498,12 +498,38 @@ export const MONSTERS = [
         prot: 5,
         vel: 8,
     },
+    {
+        img: '../assets/images/monster/elf-warrior.png',
+        name: 'monster.elf-warrior.name',
+        baseLife: 17,
+        level: 1,
+        exp: 44,
+        gold: 14,
+        atk: 10,
+        def: 4,
+        magic: 5,
+        prot: 4,
+        vel: 9,
+    },
+    {
+        img: '../assets/images/monster/skeleton-warrior.png',
+        name: 'monster.skeleton-warrior.name',
+        baseLife: 16,
+        level: 1,
+        exp: 44,
+        gold: 14,
+        atk: 12,
+        def: 4,
+        magic: 2,
+        prot: 4,
+        vel: 7,
+    },
 ];
 
 export const BOSSES = [
     {
         img: '../assets/images/boss/angel.png',
-        name: 'Anjo revoltado',
+        name: 'monster.angel.name',
         baseLife: 34,
         level: 1,
         exp: 147,
@@ -516,7 +542,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/ogre-skull.png',
-        name: 'Ogro caveira',
+        name: 'monster.ogre-skull.name',
         baseLife: 38,
         level: 1,
         exp: 152,
@@ -529,7 +555,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/slime-dragon.png',
-        name: 'Dragão pantanoso',
+        name: 'monster.slime-dragon.name',
         baseLife: 32,
         level: 1,
         exp: 131,
@@ -542,7 +568,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/succubus.png',
-        name: 'Súcubo infernal',
+        name: 'monster.succubus.name',
         baseLife: 33,
         level: 1,
         exp: 128,
@@ -555,7 +581,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/yog-shoggoth.png',
-        name: 'Yog Shoggoth',
+        name: 'monster.yog-shoggoth.name',
         baseLife: 35,
         level: 1,
         exp: 147,
@@ -568,7 +594,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/king-skull.png',
-        name: 'Rei esqueleto',
+        name: 'monster.king-skull.name',
         baseLife: 36,
         level: 1,
         exp: 141,
@@ -581,7 +607,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/black-dragon.png',
-        name: 'Dragão negro',
+        name: 'monster.black-dragon.name',
         baseLife: 34,
         level: 1,
         exp: 143,
@@ -594,7 +620,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/black-merlin.png',
-        name: 'Merlin das trevas',
+        name: 'monster.black-merlin.name',
         baseLife: 33,
         level: 1,
         exp: 152,
@@ -607,7 +633,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/great-orc.png',
-        name: 'Orc de duas cabeças',
+        name: 'monster.great-orc.name',
         baseLife: 37,
         level: 1,
         exp: 146,
@@ -620,7 +646,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/hydra.png',
-        name: 'Hidra venenosa',
+        name: 'monster.hydra.name',
         baseLife: 33,
         level: 1,
         exp: 138,
@@ -633,7 +659,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/king-goblin.png',
-        name: 'Rei goblin',
+        name: 'monster.king-goblin.name',
         baseLife: 29,
         level: 1,
         exp: 152,
@@ -646,7 +672,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/king-lizard.png',
-        name: 'Arquimago reptiliano',
+        name: 'monster.king-lizard.name',
         baseLife: 37,
         level: 1,
         exp: 152,
@@ -659,7 +685,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/tiamat.png',
-        name: 'Tiamat',
+        name: 'monster.tiamat.name',
         baseLife: 38,
         level: 1,
         exp: 157,
@@ -672,7 +698,7 @@ export const BOSSES = [
     },
     {
         img: '../assets/images/boss/huricane-seal.png',
-        name: 'Tornado selado',
+        name: 'monster.huricane-seal.name',
         baseLife: 37,
         level: 1,
         exp: 155,
@@ -683,12 +709,25 @@ export const BOSSES = [
         prot: 5,
         vel: 17,
     },
+    {
+        img: '../assets/images/boss/elder-one.png',
+        name: 'monster.elder-one.name',
+        baseLife: 38,
+        level: 1,
+        exp: 155,
+        gold: 31,
+        atk: 12,
+        def: 4,
+        magic: 5,
+        prot: 5,
+        vel: 12,
+    },
 ];
 
 export const FINAL_BOSS = [
     {
         img: '../assets/images/boss/dark-hole.png',
-        name: '???',
+        name: 'monster.final-boss.name',
         baseLife: 48,
         level: 1,
         exp: 200,
@@ -701,7 +740,7 @@ export const FINAL_BOSS = [
     },
     {
         img: '../assets/images/boss/shadow.png',
-        name: '???',
+        name: 'monster.final-boss.name',
         baseLife: 63,
         level: 1,
         exp: 350,
@@ -714,7 +753,7 @@ export const FINAL_BOSS = [
     },
     {
         img: '../assets/images/boss/king-shadow.png',
-        name: '???',
+        name: 'monster.final-boss.name',
         baseLife: 75,
         level: 1,
         exp: 500,

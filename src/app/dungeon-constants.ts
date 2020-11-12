@@ -185,4 +185,40 @@ export const BOSS_SPEAK = [
         floor: 10,
         message: 'final-boss.10.speak',
     },
+    {
+        floor: 20,
+        message: 'final-boss.20.speak',
+    },
+    {
+        floor: 30,
+        message: 'final-boss.30.speak',
+    },
+    {
+        floor: 40,
+        message: 'final-boss.40.speak',
+    },
+    {
+        floor: 50,
+        message: 'final-boss.50.speak',
+    },
+    {
+        floor: 60,
+        message: 'final-boss.60.speak',
+    },
+    {
+        floor: 70,
+        message: 'final-boss.70.speak',
+    },
+    {
+        floor: 80,
+        message: 'final-boss.80.speak',
+    },
+    {
+        floor: 90,
+        message: 'final-boss.90.speak',
+    },
+    {
+        floor: 100,
+        message: 'final-boss.100.speak',
+    },
 ];

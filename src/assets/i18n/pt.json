@@ -19,10 +19,10 @@
         "title": "Como jogar?"
     },
     "intro": {
-        "continue": "Continuar..",
-        "text-1": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br> Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem! Possimus error minus quidem repudiandae. <br> Lorem ipsum dolor sit, amet consectetur adipisicing elit",
-        "text-2": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!",
-        "text-3": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem! <br> Enim quas, explicabo accusamus in aut a molestias ipsa sit magni voluptatibus ex necessitatibus facere laborum dolorem!"
+        "continue": "Continuar...",
+        "text-1": "Há algum tempo atrás surgiram boatos de que sacerdotes de um culto apocalíptico estavam tentando realizar uma cerimônia para abrir uma fenda no espaço-tempo para a dimensão de uma antiga criatura conquistadora de mundos. Dois desses sacerdotes foram capturados em uma pequena aldeia portuária, próxima ao suposto local do ritual, e o chefe da aldeia mandou chamar um mago de elite da Grande Província para analisar a situação.",
+        "text-2": "Porém, ao chegar, o mago relatou que não encontrou nenhum morador na aldeia, nem sequer um animal, havia somente uma estranha neve preta no chão e nos telhados das casas. Ao norte dali, uma estranha cova surgiu,  e criaturas estranhas foram vistas entrando e saindo de lá. Desde então, coisas estranhas começaram a acontecer por todo o país, diversos desaparecimentos foram relatados, avistamento de criaturas horríveis, pessoas tendo pesadelos e entrando em estado de loucura.",
+        "text-3": "Em uma noite, enquanto você estava no Mercado Central, um estrondo vindo da direção em que está seu vilarejo chama a sua atenção. Ao voltar não encontra nenhum dos seus familiares, amigos, nem mesmo os animais do seu curral. Há neve negra pelo chão, um forte cheiro de amônia e pegadas estranhas indo em uma mesma direção. Conforme persegue os rastros, você cai em uma fenda no chão, e quando acorda, percebe que está em um corredor escuro com uma porta em sua frente. Suavemente, uma voz te diz que encontrará as respostas que precisa ao atravessar essa porta."
     },
     "new-char": {
         "title": "Novo personagem",
@@ -229,7 +229,34 @@
     },
     "final-boss": {
         "10": {
-            "speak": "...O...O...Que...Você ainda...está...fazendo...aqui?"
+            "speak": "..."
+        },
+        "20": {
+            "speak": "...Você...ainda está...Aqui?..."
+        },
+        "30": {
+            "speak": "...Saia...daqui..."
+        },
+        "40": {
+            "speak": "Não irei...mais...tolerar sua...presença...aqui!"
+        },
+        "50": {
+            "speak": "Você...conseguiu...me irritar...de verdade..."
+        },
+        "60": {
+            "speak": "Não adianta...mais...procurar pelos seus...eles morreram!"
+        },
+        "70": {
+            "speak": "Todos...serão consumidos!"
+        },
+        "80": {
+            "speak": "...Desista de lutar..."
+        },
+        "90": {
+            "speak": "Agora você irá...enfrentar...as consequências...da sua...tolice!"
+        },
+        "100": {
+            "speak": "Hahaha!...Desista!...Nada do que fizer...irá impedir...a destruição da sua...dimensão!"
         }
     },
     "main-game": {
@@ -1080,6 +1107,176 @@
         },
         "tooth-necklace": {
             "name": "Dente de dragão"
+        }
+    },
+    "monster": {
+        "swamp-tritan": {
+            "name": "Tritão do pântano"
+        },
+        "zvilpogghua": {
+            "name": "Zvilpogghua"
+        },
+        "innsmouth": {
+            "name": "Innsmouth"
+        },
+        "hyena": {
+            "name": "Hiena gárgula"
+        },
+        "bat": {
+            "name": "Morcego da caverna"
+        },
+        "giant-rat": {
+            "name": "Rato gigante"
+        },
+        "goblin": {
+            "name": "Goblin ladrão"
+        },
+        "imp": {
+            "name": "Imp da caverna"
+        },
+        "slime": {
+            "name": "Slime corrosivo"
+        },
+        "rogue": {
+            "name": "Ladrão furtivo"
+        },
+        "bandit": {
+            "name": "Bandido"
+        },
+        "monoclop": {
+            "name": "Monoclop"
+        },
+        "mage-goblin": {
+            "name": "Goblin feiticeiro"
+        },
+        "archer-reptile": {
+            "name": "Arqueiro reptiliano"
+        },
+        "energy-monk": {
+            "name": "Monge espiritualista"
+        },
+        "dark-elf": {
+            "name": "Elfo negro"
+        },
+        "witch": {
+            "name": "Feiticeira"
+        },
+        "battle-ogre": {
+            "name": "Ogro de batalha"
+        },
+        "snakeman": {
+            "name": "Guerreiro reptiliano"
+        },
+        "ranger-elf": {
+            "name": "Elfa caçadora"
+        },
+        "crow-master": {
+            "name": "Mestre dos corvos"
+        },
+        "dead-archer": {
+            "name": "Arqueiro morto-vivo"
+        },
+        "goblin-slash": {
+            "name": "Goblin assassino"
+        },
+        "robber": {
+            "name": "Gnoll ladrão"
+        },
+        "gargoyle": {
+            "name": "Gárgula"
+        },
+        "headless": {
+            "name": "Soldado sem-cabeça"
+        },
+        "cthulhu-slave": {
+            "name": "Servo de Cthulhu"
+        },
+        "giant-bat": {
+            "name": "Servo de Drácula"
+        },
+        "green-dragon": {
+            "name": "Dragão verde"
+        },
+        "snake-warrior": {
+            "name": "Serpente guerreira"
+        },
+        "earth-dragon": {
+            "name": "Dragão da terra"
+        },
+        "dead-alive": {
+            "name": "Morto-vivo canibal"
+        },
+        "wolfman": {
+            "name": "Lobisomen"
+        },
+        "anakin": {
+            "name": "Filho de Anaque"
+        },
+        "war-bear": {
+            "name": "Urso de guerra"
+        },
+        "griffin": {
+            "name": "Grifo mítico"
+        },
+        "minotaur": {
+            "name": "Minotauro"
+        },
+        "hobgoblin": {
+            "name": "Hobgoblin"
+        },
+        "angel": {
+            "name": "Anjo revoltado"
+        },
+        "ogre-skull": {
+            "name": "Ogro caveira"
+        },
+        "slime-dragon": {
+            "name": "Dragão pantanoso"
+        },
+        "succubus": {
+            "name": "Súcubo infernal"
+        },
+        "yog-shoggoth": {
+            "name": "Yog Shoggoth"
+        },
+        "king-skull": {
+            "name": "Rei esqueleto"
+        },
+        "black-dragon": {
+            "name": "Dragão negro"
+        },
+        "black-merlin": {
+            "name": "Merlin das trevas"
+        },
+        "great-orc": {
+            "name": "Orc de duas cabeças"
+        },
+        "hydra": {
+            "name": "Hidra venenosa"
+        },
+        "king-goblin": {
+            "name": "Rei goblin"
+        },
+        "king-lizard": {
+            "name": "Arquimago reptiliano"
+        },
+        "tiamat": {
+            "name": "Tiamat"
+        },
+        "huricane-seal": {
+            "name": "Tornado selado"
+        },
+        "final-boss": {
+            "name": "???"
+        },
+        "elf-warrior":{
+            "name": "Guerreira elfa"
+        },
+        "elder-one":{
+            "name": "Elder One"
+        },
+        "skeleton-warrior":{
+            "name": "Soldado esqueleto"
         }
     }
 }
