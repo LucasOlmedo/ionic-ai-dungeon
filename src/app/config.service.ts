@@ -55,7 +55,7 @@ export class ConfigService {
   }
 
   setMusic(flag: boolean) {
-    this.storage.set('music', flag)
+    return this.storage.set('music', flag)
       .then(val => this.music.next(val));
   }
 

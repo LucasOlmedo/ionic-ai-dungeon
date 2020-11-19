@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AudioService } from '../audio.service';
 import { ConfigService } from '../config.service';
 import { Player } from '../models/player';
 import { PlayerService } from '../player.service';
@@ -27,6 +28,7 @@ export class MainGamePage implements OnInit {
     private playerService: PlayerService,
     public translate: TranslateService,
     private config: ConfigService,
+    private audio: AudioService,
   ) { }
 
   ngOnInit() {
@@ -51,6 +53,11 @@ export class MainGamePage implements OnInit {
         this.lang = this.config.parseLang(val);
         this.translate.use(this.lang);
       });
+  }
+
+  async playButton()
+  {
+    await this.audio.playEffect('button');
   }
 
   setPercentage() {

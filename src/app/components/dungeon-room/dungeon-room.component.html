@@ -78,7 +78,7 @@
               {{ 'in-game.dungeon.you-found' | translate }} {{ lootEquip.name | translate }}!
             </span>
             <br>
-            <img [src]="lootEquip.img" style="height: 60px; margin-top: 20px;">
+            <img [src]="lootEquip.img" style="width: 35%; margin-top: 15px;">
           </div>
         </div>
         <div *ngIf="chestOpened && !canGetLoot">
@@ -187,7 +187,7 @@
                 {{ 'in-game.dungeon.chest-find-1' | translate }} {{ lootEquip.name | translate }}!
               </span>
               <br>
-              <img [src]="lootEquip.img" style="height: 60px; margin-top: 20px;">
+              <img [src]="lootEquip.img" style="width: 35%; margin-top: 15px;">
             </div>
           </div>
           <div *ngIf="!canGetLoot">
@@ -315,14 +315,15 @@
       <ion-row>
         <ion-col class="ion-padding-start ion-padding-end">
           <ion-button color="secondary" fill="outline" expand="block" routerLink="/create-character"
-            routerDirection="root">
+            routerDirection="root" (click)="playButtonEffect()">
             {{ 'in-game.dungeon.game-over.again' | translate }}
           </ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="ion-padding-start ion-padding-end">
-          <ion-button color="danger" fill="outline" expand="block" routerLink="/" routerDirection="root">
+          <ion-button color="danger" fill="outline" expand="block" routerLink="/" routerDirection="root"
+            (click)="playButtonEffect()">
             {{ 'in-game.dungeon.game-over.exit' | translate }}
           </ion-button>
         </ion-col>

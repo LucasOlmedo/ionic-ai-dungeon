@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../config.service';
 import { AlertController, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-main-game-settings',
@@ -19,6 +20,7 @@ export class MainGameSettingsPage implements OnInit {
     private alertCtrl: AlertController,
     private navCtrl: NavController,
     private translate: TranslateService,
+    private audio: AudioService,
   ) {
     this.loadMusic();
     this.loadEffects();
@@ -49,20 +51,39 @@ export class MainGameSettingsPage implements OnInit {
       .subscribe(val => this.selectedEffects = val);
   }
 
-  toggleMusic($event) {
+  async toggleMusic($event) {
     let checked = $event.detail.checked;
     this.selectedMusic = checked;
-    this.config.setMusic(checked);
+    await this.config.setMusic(checked);
+    if (this.selectedMusic) {
+      await this.audio.playCurrentMusic();
+    } else {
+      await this.audio.stopCurrentMusic();
+    }
+    await this.playSwitch();
   }
 
-  toggleEffects($event) {
+  async toggleEffects($event) {
     let checked = $event.detail.checked;
     this.selectedEffects = checked;
     this.config.setEffects(checked);
+    await this.playSwitch();
   }
 
   quitDungeon() {
     this.quitDungeonConfirm();
+  }
+
+  async playSwitch() {
+    if (this.selectedEffects) {
+      await this.audio.playEffect('switch');
+    }
+  }
+
+  async playButton() {
+    if (this.selectedEffects) {
+      await this.audio.playEffect('button');
+    }
   }
 
   async quitDungeonConfirm() {
@@ -74,16 +95,19 @@ export class MainGameSettingsPage implements OnInit {
           text: this.translate.instant('main-game.settings.continue'),
           role: 'cancel',
           cssClass: 'secondary',
+          handler: () => this.audio.playEffect('button'),
         }, {
           text: this.translate.instant('main-game.settings.exit'),
           cssClass: 'confirm-quit',
           handler: () => {
+            this.audio.playEffect('error');
             this.navCtrl.navigateRoot('/');
           }
         }
       ]
     });
 
+    this.audio.playEffect('button');
     alert.present();
   }
 

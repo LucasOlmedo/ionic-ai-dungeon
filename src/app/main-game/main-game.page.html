@@ -65,22 +65,22 @@
             <ion-badge *ngIf="player.points > 0" color="danger" class="has-points">
               {{ player.points }}
             </ion-badge>
-            <ion-button color="dark" fill="outline" routerLink="/main-game-char">
+            <ion-button color="dark" fill="outline" routerLink="/main-game-char" (click)="playButton()">
               <ion-img src="../assets/images/buttons/in-game-char.png" style="height: 80%;"></ion-img>
             </ion-button>
           </ion-col>
           <ion-col size="3">
-            <ion-button color="dark" fill="outline" routerLink="/main-game-equip">
+            <ion-button color="dark" fill="outline" routerLink="/main-game-equip" (click)="playButton()">
               <ion-img src="../assets/images/buttons/in-game-equip.png" style="height: 80%;"></ion-img>
             </ion-button>
           </ion-col>
           <ion-col size="3">
-            <ion-button color="dark" fill="outline" routerLink="/main-game-loot">
+            <ion-button color="dark" fill="outline" routerLink="/main-game-loot" (click)="playButton()">
               <ion-img src="../assets/images/buttons/in-game-loot.png" style="height: 80%;"></ion-img>
             </ion-button>
           </ion-col>
           <ion-col size="3">
-            <ion-button color="dark" fill="outline" routerLink="/main-game-settings">
+            <ion-button color="dark" fill="outline" routerLink="/main-game-settings" (click)="playButton()">
               <ion-img src="../assets/images/buttons/in-game-settings.png" style="height: 80%;"></ion-img>
             </ion-button>
           </ion-col>

@@ -12,7 +12,7 @@
     <ion-row>
       <ion-col>
         <ion-button id="btn-continue" class="ion-margin-top" color="dark" expand="block" fill="outline"
-          routerLink="/create-character" routerDirection="root">
+          routerLink="/create-character" routerDirection="root" (click)="playCnt()">
           {{ 'intro.continue' | translate }}
           <ion-icon slot="end" name="log-in-outline"></ion-icon>
         </ion-button>

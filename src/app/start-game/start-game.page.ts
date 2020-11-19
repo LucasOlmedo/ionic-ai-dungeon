@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Animation, AnimationController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { AudioService } from '../audio.service';
 import { ConfigService } from '../config.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class StartGamePage implements OnInit {
     private animationCtrl: AnimationController,
     public translate: TranslateService,
     private config: ConfigService,
+    private audio: AudioService,
   ) { }
 
   ngOnInit() {
@@ -83,6 +85,10 @@ export class StartGamePage implements OnInit {
     await this.loreAnimation3.play();
     await this.continueAnimation.play();
     btnCntn.disabled = false;
+  }
+
+  async playCnt() {
+    await this.audio.playEffect('click');
   }
 
 }

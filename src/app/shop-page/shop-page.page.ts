@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AudioService } from '../audio.service';
 import { ConfigService } from '../config.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class ShopPagePage implements OnInit {
   constructor(
     public translate: TranslateService,
     private config: ConfigService,
+    private audio: AudioService,
   ) { }
 
   ngOnInit() {

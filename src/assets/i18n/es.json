@@ -116,7 +116,7 @@
         "dodge": "¡Has esquivado el ataque!",
         "enemy-atk": "El enemigo te atacó con {{val}} de Daño {{type}}",
         "your-atk": "Atacaste con {{val}} de Daño {{mgc}} {{type}}",
-        "bless": "Usaste {{name}}",
+        "bless": "+ {{val}}% {{attr}} durante 4 Turnos",
         "heal": "Recuperaste {{val}} de HP",
         "magic": "Magico",
         "crit": "Crítico"
@@ -229,7 +229,7 @@
     },
     "final-boss": {
         "10": {
-            "speak": "..."
+            "speak": "...¿Me estabas...buscando?..."
         },
         "20": {
             "speak": "...¿Sigues aquí?..."

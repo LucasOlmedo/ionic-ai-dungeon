@@ -4,6 +4,7 @@ import { Player } from '../models/player';
 import { AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from '../config.service';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-main-game-equip',
@@ -20,7 +21,8 @@ export class MainGameEquipPage implements OnInit {
     private playerService: PlayerService,
     private alertCtrl: AlertController,
     private config: ConfigService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private audio: AudioService,
   ) { }
 
   ngOnInit() {
@@ -88,10 +90,12 @@ export class MainGameEquipPage implements OnInit {
           text: this.translate.instant('no'),
           role: 'cancel',
           cssClass: 'confirm-quit',
+          handler: async () => await this.audio.playEffect('button'),
         },
         {
           text: this.translate.instant('yes'),
           handler: () => {
+            this.audio.playEffect('drop');
             let tAtrbLife = equip.extra.find(x => x.attr == 'life'),
               tAtrbMana = equip.extra.find(x => x.attr == 'mana');
 
@@ -125,6 +129,7 @@ export class MainGameEquipPage implements OnInit {
         },
       ] : [],
     });
+    await this.audio.playEffect('button');
     await alert.present();
   }
 
@@ -159,6 +164,7 @@ export class MainGameEquipPage implements OnInit {
             <em>"${this.translate.instant(skill.desc) || ''}"</em>
         </ion-label>`,
     });
+    await this.audio.playEffect('button');
     await alert.present();
   }
 }

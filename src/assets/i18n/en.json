@@ -116,7 +116,7 @@
         "dodge": "You dodged the attack!",
         "enemy-atk": "The enemy attacked you with {{val}} of {{type}} Damage",
         "your-atk": "You attacked with {{val}} of {{type}} {{mgc}} Damage",
-        "bless": "Used {{name}}",
+        "bless": "+ {{val}}% {{attr}} per 4 Turn",
         "heal": "Healed {{val}} of HP",
         "magic": "Magic",
         "crit": "Critical"
@@ -229,7 +229,7 @@
     },
     "final-boss": {
         "10": {
-            "speak": "..."
+            "speak": "...Were you...looking for me?..."
         },
         "20": {
             "speak": "...Are...you still...here? ..."

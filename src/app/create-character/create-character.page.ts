@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { AudioService } from '../audio.service';
 import { ConfigService } from '../config.service';
 import { Player } from '../models/player';
 import { PlayerService } from '../player.service';
@@ -33,6 +34,7 @@ export class CreateCharacterPage implements OnInit {
     private playerService: PlayerService,
     public translate: TranslateService,
     private config: ConfigService,
+    private audio: AudioService,
   ) { }
 
   ngOnInit() {
@@ -50,18 +52,21 @@ export class CreateCharacterPage implements OnInit {
       });
   }
 
-  randomName() {
+  async randomName() {
+    await this.audio.playEffect('button');
     this.charName = this.nameItems[Math.floor(Math.random() * this.nameItems.length)];
   }
 
-  increase(attr) {
+  async increase(attr) {
+    await this.audio.playEffect('button');
     if (this.points > 0) {
       this[`${attr}`]++;
       this.points--;
     }
   }
 
-  decrease(attr) {
+  async decrease(attr) {
+    await this.audio.playEffect('button');
     let actual = this[`${attr}`];
     if (this.points < 6 && actual > 0) {
       this[`${attr}`]--;
@@ -69,11 +74,13 @@ export class CreateCharacterPage implements OnInit {
     }
   }
 
-  saveCharStartGame() {
+  async saveCharStartGame() {
     if (this.charName == '' || this.points > 0) {
+      this.audio.playEffect('error');
       this.presentToast();
     } else {
       this.createPlayer();
+      this.audio.playEffect('click');
       this.navCtrl.navigateRoot('/main-game');
     }
   }

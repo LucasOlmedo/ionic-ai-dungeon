@@ -4,6 +4,7 @@ import { Player } from '../models/player';
 import { AlertController } from '@ionic/angular';
 import { ConfigService } from '../config.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-main-game-loot',
@@ -21,6 +22,7 @@ export class MainGameLootPage implements OnInit {
     private alertCtrl: AlertController,
     private config: ConfigService,
     private translate: TranslateService,
+    private audio: AudioService,
   ) { }
 
   ngOnInit() {
@@ -110,7 +112,8 @@ export class MainGameLootPage implements OnInit {
         equip.equiped == true ? `` : {
           text: this.translate.instant('sell'),
           cssClass: 'sell-item',
-          handler: () => {
+          handler: async () => {
+            this.audio.playEffect('coin');
             this.player.gold += equip.cost;
             this.player.inventory = this.player.inventory.map((t: any) => {
               if (t.id == equip.id) {
@@ -125,10 +128,12 @@ export class MainGameLootPage implements OnInit {
           text: this.translate.instant('no'),
           role: 'cancel',
           cssClass: 'confirm-quit',
+          handler: async () => await this.audio.playEffect('button'),
         },
         {
           text: this.translate.instant('yes'),
           handler: () => {
+            equip.equiped == true ? this.audio.playEffect('drop') : this.audio.playEffect('equip');
             let source = equip, target = this.verifyEquip(equip);
             if (source.equiped == false) {
               this.player.equip[equip.equip] = equip;
@@ -218,7 +223,7 @@ export class MainGameLootPage implements OnInit {
         },
       ],
     });
-
+    await this.audio.playEffect('button');
     await alert.present();
   }
 
@@ -251,7 +256,8 @@ export class MainGameLootPage implements OnInit {
         {
           text: this.translate.instant('sell'),
           cssClass: 'sell-item',
-          handler: () => {
+          handler: async () => {
+            this.audio.playEffect('coin');
             potion.count--;
             this.player.gold += potion.cost;
             this.player.inventory = this.player.inventory.map((t: any) => {
@@ -270,11 +276,13 @@ export class MainGameLootPage implements OnInit {
           text: this.translate.instant('no'),
           role: 'cancel',
           cssClass: 'confirm-quit',
+          handler: async () => await this.audio.playEffect('button'),
         },
         {
           text: this.translate.instant('yes'),
           cssClass: 'success-confirm',
           handler: () => {
+            this.audio.playEffect('bottle');
             potion.count--;
             if (potion.attr == 'life') {
               this.player.currentLife += ~~(this.player.baseLife * (potion.value / 100));
@@ -289,7 +297,10 @@ export class MainGameLootPage implements OnInit {
               }
             }
             if (potion.attr == 'exp') {
-              this.player.updateExp(potion.value);
+              let canLvlUp = this.player.updateExp(potion.value);
+              if (canLvlUp) {
+                this.audio.playEffect('lvlup');
+              }
             }
             this.player.inventory = this.player.inventory.map((t: any) => {
               if (t.id == potion.id) {
@@ -305,10 +316,12 @@ export class MainGameLootPage implements OnInit {
         }
       ]
     });
+    await this.audio.playEffect('button');
     await alert.present();
   }
 
   async reorderLoot() {
+    await this.audio.playEffect('button');
     this.player.inventory.sort().reverse();
   }
 

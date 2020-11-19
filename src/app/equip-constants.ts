@@ -1,5 +1,6 @@
 export const EQUIPS = [
 
+
     // HELMET
     {
         id: null,
@@ -474,6 +475,7 @@ export const EQUIPS = [
         skill: null,
     },
 
+
     // SHIELD
     {
         id: null,
@@ -502,12 +504,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/shield-bash.png',
             color: 'skillGray',
             active: true,
-            val: 55,
+            val: 65,
             cost: 38,
             type: 'atk',
             attr: 'atk',
             equip: 'shield',
             desc: 'skill.shield-bash.desc',
+            sound: 'shieldBash',
         },
     },
     {
@@ -537,12 +540,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/egg-defense.png',
             color: 'skillYellow',
             active: true,
-            val: 20,
-            cost: 38,
+            val: 25,
+            cost: 39,
             type: 'buff',
             attr: 'def',
             equip: 'shield',
             desc: 'skill.egg-defense.desc',
+            sound: 'eggDefense',
         },
     },
     {
@@ -568,12 +572,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/emerald-shield.png',
             color: 'skillLeaf',
             active: true,
-            val: 63,
+            val: 73,
             cost: 45,
             type: 'magic',
             attr: 'magic',
             equip: 'shield',
             desc: 'skill.emerald-shield.desc',
+            sound: 'emeraldShield',
         },
     },
     {
@@ -603,12 +608,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/vibrating-shield.png',
             color: 'skillSalmon',
             active: true,
-            val: 30,
+            val: 33,
             cost: 56,
             type: 'buff',
             attr: 'def',
             equip: 'shield',
             desc: 'skill.vibrating-shield.desc',
+            sound: 'vibratingShield',
         },
     },
     {
@@ -634,12 +640,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/health-capsule.png',
             color: 'skillOlive',
             active: true,
-            val: 18,
-            cost: 35,
+            val: 20,
+            cost: 36,
             type: 'heal',
             attr: 'life',
             equip: 'shield',
             desc: 'skill.health-capsule.desc',
+            sound: 'healthCapsule',
         },
     },
     {
@@ -665,12 +672,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/broken-heart.png',
             color: 'skillPink',
             active: true,
-            val: 10,
+            val: 15,
             cost: 26,
             type: 'heal',
             attr: 'life',
             equip: 'shield',
             desc: 'skill.broken-heart.desc',
+            sound: 'brokenHeart',
         },
     },
     {
@@ -700,12 +708,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/pyromaniac.png',
             color: 'skillEmerald',
             active: true,
-            val: 95,
-            cost: 63,
+            val: 115,
+            cost: 65,
             type: 'magic',
             attr: 'magic',
             equip: 'shield',
             desc: 'skill.pyromaniac.desc',
+            sound: 'pyromaniac',
         },
     },
     {
@@ -731,12 +740,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/gems.png',
             color: 'skillSaphire',
             active: true,
-            val: 65,
+            val: 72,
             cost: 47,
             type: 'magic',
             attr: 'magic',
             equip: 'shield',
             desc: 'skill.gems.desc',
+            sound: 'gems',
         },
     },
     {
@@ -766,12 +776,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/shield-reflect.png',
             color: 'skillYellow',
             active: true,
-            val: 32,
-            cost: 43,
+            val: 33,
+            cost: 45,
             type: 'buff',
             attr: 'def',
             equip: 'shield',
             desc: 'skill.shield-reflect.desc',
+            sound: 'shieldReflect',
         },
     },
     {
@@ -801,14 +812,16 @@ export const EQUIPS = [
             img: '../assets/images/skill/focus-punch.png',
             color: 'skillCopper',
             active: true,
-            val: 53,
-            cost: 42,
+            val: 85,
+            cost: 47,
             type: 'atk',
             attr: 'atk',
             equip: 'shield',
             desc: 'skill.focus-punch.desc',
+            sound: 'focusPunch',
         },
     },
+
 
     // ARMOR
     {
@@ -1212,6 +1225,7 @@ export const EQUIPS = [
         skill: null,
     },
 
+
     // SWORD
     {
         id: null,
@@ -1236,12 +1250,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/arch-bow.png',
             color: 'skillGray',
             active: true,
-            val: 41,
+            val: 47,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.arch-bow.desc',
+            sound: 'archBow',
         },
     },
     {
@@ -1267,12 +1282,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/axe-atk.png',
             color: 'skillGray',
             active: true,
-            val: 50,
+            val: 54,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.axe-atk.desc',
+            sound: 'axeAtk',
         },
     },
     {
@@ -1302,12 +1318,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/bo.png',
             color: 'skillGray',
             active: true,
-            val: 40,
+            val: 43,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.bo.desc',
+            sound: 'bo',
         },
     },
     {
@@ -1343,6 +1360,7 @@ export const EQUIPS = [
             attr: 'magic',
             equip: 'sword',
             desc: 'skill.music-spell.desc',
+            sound: 'musicSpell',
         },
     },
     {
@@ -1372,12 +1390,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/musical-notes.png',
             color: 'skillGray',
             active: true,
-            val: 50,
+            val: 51,
             cost: 0,
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
             desc: 'skill.musical-notes.name',
+            sound: 'musicalNotes',
         },
     },
     {
@@ -1407,12 +1426,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/arrow-dunk.png',
             color: 'skillGray',
             active: true,
-            val: 44,
+            val: 46,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.arrow-dunk.name',
+            sound: 'arrowDunk',
         },
     },
     {
@@ -1438,12 +1458,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/quick-slash.png',
             color: 'skillGray',
             active: true,
-            val: 39,
+            val: 46,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.quick-slash.desc',
+            sound: 'quickSlash',
         },
     },
     {
@@ -1469,12 +1490,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/flail.png',
             color: 'skillGray',
             active: true,
-            val: 53,
+            val: 54,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.flail.desc',
+            sound: 'flail',
         },
     },
     {
@@ -1500,12 +1522,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/cross-slash.png',
             color: 'skillGray',
             active: true,
-            val: 45,
+            val: 50,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.cross-slash.desc',
+            sound: 'crossSlash',
         },
     },
     {
@@ -1535,12 +1558,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/great-axe-atk.png',
             color: 'skillGray',
             active: true,
-            val: 55,
+            val: 57,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.great-axe-atk.desc',
+            sound: 'greatAxeAtk'
         },
     },
     {
@@ -1566,12 +1590,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/heavy-arrow.png',
             color: 'skillGray',
             active: true,
-            val: 48,
+            val: 51,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.heavy-arrow.desc',
+            sound: 'heavyArrow',
         },
     },
     {
@@ -1597,12 +1622,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/stone-axe-atk.png',
             color: 'skillGray',
             active: true,
-            val: 39,
+            val: 45,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.stone-axe-atk.desc',
+            sound: 'stoneAxeAtk',
         },
     },
     {
@@ -1628,12 +1654,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/cupid.png',
             color: 'skillGray',
             active: true,
-            val: 42,
+            val: 46,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.cupid.desc',
+            sound: 'cupid',
         },
     },
     {
@@ -1663,12 +1690,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/hammer.png',
             color: 'skillGray',
             active: true,
-            val: 55,
+            val: 57,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.hammer.desc',
+            sound: 'hammer',
         },
     },
     {
@@ -1698,12 +1726,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/spin-blade.png',
             color: 'skillGray',
             active: true,
-            val: 43,
+            val: 46,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.spin-blade.desc',
+            sound: 'spinBlade',
         },
     },
     {
@@ -1739,6 +1768,7 @@ export const EQUIPS = [
             attr: 'atk',
             equip: 'sword',
             desc: 'skill.throw-kunai.desc',
+            sound: 'throwKunai'
         },
     },
     {
@@ -1764,12 +1794,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/sun-spear.png',
             color: 'skillGray',
             active: true,
-            val: 46,
+            val: 49,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.sun-spear.desc'
+            desc: 'skill.sun-spear.desc',
+            sound: 'sunSpear',
         }
     },
     {
@@ -1795,12 +1826,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/magic-arrow.png',
             color: 'skillGray',
             active: true,
-            val: 51,
+            val: 52,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.magic-arrow.desc'
+            desc: 'skill.magic-arrow.desc',
+            sound: 'magicArrow',
         }
     },
     {
@@ -1831,7 +1863,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.sparkles.desc'
+            desc: 'skill.sparkles.desc',
+            sound: 'sparkles',
         }
     },
     {
@@ -1857,12 +1890,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/war-pick.png',
             color: 'skillGray',
             active: true,
-            val: 47,
+            val: 48,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.war-pick.desc'
+            desc: 'skill.war-pick.desc',
+            sound: 'warPick',
         }
     },
     {
@@ -1897,7 +1931,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.resonance.desc'
+            desc: 'skill.resonance.desc',
+            sound: 'resonance',
         }
     },
     {
@@ -1923,12 +1958,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/saber-slash.png',
             color: 'skillGray',
             active: true,
-            val: 46,
+            val: 47,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.saber-slash.desc'
+            desc: 'skill.saber-slash.desc',
+            sound: 'saberSlash',
         }
     },
     {
@@ -1954,12 +1990,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/sword-slash.png',
             color: 'skillGray',
             active: true,
-            val: 45,
+            val: 46,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.sword-slash.desc'
+            desc: 'skill.sword-slash.desc',
+            sound: 'swordSlash',
         }
     },
     {
@@ -1985,12 +2022,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/throw-spear.png',
             color: 'skillGray',
             active: true,
-            val: 42,
+            val: 44,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.throw-spear.desc'
+            desc: 'skill.throw-spear.desc',
+            sound: 'throwSpear',
         }
     },
     {
@@ -2016,12 +2054,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/spear-hook.png',
             color: 'skillGray',
             active: true,
-            val: 48,
+            val: 50,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.spear-hook.desc'
+            desc: 'skill.spear-hook.desc',
+            sound: 'spearHook',
         }
     },
     {
@@ -2056,7 +2095,8 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.basic-sword-atk.desc'
+            desc: 'skill.basic-sword-atk.desc',
+            sound: 'basicSwordAtk',
         }
     },
     {
@@ -2086,12 +2126,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/shuriken.png',
             color: 'skillGray',
             active: true,
-            val: 47,
+            val: 48,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.shuriken.desc'
+            desc: 'skill.shuriken.desc',
+            sound: 'shuriken',
         }
     },
     {
@@ -2121,12 +2162,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/mace-head.png',
             color: 'skillGray',
             active: true,
-            val: 53,
+            val: 54,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.mace-head.desc'
+            desc: 'skill.mace-head.desc',
+            sound: 'maceHead',
         }
     },
     {
@@ -2157,7 +2199,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.portal.desc'
+            desc: 'skill.portal.desc',
+            sound: 'portal',
         }
     },
     {
@@ -2188,7 +2231,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.icicles.desc'
+            desc: 'skill.icicles.desc',
+            sound: 'icicles',
         }
     },
     {
@@ -2219,7 +2263,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.circle-spark.desc'
+            desc: 'skill.circle-spark.desc',
+            sound: 'circleSpark',
         }
     },
     {
@@ -2236,7 +2281,7 @@ export const EQUIPS = [
             },
             {
                 attr: 'life',
-                value: 9
+                value: 10
             },
             {
                 attr: 'def',
@@ -2249,12 +2294,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/echo.png',
             color: 'skillGray',
             active: true,
-            val: 53,
+            val: 50,
             cost: 0,
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.echo.desc'
+            desc: 'skill.echo.desc',
+            sound: 'echo',
         }
     },
     {
@@ -2280,12 +2326,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/laser-spark.png',
             color: 'skillGray',
             active: true,
-            val: 54,
+            val: 53,
             cost: 0,
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.laser-spark.desc'
+            desc: 'skill.laser-spark.desc',
+            sound: 'laserSpark',
         }
     },
     {
@@ -2316,7 +2363,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.splash.desc'
+            desc: 'skill.splash.desc',
+            sound: 'splash',
         }
     },
     {
@@ -2347,7 +2395,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.crystal-ball.desc'
+            desc: 'skill.crystal-ball.desc',
+            sound: 'crystalBall',
         }
     },
     {
@@ -2382,7 +2431,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.orb-atk.desc'
+            desc: 'skill.orb-atk.desc',
+            sound: 'orbAtk',
         }
     },
     {
@@ -2412,12 +2462,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/fairy-wand.png',
             color: 'skillGray',
             active: true,
-            val: 47,
+            val: 48,
             cost: 0,
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.fairy-wand.desc'
+            desc: 'skill.fairy-wand.desc',
+            sound: 'fairyWand',
         }
     },
     {
@@ -2443,12 +2494,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/trident.png',
             color: 'skillGray',
             active: true,
-            val: 51,
+            val: 52,
             cost: 0,
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.trident.desc'
+            desc: 'skill.trident.desc',
+            sound: 'trident',
         }
     },
     {
@@ -2483,7 +2535,8 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'sword',
-            desc: 'skill.magic-trident.desc'
+            desc: 'skill.magic-trident.desc',
+            sound: 'magicTrident',
         }
     },
     {
@@ -2518,7 +2571,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.wind-hole.desc'
+            desc: 'skill.wind-hole.desc',
+            sound: 'windHole'
         }
     },
     {
@@ -2553,7 +2607,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.zeus.desc'
+            desc: 'skill.zeus.desc',
+            sound: 'zeus',
         }
     },
     {
@@ -2584,7 +2639,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.fire-spell.desc'
+            desc: 'skill.fire-spell.desc',
+            sound: 'fireSpell',
         }
     },
     {
@@ -2615,7 +2671,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.ice-spell.desc'
+            desc: 'skill.ice-spell.desc',
+            sound: 'iceSpell',
         }
     },
     {
@@ -2650,7 +2707,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.spell-book.desc'
+            desc: 'skill.spell-book.desc',
+            sound: 'spellBook',
         }
     },
     {
@@ -2681,7 +2739,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.impact.desc'
+            desc: 'skill.impact.desc',
+            sound: 'impact',
         }
     },
     {
@@ -2712,7 +2771,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.book-aura.desc'
+            desc: 'skill.book-aura.desc',
+            sound: 'bookAura',
         }
     },
     {
@@ -2747,7 +2807,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.burning-book.desc'
+            desc: 'skill.burning-book.desc',
+            sound: 'burningBook',
         }
     },
     {
@@ -2777,17 +2838,18 @@ export const EQUIPS = [
             img: '../assets/images/skill/mineral.png',
             color: 'skillGray',
             active: true,
-            val: 46,
+            val: 47,
             cost: 0,
             type: 'magic',
             attr: 'magic',
             equip: 'sword',
-            desc: 'skill.mineral.desc'
+            desc: 'skill.mineral.desc',
+            sound: 'mineral',
         }
     },
 
-    // RING
 
+    // RING
     {
         id: null,
         type: 'equip',
@@ -2815,12 +2877,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/snake-bite.png',
             color: 'skillPurple',
             active: true,
-            val: 61,
+            val: 71,
             cost: 42,
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
-            desc: 'skill.snake-bite.desc'
+            desc: 'skill.snake-bite.desc',
+            sound: 'snakeBite',
         }
     },
     {
@@ -2850,12 +2913,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/stone-ball.png',
             color: 'skillGray',
             active: true,
-            val: 58,
+            val: 63,
             cost: 39,
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
-            desc: 'skill.stone-ball.desc'
+            desc: 'skill.stone-ball.desc',
+            sound: 'stoneBall'
         }
     },
     {
@@ -2886,7 +2950,8 @@ export const EQUIPS = [
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
-            desc: 'skill.magic-trick.desc'
+            desc: 'skill.magic-trick.desc',
+            sound: 'magicTrick',
         }
     },
     {
@@ -2916,12 +2981,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/cross-mark.png',
             color: 'skillRed',
             active: true,
-            val: 78,
-            cost: 56,
+            val: 85,
+            cost: 60,
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
-            desc: 'skill.cross-mark.desc'
+            desc: 'skill.cross-mark.desc',
+            sound: 'crossMark',
         }
     },
     {
@@ -2942,7 +3008,7 @@ export const EQUIPS = [
             },
             {
                 attr: 'magic',
-                value: 10
+                value: 12
             }
         ],
         cost: 81,
@@ -2951,12 +3017,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/crystal-shine.png',
             color: 'skillDiamond',
             active: true,
-            val: 65,
+            val: 68,
             cost: 48,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
-            desc: 'skill.crystal-shine.desc'
+            desc: 'skill.crystal-shine.desc',
+            sound: 'crystalShine',
         }
     },
     {
@@ -2969,7 +3036,7 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'magic',
-                value: 12
+                value: 13
             },
             {
                 attr: 'prot',
@@ -2982,12 +3049,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/fire-ring.png',
             color: 'skillOrange',
             active: true,
-            val: 78,
+            val: 79,
             cost: 55,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
-            desc: 'skill.fire-ring.desc'
+            desc: 'skill.fire-ring.desc',
+            sound: 'fireRing',
         }
     },
     {
@@ -3018,7 +3086,8 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'vel',
             equip: 'ring',
-            desc: 'skill.circle-gold.desc'
+            desc: 'skill.circle-gold.desc',
+            sound: 'circleGold',
         }
     },
     {
@@ -3039,7 +3108,7 @@ export const EQUIPS = [
             },
             {
                 attr: 'magic',
-                value: 15
+                value: 16
             }
         ],
         cost: 110,
@@ -3048,12 +3117,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/ion-blast.png',
             color: 'skillSaphire',
             active: true,
-            val: 92,
-            cost: 65,
+            val: 115,
+            cost: 75,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
-            desc: 'skill.ion-blast.desc'
+            desc: 'skill.ion-blast.desc',
+            sound: 'ionBlast',
         }
     },
     {
@@ -3079,12 +3149,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/heart-wings.png',
             color: 'skillDarkred',
             active: true,
-            val: 15,
+            val: 17,
             cost: 38,
             type: 'heal',
             attr: 'life',
             equip: 'ring',
-            desc: 'skill.heart-wings.desc'
+            desc: 'skill.heart-wings.desc',
+            sound: 'heartWings',
         }
     },
     {
@@ -3114,12 +3185,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/ghost-fire.png',
             color: 'skillPurple',
             active: true,
-            val: 93,
+            val: 103,
             cost: 67,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
-            desc: 'skill.ghost-fire.desc'
+            desc: 'skill.ghost-fire.desc',
+            sound: 'ghostFire',
         }
     },
     {
@@ -3145,12 +3217,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/eletric-orb.png',
             color: 'skillDiamond',
             active: true,
-            val: 72,
+            val: 83,
             cost: 56,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
-            desc: 'skill.eletric-orb.desc'
+            desc: 'skill.eletric-orb.desc',
+            sound: 'eletricOrb',
         }
     },
     {
@@ -3168,7 +3241,11 @@ export const EQUIPS = [
             {
                 attr: 'prot',
                 value: 8
-            }
+            },
+            {
+                attr: 'life',
+                value: 10
+            },
         ],
         cost: 84,
         skill: {
@@ -3176,12 +3253,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/fang.png',
             color: 'skillTurquoise',
             active: true,
-            val: 77,
+            val: 84,
             cost: 50,
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
-            desc: 'skill.fang.desc'
+            desc: 'skill.fang.desc',
+            sound: 'fang',
         }
     },
     {
@@ -3216,7 +3294,8 @@ export const EQUIPS = [
             type: 'buff',
             attr: 'def',
             equip: 'ring',
-            desc: 'skill.wall.desc'
+            desc: 'skill.wall.desc',
+            sound: 'wall',
         }
     },
     {
@@ -3251,7 +3330,8 @@ export const EQUIPS = [
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
-            desc: 'skill.spike-atk.desc'
+            desc: 'skill.spike-atk.desc',
+            sound: 'spikeAtk',
         }
     },
     {
@@ -3264,15 +3344,15 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'def',
-                value: 12
+                value: 13
             },
             {
                 attr: 'prot',
-                value: 12
+                value: 13
             },
             {
                 attr: 'vel',
-                value: 12
+                value: 13
             }
         ],
         cost: 102,
@@ -3281,12 +3361,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/plasma-bolt.png',
             color: 'skillRoyal',
             active: true,
-            val: 95,
-            cost: 73,
+            val: 110,
+            cost: 71,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
-            desc: 'skill.plasma-bolt.desc'
+            desc: 'skill.plasma-bolt.desc',
+            sound: 'plasmaBolt',
         }
     },
 
@@ -3821,15 +3902,15 @@ export const EQUIPS = [
         skill: null,
     },
 
-    // NECKLACE
 
+    // NECKLACE
     {
         id: null,
         type: 'equip',
         equiped: false,
         equip: 'necklace',
         img: '../assets/images/equip/necklace/emeral-necklace.png',
-        name: 'equip.necklace.name',
+        name: 'equip.emeral-necklace.name',
         extra: [
             {
                 attr: 'magic',
@@ -3846,12 +3927,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/beam.png',
             color: 'skillEmerald',
             active: true,
-            val: 78,
+            val: 98,
             cost: 56,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
-            desc: 'skill.beam.desc'
+            desc: 'skill.beam.desc',
+            sound: 'beam',
         }
     },
     {
@@ -3882,11 +3964,12 @@ export const EQUIPS = [
             color: 'skillYellow',
             active: true,
             val: 35,
-            cost: 47,
+            cost: 52,
             type: 'buff',
             attr: 'atk',
             equip: 'necklace',
-            desc: 'skill.buff.desc'
+            desc: 'skill.buff.desc',
+            sound: 'buff',
         }
     },
     {
@@ -3899,7 +3982,7 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'life',
-                value: 22
+                value: 20
             },
             {
                 attr: 'def',
@@ -3921,7 +4004,8 @@ export const EQUIPS = [
             type: 'heal',
             attr: 'life',
             equip: 'necklace',
-            desc: 'skill.shining-heart.desc'
+            desc: 'skill.shining-heart.desc',
+            sound: 'shiningHeart'
         }
     },
     {
@@ -3934,7 +4018,7 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'magic',
-                value: 11
+                value: 12
             },
             {
                 attr: 'prot',
@@ -3943,6 +4027,10 @@ export const EQUIPS = [
             {
                 attr: 'mana',
                 value: 20
+            },
+            {
+                attr: 'life',
+                value: 10
             }
         ],
         cost: 91,
@@ -3951,12 +4039,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/water-bolt.png',
             color: 'skillRoyal',
             active: true,
-            val: 90,
+            val: 95,
             cost: 67,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
-            desc: 'skill.water-bolt.desc'
+            desc: 'skill.water-bolt.desc',
+            sound: 'waterBolt',
         }
     },
     {
@@ -3974,7 +4063,11 @@ export const EQUIPS = [
             {
                 attr: 'prot',
                 value: 10
-            }
+            },
+            {
+                attr: 'atk',
+                value: 5
+            },
         ],
         cost: 73,
         skill: {
@@ -3982,12 +4075,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/knockout.png',
             color: 'skillSalmon',
             active: true,
-            val: 67,
-            cost: 43,
+            val: 71,
+            cost: 47,
             type: 'atk',
             attr: 'atk',
             equip: 'necklace',
-            desc: 'skill.knockout.desc'
+            desc: 'skill.knockout.desc',
+            sound: 'knockout',
         }
     },
     {
@@ -4021,12 +4115,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/healing.png',
             color: 'skillOlive',
             active: true,
-            val: 18,
+            val: 21,
             cost: 54,
             type: 'heal',
             attr: 'life',
             equip: 'necklace',
-            desc: 'skill.healing.desc'
+            desc: 'skill.healing.desc',
+            sound: 'healing',
         }
     },
     {
@@ -4048,7 +4143,11 @@ export const EQUIPS = [
             {
                 attr: 'vel',
                 value: 7
-            }
+            },
+            {
+                attr: 'life',
+                value: 11
+            },
         ],
         cost: 92,
         skill: {
@@ -4056,12 +4155,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/psychic.png',
             color: 'skillLeaf',
             active: true,
-            val: 75,
+            val: 95,
             cost: 57,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
-            desc: 'skill.psychic.desc'
+            desc: 'skill.psychic.desc',
+            sound: 'psychic',
         }
     },
     {
@@ -4091,12 +4191,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/energy.png',
             color: 'skillPink',
             active: true,
-            val: 79,
-            cost: 56,
+            val: 85,
+            cost: 54,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
-            desc: 'skill.energy.desc'
+            desc: 'skill.energy.desc',
+            sound: 'energy',
         }
     },
     {
@@ -4122,12 +4223,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/divert.png',
             color: 'skillCopper',
             active: true,
-            val: 57,
+            val: 68,
             cost: 43,
             type: 'atk',
             attr: 'atk',
             equip: 'necklace',
-            desc: 'skill.divert.desc'
+            desc: 'skill.divert.desc',
+            sound: 'divert',
         }
     },
     {
@@ -4153,12 +4255,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/shell.png',
             color: 'skillTurquoise',
             active: true,
-            val: 20,
-            cost: 30,
+            val: 22,
+            cost: 40,
             type: 'buff',
             attr: 'def',
             equip: 'necklace',
-            desc: 'skill.shell.desc'
+            desc: 'skill.shell.desc',
+            sound: 'shell',
         }
     },
     {
@@ -4176,20 +4279,25 @@ export const EQUIPS = [
             {
                 attr: 'eva',
                 value: 2
-            }
+            },
+            {
+                attr: 'def',
+                value: 5
+            },
         ],
-        cost: 72,
+        cost: 82,
         skill: {
             name: 'skill.acrobatic.name',
             img: '../assets/images/skill/acrobatic.png',
             color: 'skillGold',
             active: true,
-            val: 15,
-            cost: 30,
+            val: 17,
+            cost: 36,
             type: 'buff',
             attr: 'vel',
             equip: 'necklace',
-            desc: 'skill.acrobatic.desc'
+            desc: 'skill.acrobatic.desc',
+            sound: 'acrobatic',
         }
     },
     {
@@ -4202,7 +4310,7 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'life',
-                value: 24
+                value: 25
             }
         ],
         cost: 83,
@@ -4212,11 +4320,12 @@ export const EQUIPS = [
             color: 'skillGreen',
             active: true,
             val: 18,
-            cost: 32,
+            cost: 36,
             type: 'heal',
             attr: 'life',
             equip: 'necklace',
-            desc: 'skill.half-heart.desc'
+            desc: 'skill.half-heart.desc',
+            sound: 'halfHeart',
         }
     },
     {
@@ -4233,7 +4342,7 @@ export const EQUIPS = [
             },
             {
                 attr: 'def',
-                value: 8
+                value: 10
             }
         ],
         cost: 81,
@@ -4242,12 +4351,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/bubbles.png',
             color: 'skillSaphire',
             active: true,
-            val: 63,
+            val: 77,
             cost: 45,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
-            desc: 'skill.bubbles.desc'
+            desc: 'skill.bubbles.desc',
+            sound: 'bubbles',
         }
     },
     {
@@ -4260,10 +4370,14 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'atk',
-                value: 10
+                value: 11
             },
             {
                 attr: 'magic',
+                value: 15
+            },
+            {
+                attr: 'life',
                 value: 10
             }
         ],
@@ -4273,12 +4387,13 @@ export const EQUIPS = [
             img: '../assets/images/skill/dragon-breath.png',
             color: 'skillOrange',
             active: true,
-            val: 80,
-            cost: 52,
+            val: 100,
+            cost: 57,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
-            desc: 'skill.dragon-breath.desc'
+            desc: 'skill.dragon-breath.desc',
+            sound: 'dragonBreath',
         }
     },
 

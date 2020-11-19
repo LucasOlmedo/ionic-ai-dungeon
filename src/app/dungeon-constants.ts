@@ -41,7 +41,8 @@ export const CURSE_TYPES = [
         operator: '-',
         title: 'curse.venom.title',
         location: 'curse.venom.location',
-        description: 'curse.venom.desc'
+        description: 'curse.venom.desc',
+        sound: 'curseVenon',
     },
     {
         icon: 'burn',
@@ -52,7 +53,8 @@ export const CURSE_TYPES = [
         operator: '-',
         title: 'curse.burn.title',
         location: 'curse.burn.location',
-        description: 'curse.burn.desc'
+        description: 'curse.burn.desc',
+        sound: 'curseBurn',
     },
     {
         icon: 'atk',
@@ -63,7 +65,8 @@ export const CURSE_TYPES = [
         operator: '-',
         title: 'curse.atk.title',
         location: 'curse.atk.location',
-        description: 'curse.atk.desc'
+        description: 'curse.atk.desc',
+        sound: 'curseAtk',
     },
     {
         icon: 'def',
@@ -74,7 +77,8 @@ export const CURSE_TYPES = [
         operator: '-',
         title: 'curse.def.title',
         location: 'curse.def.location',
-        description: 'curse.def.desc'
+        description: 'curse.def.desc',
+        sound: 'curseDef',
     },
     {
         icon: 'vel',
@@ -85,7 +89,8 @@ export const CURSE_TYPES = [
         operator: '-',
         title: 'curse.vel.title',
         location: 'curse.vel.location',
-        description: 'curse.vel.desc'
+        description: 'curse.vel.desc',
+        sound: 'curseVel',
     },
 ];
 
@@ -99,7 +104,8 @@ export const BLESS_TYPES = [
         operator: '+',
         title: 'bless.heal.title',
         location: 'bless.heal.location',
-        description: 'bless.heal.desc'
+        description: 'bless.heal.desc',
+        sound: 'blessHeal',
     },
     {
         icon: 'mana',
@@ -110,7 +116,8 @@ export const BLESS_TYPES = [
         operator: '+',
         title: 'bless.mana.title',
         location: 'bless.mana.location',
-        description: 'bless.mana.desc'
+        description: 'bless.mana.desc',
+        sound: 'blessMana',
     },
     {
         icon: 'atk',
@@ -121,7 +128,8 @@ export const BLESS_TYPES = [
         operator: '+',
         title: 'bless.atk.title',
         location: 'bless.atk.location',
-        description: 'bless.atk.desc'
+        description: 'bless.atk.desc',
+        sound: 'blessAtk',
     },
     {
         icon: 'def',
@@ -132,7 +140,8 @@ export const BLESS_TYPES = [
         operator: '+',
         title: 'bless.def.title',
         location: 'bless.def.location',
-        description: 'bless.def.desc'
+        description: 'bless.def.desc',
+        sound: 'blessDef',
     },
     {
         icon: 'vel',
@@ -143,7 +152,8 @@ export const BLESS_TYPES = [
         operator: '+',
         title: 'bless.vel.title',
         location: 'bless.vel.location',
-        description: 'bless.vel.desc'
+        description: 'bless.vel.desc',
+        sound: 'blessVel',
     },
 ];
 
@@ -153,30 +163,35 @@ export const TRAPS = [
         value: hp => ~~(hp * 0.10),
         location: 'trap.wolf-trap.location',
         description: 'trap.wolf-trap.desc',
+        sound: 'trapWolf',
     },
     {
         img: '../assets/images/trap/wine.png',
         value: hp => ~~(hp * 0.08),
         location: 'trap.wine.location',
         description: 'trap.wine.desc',
+        sound: 'trapWine',
     },
     {
         img: '../assets/images/trap/earthquake.png',
         value: hp => ~~(hp * 0.13),
         location: 'trap.earthquake.location',
         description: 'trap.earthquake.desc',
+        sound: 'trapEarth',
     },
     {
         img: '../assets/images/trap/spike.png',
         value: hp => ~~(hp * 0.12),
         location: 'trap.spike.location',
         description: 'trap.spike.desc',
+        sound: 'trapSpike',
     },
     {
         img: '../assets/images/trap/fireball.png',
         value: hp => ~~(hp * 0.15),
         location: 'trap.fireball.location',
         description: 'trap.fireball.desc',
+        sound: 'trapFire',
     },
 ];
 

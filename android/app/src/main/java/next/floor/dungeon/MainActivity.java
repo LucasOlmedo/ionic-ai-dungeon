@@ -8,6 +8,7 @@ import com.getcapacitor.Plugin;
 import java.util.ArrayList;
 
 import app.xplatform.capacitor.plugins.AdMob;
+import com.getcapacitor.community.audio.NativeAudio;
 
 public class MainActivity extends BridgeActivity {
   @Override
@@ -19,6 +20,7 @@ public class MainActivity extends BridgeActivity {
       // Additional plugins you've installed go here
       // Ex: add(TotallyAwesomePlugin.class);
       add(AdMob.class);
+      add(NativeAudio.class);
     }});
   }
 }

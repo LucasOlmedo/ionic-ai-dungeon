@@ -3,6 +3,7 @@ import { PlayerService } from '../player.service';
 import { Player } from '../models/player';
 import { ConfigService } from '../config.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-main-game-char',
@@ -17,8 +18,9 @@ export class MainGameCharPage implements OnInit {
   constructor(
     private playerService: PlayerService,
     private config: ConfigService,
-    private translate: TranslateService
-    ) { }
+    private translate: TranslateService,
+    private audio: AudioService,
+  ) { }
 
   ngOnInit() {
     this.playerService.getPlayer()
@@ -39,12 +41,13 @@ export class MainGameCharPage implements OnInit {
       });
   }
 
-  increase(attr) {
+  async increase(attr) {
     if (this.player.points > 0) {
       this.player[`${attr}`]++;
       this.player.points--;
     }
     this.player.updateAttributes(attr);
+    await this.audio.playEffect('button');
   }
 
 }

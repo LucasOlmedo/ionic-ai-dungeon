@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { AudioService } from '../audio.service';
 import { ConfigService } from '../config.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class SettingsPagePage implements OnInit {
     public alertCtrl: AlertController,
     public config: ConfigService,
     public translate: TranslateService,
+    private audio: AudioService,
   ) {
     this.translate.setDefaultLang('en');
     this.loadLanguage();
@@ -55,22 +57,30 @@ export class SettingsPagePage implements OnInit {
       .subscribe(val => this.showIntro = val);
   }
 
-  toggleMusic($event) {
+  async toggleMusic($event) {
     let checked = $event.detail.checked;
     this.selectedMusic = checked;
-    this.config.setMusic(checked);
+    await this.config.setMusic(checked);
+    if (this.selectedMusic == true) {
+      await this.audio.playCurrentMusic();
+    } else {
+      await this.audio.stopCurrentMusic();
+    }
+    await this.playSwitch();
   }
 
-  toggleEffects($event) {
+  async toggleEffects($event) {
     let checked = $event.detail.checked;
     this.selectedEffects = checked;
     this.config.setEffects(checked);
+    await this.playSwitch();
   }
 
-  toggleShowIntro($event) {
+  async toggleShowIntro($event) {
     let checked = $event.detail.checked;
     this.showIntro = checked;
     this.config.setShowIntro(checked);
+    await this.playSwitch();
   }
 
   async changeLanguage() {
@@ -109,15 +119,28 @@ export class SettingsPagePage implements OnInit {
         },
         {
           text: 'Ok',
-          handler: (data: String) => {
+          handler: async (data: String) => {
             this.selectedLanguage = data;
             this.config.setLanguage(data);
             this.translate.use(this.lang);
+            await this.playSwitch();
           }
         }
       ]
     });
 
     await alert.present();
+  }
+
+  async playSwitch() {
+    if (this.selectedEffects) {
+      await this.audio.playEffect('switch');
+    }
+  }
+
+  async playButton() {
+    if (this.selectedEffects) {
+      await this.audio.playEffect('button');
+    }
   }
 }

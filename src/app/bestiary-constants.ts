@@ -12,6 +12,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 1,
         vel: 1,
+        sound: 'roar',
     },
     {
         img: '../assets/images/monster/zvilpogghua.png',
@@ -25,6 +26,7 @@ export const MONSTERS = [
         magic: 6,
         prot: 1,
         vel: 3,
+        sound: 'bleh',
     },
     {
         img: '../assets/images/monster/innsmouth.png',
@@ -38,6 +40,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 1,
         vel: 1,
+        sound: 'punch',
     },
     {
         img: '../assets/images/monster/hyena.png',
@@ -51,6 +54,7 @@ export const MONSTERS = [
         magic: 5,
         prot: 1,
         vel: 3,
+        sound: 'howl',
     },
     {
         img: '../assets/images/monster/bat.png',
@@ -64,6 +68,7 @@ export const MONSTERS = [
         magic: 5,
         prot: 1,
         vel: 5,
+        sound: 'misc',
     },
     {
         img: '../assets/images/monster/giant-rat.png',
@@ -77,6 +82,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 2,
         vel: 5,
+        sound: 'arrgh',
     },
     {
         img: '../assets/images/monster/goblin.png',
@@ -90,6 +96,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 3,
         vel: 5,
+        sound: 'goblin',
     },
     {
         img: '../assets/images/monster/imp.png',
@@ -103,6 +110,7 @@ export const MONSTERS = [
         magic: 5,
         prot: 2,
         vel: 5,
+        sound: 'arrgh',
     },
     {
         img: '../assets/images/monster/slime.png',
@@ -116,6 +124,7 @@ export const MONSTERS = [
         magic: 4,
         prot: 2,
         vel: 2,
+        sound: 'slime',
     },
     {
         img: '../assets/images/monster/rogue.png',
@@ -129,6 +138,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 3,
         vel: 5,
+        sound: 'sword',
     },
     {
         img: '../assets/images/monster/bandit.png',
@@ -142,6 +152,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 3,
         vel: 5,
+        sound: 'monsterhit',
     },
     {
         img: '../assets/images/monster/monoclop.png',
@@ -155,6 +166,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 3,
         vel: 4,
+        sound: 'goblin',
     },
 
     // MEDIUM
@@ -170,6 +182,7 @@ export const MONSTERS = [
         magic: 8,
         prot: 3,
         vel: 7,
+        sound: 'slap',
     },
     {
         img: '../assets/images/monster/archer-reptile.png',
@@ -183,6 +196,7 @@ export const MONSTERS = [
         magic: 2,
         prot: 4,
         vel: 6,
+        sound: 'swish',
     },
     {
         img: '../assets/images/monster/energy-monk.png',
@@ -196,6 +210,7 @@ export const MONSTERS = [
         magic: 8,
         prot: 5,
         vel: 9,
+        sound: 'punch',
     },
     {
         img: '../assets/images/monster/dark-elf.png',
@@ -209,6 +224,7 @@ export const MONSTERS = [
         magic: 8,
         prot: 4,
         vel: 6,
+        sound: 'spell',
     },
     {
         img: '../assets/images/monster/witch.png',
@@ -222,6 +238,7 @@ export const MONSTERS = [
         magic: 11,
         prot: 5,
         vel: 8,
+        sound: 'witch',
     },
     {
         img: '../assets/images/monster/battle-ogre.png',
@@ -235,6 +252,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 5,
         vel: 7,
+        sound: 'growl'
     },
     {
         img: '../assets/images/monster/snakeman.png',
@@ -248,6 +266,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 5,
         vel: 10,
+        sound: 'sword',
     },
     {
         img: '../assets/images/monster/ranger-elf.png',
@@ -261,6 +280,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 2,
         vel: 11,
+        sound: 'swish',
     },
     {
         img: '../assets/images/monster/crow-master.png',
@@ -274,6 +294,7 @@ export const MONSTERS = [
         magic: 10,
         prot: 3,
         vel: 9,
+        sound: 'crow',
     },
     {
         img: '../assets/images/monster/dead-archer.png',
@@ -287,6 +308,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 2,
         vel: 8,
+        sound: 'misc'
     },
     {
         img: '../assets/images/monster/goblin-slash.png',
@@ -300,6 +322,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 5,
         vel: 10,
+        sound: 'goblin2'
     },
     {
         img: '../assets/images/monster/robber.png',
@@ -313,6 +336,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 4,
         vel: 8,
+        sound: 'burp',
     },
     {
         img: '../assets/images/monster/gargoyle.png',
@@ -326,6 +350,7 @@ export const MONSTERS = [
         magic: 9,
         prot: 4,
         vel: 9,
+        sound: 'break',
     },
     {
         img: '../assets/images/monster/headless.png',
@@ -339,6 +364,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 5,
         vel: 10,
+        sound: 'sword',
     },
     {
         img: '../assets/images/monster/cthulhu-slave.png',
@@ -352,6 +378,7 @@ export const MONSTERS = [
         magic: 10,
         prot: 5,
         vel: 9,
+        sound: 'reverb',
     },
     {
         img: '../assets/images/monster/giant-bat.png',
@@ -365,6 +392,7 @@ export const MONSTERS = [
         magic: 8,
         prot: 5,
         vel: 10,
+        sound: 'arrgh'
     },
 
     // HARD
@@ -380,6 +408,7 @@ export const MONSTERS = [
         magic: 7,
         prot: 5,
         vel: 9,
+        sound: 'dragon',
     },
     {
         img: '../assets/images/monster/snake-warrior.png',
@@ -393,6 +422,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 5,
         vel: 11,
+        sound: 'monsterhit',
     },
     {
         img: '../assets/images/monster/earth-dragon.png',
@@ -406,6 +436,7 @@ export const MONSTERS = [
         magic: 8,
         prot: 5,
         vel: 8,
+        sound: 'dragon',
     },
     {
         img: '../assets/images/monster/dead-alive.png',
@@ -419,6 +450,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 5,
         vel: 6,
+        sound: 'groans'
     },
     {
         img: '../assets/images/monster/wolfman.png',
@@ -432,6 +464,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 5,
         vel: 13,
+        sound: 'howl',
     },
     {
         img: '../assets/images/monster/anakin.png',
@@ -445,6 +478,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 5,
         vel: 10,
+        sound: 'punch',
     },
     {
         img: '../assets/images/monster/war-bear.png',
@@ -458,6 +492,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 5,
         vel: 8,
+        sound: 'bear',
     },
     {
         img: '../assets/images/monster/griffin.png',
@@ -471,6 +506,7 @@ export const MONSTERS = [
         magic: 10,
         prot: 6,
         vel: 12,
+        sound: 'griff',
     },
     {
         img: '../assets/images/monster/minotaur.png',
@@ -484,6 +520,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 7,
         vel: 10,
+        sound: 'roar',
     },
     {
         img: '../assets/images/monster/hobgoblin.png',
@@ -497,6 +534,7 @@ export const MONSTERS = [
         magic: 0,
         prot: 5,
         vel: 8,
+        sound: 'garg',
     },
     {
         img: '../assets/images/monster/elf-warrior.png',
@@ -510,6 +548,7 @@ export const MONSTERS = [
         magic: 5,
         prot: 4,
         vel: 9,
+        sound: 'sword',
     },
     {
         img: '../assets/images/monster/skeleton-warrior.png',
@@ -523,6 +562,7 @@ export const MONSTERS = [
         magic: 2,
         prot: 4,
         vel: 7,
+        sound: 'slap',
     },
 ];
 
@@ -539,6 +579,7 @@ export const BOSSES = [
         magic: 11,
         prot: 2,
         vel: 15,
+        sound: 'angel',
     },
     {
         img: '../assets/images/boss/ogre-skull.png',
@@ -552,6 +593,7 @@ export const BOSSES = [
         magic: 0,
         prot: 5,
         vel: 7,
+        sound: 'crack',
     },
     {
         img: '../assets/images/boss/slime-dragon.png',
@@ -565,6 +607,7 @@ export const BOSSES = [
         magic: 13,
         prot: 4,
         vel: 9,
+        sound: 'leech',
     },
     {
         img: '../assets/images/boss/succubus.png',
@@ -578,6 +621,7 @@ export const BOSSES = [
         magic: 14,
         prot: 4,
         vel: 15,
+        sound: 'spell2',
     },
     {
         img: '../assets/images/boss/yog-shoggoth.png',
@@ -591,6 +635,7 @@ export const BOSSES = [
         magic: 13,
         prot: 4,
         vel: 13,
+        sound: 'glitch',
     },
     {
         img: '../assets/images/boss/king-skull.png',
@@ -604,6 +649,7 @@ export const BOSSES = [
         magic: 0,
         prot: 5,
         vel: 12,
+        sound: 'skull',
     },
     {
         img: '../assets/images/boss/black-dragon.png',
@@ -617,6 +663,7 @@ export const BOSSES = [
         magic: 10,
         prot: 5,
         vel: 16,
+        sound: 'groar',
     },
     {
         img: '../assets/images/boss/black-merlin.png',
@@ -630,6 +677,7 @@ export const BOSSES = [
         magic: 18,
         prot: 7,
         vel: 14,
+        sound: 'transmat',
     },
     {
         img: '../assets/images/boss/great-orc.png',
@@ -643,6 +691,7 @@ export const BOSSES = [
         magic: 0,
         prot: 5,
         vel: 9,
+        sound: 'lake',
     },
     {
         img: '../assets/images/boss/hydra.png',
@@ -656,6 +705,7 @@ export const BOSSES = [
         magic: 8,
         prot: 4,
         vel: 16,
+        sound: 'sick',
     },
     {
         img: '../assets/images/boss/king-goblin.png',
@@ -669,6 +719,7 @@ export const BOSSES = [
         magic: 0,
         prot: 2,
         vel: 18,
+        sound: 'laugh',
     },
     {
         img: '../assets/images/boss/king-lizard.png',
@@ -682,6 +733,7 @@ export const BOSSES = [
         magic: 14,
         prot: 7,
         vel: 16,
+        sound: 'blast',
     },
     {
         img: '../assets/images/boss/tiamat.png',
@@ -695,6 +747,7 @@ export const BOSSES = [
         magic: 12,
         prot: 5,
         vel: 17,
+        sound: 'dino',
     },
     {
         img: '../assets/images/boss/huricane-seal.png',
@@ -708,6 +761,7 @@ export const BOSSES = [
         magic: 14,
         prot: 5,
         vel: 17,
+        sound: 'shadow',
     },
     {
         img: '../assets/images/boss/elder-one.png',
@@ -721,6 +775,7 @@ export const BOSSES = [
         magic: 5,
         prot: 5,
         vel: 12,
+        sound: 'ping',
     },
 ];
 
@@ -728,7 +783,7 @@ export const FINAL_BOSS = [
     {
         img: '../assets/images/boss/dark-hole.png',
         name: 'monster.final-boss.name',
-        baseLife: 48,
+        baseLife: 51,
         level: 1,
         exp: 200,
         gold: 70,
@@ -737,11 +792,12 @@ export const FINAL_BOSS = [
         magic: 13,
         prot: 6,
         vel: 14,
+        sound: 'wave',
     },
     {
         img: '../assets/images/boss/shadow.png',
         name: 'monster.final-boss.name',
-        baseLife: 63,
+        baseLife: 65,
         level: 1,
         exp: 350,
         gold: 120,
@@ -750,11 +806,12 @@ export const FINAL_BOSS = [
         magic: 15,
         prot: 8,
         vel: 16,
+        sound: 'wave',
     },
     {
         img: '../assets/images/boss/king-shadow.png',
         name: 'monster.final-boss.name',
-        baseLife: 75,
+        baseLife: 78,
         level: 1,
         exp: 500,
         gold: 180,
@@ -763,5 +820,6 @@ export const FINAL_BOSS = [
         magic: 17,
         prot: 10,
         vel: 18,
+        sound: 'wave',
     },
 ];
