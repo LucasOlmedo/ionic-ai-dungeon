@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 import { ConfigService } from './config.service';
 import { Howl, Howler } from 'howler';
+import { BehaviorSubject } from 'rxjs';
+import { Storage } from '@ionic/storage';
 
 const { NativeAudio } = Plugins;
 
@@ -14,18 +16,19 @@ export class AudioService {
   musics: any;
   selectedMusic: boolean;
   selectedEffects: boolean;
-  currentMusic: string;
+  private currentMusic: BehaviorSubject<any> = new BehaviorSubject(null);
+  private storage: Storage = new Storage({ name: '_ionicstorage' });
 
   constructor(
     private config: ConfigService,
   ) {
     this.loadAssets();
-    console.log(this.currentMusic);
   }
 
   async loadAssets() {
     await this.loadMusic();
     await this.loadEffects();
+
     this.effects = {
 
       // UI
@@ -204,10 +207,9 @@ export class AudioService {
     this.musics = {
 
       // CAVE
-      cave1: new Howl({ src: ['assets/sounds/music/cave-01.ogg'], loop: true, }),
-      cave2: new Howl({ src: ['assets/sounds/music/cave-01.ogg'], loop: true, }),
-      // cave2: new Howl({ src: ['assets/sounds/music/cave-02.mp3'], loop: true, }),
+      cave: new Howl({ src: ['assets/sounds/music/cave-01.ogg'], loop: true, }),
       boss: new Howl({ src: ['assets/sounds/music/boss.ogg'], loop: true, }),
+      finalBoss: new Howl({ src: ['assets/sounds/music/final-boss.ogg'], loop: true, }),
 
     };
   }
@@ -222,6 +224,14 @@ export class AudioService {
       .subscribe(val => this.selectedEffects = val);
   }
 
+  getCurrentMusic() {
+    return this.currentMusic.asObservable();
+  }
+
+  getCurrentMusicFromStorage() {
+    return this.storage.get('currentMusic');
+  }
+
   async playEffect(ef: string) {
     if (this.selectedEffects) {
       await this.effects[ef].play();
@@ -230,37 +240,43 @@ export class AudioService {
 
   async playMusic(ms: string) {
     if (this.selectedMusic) {
-      this.currentMusic = ms;
-      await this.musics[ms].play();
+      this.storage.set('currentMusic', ms).then(async val => {
+        this.currentMusic.next(val);
+        await this.musics[val].play();
+        await this.musics[val].fade(0, 1, 1000);
+      });
     }
   }
 
   async stopMusic(ms: string) {
     if (!this.selectedMusic) {
-      this.currentMusic = null;
+      await this.musics[ms].fade(1, 0, 1000);
       await this.musics[ms].pause();
     }
   }
 
   async stopCurrentMusic() {
-    if (!this.selectedMusic) {
-      await this.musics[this.currentMusic].pause();
+    this.storage.get('currentMusic').then(async val => {
+      await this.musics[val].fade(1, 0, 1000);
+      await this.musics[val].pause();
+    });
+  }
+
+  async stopAllMusic() {
+    for (const key in this.musics) {
+      await this.musics[key].fade(1, 0, 1000);
+    }
+    for (const key in this.musics) {
+      await this.musics[key].pause();
     }
   }
 
   async playCurrentMusic() {
     if (this.selectedMusic) {
-      await this.musics[this.currentMusic].play();
+      this.storage.get('currentMusic').then(async val => {
+        await this.musics[val].play();
+        await this.musics[val].fade(0, 1, 1000);
+      });
     }
-  }
-
-  async fadeInMusic(ms: string) {
-    await this.musics[ms].play();
-    await this.musics[ms].fade(0, 1, 1000);
-  }
-
-  async fadeOutMusic(ms: string) {
-    await this.musics[ms].fade(1, 0, 1000);
-    await this.musics[ms].pause();
   }
 }

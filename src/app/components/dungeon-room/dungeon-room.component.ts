@@ -12,6 +12,7 @@ import { Plugins } from '@capacitor/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from 'src/app/config.service';
 import { AudioService } from 'src/app/audio.service';
+
 const { AdMob } = Plugins;
 
 @Component({
@@ -56,17 +57,7 @@ export class DungeonRoomComponent implements OnInit {
   canChestReward: boolean = false;
   isMerchant: boolean = false;
   merchantItems = [];
-  nameRef = {
-    life: 'life',
-    atk: 'atk',
-    def: 'def',
-    mana: 'mana',
-    magic: 'magic',
-    prot: 'prot',
-    vel: 'vel',
-    crit: 'crit',
-    eva: 'eva',
-  };
+  isBossBattle: boolean = false;
 
   options: AdOptions = {
     // PROD ADS
@@ -126,12 +117,12 @@ export class DungeonRoomComponent implements OnInit {
       });
   }
 
-  nextFloor() {
+  async nextFloor() {
+    await this.audio.playEffect('door');
     this.isMerchant = false;
     this.currentFloorIndex++;
     this.player.floorIndex++;
     this.player.roomIndex = 1;
-    this.audio.playEffect('door');
     this.loadingDungeon();
   }
 
@@ -170,7 +161,7 @@ export class DungeonRoomComponent implements OnInit {
       return _t;
     });
     equip.name = `${this.translate.instant(equip.name)} Lv ${auxLv}`;
-    equip.cost = equip.cost + (15 * auxLv);
+    equip.cost = ~~(equip.cost + (15 * auxLv));
     return equip;
   }
 
@@ -231,7 +222,7 @@ export class DungeonRoomComponent implements OnInit {
     let equipMsgLabel = equip.type == 'equip' ? `${messageText}<br><br>${attribText}<br>` : `${messageText}`;
     let alert = await this.alertCtrl.create({
       header: this.translate.instant('item.alert.buy'),
-      message: `${equipMsgLabel}<br>${this.translate.instant('item.alert.price', { value: costValue })}`,
+      message: `${equipMsgLabel}<br>${this.translate.instant('item.alert.price', { value: ~~costValue })}`,
       buttons: [
         {
           text: this.translate.instant('no'),
@@ -297,8 +288,8 @@ export class DungeonRoomComponent implements OnInit {
     await alert.present();
   }
 
-  enterRoom(room) {
-    this.audio.playEffect('next');
+  async enterRoom(room) {
+    await this.audio.playEffect('next');
     this.lootEquip = null;
     this.trapped = true;
     this.eventDone = false;
@@ -308,6 +299,7 @@ export class DungeonRoomComponent implements OnInit {
     this.currentRoom = room;
     this.player.roomIndex++;
     this.canGetLoot = true;
+    this.isBossBattle = false;
     this.manageRoom();
   }
 
@@ -395,6 +387,8 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   async gameOver() {
+    await this.audio.stopAllMusic();
+    await this.audio.playMusic('cave');
     await this.helper.sleep(300);
     let alert = await this.alertCtrl.create({
       backdropDismiss: false,
@@ -471,6 +465,10 @@ export class DungeonRoomComponent implements OnInit {
     if (playerVel >= this.currentMonster.vel) {
       await this.playerAtk(skill);
       if (this.currentMonster.currentLife == 0) {
+        if (this.isBossBattle) {
+          await this.audio.stopAllMusic();
+          await this.audio.playMusic('cave');
+        }
         this.eventDone = true;
         this.player.inBattle = false;
         let canLvlUp = this.player.updateExp(this.currentMonster.exp);
@@ -494,6 +492,10 @@ export class DungeonRoomComponent implements OnInit {
         await this.helper.sleep(500);
         await this.playerAtk(skill);
         if (this.currentMonster.currentLife == 0) {
+          if (this.isBossBattle) {
+            await this.audio.stopAllMusic();
+            await this.audio.playMusic('cave');
+          }
           this.eventDone = true;
           this.player.inBattle = false;
           let canLvlUp = this.player.updateExp(this.currentMonster.exp);
@@ -687,13 +689,17 @@ export class DungeonRoomComponent implements OnInit {
           if (actualFloor >= 90) {
             bsIndx = 2;
           }
+          await this.audio.stopAllMusic();
+          await this.audio.playMusic('finalBoss');
+          this.isBossBattle = true;
           let finalBoss = FINAL_BOSS[bsIndx];
           this.currentMonster = this.finalBossMonster(finalBoss);
           await this.animateFinalBoss();
         } else {
           if (room.action == 'boss') {
-            await this.audio.stopMusic('cave2')
-              .then(async () => await this.audio.playMusic('boss'));
+            this.isBossBattle = true;
+            await this.audio.stopAllMusic();
+            await this.audio.playMusic('boss');
           }
           this.currentMonster = this.calcMonster(room.actionItem, room.action);
         }

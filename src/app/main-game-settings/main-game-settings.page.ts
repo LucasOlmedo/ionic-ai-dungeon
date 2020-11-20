@@ -14,6 +14,7 @@ export class MainGameSettingsPage implements OnInit {
   lang: any;
   selectedMusic: boolean;
   selectedEffects: boolean;
+  currentMusic: string;
 
   constructor(
     public config: ConfigService,
@@ -42,6 +43,7 @@ export class MainGameSettingsPage implements OnInit {
   }
 
   async loadMusic() {
+    await this.audio.getCurrentMusicFromStorage().then(v => this.currentMusic = v);
     await this.config.getMusic()
       .subscribe(val => this.selectedMusic = val);
   }
@@ -56,9 +58,9 @@ export class MainGameSettingsPage implements OnInit {
     this.selectedMusic = checked;
     await this.config.setMusic(checked);
     if (this.selectedMusic) {
-      await this.audio.playCurrentMusic();
+      await this.audio.playMusic(this.currentMusic);
     } else {
-      await this.audio.stopCurrentMusic();
+      await this.audio.stopMusic(this.currentMusic);
     }
     await this.playSwitch();
   }

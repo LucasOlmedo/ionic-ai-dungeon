@@ -35,7 +35,7 @@ export class MainPagePage implements OnInit {
       .subscribe(async val => {
         this.lang = this.config.parseLang(val);
         this.translate.use(this.lang);
-        this.config.getMusic().subscribe(async () => await this.audio.playMusic('cave2'));
+        this.config.getMusic().subscribe(async () => await this.audio.playMusic('cave'));
       });
   }
 

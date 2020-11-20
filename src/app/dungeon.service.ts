@@ -46,7 +46,7 @@ export class DungeonService {
       }
     }
     return new Promise(resolve => {
-      resolve(this.createDungeonRecursive(10, 2));
+      resolve(this.createDungeonRecursive(15, 2));
     });
   }
 
