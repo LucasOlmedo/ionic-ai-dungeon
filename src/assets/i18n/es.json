@@ -16,7 +16,13 @@
         "tutorial": "¿Como jugar?"
     },
     "tutorial": {
-        "title": "¿Como jugar?"
+        "title": "¿Como jugar?",
+        "text-1": "es un juego de mazmorras al azar, donde debes atravesar las habitaciones enfrentándote a monstruos y trampas.",
+        "text-2": "Al matar monstruos, obtienes EXP, oro y, con suerte, algo de equipo. Cuando tu personaje sube de nivel, ganas puntos de habilidad para distribuirlos entre tus atributos.",
+        "text-3": "Cada piso de la mazmorra tiene 15 salas donde el jugador puede avanzar al azar, siendo el último un BOSS mortal. Después de vencer al jefe de piso, el comerciante aparece con un equipo interesante para ayudarte en el siguiente piso.",
+        "text-4": "No es posible utilizar equipo durante una batalla, solo pociones, así que aprovecha para equiparte antes de ir a la siguiente habitación.",
+        "text-5": "Cada 10 pisos, aparece el BOSS Dimensional. Él es el creador de la mazmorra y es más fuerte que cualquier otro monstruo al que se haya enfrentado. Para ganarlo se requiere estrategia, buen equipo y algunas pociones.",
+        "good-luck": "¡Buena Suerte!"
     },
     "intro": {
         "continue": "Seguir...",

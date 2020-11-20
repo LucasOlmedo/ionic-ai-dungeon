@@ -7,4 +7,58 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col>
+        <div>
+          <p>
+            <strong>Next Floor - Dungeon RPG</strong> {{ 'tutorial.text-1' | translate }}
+          </p>
+          <p>{{ 'tutorial.text-2' | translate }}</p>
+          <div class="ion-text-center">
+            <img src="../assets/images/tutorial/points.png" alt="" style="width: 68%;">
+          </div>
+          <p>
+            <ion-label color="danger">{{ 'player.vit' | translate }}:</ion-label><br>
+            <ion-label color="danger">
+              <ul>
+                <li>{{ 'player.attr.life' | translate }}</li>
+                <li>{{ 'player.attr.atk' | translate }}</li>
+                <li>{{ 'player.attr.def' | translate }}</li>
+              </ul>
+            </ion-label>
+            <ion-label color="primary">{{ 'player.int' | translate }}:</ion-label><br>
+            <ion-label color="primary">
+              <ul>
+                <li>{{ 'player.attr.mana' | translate }}</li>
+                <li>{{ 'player.attr.magic' | translate }}</li>
+                <li>{{ 'player.attr.prot' | translate }}</li>
+              </ul>
+            </ion-label>
+            <ion-label color="success">{{ 'player.agi' | translate }}:</ion-label>
+            <ion-label color="success">
+              <ul>
+                <li>{{ 'player.attr.vel' | translate }}</li>
+                <li>{{ 'player.attr.crit' | translate }}</li>
+                <li>{{ 'player.attr.eva' | translate }}</li>
+              </ul>
+            </ion-label>
+          </p>
+          <p class="ion-padding-top">
+            {{ 'tutorial.text-3' | translate }}
+          </p>
+          <div class="ion-text-center">
+            <img src="../assets/images/tutorial/boss.png" alt="" style="width: 68%;">
+          </div>
+          <p>
+            {{ 'tutorial.text-4' | translate }}
+          </p>
+          <p>
+            {{ 'tutorial.text-5' | translate }}
+          </p>
+          <p class="ion-text-center">{{ 'tutorial.good-luck' | translate }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

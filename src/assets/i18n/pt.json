@@ -16,7 +16,13 @@
         "tutorial": "Ver tutorial"
     },
     "tutorial": {
-        "title": "Como jogar?"
+        "title": "Como jogar?",
+        "text-1": "é um jogo de masmorra aleatório, onde você deve atravessar as salas enfrentando monstros e armadilhas.",
+        "text-2": "Ao matar monstros você ganha EXP, Ouro, e com sorte, algum item. Quando seu personagem subir de nível, você ganha pontos de habilidade para distribuir entre seus atributos.",
+        "text-3": "Cada andar da masmorra tem 15 salas onde o jogador pode avançar aleatoriamente, sendo a última um BOSS mortífero. Após vencer o chefe do andar, o mercador aparece com alguns itens interessantes para te ajudar no próximo andar.",
+        "text-4": "Não é possível usar equipamentos durante uma batalha, somente poções, então aproveite para se equipar antes de ir para a próxima sala.",
+        "text-5": "A cada 10 andares, o BOSS Dimensional aparece. Ele é o criador da dungeon, e é mais forte que qualquer outro monstro já enfrentado. Para vencê-lo é necessário estratégia, bons  equipamentos e algumas poções.",
+        "good-luck": "Boa Sorte!"
     },
     "intro": {
         "continue": "Continuar...",
@@ -1269,13 +1275,13 @@
         "final-boss": {
             "name": "???"
         },
-        "elf-warrior":{
+        "elf-warrior": {
             "name": "Guerreira elfa"
         },
-        "elder-one":{
+        "elder-one": {
             "name": "Elder One"
         },
-        "skeleton-warrior":{
+        "skeleton-warrior": {
             "name": "Soldado esqueleto"
         }
     }

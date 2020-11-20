@@ -16,7 +16,13 @@
         "tutorial": "How to play"
     },
     "tutorial": {
-        "title": "How to play"
+        "title": "How to play",
+        "text-1": "is a random dungeon game, where you must cross the rooms facing monsters and traps.",
+        "text-2": "By killing monsters you gain EXP, Gold, and with luck, an item. When your character level up, you earn skill points to distribute among your attributes.",
+        "text-3": "Each floor of the dungeon has 15 rooms where the player can advance at random, the last being a deadly BOSS. After beating the floor boss, the merchant appears with some interesting items to help you on the next floor.",
+        "text-4": "It is not possible to use equipment during a battle, only potions, so take the opportunity to equip yourself before going to the next room.",
+        "text-5": "Every 10 floors, the Dimensional BOSS appears. He is the creator of the dungeon, and is stronger than any other monster ever faced. To win it requires strategy, good equipment and some potions.",
+        "good-luck": "Good Luck!"
     },
     "intro": {
         "continue": "Continue...",

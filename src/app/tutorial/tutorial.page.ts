@@ -15,7 +15,6 @@ export class TutorialPage implements OnInit {
   constructor(
     public translate: TranslateService,
     private config: ConfigService,
-    private audio: AudioService,
   ) { }
 
   ngOnInit() {
