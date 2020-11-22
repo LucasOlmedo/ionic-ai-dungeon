@@ -235,7 +235,7 @@ export class DungeonRoomComponent implements OnInit {
           cssClass: 'sell-item',
           handler: async () => {
             let cloneEquip = Object.assign({}, equip);
-            let playerGold = this.player.gold, hasSlot = this.player.inventory.indexOf(0);
+            let playerGold = ~~this.player.gold, hasSlot = this.player.inventory.indexOf(0);
             if (playerGold >= costValue) {
               if (hasSlot != -1) {
                 if (cloneEquip.type == 'potion') {
@@ -259,7 +259,7 @@ export class DungeonRoomComponent implements OnInit {
                     this.player.inventory[indexLoot] = cloneEquip;
                   }
                 }
-                this.player.gold -= costValue;
+                this.player.gold -= ~~costValue;
                 equip.img = null;
                 await this.audio.playEffect('coin');
               } else {
@@ -310,7 +310,7 @@ export class DungeonRoomComponent implements OnInit {
     this.chestOpened = true;
     this.canChestReward = true;
     this.eventDone = true;
-    this.player.gold += this.chestGold;
+    this.player.gold += ~~this.chestGold;
   }
 
   async getRewardChest() {
@@ -322,7 +322,7 @@ export class DungeonRoomComponent implements OnInit {
     await AdMob.prepareRewardVideoAd(this.options);
     await AdMob.showRewardVideoAd().then((value: any) => {
       if (value) {
-        this.player.gold += this.chestGold;
+        this.player.gold += ~~this.chestGold;
         this.chestGold *= 2;
         this.canChestReward = false;
       }
@@ -475,7 +475,7 @@ export class DungeonRoomComponent implements OnInit {
         if (canLvlUp) {
           await this.audio.playEffect('lvlup');
         }
-        this.player.gold += this.currentMonster.gold;
+        this.player.gold += ~~this.currentMonster.gold;
         if (this.canGetLoot) {
           this.getLootEquip();
         }
@@ -502,7 +502,7 @@ export class DungeonRoomComponent implements OnInit {
           if (canLvlUp) {
             await this.audio.playEffect('lvlup');
           }
-          this.player.gold += this.currentMonster.gold;
+          this.player.gold += ~~this.currentMonster.gold;
           if (this.canGetLoot) {
             this.getLootEquip();
           }

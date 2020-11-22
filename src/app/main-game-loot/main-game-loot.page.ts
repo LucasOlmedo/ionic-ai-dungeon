@@ -114,7 +114,7 @@ export class MainGameLootPage implements OnInit {
           cssClass: 'sell-item',
           handler: async () => {
             this.audio.playEffect('coin');
-            this.player.gold += equip.cost;
+            this.player.gold += ~~equip.cost;
             this.player.inventory = this.player.inventory.map((t: any) => {
               if (t.id == equip.id) {
                 return 0;
@@ -259,7 +259,7 @@ export class MainGameLootPage implements OnInit {
           handler: async () => {
             this.audio.playEffect('coin');
             potion.count--;
-            this.player.gold += potion.cost;
+            this.player.gold += ~~potion.cost;
             this.player.inventory = this.player.inventory.map((t: any) => {
               if (t.id == potion.id) {
                 if (t.count <= 0 || potion.count <= 0) {
