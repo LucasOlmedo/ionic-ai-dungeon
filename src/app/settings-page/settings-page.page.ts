@@ -143,4 +143,26 @@ export class SettingsPagePage implements OnInit {
       await this.audio.playEffect('button');
     }
   }
+
+  async showInfo() {
+    await this.playButton();
+    let alert = await this.alertCtrl.create({
+      message: `<small><strong>${this.translate.instant('settings.icon')}:</strong> <br> 
+      - https://game-icons.net/</small><br>
+
+      <small><strong>${this.translate.instant('settings.effects')}:</strong> <br> 
+      - https://opengameart.org/</small><br>
+
+      <small><strong>${this.translate.instant('settings.music')}:</strong> <br> 
+      - https://opengameart.org/</small><br>
+
+      <small><strong>${this.translate.instant('settings.img')}:</strong> <br> 
+      - https://www.kindpng.com/ <br> 
+      - https://www.pngwing.com/ <br>
+      - https://www.pngegg.com/ <br>
+      - https://www.pngitem.com/ <br>
+      - https://favpng.com/</small>`,
+    });
+    await alert.present();
+  }
 }

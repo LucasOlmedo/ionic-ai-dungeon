@@ -13,7 +13,11 @@
         "music": "Musica",
         "sound-effect": "Efectos sonoros",
         "show-intro": "Mostrar introducción",
-        "tutorial": "¿Como jugar?"
+        "tutorial": "¿Como jugar?",
+        "info": "Información",
+        "icon": "Iconos",
+        "effects": "Efectos",
+        "img": "Imágenes"
     },
     "tutorial": {
         "title": "¿Como jugar?",

@@ -13,7 +13,11 @@
         "music": "Music",
         "sound-effect": "Sound effects",
         "show-intro": "Show intro",
-        "tutorial": "How to play"
+        "tutorial": "How to play",
+        "info": "Info",
+        "icon": "Icons",
+        "effects": "Effects",
+        "img": "Images"
     },
     "tutorial": {
         "title": "How to play",
