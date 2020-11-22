@@ -791,7 +791,7 @@ export const EQUIPS = [
         equiped: false,
         equip: 'shield',
         img: '../assets/images/equip/shield/wood-shield.png',
-        name: 'Escudo reforçado',
+        name: 'equip.shield.wood-shield',
         extra: [
             {
                 attr: 'def',
