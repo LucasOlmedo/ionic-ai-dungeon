@@ -61,9 +61,9 @@ export class DungeonRoomComponent implements OnInit {
 
   options: AdOptions = {
     // PROD ADS
-    // adId: 'ca-app-pub-4059005643306368/4060920978',
+    adId: 'ca-app-pub-4059005643306368/4060920978',
     // TEST ADS
-    adId: 'ca-app-pub-3940256099942544/5224354917',
+    // adId: 'ca-app-pub-3940256099942544/5224354917',
   }
 
   constructor(
