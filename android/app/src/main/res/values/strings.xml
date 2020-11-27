@@ -2,7 +2,8 @@
 <resources>
     <string name="app_id">next.floor.dungeon</string>
     <string name="app_name">Next Floor - Dungeon RPG</string>
-    <string name="title_activity_main">next-floor-dungeon</string>
+    <string name="title_activity_main">Next Floor - Dungeon RPG</string>
+    <!-- <string name="title_activity_main">next-floor-dungeon</string> -->
     <string name="package_name">next.floor.dungeon</string>
     <string name="custom_url_scheme">next.floor.dungeon</string>
 </resources>

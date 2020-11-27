@@ -1,6 +1,6 @@
 {
   "appId": "next.floor.dungeon",
-  "appName": "next-floor-dungeon",
+  "appName": "Next Floor - Dungeon RPG",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
