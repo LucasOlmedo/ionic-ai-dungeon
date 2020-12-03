@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import app.xplatform.capacitor.plugins.AdMob;
 import com.getcapacitor.community.audio.NativeAudio;
+import gamma.plugins.playgame.PlayGames;
 
 public class MainActivity extends BridgeActivity {
   @Override
@@ -21,6 +22,7 @@ public class MainActivity extends BridgeActivity {
       // Ex: add(TotallyAwesomePlugin.class);
       add(AdMob.class);
       add(NativeAudio.class);
+      add(PlayGames.class);
     }});
   }
 }

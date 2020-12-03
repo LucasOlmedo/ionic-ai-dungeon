@@ -7,3 +7,6 @@ project(':capacitor-community-native-audio').projectDir = new File('../node_modu
 
 include ':capacitor-admob'
 project(':capacitor-admob').projectDir = new File('../node_modules/capacitor-admob/android')
+
+include ':capacitor-play-games-services'
+project(':capacitor-play-games-services').projectDir = new File('../node_modules/capacitor-play-games-services/android')

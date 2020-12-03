@@ -32,6 +32,7 @@
     "@ngx-translate/core": "^12.1.1",
     "@ngx-translate/http-loader": "^6.0.0",
     "capacitor-admob": "^0.1.0",
+    "capacitor-play-games-services": "^1.0.1",
     "cordova-plugin-nativeaudio": "^3.0.9",
     "cordova-plugin-screen-orientation": "^3.0.2",
     "core-js": "^2.5.4",

@@ -3,6 +3,7 @@ import { ConfigService } from '../config.service';
 import { AlertController, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AudioService } from '../audio.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-main-game-settings',
@@ -15,6 +16,8 @@ export class MainGameSettingsPage implements OnInit {
   selectedMusic: boolean;
   selectedEffects: boolean;
   currentMusic: string;
+
+  private storage: Storage = new Storage({ name: '_ionicstorage' });
 
   constructor(
     public config: ConfigService,
@@ -35,22 +38,19 @@ export class MainGameSettingsPage implements OnInit {
   }
 
   async initLang() {
-    await this.config.getLanguage()
-      .subscribe(val => {
-        this.lang = this.config.parseLang(val);
-        this.translate.use(this.lang);
-      });
+    await this.config.getLanguage().subscribe(val => {
+      this.lang = this.config.parseLang(val);
+      this.translate.use(this.lang);
+    });
   }
 
   async loadMusic() {
     await this.audio.getCurrentMusicFromStorage().then(v => this.currentMusic = v);
-    await this.config.getMusic()
-      .subscribe(val => this.selectedMusic = val);
+    await this.config.getMusic().subscribe(val => this.selectedMusic = val);
   }
 
   async loadEffects() {
-    await this.config.getEffects()
-      .subscribe(val => this.selectedEffects = val);
+    await this.config.getEffects().subscribe(val => this.selectedEffects = val);
   }
 
   async toggleMusic($event) {
@@ -101,16 +101,15 @@ export class MainGameSettingsPage implements OnInit {
         }, {
           text: this.translate.instant('main-game.settings.exit'),
           cssClass: 'confirm-quit',
-          handler: () => {
+          handler: async () => {
+            await this.storage.set('saveGame', false);
             this.audio.playEffect('error');
             this.navCtrl.navigateRoot('/');
           }
         }
       ]
     });
-
     this.audio.playEffect('button');
     alert.present();
   }
-
 }

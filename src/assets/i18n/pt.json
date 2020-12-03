@@ -2,7 +2,8 @@
     "main": {
         "play": "Jogar",
         "shop": "Loja",
-        "settings": "Opções"
+        "settings": "Opções",
+        "auth-fail": "Não foi possível conectar ao Google Play Games"
     },
     "shop": {
         "title": "Loja"
@@ -20,6 +21,7 @@
         "img": "Imagens"
     },
     "tutorial": {
+        "see": "Deseja ver o tutorial?",
         "title": "Como jogar?",
         "text-1": "é um jogo de masmorra aleatório, onde você deve atravessar as salas enfrentando monstros e armadilhas.",
         "text-2": "Ao matar monstros você ganha EXP, Ouro, e com sorte, algum item. Quando seu personagem subir de nível, você ganha pontos de habilidade para distribuir entre seus atributos.",
@@ -38,7 +40,9 @@
         "title": "Novo personagem",
         "name": "Nome",
         "points": "Pontos disponíveis",
-        "start": "Começar!"
+        "start": "Começar!",
+        "fail": "Crie seu personagem antes de começar a jornada!",
+        "save": "Você possui uma partida em andamento. Deseja continuar?"
     },
     "in-game": {
         "dungeon": {

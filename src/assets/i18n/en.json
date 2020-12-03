@@ -2,7 +2,8 @@
     "main": {
         "play": "Play",
         "shop": "Shop",
-        "settings": "Settings"
+        "settings": "Settings",
+        "auth-fail": "Unable to connect to Google Play Games"
     },
     "shop": {
         "title": "Shop"
@@ -20,6 +21,7 @@
         "img": "Images"
     },
     "tutorial": {
+        "see": "You want to see the tutorial?",
         "title": "How to play",
         "text-1": "is a random dungeon game, where you must cross the rooms facing monsters and traps.",
         "text-2": "By killing monsters you gain EXP, Gold, and with luck, an item. When your character level up, you earn skill points to distribute among your attributes.",
@@ -38,7 +40,9 @@
         "title": "New character",
         "name": "Name",
         "points": "Available points",
-        "start": "Start!"
+        "start": "Start!",
+        "fail": "Create your character before starting the journey!",
+        "save": "You have a game in progress. Do you want to continue?"
     },
     "in-game": {
         "dungeon": {
@@ -827,7 +831,7 @@
         "bamboo": {
             "name": "Bamboo staff"
         },
-        "mandolin": {
+        "bandolin": {
             "name": "Mandolin"
         },
         "bard-lute": {

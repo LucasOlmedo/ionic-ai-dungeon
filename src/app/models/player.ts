@@ -1,5 +1,5 @@
 export class Player {
-    name: string;
+    name: string = '';
     level: number = 1;
     exp: number = 0;
     expPercent = 0;

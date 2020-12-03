@@ -98,7 +98,6 @@ export class DungeonService {
         let chest = {
           location: 'Baú da sorte',
           description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
-          loot: (playerLv) => ~~((Math.floor(Math.random() * 17) + 6) * playerLv),
         };
         room.actionItem = chest;
         break;

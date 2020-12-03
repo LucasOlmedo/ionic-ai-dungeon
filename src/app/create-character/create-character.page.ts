@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AudioService } from '../audio.service';
 import { ConfigService } from '../config.service';
 import { Player } from '../models/player';
 import { PlayerService } from '../player.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-create-character',
@@ -28,6 +29,8 @@ export class CreateCharacterPage implements OnInit {
     'Helmund', 'Ewin', 'Eathelm', 'Nanarv', 'Marget', 'Argen', 'Mosbi',
   ];
 
+  private storage: Storage = new Storage({ name: '_ionicstorage' });
+
   constructor(
     public navCtrl: NavController,
     public toastCtrl: ToastController,
@@ -35,6 +38,7 @@ export class CreateCharacterPage implements OnInit {
     public translate: TranslateService,
     private config: ConfigService,
     private audio: AudioService,
+    private alertCtrl: AlertController,
   ) { }
 
   ngOnInit() {
@@ -42,6 +46,7 @@ export class CreateCharacterPage implements OnInit {
 
   ionViewDidEnter() {
     this.initLang();
+    this.loadPreviousGame();
   }
 
   async initLang() {
@@ -50,6 +55,35 @@ export class CreateCharacterPage implements OnInit {
         this.lang = this.config.parseLang(val);
         this.translate.use(this.lang);
       });
+  }
+
+  async loadPreviousGame() {
+    await this.storage.get('saveGame').then(async v => {
+      if (v) {
+        let save = JSON.parse(v), alert = await this.alertCtrl.create({
+          header: this.translate.instant('new-char.save'),
+          buttons: [
+            {
+              text: this.translate.instant('no'),
+              role: 'cancel',
+              cssClass: 'confirm-quit',
+              handler: async () => {
+                await this.audio.playEffect('button');
+              },
+            },
+            {
+              text: this.translate.instant('yes'),
+              handler: async () => {
+                await this.castSavePlayer(save.player);
+                await this.audio.playEffect('click');
+                await this.navCtrl.navigateRoot('/main-game');
+              },
+            }
+          ],
+        });
+        await alert.present();
+      }
+    });
   }
 
   async randomName() {
@@ -79,6 +113,7 @@ export class CreateCharacterPage implements OnInit {
       this.audio.playEffect('error');
       this.presentToast();
     } else {
+      await this.storage.set('saveGame', false);
       this.createPlayer();
       this.audio.playEffect('click');
       this.navCtrl.navigateRoot('/main-game');
@@ -87,7 +122,7 @@ export class CreateCharacterPage implements OnInit {
 
   async presentToast() {
     let toast = await this.toastCtrl.create({
-      message: 'Crie seu personagem antes de começar a jornada!',
+      message: this.translate.instant('new-char.fail'),
       position: 'top',
       duration: 1500,
     });
@@ -104,6 +139,37 @@ export class CreateCharacterPage implements OnInit {
     player.initCurrent();
     player.initEquipAttr();
     player.calcLevel();
+    this.playerService.setPlayer(player);
+  }
+
+  private async castSavePlayer(p) {
+    let player = new Player;
+    player.name = p.name;
+    player.level = p.level;
+    player.exp = p.exp;
+    player.expPercent = p.expPercent;
+    player.nextLvl = p.nextLvl;
+    player.currentNextLvl = p.currentNextLvl;
+    player.points = p.points;
+    player.vitality = p.vitality;
+    player.intelligence = p.intelligence;
+    player.agility = p.agility;
+    player.gold = p.gold;
+    player.floorIndex = p.floorIndex;
+    player.roomIndex = p.roomIndex;
+    player.killCount = p.killCount;
+    player.inBattle = p.inBattle;
+    player.inventory = p.inventory;
+    player.currentLife = p.currentLife;
+    player.baseLife = p.baseLife;
+    player.currentMana = p.currentMana;
+    player.baseMana = p.baseMana;
+    player.base = p.base;
+    player.current = p.current;
+    player.equipAttr = p.equipAttr;
+    player.skills = p.skills;
+    player.equip = p.equip;
+    player.conditions = p.conditions;
     this.playerService.setPlayer(player);
   }
 }

@@ -12,6 +12,7 @@ import { Plugins } from '@capacitor/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from 'src/app/config.service';
 import { AudioService } from 'src/app/audio.service';
+import { Storage } from '@ionic/storage';
 
 const { AdMob } = Plugins;
 
@@ -58,6 +59,7 @@ export class DungeonRoomComponent implements OnInit {
   isMerchant: boolean = false;
   merchantItems = [];
   isBossBattle: boolean = false;
+  trapDamage = 0;
 
   options: AdOptions = {
     // PROD ADS
@@ -65,6 +67,8 @@ export class DungeonRoomComponent implements OnInit {
     // TEST ADS
     // adId: 'ca-app-pub-3940256099942544/5224354917',
   }
+
+  private storage: Storage = new Storage({ name: '_ionicstorage' });
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -95,26 +99,46 @@ export class DungeonRoomComponent implements OnInit {
       });
   }
 
-  async loadingDungeon() {
+  async loadingDungeon(nextFloor?) {
     let loading = await this.loadingCtrl.create({
       spinner: 'circular',
       message: this.translate.instant('in-game.dungeon.loading'),
     });
     loading.present();
 
-    await this.playerService.getPlayer()
-      .subscribe(p => {
-        this.player = p;
-        return this.dungeonService.generateDungeon().then(result => {
-          this.dungeon = result;
-          this.currentRoom = this.dungeon[0];
+    await this.playerService.getPlayer().subscribe(async p => {
+      this.player = p;
+      await this.storage.get('saveGame').then(async v => {
+        if (nextFloor) {
+          return this.dungeonService.generateDungeon().then(result => {
+            this.dungeon = result;
+            this.currentRoom = this.dungeon[0];
+            this.loaded = true;
+            if (this.currentRoom.action == 'start') {
+              this.eventDone = true;
+            }
+            loading.dismiss();
+          });
+        }
+        if (v == false) {
+          return this.dungeonService.generateDungeon().then(result => {
+            this.dungeon = result;
+            this.currentRoom = this.dungeon[0];
+            this.loaded = true;
+            if (this.currentRoom.action == 'start') {
+              this.eventDone = true;
+            }
+            loading.dismiss();
+          });
+        } else {
+          let save = JSON.parse(v);
+          this.currentRoom = save.room;
           this.loaded = true;
-          if (this.currentRoom.action == 'start') {
-            this.eventDone = true;
-          }
-          loading.dismiss();
-        });
+          this.enterRoom(save.room);
+          await loading.dismiss();
+        }
       });
+    });
   }
 
   async nextFloor() {
@@ -123,7 +147,7 @@ export class DungeonRoomComponent implements OnInit {
     this.currentFloorIndex++;
     this.player.floorIndex++;
     this.player.roomIndex = 1;
-    this.loadingDungeon();
+    this.loadingDungeon(true);
   }
 
   async visitMerchant() {
@@ -300,6 +324,7 @@ export class DungeonRoomComponent implements OnInit {
     this.player.roomIndex++;
     this.canGetLoot = true;
     this.isBossBattle = false;
+    this.trapDamage = 0;
     this.manageRoom();
   }
 
@@ -439,6 +464,7 @@ export class DungeonRoomComponent implements OnInit {
               toolbars[i].style.opacity = '0';
             }
             await this.audio.playEffect('gameOver');
+            await this.storage.set('saveGame', false);
             return false;
           },
         },
@@ -454,6 +480,7 @@ export class DungeonRoomComponent implements OnInit {
       for (let i = 0; i < toolbars.length; i++) {
         toolbars[i].style.opacity = '0';
       }
+      await this.storage.set('saveGame', false);
       return false;
     }
   }
@@ -662,7 +689,7 @@ export class DungeonRoomComponent implements OnInit {
         this.eventDone = true;
         break;
       case 'chest':
-        this.chestGold = room.actionItem.loot(this.player.level);
+        this.chestGold = ~~((Math.floor(Math.random() * 17) + 6) * this.player.level);
         break;
       case 'battle':
       case 'boss':
@@ -706,7 +733,7 @@ export class DungeonRoomComponent implements OnInit {
         this.canAtk = true;
         break;
       case 'trap':
-        let percLife = room.actionItem.value(this.player.baseLife);
+        let percLife = this.trapDamage = ~~(this.player.baseLife * room.actionItem.value);
         let evasion = ~~(Math.random() * 100) + 1;
         if (evasion <= this.player.current.eva) {
           this.trapped = false;
@@ -718,10 +745,7 @@ export class DungeonRoomComponent implements OnInit {
           if (this.player.currentLife <= 0) {
             this.player.currentLife = 0;
             this.deathCause = room.actionItem.location;
-            let isntOver = this.gameOver();
-            if (!isntOver) {
-              return isntOver;
-            }
+            return this.gameOver();
           }
         }
         await this.helper.sleep(500);
@@ -729,8 +753,9 @@ export class DungeonRoomComponent implements OnInit {
         break;
       case 'curse':
       case 'bless':
-        this.actionItemTurn = room.actionItem.turns();
+        this.actionItemTurn = room.actionItem.turns != 0 ? Math.ceil(Math.random() * 4) : 0;
         if (this.actionItemTurn > 0) {
+          // let findCondition = this.player.conditions.find(t => t.title = room.actionItem.title);
           this.player.conditions.push({
             img: `../assets/images/${room.action}/${room.actionItem.icon}.png`,
             turns: this.actionItemTurn,
@@ -743,16 +768,16 @@ export class DungeonRoomComponent implements OnInit {
         switch (room.actionItem.attr) {
           case 'life':
             room.actionItem.operator == '+'
-              ? this.player.currentLife += ~~(room.actionItem.calc(this.player.baseLife))
-              : this.player.currentLife -= ~~(room.actionItem.calc(this.player.baseLife));
+              ? this.player.currentLife += ~~(room.actionItem.calc * this.player.baseLife)
+              : this.player.currentLife -= ~~(room.actionItem.calc * this.player.baseLife);
             if (this.player.currentLife >= this.player.baseLife) {
               this.player.currentLife = this.player.baseLife;
             }
             break;
           case 'mana':
             room.actionItem.operator == '+'
-              ? this.player.currentMana += ~~(room.actionItem.calc(this.player.baseMana))
-              : this.player.currentMana -= ~~(room.actionItem.calc(this.player.baseMana));
+              ? this.player.currentMana += ~~(room.actionItem.calc * this.player.baseMana)
+              : this.player.currentMana -= ~~(room.actionItem.calc * this.player.baseMana);
             if (this.player.currentMana >= this.player.baseMana) {
               this.player.currentMana = this.player.baseMana;
             }
@@ -760,41 +785,46 @@ export class DungeonRoomComponent implements OnInit {
           case 'atk':
             if (room.actionItem.operator == '+') {
               this.player.current.atk = this.player.base.atk
-                + ~~(room.actionItem.calc(this.player.base.atk));
+                + ~~(room.actionItem.calc * this.player.base.atk);
               this.player.current.magic = this.player.base.magic
-                + ~~(room.actionItem.calc(this.player.base.magic));
+                + ~~(room.actionItem.calc * this.player.base.magic);
             } else {
               this.player.current.atk = this.player.base.atk
-                - ~~(room.actionItem.calc(this.player.base.atk));
+                - ~~(room.actionItem.calc * this.player.base.atk);
               this.player.current.magic = this.player.base.magic
-                - ~~(room.actionItem.calc(this.player.base.magic));
+                - ~~(room.actionItem.calc * this.player.base.magic);
             }
             break;
           case 'def':
             if (room.actionItem.operator == '+') {
               this.player.current.def = this.player.base.def
-                + ~~(room.actionItem.calc(this.player.base.def));
+                + ~~(room.actionItem.calc * this.player.base.def);
               this.player.current.prot = this.player.base.prot
-                + ~~(room.actionItem.calc(this.player.base.prot));
+                + ~~(room.actionItem.calc * this.player.base.prot);
             } else {
               this.player.current.def = this.player.base.def
-                - ~~(room.actionItem.calc(this.player.base.def));
+                - ~~(room.actionItem.calc * this.player.base.def);
               this.player.current.prot = this.player.base.prot
-                - ~~(room.actionItem.calc(this.player.base.prot));
+                - ~~(room.actionItem.calc * this.player.base.prot);
             }
             break;
           default:
             room.actionItem.operator == '+'
               ? this.player.current[room.actionItem.attr] = this.player.base[room.actionItem.attr] +
-              ~~(room.actionItem.calc(this.player.base[room.actionItem.attr]))
+              ~~(room.actionItem.calc * this.player.base[room.actionItem.attr])
               : this.player.current[room.actionItem.attr] = this.player.base[room.actionItem.attr] -
-              ~~(room.actionItem.calc(this.player.base[room.actionItem.attr]));
+              ~~(room.actionItem.calc * this.player.base[room.actionItem.attr]);
             break;
         }
         await this.audio.playEffect(room.actionItem.sound);
         this.eventDone = true;
         break;
     }
+
+    await this.storage.set('saveGame', JSON.stringify({
+      player: this.player,
+      room: room,
+    }));
   }
 
   private finalBossMonster(m) {
@@ -837,8 +867,8 @@ export class DungeonRoomComponent implements OnInit {
       switch (cnd.attr) {
         case 'life':
           cnd.operator == '+'
-            ? this.player.currentLife += ~~(cnd.calc(this.player.baseLife))
-            : this.player.currentLife -= ~~(cnd.calc(this.player.baseLife));
+            ? this.player.currentLife += ~~(cnd.calc * this.player.baseLife)
+            : this.player.currentLife -= ~~(cnd.calc * this.player.baseLife);
 
           if (this.player.currentLife <= 0) {
             this.player.currentLife = 0;
@@ -848,26 +878,28 @@ export class DungeonRoomComponent implements OnInit {
           break;
         case 'atk':
           if (cnd.operator == '+') {
-            this.player.current.atk = this.player.base.atk + ~~(cnd.calc(this.player.base.atk));
-            this.player.current.magic = this.player.base.magic + ~~(cnd.calc(this.player.base.magic));
+            this.player.current.atk = this.player.base.atk + ~~(cnd.calc * this.player.base.atk);
+            this.player.current.magic = this.player.base.magic + ~~(cnd.calc * this.player.base.magic);
           } else {
-            this.player.current.atk = this.player.base.atk - ~~(cnd.calc(this.player.base.atk));
-            this.player.current.magic = this.player.base.magic - ~~(cnd.calc(this.player.base.magic));
+            this.player.current.atk = this.player.base.atk - ~~(cnd.calc * this.player.base.atk);
+            this.player.current.magic = this.player.base.magic - ~~(cnd.calc * this.player.base.magic);
           }
           break;
         case 'def':
           if (cnd.operator == '+') {
-            this.player.current.def = this.player.base.def + ~~(cnd.calc(this.player.base.def));
-            this.player.current.prot = this.player.base.prot + ~~(cnd.calc(this.player.base.prot));
+            this.player.current.def = this.player.base.def + ~~(cnd.calc * this.player.base.def);
+            this.player.current.prot = this.player.base.prot + ~~(cnd.calc * this.player.base.prot);
           } else {
-            this.player.current.def = this.player.base.def - ~~(cnd.calc(this.player.base.def));
-            this.player.current.prot = this.player.base.prot - ~~(cnd.calc(this.player.base.prot));
+            this.player.current.def = this.player.base.def - ~~(cnd.calc * this.player.base.def);
+            this.player.current.prot = this.player.base.prot - ~~(cnd.calc * this.player.base.prot);
           }
           break;
         default:
           cnd.operator == '+'
-            ? this.player.current[cnd.attr] = this.player.base[cnd.attr] + ~~(cnd.calc(this.player.base[cnd.attr]))
-            : this.player.current[cnd.attr] = this.player.base[cnd.attr] - ~~(cnd.calc(this.player.base[cnd.attr]));
+            ? this.player.current[cnd.attr] = this.player.base[cnd.attr]
+            + ~~(cnd.calc * this.player.base[cnd.attr])
+            : this.player.current[cnd.attr] = this.player.base[cnd.attr]
+            - ~~(cnd.calc * this.player.base[cnd.attr]);
           break;
       }
       if (cnd.turns <= 0 && (cnd.attr != 'life' && cnd.attr != 'mana')) {

@@ -114,7 +114,7 @@
           {{ currentRoom.actionItem.description | translate }}
         </div>
         <div *ngIf="trapped; else evasion" class="ion-text-center ion-margin-top text-bless-atk">
-          {{ 'in-game.dungeon.trap.lost' | translate }} {{ currentRoom.actionItem.value(player.baseLife) }}
+          {{ 'in-game.dungeon.trap.lost' | translate }} {{ trapDamage }}
           {{ 'in-game.dungeon.trap.hp' | translate }}
         </div>
         <ng-template #evasion>
@@ -289,22 +289,22 @@
         </ion-row>
         <ion-row>
           <ion-col class="ion-text-center">
-            <div class="ranking" *ngIf="player.killCount <= 15">
+            <div class="ranking" *ngIf="player.killCount <= 50">
               <ion-text class="is-c">C</ion-text>
             </div>
-            <div class="ranking" *ngIf="player.killCount > 15 && player.killCount <= 30">
+            <div class="ranking" *ngIf="player.killCount > 50 && player.killCount <= 70">
               <ion-text class="is-b">B</ion-text>
             </div>
-            <div class="ranking" *ngIf="player.killCount > 30 && player.killCount <= 55">
+            <div class="ranking" *ngIf="player.killCount > 70 && player.killCount <= 150">
               <ion-text class="is-b2">B+</ion-text>
             </div>
-            <div class="ranking" *ngIf="player.killCount > 55 && player.killCount <= 80">
+            <div class="ranking" *ngIf="player.killCount > 150 && player.killCount <= 250">
               <ion-text class="is-a">A</ion-text>
             </div>
-            <div class="ranking" *ngIf="player.killCount > 80 && player.killCount <= 100">
+            <div class="ranking" *ngIf="player.killCount > 250 && player.killCount <= 400">
               <ion-text class="is-a2">A+</ion-text>
             </div>
-            <div class="ranking" *ngIf="player.killCount > 100">
+            <div class="ranking" *ngIf="player.killCount > 400">
               <ion-text class="is-s">S</ion-text>
             </div>
           </ion-col>
