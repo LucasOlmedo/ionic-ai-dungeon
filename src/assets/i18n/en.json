@@ -657,6 +657,18 @@
         "dragon-breath": {
             "name": "Dragon breath",
             "desc": "Blows a blast of draconic fire, burning all opponents in front of you"
+        },
+        "self-energy": {
+            "name": "Self energy",
+            "desc": "Channels the medallion's energy to damage the target"
+        },
+        "glow-hand": {
+            "name": "Mysterious power",
+            "desc": "The stone exudes a hidden power enhanced by carrier will power"
+        },
+        "wind-slap": {
+            "name": "Wind slap",
+            "desc": "Uses the fan's magical properties to generate a strong wind slap"
         }
     },
     "equip": {
@@ -849,7 +861,7 @@
         "gladius": {
             "name": "Gladius"
         },
-        "great ax": {
+        "great-axe": {
             "name": "Double ax"
         },
         "great-bow": {
@@ -1121,6 +1133,51 @@
         },
         "tooth-necklace": {
             "name": "Dragon's tooth"
+        },
+        "ruby-medallion": {
+            "name": "Energy Medallion"
+        },
+        "pirate-hat": {
+            "name": "Pirate hat"
+        },
+        "viking-cloth": {
+            "name": "Viking cloth"
+        },
+        "white-hat": {
+            "name": "Prophet hat"
+        },
+        "white-boots": {
+            "name": "Prophet boots"
+        },
+        "crystal-mage": {
+            "name": "Support crystal"
+        },
+        "yukata": {
+            "name": "Yukata"
+        },
+        "kasa": {
+            "name": "Kasa"
+        },
+        "fan": {
+            "name": "Magic fan"
+        },
+        "ninja-cloth": {
+            "name": "Ninja cloth"
+        },
+        "ninja-mask": {
+            "name": "Ninja mask"
+        },
+        "priest-cloth": {
+            "name": "Priest cloth"
+        },
+        "pope-elm": {
+            "name": "Priest miter"
+        },
+        "royal-crown": {
+            "name": "Royal crown"
+        },
+        "wushu-cloth": {
+            "name": "Wushu robe"
         }
     },
     "monster": {

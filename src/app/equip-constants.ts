@@ -474,6 +474,146 @@ export const EQUIPS = [
         cost: 92,
         skill: null,
     },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'helmet',
+        img: '../assets/images/equip/helmet/pirate-hat.png',
+        name: 'equip.pirate-hat.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 14,
+            },
+            {
+                attr: 'vel',
+                value: 7,
+            },
+            {
+                attr: 'crit',
+                value: 2,
+            },
+        ],
+        cost: 89,
+        skill: null,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'helmet',
+        img: '../assets/images/equip/helmet/white-hat.png',
+        name: 'equip.white-hat.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 11,
+            },
+            {
+                attr: 'mana',
+                value: 17,
+            },
+            {
+                attr: 'magic',
+                value: 8,
+            },
+        ],
+        cost: 72,
+        skill: null,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'helmet',
+        img: '../assets/images/equip/helmet/kasa.png',
+        name: 'equip.kasa.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 12,
+            },
+            {
+                attr: 'vel',
+                value: 7,
+            },
+        ],
+        cost: 71,
+        skill: null,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'helmet',
+        img: '../assets/images/equip/helmet/ninja-mask.png',
+        name: 'equip.ninja-mask.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 8,
+            },
+            {
+                attr: 'vel',
+                value: 5,
+            },
+            {
+                attr: 'eva',
+                value: 1,
+            },
+        ],
+        cost: 79,
+        skill: null,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'helmet',
+        img: '../assets/images/equip/helmet/pope-elm.png',
+        name: 'equip.pope-elm.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 12,
+            },
+            {
+                attr: 'mana',
+                value: 15,
+            },
+            {
+                attr: 'def',
+                value: 6,
+            },
+        ],
+        cost: 83,
+        skill: null,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'helmet',
+        img: '../assets/images/equip/helmet/royal-crown.png',
+        name: 'equip.royal-crown.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 17,
+            },
+            {
+                attr: 'def',
+                value: 9,
+            },
+            {
+                attr: 'prot',
+                value: 6,
+            },
+        ],
+        cost: 80,
+        skill: null,
+    },
 
 
     // SHIELD
@@ -504,8 +644,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/shield-bash.png',
             color: 'skillGray',
             active: true,
-            val: 65,
-            cost: 38,
+            val: 90,
+            cost: 55,
             type: 'atk',
             attr: 'atk',
             equip: 'shield',
@@ -534,14 +674,14 @@ export const EQUIPS = [
                 value: 6,
             },
         ],
-        cost: 75,
+        cost: 79,
         skill: {
             name: 'skill.egg-defense.name',
             img: '../assets/images/skill/egg-defense.png',
             color: 'skillYellow',
             active: true,
             val: 25,
-            cost: 39,
+            cost: 43,
             type: 'buff',
             attr: 'def',
             equip: 'shield',
@@ -572,8 +712,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/emerald-shield.png',
             color: 'skillLeaf',
             active: true,
-            val: 73,
-            cost: 45,
+            val: 88,
+            cost: 53,
             type: 'magic',
             attr: 'magic',
             equip: 'shield',
@@ -609,7 +749,7 @@ export const EQUIPS = [
             color: 'skillSalmon',
             active: true,
             val: 33,
-            cost: 56,
+            cost: 50,
             type: 'buff',
             attr: 'def',
             equip: 'shield',
@@ -640,8 +780,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/health-capsule.png',
             color: 'skillOlive',
             active: true,
-            val: 20,
-            cost: 36,
+            val: 16,
+            cost: 47,
             type: 'heal',
             attr: 'life',
             equip: 'shield',
@@ -662,6 +802,10 @@ export const EQUIPS = [
                 value: 7,
             },
             {
+                attr: 'prot',
+                value: 3,
+            },
+            {
                 attr: 'life',
                 value: 13,
             },
@@ -672,8 +816,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/broken-heart.png',
             color: 'skillPink',
             active: true,
-            val: 15,
-            cost: 26,
+            val: 12,
+            cost: 44,
             type: 'heal',
             attr: 'life',
             equip: 'shield',
@@ -708,8 +852,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/pyromaniac.png',
             color: 'skillEmerald',
             active: true,
-            val: 115,
-            cost: 65,
+            val: 120,
+            cost: 75,
             type: 'magic',
             attr: 'magic',
             equip: 'shield',
@@ -727,21 +871,21 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'magic',
-                value: 6,
+                value: 8,
             },
             {
                 attr: 'life',
                 value: 18,
             },
         ],
-        cost: 76,
+        cost: 86,
         skill: {
             name: 'skill.gems.name',
             img: '../assets/images/skill/gems.png',
             color: 'skillSaphire',
             active: true,
-            val: 72,
-            cost: 47,
+            val: 95,
+            cost: 58,
             type: 'magic',
             attr: 'magic',
             equip: 'shield',
@@ -759,7 +903,7 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'def',
-                value: 10,
+                value: 9,
             },
             {
                 attr: 'prot',
@@ -767,7 +911,7 @@ export const EQUIPS = [
             },
             {
                 attr: 'life',
-                value: 12,
+                value: 14,
             },
         ],
         cost: 80,
@@ -776,8 +920,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/shield-reflect.png',
             color: 'skillYellow',
             active: true,
-            val: 33,
-            cost: 45,
+            val: 34,
+            cost: 51,
             type: 'buff',
             attr: 'def',
             equip: 'shield',
@@ -791,11 +935,15 @@ export const EQUIPS = [
         equiped: false,
         equip: 'shield',
         img: '../assets/images/equip/shield/wood-shield.png',
-        name: 'equip.shield.wood-shield',
+        name: 'equip.wood-shield.name',
         extra: [
             {
+                attr: 'life',
+                value: 15,
+            },
+            {
                 attr: 'def',
-                value: 14,
+                value: 10,
             },
             {
                 attr: 'vel',
@@ -812,13 +960,89 @@ export const EQUIPS = [
             img: '../assets/images/skill/focus-punch.png',
             color: 'skillCopper',
             active: true,
-            val: 85,
-            cost: 47,
+            val: 110,
+            cost: 64,
             type: 'atk',
             attr: 'atk',
             equip: 'shield',
             desc: 'skill.focus-punch.desc',
             sound: 'focusPunch',
+        },
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'shield',
+        img: '../assets/images/equip/shield/crystal-mage.png',
+        name: 'equip.crystal-mage.name',
+        extra: [
+            {
+                attr: 'magic',
+                value: 12,
+            },
+            {
+                attr: 'life',
+                value: 10,
+            },
+            {
+                attr: 'mana',
+                value: 13,
+            },
+            {
+                attr: 'prot',
+                value: 3,
+            },
+        ],
+        cost: 83,
+        skill: {
+            name: 'skill.glow-hand.name',
+            img: '../assets/images/skill/glow-hand.png',
+            color: 'skillPink',
+            active: true,
+            val: 95,
+            cost: 58,
+            type: 'magic',
+            attr: 'magic',
+            equip: 'shield',
+            desc: 'skill.glow-hand.desc',
+            sound: 'vibratingShield',
+        },
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'shield',
+        img: '../assets/images/equip/shield/fan.png',
+        name: 'equip.fan.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 8,
+            },
+            {
+                attr: 'magic',
+                value: 10,
+            },
+            {
+                attr: 'vel',
+                value: 5,
+            },
+        ],
+        cost: 80,
+        skill: {
+            name: 'skill.wind-slap.name',
+            img: '../assets/images/skill/wind-slap.png',
+            color: 'skillDiamond',
+            active: true,
+            val: 83,
+            cost: 51,
+            type: 'magic',
+            attr: 'magic',
+            equip: 'shield',
+            desc: 'skill.wind-slap.desc',
+            sound: 'throwSpear',
         },
     },
 
@@ -1224,6 +1448,142 @@ export const EQUIPS = [
         cost: 65,
         skill: null,
     },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'armor',
+        img: '../assets/images/equip/armor/viking-cloth.png',
+        name: 'equip.viking-cloth.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 18,
+            },
+            {
+                attr: 'def',
+                value: 10,
+            },
+            {
+                attr: 'prot',
+                value: 8,
+            },
+            {
+                attr: 'vel',
+                value: 6,
+            },
+        ],
+        cost: 95,
+        skill: null,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'armor',
+        img: '../assets/images/equip/armor/yukata.png',
+        name: 'equip.yukata.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 12,
+            },
+            {
+                attr: 'def',
+                value: 6,
+            },
+            {
+                attr: 'vel',
+                value: 3,
+            },
+            {
+                attr: 'eva',
+                value: 1,
+            },
+        ],
+        cost: 77,
+        skill: null,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'armor',
+        img: '../assets/images/equip/armor/ninja-cloth.png',
+        name: 'equip.ninja-cloth.name',
+        extra: [
+            {
+                attr: 'def',
+                value: 7,
+            },
+            {
+                attr: 'vel',
+                value: 9,
+            },
+            {
+                attr: 'eva',
+                value: 2,
+            },
+            {
+                attr: 'crit',
+                value: 5,
+            },
+        ],
+        cost: 81,
+        skill: null,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'armor',
+        img: '../assets/images/equip/armor/priest-cloth.png',
+        name: 'equip.priest-cloth.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 18,
+            },
+            {
+                attr: 'magic',
+                value: 6,
+            },
+            {
+                attr: 'def',
+                value: 10,
+            },
+        ],
+        cost: 82,
+        skill: null,
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'armor',
+        img: '../assets/images/equip/armor/wushu-cloth.png',
+        name: 'equip.wushu-cloth.name',
+        extra: [
+            {
+                attr: 'life',
+                value: 12,
+            },
+            {
+                attr: 'vel',
+                value: 7,
+            },
+            {
+                attr: 'crit',
+                value: 2,
+            },
+            {
+                attr: 'eva',
+                value: 1,
+            },
+        ],
+        cost: 86,
+        skill: null,
+    },
 
 
     // SWORD
@@ -1250,7 +1610,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/arch-bow.png',
             color: 'skillGray',
             active: true,
-            val: 47,
+            val: 46,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1282,7 +1642,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/axe-atk.png',
             color: 'skillGray',
             active: true,
-            val: 54,
+            val: 52,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1354,7 +1714,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/music-spell.png',
             color: 'skillGray',
             active: true,
-            val: 49,
+            val: 48,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -1390,7 +1750,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/musical-notes.png',
             color: 'skillGray',
             active: true,
-            val: 51,
+            val: 50,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -1426,7 +1786,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/arrow-dunk.png',
             color: 'skillGray',
             active: true,
-            val: 46,
+            val: 45,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1458,7 +1818,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/quick-slash.png',
             color: 'skillGray',
             active: true,
-            val: 46,
+            val: 45,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1490,7 +1850,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/flail.png',
             color: 'skillGray',
             active: true,
-            val: 54,
+            val: 52,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1522,7 +1882,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/cross-slash.png',
             color: 'skillGray',
             active: true,
-            val: 50,
+            val: 48,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1558,7 +1918,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/great-axe-atk.png',
             color: 'skillGray',
             active: true,
-            val: 57,
+            val: 55,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1590,7 +1950,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/heavy-arrow.png',
             color: 'skillGray',
             active: true,
-            val: 51,
+            val: 50,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1654,7 +2014,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/cupid.png',
             color: 'skillGray',
             active: true,
-            val: 46,
+            val: 44,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1690,7 +2050,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/hammer.png',
             color: 'skillGray',
             active: true,
-            val: 57,
+            val: 55,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1726,7 +2086,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/spin-blade.png',
             color: 'skillGray',
             active: true,
-            val: 46,
+            val: 44,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1762,7 +2122,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/throw-kunai.png',
             color: 'skillGray',
             active: true,
-            val: 46,
+            val: 45,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1794,7 +2154,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/sun-spear.png',
             color: 'skillGray',
             active: true,
-            val: 49,
+            val: 48,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1826,7 +2186,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/magic-arrow.png',
             color: 'skillGray',
             active: true,
-            val: 52,
+            val: 50,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1858,7 +2218,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/sparkles.png',
             color: 'skillGray',
             active: true,
-            val: 51,
+            val: 49,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -1890,7 +2250,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/war-pick.png',
             color: 'skillGray',
             active: true,
-            val: 48,
+            val: 46,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -1926,7 +2286,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/resonance.png',
             color: 'skillGray',
             active: true,
-            val: 49,
+            val: 47,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2054,7 +2414,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/spear-hook.png',
             color: 'skillGray',
             active: true,
-            val: 50,
+            val: 48,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -2090,7 +2450,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/basic-sword-atk.png',
             color: 'skillGray',
             active: true,
-            val: 47,
+            val: 45,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -2126,7 +2486,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/shuriken.png',
             color: 'skillGray',
             active: true,
-            val: 48,
+            val: 45,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -2156,13 +2516,13 @@ export const EQUIPS = [
                 value: 10
             }
         ],
-        cost: 102,
+        cost: 98,
         skill: {
             name: 'skill.mace-head.name',
             img: '../assets/images/skill/mace-head.png',
             color: 'skillGray',
             active: true,
-            val: 54,
+            val: 51,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -2194,7 +2554,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/portal.png',
             color: 'skillGray',
             active: true,
-            val: 47,
+            val: 46,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2220,13 +2580,13 @@ export const EQUIPS = [
                 value: 10
             }
         ],
-        cost: 78,
+        cost: 77,
         skill: {
             name: 'skill.icicles.name',
             img: '../assets/images/skill/icicles.png',
             color: 'skillGray',
             active: true,
-            val: 48,
+            val: 47,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2252,7 +2612,7 @@ export const EQUIPS = [
                 value: 5
             }
         ],
-        cost: 73,
+        cost: 75,
         skill: {
             name: 'skill.circle-spark.name',
             img: '../assets/images/skill/circle-spark.png',
@@ -2288,13 +2648,13 @@ export const EQUIPS = [
                 value: 6
             }
         ],
-        cost: 100,
+        cost: 86,
         skill: {
             name: 'skill.echo.name',
             img: '../assets/images/skill/echo.png',
             color: 'skillGray',
             active: true,
-            val: 50,
+            val: 48,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2320,13 +2680,13 @@ export const EQUIPS = [
                 value: 12
             }
         ],
-        cost: 103,
+        cost: 94,
         skill: {
             name: 'skill.laser-spark.name',
             img: '../assets/images/skill/laser-spark.png',
             color: 'skillGray',
             active: true,
-            val: 53,
+            val: 51,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2358,7 +2718,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/splash.png',
             color: 'skillGray',
             active: true,
-            val: 49,
+            val: 48,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2390,7 +2750,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/crystal-ball.png',
             color: 'skillGray',
             active: true,
-            val: 52,
+            val: 49,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2420,13 +2780,13 @@ export const EQUIPS = [
                 value: 8
             }
         ],
-        cost: 102,
+        cost: 95,
         skill: {
             name: 'skill.orb-atk.name',
             img: '../assets/images/skill/orb-atk.png',
             color: 'skillGray',
             active: true,
-            val: 54,
+            val: 52,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2462,7 +2822,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/fairy-wand.png',
             color: 'skillGray',
             active: true,
-            val: 48,
+            val: 47,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2494,7 +2854,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/trident.png',
             color: 'skillGray',
             active: true,
-            val: 52,
+            val: 51,
             cost: 0,
             type: 'atk',
             attr: 'atk',
@@ -2524,7 +2884,7 @@ export const EQUIPS = [
                 value: 12
             }
         ],
-        cost: 106,
+        cost: 94,
         skill: {
             name: 'skill.magic-trident.name',
             img: '../assets/images/skill/magic-trident.png',
@@ -2560,13 +2920,13 @@ export const EQUIPS = [
                 value: 13
             }
         ],
-        cost: 99,
+        cost: 96,
         skill: {
             name: 'skill.wind-hole.name',
             img: '../assets/images/skill/wind-hole.png',
             color: 'skillGray',
             active: true,
-            val: 53,
+            val: 51,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2585,7 +2945,7 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'magic',
-                value: 25
+                value: 21
             },
             {
                 attr: 'prot',
@@ -2593,16 +2953,16 @@ export const EQUIPS = [
             },
             {
                 attr: 'life',
-                value: 14
+                value: 12
             }
         ],
-        cost: 113,
+        cost: 100,
         skill: {
             name: 'skill.zeus.name',
             img: '../assets/images/skill/zeus.png',
             color: 'skillGray',
             active: true,
-            val: 55,
+            val: 52,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2634,7 +2994,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/fire-spell.png',
             color: 'skillGray',
             active: true,
-            val: 45,
+            val: 44,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2666,7 +3026,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/ice-spell.png',
             color: 'skillGray',
             active: true,
-            val: 45,
+            val: 44,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2685,7 +3045,7 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'magic',
-                value: 20
+                value: 19
             },
             {
                 attr: 'life',
@@ -2696,13 +3056,13 @@ export const EQUIPS = [
                 value: 8
             }
         ],
-        cost: 101,
+        cost: 87,
         skill: {
             name: 'skill.spell-book.name',
             img: '../assets/images/skill/spell-book.png',
             color: 'skillGray',
             active: true,
-            val: 50,
+            val: 49,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2728,13 +3088,13 @@ export const EQUIPS = [
                 value: 10
             }
         ],
-        cost: 90,
+        cost: 91,
         skill: {
             name: 'skill.impact.name',
             img: '../assets/images/skill/impact.png',
             color: 'skillGray',
             active: true,
-            val: 51,
+            val: 50,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2753,7 +3113,7 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'magic',
-                value: 23
+                value: 22
             },
             {
                 attr: 'life',
@@ -2766,7 +3126,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/book-aura.png',
             color: 'skillGray',
             active: true,
-            val: 54,
+            val: 52,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2785,24 +3145,28 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'magic',
-                value: 25
+                value: 23
             },
             {
                 attr: 'life',
-                value: 15
+                value: 14
             },
             {
                 attr: 'prot',
-                value: 12
+                value: 10
+            },
+            {
+                attr: 'def',
+                value: 8
             }
         ],
-        cost: 109,
+        cost: 98,
         skill: {
             name: 'skill.burning-book.name',
             img: '../assets/images/skill/burning-book.png',
             color: 'skillGray',
             active: true,
-            val: 56,
+            val: 53,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2821,7 +3185,7 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'magic',
-                value: 18
+                value: 16
             },
             {
                 attr: 'life',
@@ -2838,7 +3202,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/mineral.png',
             color: 'skillGray',
             active: true,
-            val: 47,
+            val: 46,
             cost: 0,
             type: 'magic',
             attr: 'magic',
@@ -2877,8 +3241,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/snake-bite.png',
             color: 'skillPurple',
             active: true,
-            val: 71,
-            cost: 42,
+            val: 80,
+            cost: 50,
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
@@ -2900,7 +3264,7 @@ export const EQUIPS = [
             },
             {
                 attr: 'prot',
-                value: 6
+                value: 8
             },
             {
                 attr: 'atk',
@@ -2913,8 +3277,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/stone-ball.png',
             color: 'skillGray',
             active: true,
-            val: 63,
-            cost: 39,
+            val: 78,
+            cost: 47,
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
@@ -2945,7 +3309,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/magic-trick.png',
             color: 'skillMagenta',
             active: true,
-            val: 59,
+            val: 77,
             cost: 46,
             type: 'magic',
             attr: 'magic',
@@ -2981,7 +3345,7 @@ export const EQUIPS = [
             img: '../assets/images/skill/cross-mark.png',
             color: 'skillRed',
             active: true,
-            val: 85,
+            val: 100,
             cost: 60,
             type: 'atk',
             attr: 'atk',
@@ -3017,8 +3381,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/crystal-shine.png',
             color: 'skillDiamond',
             active: true,
-            val: 68,
-            cost: 48,
+            val: 81,
+            cost: 51,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
@@ -3043,13 +3407,13 @@ export const EQUIPS = [
                 value: 8
             }
         ],
-        cost: 83,
+        cost: 81,
         skill: {
             name: 'skill.fire-ring.name',
             img: '../assets/images/skill/fire-ring.png',
             color: 'skillOrange',
             active: true,
-            val: 79,
+            val: 84,
             cost: 55,
             type: 'magic',
             attr: 'magic',
@@ -3081,8 +3445,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/circle-gold.png',
             color: 'skillGold',
             active: true,
-            val: 25,
-            cost: 45,
+            val: 27,
+            cost: 47,
             type: 'buff',
             attr: 'vel',
             equip: 'ring',
@@ -3108,7 +3472,7 @@ export const EQUIPS = [
             },
             {
                 attr: 'magic',
-                value: 16
+                value: 17
             }
         ],
         cost: 110,
@@ -3117,8 +3481,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/ion-blast.png',
             color: 'skillSaphire',
             active: true,
-            val: 115,
-            cost: 75,
+            val: 120,
+            cost: 72,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
@@ -3149,8 +3513,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/heart-wings.png',
             color: 'skillDarkred',
             active: true,
-            val: 17,
-            cost: 38,
+            val: 14,
+            cost: 47,
             type: 'heal',
             attr: 'life',
             equip: 'ring',
@@ -3185,8 +3549,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/ghost-fire.png',
             color: 'skillPurple',
             active: true,
-            val: 103,
-            cost: 67,
+            val: 113,
+            cost: 65,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
@@ -3211,14 +3575,14 @@ export const EQUIPS = [
                 value: 13
             }
         ],
-        cost: 96,
+        cost: 89,
         skill: {
             name: 'skill.eletric-orb.name',
             img: '../assets/images/skill/eletric-orb.png',
             color: 'skillDiamond',
             active: true,
-            val: 83,
-            cost: 56,
+            val: 100,
+            cost: 60,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
@@ -3236,7 +3600,7 @@ export const EQUIPS = [
         extra: [
             {
                 attr: 'def',
-                value: 15
+                value: 12
             },
             {
                 attr: 'prot',
@@ -3244,17 +3608,17 @@ export const EQUIPS = [
             },
             {
                 attr: 'life',
-                value: 10
+                value: 11
             },
         ],
-        cost: 84,
+        cost: 79,
         skill: {
             name: 'skill.fang.name',
             img: '../assets/images/skill/fang.png',
             color: 'skillTurquoise',
             active: true,
-            val: 84,
-            cost: 50,
+            val: 98,
+            cost: 59,
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
@@ -3290,7 +3654,7 @@ export const EQUIPS = [
             color: 'skillCopper',
             active: true,
             val: 35,
-            cost: 51,
+            cost: 53,
             type: 'buff',
             attr: 'def',
             equip: 'ring',
@@ -3319,14 +3683,14 @@ export const EQUIPS = [
                 value: 1
             }
         ],
-        cost: 87,
+        cost: 81,
         skill: {
             name: 'skill.spike-atk.name',
             img: '../assets/images/skill/spike-atk.png',
             color: 'skillGray',
             active: true,
-            val: 85,
-            cost: 56,
+            val: 93,
+            cost: 57,
             type: 'atk',
             attr: 'atk',
             equip: 'ring',
@@ -3343,16 +3707,16 @@ export const EQUIPS = [
         name: 'equip.triple-ring.name',
         extra: [
             {
-                attr: 'def',
-                value: 13
+                attr: 'life',
+                value: 15
             },
             {
                 attr: 'prot',
-                value: 13
+                value: 15
             },
             {
-                attr: 'vel',
-                value: 13
+                attr: 'def',
+                value: 15
             }
         ],
         cost: 102,
@@ -3361,8 +3725,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/plasma-bolt.png',
             color: 'skillRoyal',
             active: true,
-            val: 110,
-            cost: 71,
+            val: 125,
+            cost: 72,
             type: 'magic',
             attr: 'magic',
             equip: 'ring',
@@ -3901,6 +4265,30 @@ export const EQUIPS = [
         cost: 78,
         skill: null,
     },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'boots',
+        img: '../assets/images/equip/boots/white-boots.png',
+        name: 'equip.white-boots.name',
+        extra: [
+            {
+                attr: 'magic',
+                value: 10,
+            },
+            {
+                attr: 'prot',
+                value: 5,
+            },
+            {
+                attr: 'life',
+                value: 10,
+            },
+        ],
+        cost: 77,
+        skill: null,
+    },
 
 
     // NECKLACE
@@ -3927,8 +4315,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/beam.png',
             color: 'skillEmerald',
             active: true,
-            val: 98,
-            cost: 56,
+            val: 115,
+            cost: 65,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
@@ -3950,11 +4338,11 @@ export const EQUIPS = [
             },
             {
                 attr: 'life',
-                value: 18
+                value: 20
             },
             {
                 attr: 'atk',
-                value: 10
+                value: 11
             }
         ],
         cost: 91,
@@ -3963,8 +4351,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/buff.png',
             color: 'skillYellow',
             active: true,
-            val: 35,
-            cost: 52,
+            val: 36,
+            cost: 55,
             type: 'buff',
             attr: 'atk',
             equip: 'necklace',
@@ -3999,8 +4387,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/shining-heart.png',
             color: 'skillMagenta',
             active: true,
-            val: 24,
-            cost: 63,
+            val: 19,
+            cost: 64,
             type: 'heal',
             attr: 'life',
             equip: 'necklace',
@@ -4039,8 +4427,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/water-bolt.png',
             color: 'skillRoyal',
             active: true,
-            val: 95,
-            cost: 67,
+            val: 105,
+            cost: 60,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
@@ -4075,8 +4463,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/knockout.png',
             color: 'skillSalmon',
             active: true,
-            val: 71,
-            cost: 47,
+            val: 83,
+            cost: 51,
             type: 'atk',
             attr: 'atk',
             equip: 'necklace',
@@ -4116,7 +4504,7 @@ export const EQUIPS = [
             color: 'skillOlive',
             active: true,
             val: 21,
-            cost: 54,
+            cost: 74,
             type: 'heal',
             attr: 'life',
             equip: 'necklace',
@@ -4145,7 +4533,7 @@ export const EQUIPS = [
                 value: 7
             },
             {
-                attr: 'life',
+                attr: 'magic',
                 value: 11
             },
         ],
@@ -4155,8 +4543,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/psychic.png',
             color: 'skillLeaf',
             active: true,
-            val: 95,
-            cost: 57,
+            val: 110,
+            cost: 62,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
@@ -4191,8 +4579,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/energy.png',
             color: 'skillPink',
             active: true,
-            val: 85,
-            cost: 54,
+            val: 100,
+            cost: 57,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
@@ -4223,8 +4611,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/divert.png',
             color: 'skillCopper',
             active: true,
-            val: 68,
-            cost: 43,
+            val: 80,
+            cost: 50,
             type: 'atk',
             attr: 'atk',
             equip: 'necklace',
@@ -4255,8 +4643,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/shell.png',
             color: 'skillTurquoise',
             active: true,
-            val: 22,
-            cost: 40,
+            val: 26,
+            cost: 47,
             type: 'buff',
             attr: 'def',
             equip: 'necklace',
@@ -4291,8 +4679,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/acrobatic.png',
             color: 'skillGold',
             active: true,
-            val: 17,
-            cost: 36,
+            val: 18,
+            cost: 40,
             type: 'buff',
             attr: 'vel',
             equip: 'necklace',
@@ -4311,6 +4699,10 @@ export const EQUIPS = [
             {
                 attr: 'life',
                 value: 25
+            },
+            {
+                attr: 'mana',
+                value: 11
             }
         ],
         cost: 83,
@@ -4319,8 +4711,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/half-heart.png',
             color: 'skillGreen',
             active: true,
-            val: 18,
-            cost: 36,
+            val: 12,
+            cost: 43,
             type: 'heal',
             attr: 'life',
             equip: 'necklace',
@@ -4351,8 +4743,8 @@ export const EQUIPS = [
             img: '../assets/images/skill/bubbles.png',
             color: 'skillSaphire',
             active: true,
-            val: 77,
-            cost: 45,
+            val: 97,
+            cost: 53,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
@@ -4387,13 +4779,53 @@ export const EQUIPS = [
             img: '../assets/images/skill/dragon-breath.png',
             color: 'skillOrange',
             active: true,
-            val: 100,
-            cost: 57,
+            val: 111,
+            cost: 63,
             type: 'magic',
             attr: 'magic',
             equip: 'necklace',
             desc: 'skill.dragon-breath.desc',
             sound: 'dragonBreath',
+        }
+    },
+    {
+        id: null,
+        type: 'equip',
+        equiped: false,
+        equip: 'necklace',
+        img: '../assets/images/equip/necklace/ruby-medallion.png',
+        name: 'equip.ruby-medallion.name',
+        extra: [
+            {
+                attr: 'magic',
+                value: 11
+            },
+            {
+                attr: 'life',
+                value: 15
+            },
+            {
+                attr: 'def',
+                value: 6
+            },
+            {
+                attr: 'prot',
+                value: 5
+            },
+        ],
+        cost: 82,
+        skill: {
+            name: 'skill.self-energy.name',
+            img: '../assets/images/skill/self-energy.png',
+            color: 'skillPurple',
+            active: true,
+            val: 90,
+            cost: 55,
+            type: 'magic',
+            attr: 'magic',
+            equip: 'necklace',
+            desc: 'skill.self-energy.desc',
+            sound: 'healing',
         }
     },
 
@@ -4407,7 +4839,7 @@ export const EQUIPS = [
         name: 'equip.life-potion.name',
         count: 1,
         attr: 'life',
-        value: 20,
+        value: 15,
         cost: 50,
         skill: null,
     },
@@ -4419,7 +4851,7 @@ export const EQUIPS = [
         name: 'equip.mana-potion.name',
         count: 1,
         attr: 'mana',
-        value: 20,
+        value: 15,
         cost: 50,
         skill: null,
     },
@@ -4431,7 +4863,7 @@ export const EQUIPS = [
         name: 'equip.exp-potion.name',
         count: 1,
         attr: 'exp',
-        value: 200,
+        value: 350,
         cost: 85,
         skill: null,
     },
@@ -4443,7 +4875,7 @@ export const EQUIPS = [
         name: 'equip.life-bottle.name',
         count: 1,
         attr: 'life',
-        value: 40,
+        value: 30,
         cost: 175,
         skill: null,
     },
@@ -4455,7 +4887,7 @@ export const EQUIPS = [
         name: 'equip.mana-bottle.name',
         count: 1,
         attr: 'mana',
-        value: 40,
+        value: 30,
         cost: 175,
         skill: null,
     },
@@ -4467,7 +4899,7 @@ export const EQUIPS = [
         name: 'equip.exp-bottle.name',
         count: 1,
         attr: 'exp',
-        value: 500,
+        value: 1000,
         cost: 215,
         skill: null,
     },

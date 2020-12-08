@@ -11,7 +11,7 @@ export class DungeonService {
   private act_ = [
     {
       type: 'battle',
-      prob: 60,
+      prob: 70,
     },
     {
       type: 'trap',
@@ -23,15 +23,15 @@ export class DungeonService {
     },
     {
       type: 'chest',
-      prob: 10,
+      prob: 5,
     },
     {
       type: 'bless',
-      prob: 10,
+      prob: 8,
     },
     {
       type: 'curse',
-      prob: 10,
+      prob: 8,
     },
   ];
 

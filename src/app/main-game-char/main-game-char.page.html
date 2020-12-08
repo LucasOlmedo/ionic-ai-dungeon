@@ -99,12 +99,12 @@
         <br>
         <ion-text color="success">{{ 'player.attr.crit' | translate }}</ion-text>
         <ion-text color="success" class="ion-float-end">
-          {{ player.current.crit + player.equipAttr.crit }}%
+          {{ (player.current.crit + player.equipAttr.crit) >= 60 ? 60 : (player.current.crit + player.equipAttr.crit) }}%
         </ion-text>
         <br>
         <ion-text color="success">{{ 'player.attr.eva' | translate }}</ion-text>
         <ion-text color="success" class="ion-float-end">
-          {{ player.current.eva + player.equipAttr.eva }}%
+          {{ (player.current.eva + player.equipAttr.eva) >= 40 ? 40 : (player.current.eva + player.equipAttr.eva) }}%
         </ion-text>
         <br>
       </ion-col>

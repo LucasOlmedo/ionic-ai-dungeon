@@ -657,6 +657,18 @@
         "dragon-breath": {
             "name": "Aliento de dragón",
             "desc": "Lanza una ráfaga de fuego dracónico, quemando a todos los oponentes frente a ti"
+        },
+        "self-energy": {
+            "name": "Energía propia",
+            "desc": "Canaliza la energía del medallón para dañar al objetivo"
+        },
+        "glow-hand": {
+            "name": "Poder misterioso",
+            "desc": "La piedra emana un poder oculto mejorado por la fuerza de voluntad del portador"
+        },
+        "wind-slap": {
+            "name": "Golpe de viento",
+            "desc": "Utiliza las propiedades mágicas del ventilador para generar un fuerte viento"
         }
     },
     "equip": {
@@ -1121,6 +1133,51 @@
         },
         "tooth-necklace": {
             "name": "Diente de dragón"
+        },
+        "ruby-medallion": {
+            "name": "Medallón de energía"
+        },
+        "pirate-hat": {
+            "name": "Sombrero pirata"
+        },
+        "viking-cloth": {
+            "name": "Protección vikinga"
+        },
+        "white-hat": {
+            "name": "Sombrero del profeta"
+        },
+        "white-boots": {
+            "name": "Botas del profeta"
+        },
+        "crystal-mage": {
+            "name": "Cristal de soporte"
+        },
+        "yukata": {
+            "name": "Yukata"
+        },
+        "kasa": {
+            "name": "Kasa"
+        },
+        "fan": {
+            "name": "Abanico mágico"
+        },
+        "ninja-cloth": {
+            "name": "Paño ninja"
+        },
+        "ninja-mask": {
+            "name": "Mascara ninja"
+        },
+        "priest-cloth": {
+            "name": "Veste sacerdotal"
+        },
+        "pope-elm": {
+            "name": "Mitra del sacerdote"
+        },
+        "royal-crown": {
+            "name": "Corona real"
+        },
+        "wushu-cloth": {
+            "name": "Bata de Wushu"
         }
     },
     "monster": {

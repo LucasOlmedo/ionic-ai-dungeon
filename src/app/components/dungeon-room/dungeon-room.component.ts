@@ -68,6 +68,13 @@ export class DungeonRoomComponent implements OnInit {
     // adId: 'ca-app-pub-3940256099942544/5224354917',
   }
 
+  optionsInt: AdOptions = {
+    // PROD ADS
+    adId: 'ca-app-pub-4059005643306368/9631784186',
+    // TEST ADS
+    // adId: 'ca-app-pub-3940256099942544/5224354917',
+  }
+
   private storage: Storage = new Storage({ name: '_ionicstorage' });
 
   constructor(
@@ -106,10 +113,21 @@ export class DungeonRoomComponent implements OnInit {
     });
     loading.present();
 
+    await AdMob.prepareInterstitial(this.optionsInt);
     await this.playerService.getPlayer().subscribe(async p => {
       this.player = p;
       await this.storage.get('saveGame').then(async v => {
         if (nextFloor) {
+          try {
+            await AdMob.showInterstitial();
+          } catch (error) {
+            let toast = await this.toastCtrl.create({
+              message: this.translate.instant('ads.fail'),
+              position: 'top',
+              duration: 1500,
+            });
+            await toast.present();
+          }
           return this.dungeonService.generateDungeon().then(result => {
             this.dungeon = result;
             this.currentRoom = this.dungeon[0];
@@ -117,25 +135,30 @@ export class DungeonRoomComponent implements OnInit {
             if (this.currentRoom.action == 'start') {
               this.eventDone = true;
             }
-            loading.dismiss();
-          });
-        }
-        if (v == false) {
-          return this.dungeonService.generateDungeon().then(result => {
-            this.dungeon = result;
-            this.currentRoom = this.dungeon[0];
-            this.loaded = true;
-            if (this.currentRoom.action == 'start') {
-              this.eventDone = true;
-            }
+            this.isMerchant = false;
             loading.dismiss();
           });
         } else {
-          let save = JSON.parse(v);
-          this.currentRoom = save.room;
-          this.loaded = true;
-          this.enterRoom(save.room);
-          await loading.dismiss();
+          if (v == false) {
+            return this.dungeonService.generateDungeon().then(result => {
+              this.dungeon = result;
+              this.currentRoom = this.dungeon[0];
+              this.loaded = true;
+              if (this.currentRoom.action == 'start') {
+                this.eventDone = true;
+              }
+              this.isMerchant = false;
+              loading.dismiss();
+            });
+          } else {
+            let save = JSON.parse(v);
+            this.currentRoom = save.room;
+            this.currentFloorIndex = save.currentFloorIndex;
+            this.loaded = true;
+            this.enterRoom(save.room);
+            this.isMerchant = false;
+            await loading.dismiss();
+          }
         }
       });
     });
@@ -143,7 +166,6 @@ export class DungeonRoomComponent implements OnInit {
 
   async nextFloor() {
     await this.audio.playEffect('door');
-    this.isMerchant = false;
     this.currentFloorIndex++;
     this.player.floorIndex++;
     this.player.roomIndex = 1;
@@ -161,7 +183,7 @@ export class DungeonRoomComponent implements OnInit {
     this.merchantItems = [];
     this.merchantItems.push(Object.assign({}, potionLife));
     this.merchantItems.push(Object.assign({}, potionMana));
-    while (this.merchantItems.length != 9) {
+    while (this.merchantItems.length != 12) {
       let randomEquip = equips[~~(Math.random() * equips.length)],
         cloneEquip = Object.assign({}, randomEquip);
       if (this.merchantItems.find(t => t.img == cloneEquip.img)) {
@@ -185,12 +207,12 @@ export class DungeonRoomComponent implements OnInit {
       return _t;
     });
     equip.name = `${this.translate.instant(equip.name)} Lv ${auxLv}`;
-    equip.cost = ~~(equip.cost + (15 * auxLv));
+    equip.cost = ~~(equip.cost + (12 * auxLv));
     return equip;
   }
 
   async showMerchantItem(equip) {
-    let costValue = equip.cost * ((this.player.level / 2) + 1), messageText = '', attribText = '';
+    let costValue = ~~(equip.cost * ((this.player.level / 2) + 3)), messageText = '', attribText = '';
     if (equip.type == 'potion') {
       let slotAttr = '';
       if (equip.attr == 'life') {
@@ -344,15 +366,25 @@ export class DungeonRoomComponent implements OnInit {
       message: this.translate.instant('in-game.dungeon.loading'),
     });
     loading.present();
-    await AdMob.prepareRewardVideoAd(this.options);
-    await AdMob.showRewardVideoAd().then((value: any) => {
-      if (value) {
-        this.player.gold += ~~this.chestGold;
-        this.chestGold *= 2;
-        this.canChestReward = false;
-      }
+    try {
+      await AdMob.prepareRewardVideoAd(this.options);
+      await AdMob.showRewardVideoAd().then((value: any) => {
+        if (value) {
+          this.player.gold += ~~this.chestGold;
+          this.chestGold *= 2;
+          this.canChestReward = false;
+        }
+        loading.dismiss();
+      });
+    } catch (error) {
+      let toast = await this.toastCtrl.create({
+        message: this.translate.instant('ads.fail'),
+        position: 'top',
+        duration: 1500,
+      });
+      await toast.present();
       loading.dismiss();
-    });
+    }
   }
 
   private getLootEquip() {
@@ -565,7 +597,7 @@ export class DungeonRoomComponent implements OnInit {
     }
 
     let evasion = ~~(Math.random() * 100) + 1;
-    if (evasion <= this.player.current.eva) {
+    if (evasion <= (this.player.current.eva >= 40 ? 40 : this.player.current.eva)) {
       this.animateBattleColor = 'text-bless-heal';
       this.animateBattleText = this.translate.instant('battle.dodge');
       await this.audio.playEffect('evasion');
@@ -600,12 +632,12 @@ export class DungeonRoomComponent implements OnInit {
     switch (sk.type) {
       case 'atk':
         canHit = true;
-        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 2) + sk.val
+        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 1.75) + sk.val
         this.animateBattleColor = 'text-bless-atk';
-        if (critChance <= this.player.current.crit) {
+        if (critChance <= (this.player.current.crit >= 60 ? 60 : this.player.current.crit)) {
           critDamage = true;
           this.animateBattleColor = 'text-color-equip';
-          damage = damage * 2;
+          damage = ~~(damage * 1.5);
         }
         calcDamageResult = this.calcDamage(damage, this.currentMonster.def);
         auxCurHP = this.currentMonster.currentLife - calcDamageResult;
@@ -616,12 +648,12 @@ export class DungeonRoomComponent implements OnInit {
         break;
       case 'magic':
         canHit = true;
-        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 2) + sk.val;
+        damage = ~~((this.player.current[sk.attr] + this.player.equipAttr[sk.attr]) / 1.75) + sk.val;
         this.animateBattleColor = 'text-curse-burn';
-        if (critChance <= this.player.current.crit) {
+        if (critChance <= (this.player.current.crit >= 60 ? 60 : this.player.current.crit)) {
           critDamage = true;
           this.animateBattleColor = 'text-color-equip';
-          damage = damage * 2;
+          damage = ~~(damage * 1.5);
         }
         calcDamageResult = this.calcDamage(damage, this.currentMonster.prot);
         auxCurHP = this.currentMonster.currentLife - calcDamageResult;
@@ -678,7 +710,7 @@ export class DungeonRoomComponent implements OnInit {
 
   private calcDamage(launcherAtk, targetDef) {
     let damage = ~~(launcherAtk - targetDef);
-    return damage < 15 ? ~~(Math.random() * 15) + 1 : damage;
+    return damage < 18 ? ~~(Math.random() * 18) + 5 : damage;
   }
 
   private async manageRoom() {
@@ -689,7 +721,7 @@ export class DungeonRoomComponent implements OnInit {
         this.eventDone = true;
         break;
       case 'chest':
-        this.chestGold = ~~((Math.floor(Math.random() * 17) + 6) * this.player.level);
+        this.chestGold = ~~((Math.floor(Math.random() * 15) + 6) * this.player.level);
         break;
       case 'battle':
       case 'boss':
@@ -755,7 +787,6 @@ export class DungeonRoomComponent implements OnInit {
       case 'bless':
         this.actionItemTurn = room.actionItem.turns != 0 ? Math.ceil(Math.random() * 4) : 0;
         if (this.actionItemTurn > 0) {
-          // let findCondition = this.player.conditions.find(t => t.title = room.actionItem.title);
           this.player.conditions.push({
             img: `../assets/images/${room.action}/${room.actionItem.icon}.png`,
             turns: this.actionItemTurn,
@@ -824,37 +855,38 @@ export class DungeonRoomComponent implements OnInit {
     await this.storage.set('saveGame', JSON.stringify({
       player: this.player,
       room: room,
+      currentFloorIndex: this.currentFloorIndex,
     }));
   }
 
   private finalBossMonster(m) {
     let monster = Object.assign({}, m), lvAux = this.player.level;
     monster.level = lvAux <= 0 ? 1 : lvAux;
-    monster.baseLife = ~~((m.baseLife + (m.baseLife * (monster.level / 2.25))) + (45 * monster.level));
+    monster.baseLife = ~~((m.baseLife + (m.baseLife * (monster.level / 3.2))) + (78.5 * monster.level));
     monster.currentLife = ~~monster.baseLife;
-    monster.exp = ~~(m.exp * (monster.level / 2) + m.exp) + ~~(4.5 * this.player.level);
-    monster.gold = ~~(m.gold * (monster.level / 2));
-    monster.atk = ~~((m.atk + (monster.level * 9.5)) + (8.5 * monster.level));
-    monster.def = ~~((m.def + (monster.level * 1.5)) + (1.5 * monster.level));
-    monster.magic = ~~((m.magic + (monster.level * 6)) + (6.5 * monster.level));
-    monster.prot = ~~(m.prot + (monster.level / 0.09));
-    monster.vel = ~~(m.vel + (monster.level / 0.07));
+    monster.exp = ~~(m.exp * (monster.level / 2) + m.exp) + ~~(18.5 * this.player.level);
+    monster.gold = ~~(m.gold * (monster.level / 2) + m.gold);
+    monster.atk = ~~((m.atk + (monster.level * 11)) + (7.15 * monster.level));
+    monster.def = ~~((m.def + (monster.level * 8)) + (1.5 * monster.level));
+    monster.magic = ~~((m.magic + (monster.level * 7.5)) + (6.35 * monster.level));
+    monster.prot = ~~(m.prot + (monster.level / 0.04));
+    monster.vel = ~~(m.vel + (monster.level / 0.05));
     monster.sound = m.sound;
     return monster;
   }
 
   private calcMonster(m, type) {
     let monster = Object.assign({}, m), lvAux = type == 'boss'
-      ? (this.player.level - 1) : ~~(Math.random() * (this.player.level - this.currentFloorIndex)
-        + this.currentFloorIndex) - 1;
-    monster.level = lvAux <= 0 ? 1 : lvAux;
-    monster.baseLife = ~~((m.baseLife + (m.baseLife * (monster.level / 1.75))) + (38.5 * monster.level));
+      ? this.player.level : ~~((Math.random() * this.currentFloorIndex) + (this.player.level / 3));
+    monster.level = lvAux <= 0 ? 1 : (lvAux > this.player.level ? this.player.level : lvAux);
+    monster.baseLife = ~~((m.baseLife + (m.baseLife * (monster.level / 2))) + (27.5 * monster.level))
+      + (type == 'boss' ? ~~(12 * monster.level) : 0);
     monster.currentLife = ~~monster.baseLife;
-    monster.exp = ~~(m.exp * (monster.level / 2) + m.exp) + ~~(3.5 * this.player.level);
-    monster.gold = ~~(m.gold * (monster.level / 2) + m.gold);
-    monster.atk = ~~((m.atk + (monster.level * 8.5)) + (8 * monster.level));
-    monster.def = ~~((m.def + (monster.level * 1.5)) + (1.5 * monster.level));
-    monster.magic = ~~((m.magic + (monster.level * 5.3)) + (6.35 * monster.level));
+    monster.exp = ~~(m.exp * (monster.level / 2) + m.exp) + ~~(17 * this.player.level);
+    monster.gold = ~~(m.gold * (monster.level / 5) + m.gold);
+    monster.atk = ~~((m.atk + (monster.level * 7)) + (4.25 * monster.level));
+    monster.def = ~~((m.def + (monster.level * 2)) + (1.5 * monster.level));
+    monster.magic = ~~((m.magic + (monster.level * 4.5)) + (6 * monster.level));
     monster.prot = ~~(m.prot + (monster.level / 0.09));
     monster.vel = ~~(m.vel + (monster.level / 0.07));
     monster.sound = m.sound;

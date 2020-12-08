@@ -657,6 +657,18 @@
         "dragon-breath": {
             "name": "Sopro dracônico",
             "desc": "Sopra uma rajada de fogo dracônico, queimando todos os adverários na sua frente"
+        },
+        "self-energy": {
+            "name": "Energia interna",
+            "desc": "Canaliza a energia do medalhão para danificar o alvo"
+        },
+        "glow-hand": {
+            "name": "Poder misterioso",
+            "desc": "A pedra emana um poder oculto aprimorado pela força de vontade do portador"
+        },
+        "wind-slap": {
+            "name": "Golpe de vento",
+            "desc": "Utiliza as propriedades mágicas do leque para gerar um forte golpe de vento"
         }
     },
     "equip": {
@@ -1121,6 +1133,51 @@
         },
         "tooth-necklace": {
             "name": "Dente de dragão"
+        },
+        "ruby-medallion": {
+            "name": "Medalhão de energia"
+        },
+        "pirate-hat": {
+            "name": "Chapéu de pirata"
+        },
+        "viking-cloth": {
+            "name": "Proteção de viking"
+        },
+        "white-hat": {
+            "name": "Chapéu do profeta"
+        },
+        "white-boots": {
+            "name": "Botas do profeta"
+        },
+        "crystal-mage": {
+            "name": "Cristal de suporte"
+        },
+        "yukata": {
+            "name": "Yukata"
+        },
+        "kasa": {
+            "name": "Kasa"
+        },
+        "fan": {
+            "name": "Leque mágico"
+        },
+        "ninja-cloth": {
+            "name": "Toga ninja"
+        },
+        "ninja-mask": {
+            "name": "Máscara ninja"
+        },
+        "priest-cloth": {
+            "name": "Túnica sacerdotal"
+        },
+        "pope-elm": {
+            "name": "Mitra sacerdotal"
+        },
+        "royal-crown": {
+            "name": "Coroa real"
+        },
+        "wushu-cloth": {
+            "name": "Manto Wushu"
         }
     },
     "monster": {

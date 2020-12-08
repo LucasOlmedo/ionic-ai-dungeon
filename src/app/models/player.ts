@@ -23,7 +23,7 @@ export class Player {
             name: 'equip.life-potion.name',
             count: 3,
             attr: 'life',
-            value: 20,
+            value: 15,
             cost: 50,
             skill: null,
         },
@@ -35,7 +35,7 @@ export class Player {
             name: 'equip.mana-potion.name',
             count: 3,
             attr: 'mana',
-            value: 20,
+            value: 15,
             cost: 50,
             skill: null,
         },
@@ -179,53 +179,53 @@ export class Player {
     }
 
     updateLife() {
-        this.currentLife += ~~(this.baseLife * 0.045);
+        this.currentLife += ~~(this.baseLife * 0.10);
         if (this.currentLife >= this.baseLife) {
             this.currentLife = ~~((this.baseLife + ((this.vitality || 1) *
-                (3.2 + (this.level * 0.25)))));
+                (2.65 + (this.level * 0.26)))));
         }
         this.baseLife = ~~((this.baseLife + ((this.vitality || 1) *
-            (3.2 + (this.level * 0.25)))));
+            (2.65 + (this.level * 0.26)))));
     }
 
     updateMana() {
         this.currentMana += ~~(this.baseMana * 0.15);
         if (this.currentMana >= this.baseMana) {
             this.currentMana = ~~((this.baseMana + ((this.intelligence || 1) *
-                (2.75 + (this.level * 0.1)))));
+                (2.13 + (this.level * 0.12)))));
         }
         this.baseMana = ~~((this.baseMana + ((this.intelligence || 1) *
-            (2.75 + (this.level * 0.1)))));
+            (2.13 + (this.level * 0.12)))));
     }
 
     updateVitality() {
         // atk
-        this.base.atk = ~~((8 + ((this.vitality || 1) * (this.level / 0.38))));
-        this.current.atk = ~~((8 + ((this.vitality || 1) * (this.level / 0.38))));
+        this.base.atk = ~~((7 + ((this.vitality || 1) * (this.level / 0.4))));
+        this.current.atk = ~~((7 + ((this.vitality || 1) * (this.level / 0.4))));
         // def
-        this.base.def = ~~((3.25 + ((this.vitality || 1) * (this.level / 0.6))));
-        this.current.def = ~~((3.25 + ((this.vitality || 1) * (this.level / 0.6))));
+        this.base.def = ~~((3 + ((this.vitality || 1) * (this.level / 0.75))));
+        this.current.def = ~~((3 + ((this.vitality || 1) * (this.level / 0.75))));
     }
 
     updateIntelligence() {
         // magic
-        this.base.magic = ~~((7.75 + ((this.intelligence || 1) * (this.level / 0.2))));
-        this.current.magic = ~~((7.75 + ((this.intelligence || 1) * (this.level / 0.2))));
+        this.base.magic = ~~((6 + ((this.intelligence || 1) * (this.level / 0.35))));
+        this.current.magic = ~~((6 + ((this.intelligence || 1) * (this.level / 0.35))));
         // prot
-        this.base.prot = ~~((5 + ((this.intelligence || 1) * (this.level / 0.6))));
-        this.current.prot = ~~((5 + ((this.intelligence || 1) * (this.level / 0.6))));
+        this.base.prot = ~~((4.35 + ((this.intelligence || 1) * (this.level / 0.75))));
+        this.current.prot = ~~((4.35 + ((this.intelligence || 1) * (this.level / 0.75))));
     }
 
     updateAgility() {
         // vel
-        this.base.vel = ~~((this.base.vel + ((this.agility || 1) * (this.level / 0.99))));
-        this.current.vel = ~~((this.current.vel + ((this.agility || 1) * (this.level / 0.99))));
+        this.base.vel = ~~((this.base.vel + ((this.agility || 1) * (this.level / 0.8))));
+        this.current.vel = ~~((this.current.vel + ((this.agility || 1) * (this.level / 0.8))));
         // crit
-        this.base.crit = Math.ceil(1.25 + ((this.agility || 1) * (this.level * 0.10)));
-        this.current.crit = Math.ceil(1.25 + ((this.agility || 1) * (this.level * 0.10)));
+        this.base.crit = Math.ceil(1.15 + ((this.agility || 1) * (this.level * 0.1)));
+        this.current.crit = Math.ceil(1.15 + ((this.agility || 1) * (this.level * 0.1)));
         // eva
-        this.base.eva = Math.ceil(0.45 + ((this.agility || 1) * (this.level * 0.1)));
-        this.current.eva = Math.ceil(0.45 + ((this.agility || 1) * (this.level * 0.1)));
+        this.base.eva = Math.ceil(0.4 + ((this.agility || 1) * (this.level * 0.1)));
+        this.current.eva = Math.ceil(0.4 + ((this.agility || 1) * (this.level * 0.1)));
     }
 
     initCurrent() {

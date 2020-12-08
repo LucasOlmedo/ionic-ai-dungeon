@@ -238,6 +238,14 @@
         <br>
       </ion-row>
       <ion-row>
+        <ion-col>
+          <strong>
+            <ion-text color="warning">{{ 'main-game.char.gold' | translate }}: </ion-text>
+            <ion-text color="warning">{{ player.gold }}</ion-text>
+          </strong>
+        </ion-col>
+      </ion-row>
+      <ion-row>
         <ion-col size="4" class="col-skill" *ngFor="let item of merchantItems">
           <ion-button [disabled]="!item || !item.img" color="dark" fill="outline" (click)="showMerchantItem(item)">
             <img class="merchant-item-img" [src]="item.img || '../assets/images/skill/empty.png'" />
