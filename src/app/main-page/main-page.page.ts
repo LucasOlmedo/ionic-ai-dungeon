@@ -17,6 +17,7 @@ const playGames = Plugins.PlayGames as PlayGamesPlugin;
 export class MainPagePage implements OnInit {
 
   lang: any;
+  loggedPlayGames: boolean = false;
   private storage: Storage = new Storage({ name: '_ionicstorage' });
 
   constructor(
@@ -30,37 +31,29 @@ export class MainPagePage implements OnInit {
   }
 
   ngOnInit() {
+    this.initLang();
   }
 
   ionViewDidEnter() {
-    this.initLang();
-    // this.loginPlayGames();
+    this.loginPlayGames();
   }
 
   async loginPlayGames() {
-    playGames.signStatus().then(async (response) => {
-      if (!response.login) {
-        try {
-          await playGames.auth().then((response) => {
-            console.log(response);
-            /* response return:
-                id: string;
-                display_name: string;
-                icon: string; // URI Does not work yet.
-                title: string;
-                login: boolean; TRUE if is online FALSE if is offline
-            */
-          });
-        } catch (error) {
-          let toast = await this.toastCtrl.create({
-            message: this.translate.instant('main.auth-fail'),
-            position: 'top',
-            duration: 1500,
-          });
-          await toast.present();
-        }
+    if (this.loggedPlayGames == false) {
+      try {
+        await playGames.auth().then(async (response) => {
+          console.log(response);
+          this.loggedPlayGames = true;
+        });
+      } catch (error) {
+        let toast = await this.toastCtrl.create({
+          message: this.translate.instant('main.auth-fail'),
+          position: 'top',
+          duration: 1500,
+        });
+        await toast.present();
       }
-    });
+    }
   }
 
   async initLang() {
@@ -117,5 +110,31 @@ export class MainPagePage implements OnInit {
         this.navCtrl.navigateRoot('/create-character');
       }
     });
+  }
+
+  async showLeaderboard() {
+    try {
+      await playGames.showAllLeaderboard();
+    } catch (error) {
+      let toast = await this.toastCtrl.create({
+        message: this.translate.instant('main.auth-fail'),
+        position: 'top',
+        duration: 1500,
+      });
+      await toast.present();
+    }
+  }
+
+  async showAchievements() {
+    try {
+      await playGames.showAchievements();
+    } catch (error) {
+      let toast = await this.toastCtrl.create({
+        message: this.translate.instant('main.auth-fail'),
+        position: 'top',
+        duration: 1500,
+      });
+      await toast.present();
+    }
   }
 }

@@ -5,8 +5,8 @@
 
         <!-- this line needs to be added (replace the value!) -->
         <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-4059005643306368~7168330424"/>
-        <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="864339246779"/>
-        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <!-- <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="@string/app_id_gp" /> -->
+        <!-- <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />-->
 
         <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode" android:name="next.floor.dungeon.MainActivity" android:label="@string/title_activity_main" android:theme="@style/AppTheme.NoActionBarLaunch" android:launchMode="singleTask">
 

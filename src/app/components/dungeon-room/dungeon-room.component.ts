@@ -13,8 +13,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from 'src/app/config.service';
 import { AudioService } from 'src/app/audio.service';
 import { Storage } from '@ionic/storage';
+import { PlayGamesPlugin } from 'capacitor-play-games-services';
 
 const { AdMob } = Plugins;
+const playGames = Plugins.PlayGames as PlayGamesPlugin;
 
 @Component({
   selector: 'app-dungeon-room',
@@ -72,7 +74,7 @@ export class DungeonRoomComponent implements OnInit {
     // PROD ADS
     adId: 'ca-app-pub-4059005643306368/9631784186',
     // TEST ADS
-    // adId: 'ca-app-pub-3940256099942544/5224354917',
+    // adId: 'ca-app-pub-3940256099942544/1033173712',
   }
 
   private storage: Storage = new Storage({ name: '_ionicstorage' });
@@ -113,9 +115,31 @@ export class DungeonRoomComponent implements OnInit {
     });
     loading.present();
 
-    await AdMob.prepareInterstitial(this.optionsInt);
+    AdMob.prepareInterstitial(this.optionsInt);
     await this.playerService.getPlayer().subscribe(async p => {
       this.player = p;
+
+      playGames.signStatus().then(async (response) => {
+        if (response.login) {
+          try {
+            playGames.unlockAchievement({
+              id: 'CgkIu_2I9ZMZEAIQAg',
+            });
+            playGames.submitScore({
+              id: 'CgkIu_2I9ZMZEAIQBA',
+              points: this.currentFloorIndex + 1,
+            });
+          } catch (error) {
+            let toast = await this.toastCtrl.create({
+              message: this.translate.instant('main.auth-fail'),
+              position: 'top',
+              duration: 1500,
+            });
+            await toast.present();
+          }
+        }
+      });
+
       await this.storage.get('saveGame').then(async v => {
         if (nextFloor) {
           try {
@@ -351,6 +375,7 @@ export class DungeonRoomComponent implements OnInit {
   }
 
   async openChest() {
+    AdMob.prepareRewardVideoAd(this.options);
     await this.audio.playEffect('chest');
     this.getLootEquip();
     this.canGetLoot = this.player.inventory.filter(t => t == 0).length > 0;
@@ -367,7 +392,6 @@ export class DungeonRoomComponent implements OnInit {
     });
     loading.present();
     try {
-      await AdMob.prepareRewardVideoAd(this.options);
       await AdMob.showRewardVideoAd().then((value: any) => {
         if (value) {
           this.player.gold += ~~this.chestGold;
@@ -513,6 +537,10 @@ export class DungeonRoomComponent implements OnInit {
         toolbars[i].style.opacity = '0';
       }
       await this.storage.set('saveGame', false);
+      playGames.submitScore({
+        id: 'CgkIu_2I9ZMZEAIQCA',
+        points: this.player.killCount,
+      });
       return false;
     }
   }
@@ -742,11 +770,20 @@ export class DungeonRoomComponent implements OnInit {
         };
         if ((actualFloor % 10 == 0) && room.action == 'boss') {
           let bsIndx = 0;
+          playGames.unlockAchievement({
+            id: 'CgkIu_2I9ZMZEAIQBQ',
+          });
           if (actualFloor >= 50 && actualFloor <= 80) {
             bsIndx = 1;
+            playGames.unlockAchievement({
+              id: 'CgkIu_2I9ZMZEAIQBg',
+            });
           }
           if (actualFloor >= 90) {
             bsIndx = 2;
+            playGames.unlockAchievement({
+              id: 'CgkIu_2I9ZMZEAIQBw',
+            });
           }
           await this.audio.stopAllMusic();
           await this.audio.playMusic('finalBoss');

@@ -35,4 +35,26 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-grid *ngIf="loggedPlayGames" class="ion-text-center" style="position: relative; top: -30%;">
+    <ion-row>
+      <ion-col>
+        <ion-button color="dark" fill="outline" (click)="showLeaderboard()">
+          <ion-icon name="podium-outline"></ion-icon>
+        </ion-button>
+        <ion-button color="dark" fill="outline" (click)="showAchievements()">
+          <ion-icon name="trophy-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="!loggedPlayGames" class="ion-text-center" style="position: relative; top: -30%;">
+    <ion-row>
+      <ion-col>
+        <ion-button color="skillEmerald" fill="outline" (click)="loginPlayGames()" style="font-size: 60%;">
+          <ion-icon name="game-controller-outline" slot="start"></ion-icon>
+          Google Play Games
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
